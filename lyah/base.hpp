@@ -6,6 +6,7 @@
 #include <cassert>
 #include <cmath>
 #include <immintrin.h>
+#include <limits>
 
 #define LYAH_ASSERT assert
 
