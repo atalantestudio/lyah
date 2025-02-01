@@ -10,6 +10,8 @@
 
 #define LYAH_ASSERT assert
 
+#define LYAH_CALL __vectorcall
+
 #define LYAH_COMPILER_CLANG	1
 #define LYAH_COMPILER_GCC	2
 #define LYAH_COMPILER_MSVC	3
