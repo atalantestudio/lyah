@@ -151,6 +151,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -162,7 +163,8 @@
     <ClInclude Include="src\Logger\LogLevel.hpp" />
     <ClInclude Include="src\Logger\LogStructure.hpp" />
     <ClInclude Include="src\pch.hpp" />
-    <ClInclude Include="src\printable.hpp" />
+    <ClInclude Include="src\log.hpp" />
+    <ClInclude Include="src\test.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

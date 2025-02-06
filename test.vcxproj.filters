@@ -24,6 +24,9 @@
     <ClCompile Include="src\Logger\Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -45,7 +48,10 @@
     <ClInclude Include="src\Logger\LogStructure.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\printable.hpp">
+    <ClInclude Include="src\log.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

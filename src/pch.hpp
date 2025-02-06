@@ -8,4 +8,5 @@
 #include <lyah/lyah.hpp>
 
 #include "base.hpp"
-#include "printable.hpp"
+#include "log.hpp"
+#include "test.hpp"
