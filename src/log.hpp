@@ -16,3 +16,29 @@
 		__debugbreak(); \
 	} \
 }
+
+namespace test {
+	inline std::ostringstream& operator <<(std::ostringstream& stream, __m128 m) {
+		const std::float_t* buffer = m.m128_f32;
+
+		stream << buffer[0] << "  " << buffer[1] << "  " << buffer[2] << "  " << buffer[3];
+
+		return stream;
+	}
+
+	inline std::ostringstream& operator <<(std::ostringstream& stream, __m128d m) {
+		const std::double_t* buffer = m.m128d_f64;
+
+		stream << buffer[0] << "  " << buffer[1];
+
+		return stream;
+	}
+
+	inline std::ostringstream& operator <<(std::ostringstream& stream, __m256d m) {
+		const std::double_t* buffer = m.m256d_f64;
+
+		stream << buffer[0] << "  " << buffer[1] << "  " << buffer[2] << "  " << buffer[3];
+
+		return stream;
+	}
+}
