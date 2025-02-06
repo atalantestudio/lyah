@@ -1,3 +1,3 @@
 # lyah
 
-Lyah is a C++ SIMD-only mathematics library for computer graphics.
+Lyah is a C++ SIMD mathematics library for computer graphics.
