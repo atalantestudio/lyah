@@ -1,0 +1,26 @@
+name: "Check copyright license headers"
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check_copyright_license_headers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+      - name: "Fetch branches"
+        run: |
+          git fetch origin ${{github.base_ref}}
+          git fetch origin ${{github.head_ref}}
+      - name: "Run script"
+        run: |
+          chmod +x ./scripts/check_copyright_license_headers.sh
+          ./scripts/check_copyright_license_headers.sh
+        env:
+          HEADER: "// Copyright 2025 Mattéo Legagneux.\n// Licensed under the MIT License."
+          GITHUB_BASE_REF: ${{github.base_ref}}
+          GITHUB_HEAD_REF: ${{github.head_ref}}
+          GITHUB_TREE_URL: ${{github.server_url}}/${{github.repository}}/tree/${{github.head_ref}}
