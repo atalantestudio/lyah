@@ -359,6 +359,44 @@ namespace vec2_m128 {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
+	void testDotProduct() {
+		const std::float_t expected = 17.0f;
+		const lyah::vec<2, std::float_t> a = {1.0f, 4.0f};
+		const lyah::vec<2, std::float_t> b = {5.0f, 3.0f};
+
+		const std::float_t result = lyah::dot(a, b);
+
+		test::assert(test::eq(result, expected));
+	}
+
+	void testLength() {
+		const std::float_t expected = 4.123f;
+		const lyah::vec<2, std::float_t> a = {1.0f, 4.0f};
+
+		const std::float_t result = lyah::length(a);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testDistance() {
+		const std::float_t expected = 4.123f;
+		const lyah::vec<2, std::float_t> a = {1.0f, 4.0f};
+		const lyah::vec<2, std::float_t> b = {5.0f, 3.0f};
+
+		const std::float_t result = lyah::distance(a, b);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testNormalization() {
+		const lyah::vec<2, std::float_t> expected = {0.243f, 0.970f};
+		const lyah::vec<2, std::float_t> a = {1.0f, 4.0f};
+
+		const lyah::vec<2, std::float_t> result = lyah::normalized(a);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
 	void runAll() {
 		test::printTestCategory("lyah::vec<2, std::float_t> - 2-component single floating-point vector");
 
@@ -407,5 +445,10 @@ namespace vec2_m128 {
 		test::runTest(&testRcp, "Reciprocal");
 		test::runTest(&testSqrt, "Square root");
 		test::runTest(&testRsqrt, "Inverse square root");
+
+		test::runTest(&testDotProduct, "Dot product");
+		test::runTest(&testLength, "Length");
+		test::runTest(&testDistance, "Distance");
+		test::runTest(&testNormalization, "Normalization");
 	}
 }

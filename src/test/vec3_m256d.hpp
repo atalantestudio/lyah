@@ -325,6 +325,54 @@ namespace vec3_m256d {
 		test::assert(test::eq(result, expected, 0.001));
 	}
 
+	void testCrossProduct() {
+		const lyah::vec<3, std::double_t> expected = {-10.0, 28.0, -17.0};
+		const lyah::vec<3, std::double_t> a = {1.0, 4.0, 6.0};
+		const lyah::vec<3, std::double_t> b = {5.0, 3.0, 2.0};
+
+		const lyah::vec<3, std::double_t> result = lyah::cross(a, b);
+
+		test::assert(test::eq(result, expected));
+	}
+
+	void testDotProduct() {
+		const std::double_t expected = 29.0;
+		const lyah::vec<3, std::double_t> a = {1.0, 4.0, 6.0};
+		const lyah::vec<3, std::double_t> b = {5.0, 3.0, 2.0};
+
+		const std::double_t result = lyah::dot(a, b);
+
+		test::assert(test::eq(result, expected));
+	}
+
+	void testLength() {
+		const std::double_t expected = 7.280;
+		const lyah::vec<3, std::double_t> a = {1.0, 4.0, 6.0};
+
+		const std::double_t result = lyah::length(a);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
+	void testDistance() {
+		const std::double_t expected = 5.745;
+		const lyah::vec<3, std::double_t> a = {1.0, 4.0, 6.0};
+		const lyah::vec<3, std::double_t> b = {5.0, 3.0, 2.0};
+
+		const std::double_t result = lyah::distance(a, b);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
+	void testNormalization() {
+		const lyah::vec<3, std::double_t> expected = {0.137, 0.550, 0.824};
+		const lyah::vec<3, std::double_t> a = {1.0, 4.0, 6.0};
+
+		const lyah::vec<3, std::double_t> result = lyah::normalized(a);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
 	void runAll() {
 		test::printTestCategory("lyah::vec<3, std::double_t> - 3-component double floating-point vector");
 
@@ -369,5 +417,11 @@ namespace vec3_m256d {
 		test::runTest(&testRcp, "Reciprocal");
 		test::runTest(&testSqrt, "Square root");
 		test::runTest(&testRsqrt, "Inverse square root");
+
+		test::runTest(&testCrossProduct, "Cross product");
+		test::runTest(&testDotProduct, "Dot product");
+		test::runTest(&testLength, "Length");
+		test::runTest(&testDistance, "Distance");
+		test::runTest(&testNormalization, "Normalization");
 	}
 }
