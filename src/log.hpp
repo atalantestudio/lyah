@@ -41,4 +41,15 @@ namespace test {
 
 		return stream;
 	}
+
+	template<std::size_t C, typename T>
+	inline std::ostringstream& operator <<(std::ostringstream& stream, const lyah::vec<C, T>& a) {
+		for (std::size_t index = 0; index < C - 1; index++) {
+			stream << a[index] << "  ";
+		}
+
+		stream << a[C - 1];
+
+		return stream;
+	}
 }
