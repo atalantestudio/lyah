@@ -168,6 +168,7 @@
     <ClInclude Include="src\test\scalar_common.hpp" />
     <ClInclude Include="src\test\constants.hpp" />
     <ClInclude Include="src\test\scalar_exponential.hpp" />
+    <ClInclude Include="src\test\scalar_trigonometric.hpp" />
     <ClInclude Include="src\test\vec2_m128.hpp" />
     <ClInclude Include="src\test\vec2_m128d.hpp" />
     <ClInclude Include="src\test\vec3_m128.hpp" />

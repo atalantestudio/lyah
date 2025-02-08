@@ -41,7 +41,7 @@ namespace scalar_exponential {
 	}
 
 	void runAll() {
-		test::printTestCategory("Exponential scalar functions");
+		test::printTestCategory("Scalar exponential functions");
 
 		test::runTest(&testPow, "Power");
 		test::runTest(&testRcp, "Reciprocal");

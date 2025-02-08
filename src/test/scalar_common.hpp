@@ -13,7 +13,7 @@ namespace scalar_common {
 	}
 
 	static void runAll() {
-		test::printTestCategory("Common scalar functions");
+		test::printTestCategory("Scalar common functions");
 
 		test::runTest(&testAbs, "Absolute value");
 	}

@@ -81,5 +81,8 @@
     <ClInclude Include="src\test\scalar_exponential.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\test\scalar_trigonometric.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
