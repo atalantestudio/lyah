@@ -290,6 +290,43 @@ namespace vec4_m256d {
 		test::assert(test::eq(result, expected));
 	}
 
+	void testPow() {
+		const lyah::vec<4, std::double_t> expected = {1.0, 64.0, 36.0, -1.0};
+		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, -1.0};
+		const lyah::vec<4, std::double_t> b = {5.0, 3.0, 2.0, 7.0};
+
+		const lyah::vec<4, std::double_t> result = lyah::pow(a, b);
+
+		test::assert(test::eq(result, expected));
+	}
+
+	void testRcp() {
+		const lyah::vec<4, std::double_t> expected = {lyah::infinity<std::double_t>(), 0.25, 0.167, -1.0};
+		const lyah::vec<4, std::double_t> a = {0.0, 4.0, 6.0, -1.0};
+
+		const lyah::vec<4, std::double_t> result = lyah::rcp(a);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
+	void testSqrt() {
+		const lyah::vec<4, std::double_t> expected = {1.0, 2.0, 2.449, 0.707};
+		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, 0.5};
+
+		const lyah::vec<4, std::double_t> result = lyah::sqrt(a);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
+	void testRsqrt() {
+		const lyah::vec<4, std::double_t> expected = {1.0, 0.5, 0.408, 1.414};
+		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, 0.5};
+
+		const lyah::vec<4, std::double_t> result = lyah::rsqrt(a);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
 	void runAll() {
 		test::printTestCategory("lyah::vec<4, std::double_t> - 4-component double floating-point vector");
 
@@ -329,5 +366,10 @@ namespace vec4_m256d {
 		test::runTest(&testVerticalMin, "Vertical min");
 		test::runTest(&testLerp, "Linear interpolation");
 		test::runTest(&testSum, "Sum");
+
+		test::runTest(&testPow, "Power");
+		test::runTest(&testRcp, "Reciprocal");
+		test::runTest(&testSqrt, "Square root");
+		test::runTest(&testRsqrt, "Inverse square root");
 	}
 }

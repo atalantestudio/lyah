@@ -306,6 +306,43 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
+	void testPow() {
+		const lyah::vec<3, std::float_t> expected = {1.0f, 64.0f, 36.0f};
+		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
+		const lyah::vec<3, std::float_t> b = {5.0f, 3.0f, 2.0f};
+
+		const lyah::vec<3, std::float_t> result = lyah::pow(a, b);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testRcp() {
+		const lyah::vec<3, std::float_t> expected = {lyah::infinity<std::float_t>(), 0.25f, 0.167f};
+		const lyah::vec<3, std::float_t> a = {0.0f, 4.0f, 6.0f};
+
+		const lyah::vec<3, std::float_t> result = lyah::rcp(a);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testSqrt() {
+		const lyah::vec<3, std::float_t> expected = {1.0f, 2.0f, 2.449f};
+		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
+
+		const lyah::vec<3, std::float_t> result = lyah::sqrt(a);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testRsqrt() {
+		const lyah::vec<3, std::float_t> expected = {1.0f, 0.5f, 0.408f};
+		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
+
+		const lyah::vec<3, std::float_t> result = lyah::rsqrt(a);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
 	void runAll() {
 		test::printTestCategory("lyah::vec<3, std::float_t> - 3-component single floating-point vector");
 
@@ -347,5 +384,10 @@ namespace vec3_m128 {
 		test::runTest(&testVerticalMin, "Vertical min");
 		test::runTest(&testLerp, "Linear interpolation");
 		test::runTest(&testSum, "Sum");
+
+		test::runTest(&testPow, "Power");
+		test::runTest(&testRcp, "Reciprocal");
+		test::runTest(&testSqrt, "Square root");
+		test::runTest(&testRsqrt, "Inverse square root");
 	}
 }
