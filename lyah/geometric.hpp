@@ -26,3 +26,7 @@ namespace lyah {
 		return a / length(a);
 	}
 }
+
+#include "vec/m128/geometric.inl"
+#include "vec/m128d/geometric.inl"
+#include "vec/m256d/geometric.inl"
