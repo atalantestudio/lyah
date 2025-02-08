@@ -23,5 +23,7 @@ int main() {
 	vec4_m128::runAll();
 	vec4_m256d::runAll();
 
+	INFO("All tests passed.");
+
 	return 0;
 }
