@@ -2,6 +2,7 @@
 
 #include "test/constants.hpp"
 #include "test/scalar_common.hpp"
+#include "test/scalar_exponential.hpp"
 #include "test/vec2_m128.hpp"
 #include "test/vec2_m128d.hpp"
 #include "test/vec3_m128.hpp"
@@ -14,6 +15,7 @@ int main() {
 
 	constants::runAll();
 	scalar_common::runAll();
+	scalar_exponential::runAll();
 	vec2_m128::runAll();
 	vec2_m128d::runAll();
 	vec3_m128::runAll();
