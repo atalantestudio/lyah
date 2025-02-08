@@ -25,7 +25,7 @@ namespace vec4_m256d {
 		test::assert(test::eq(result[3], expected[3]));
 	}
 
-	void testRegisterConstructor() {
+	void testSimdConstructor() {
 		const lyah::vec<4, std::double_t> expected = {1.0, 4.0, 6.0, -1.0};
 		const __m256d m = _mm256_set_pd(-1.0, 6.0, 4.0, 1.0);
 
@@ -228,7 +228,7 @@ namespace vec4_m256d {
 
 		test::runTest(&testDefaultConstructor, "Default constructor");
 		test::runTest(&testComponentConstructor, "Component constructor");
-		test::runTest(&testRegisterConstructor, "Register constructor");
+		test::runTest(&testSimdConstructor, "SIMD constructor");
 		test::runTest(&testConvertingConstructor, "Converting constructor");
 
 		test::runTest(&testEquality, "Equality (==)");

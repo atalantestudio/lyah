@@ -21,7 +21,7 @@ namespace vec2_m128d {
 		test::assert(test::eq(result[1], expected[1]));
 	}
 
-	void testRegisterConstructor() {
+	void testSimdConstructor() {
 		const lyah::vec<2, std::double_t> expected = {1.0, 4.0};
 		const __m128d m = _mm_set_pd(4.0, 1.0);
 
@@ -224,7 +224,7 @@ namespace vec2_m128d {
 
 		test::runTest(&testDefaultConstructor, "Default constructor");
 		test::runTest(&testComponentConstructor, "Component constructor");
-		test::runTest(&testRegisterConstructor, "Register constructor");
+		test::runTest(&testSimdConstructor, "SIMD constructor");
 		test::runTest(&testConvertingConstructor, "Converting constructor");
 
 		test::runTest(&testEquality, "Equality (==)");
