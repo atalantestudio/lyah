@@ -373,6 +373,51 @@ namespace vec3_m256d {
 		test::assert(test::eq(result, expected, 0.001));
 	}
 
+	void testDegrees() {
+		const lyah::vec<3, std::double_t> expected = {180.0, -45.0, 0.0};
+		const lyah::vec<3, std::double_t> a = {lyah::pi<std::double_t>(), -lyah::pi<std::double_t>() * 0.25, 0.0};
+
+		const lyah::vec<3, std::double_t> result = lyah::degrees(a);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
+	void testRadians() {
+		const lyah::vec<3, std::double_t> expected = {lyah::pi<std::double_t>(), -lyah::pi<std::double_t>() * 0.25, 0.0};
+		const lyah::vec<3, std::double_t> a = {180.0, -45.0, 0.0};
+
+		const lyah::vec<3, std::double_t> result = lyah::radians(a);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
+	void testSin() {
+		const lyah::vec<3, std::double_t> expected = {0.841, 0.479, 0.894};
+		const lyah::vec<3, std::double_t> a = {1.0, 0.5, 90.0};
+
+		const lyah::vec<3, std::double_t> result = lyah::sin(a);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
+	void testCos() {
+		const lyah::vec<3, std::double_t> expected = {0.540, 0.878, -0.448};
+		const lyah::vec<3, std::double_t> a = {1.0, 0.5, 90.0};
+
+		const lyah::vec<3, std::double_t> result = lyah::cos(a);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
+	void testTan() {
+		const lyah::vec<3, std::double_t> expected = {1.557, 0.546, -1.995};
+		const lyah::vec<3, std::double_t> a = {1.0, 0.5, 90.0};
+
+		const lyah::vec<3, std::double_t> result = lyah::tan(a);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
 	void runAll() {
 		test::printTestCategory("lyah::vec<3, std::double_t> - 3-component double floating-point vector");
 
@@ -423,5 +468,11 @@ namespace vec3_m256d {
 		test::runTest(&testLength, "Length");
 		test::runTest(&testDistance, "Distance");
 		test::runTest(&testNormalization, "Normalization");
+
+		test::runTest(&testDegrees, "Degrees");
+		test::runTest(&testRadians, "Radians");
+		test::runTest(&testSin, "Sin");
+		test::runTest(&testCos, "Cos");
+		test::runTest(&testTan, "Tan");
 	}
 }

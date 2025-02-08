@@ -383,6 +383,51 @@ namespace vec4_m128 {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
+	void testDegrees() {
+		const lyah::vec<4, std::float_t> expected = {180.0f, -45.0f, 0.0f, 360.0f};
+		const lyah::vec<4, std::float_t> a = {lyah::pi<std::float_t>(), -lyah::pi<std::float_t>() * 0.25f, 0.0f, 2.0f * lyah::pi<std::float_t>()};
+
+		const lyah::vec<4, std::float_t> result = lyah::degrees(a);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testRadians() {
+		const lyah::vec<4, std::float_t> expected = {lyah::pi<std::float_t>(), -lyah::pi<std::float_t>() * 0.25f, 0.0f, 2.0f * lyah::pi<std::float_t>()};
+		const lyah::vec<4, std::float_t> a = {180.0f, -45.0f, 0.0f, 360.0f};
+
+		const lyah::vec<4, std::float_t> result = lyah::radians(a);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testSin() {
+		const lyah::vec<4, std::float_t> expected = {0.841f, 0.479f, 0.894f, 0.0f};
+		const lyah::vec<4, std::float_t> a = {1.0f, 0.5f, 90.0f, 0.0f};
+
+		const lyah::vec<4, std::float_t> result = lyah::sin(a);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testCos() {
+		const lyah::vec<4, std::float_t> expected = {0.540f, 0.878f, -0.448f, 1.0f};
+		const lyah::vec<4, std::float_t> a = {1.0f, 0.5f, 90.0f, 0.0f};
+
+		const lyah::vec<4, std::float_t> result = lyah::cos(a);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testTan() {
+		const lyah::vec<4, std::float_t> expected = {1.557f, 0.546f, -1.995f, 0.0f};
+		const lyah::vec<4, std::float_t> a = {1.0f, 0.5f, 90.0f, 0.0f};
+
+		const lyah::vec<4, std::float_t> result = lyah::tan(a);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
 	void runAll() {
 		test::printTestCategory("lyah::vec<4, std::float_t> - 4-component single floating-point vector");
 
@@ -434,5 +479,11 @@ namespace vec4_m128 {
 		test::runTest(&testLength, "Length");
 		test::runTest(&testDistance, "Distance");
 		test::runTest(&testNormalization, "Normalization");
+
+		test::runTest(&testDegrees, "Degrees");
+		test::runTest(&testRadians, "Radians");
+		test::runTest(&testSin, "Sin");
+		test::runTest(&testCos, "Cos");
+		test::runTest(&testTan, "Tan");
 	}
 }
