@@ -6,6 +6,7 @@
 #include "test/vec3_m128.hpp"
 #include "test/vec3_m256d.hpp"
 #include "test/vec4_m128.hpp"
+#include "test/vec4_m256d.hpp"
 
 int main() {
 	test::Logger::initialize();
@@ -16,6 +17,7 @@ int main() {
 	vec3_m128::runAll();
 	vec3_m256d::runAll();
 	vec4_m128::runAll();
+	vec4_m256d::runAll();
 
 	return 0;
 }

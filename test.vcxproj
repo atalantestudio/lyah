@@ -171,6 +171,7 @@
     <ClInclude Include="src\test\vec3_m128.hpp" />
     <ClInclude Include="src\test\vec3_m256d.hpp" />
     <ClInclude Include="src\test\vec4_m128.hpp" />
+    <ClInclude Include="src\test\vec4_m256d.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
