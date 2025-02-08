@@ -32,6 +32,15 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
+	void testConvertingConstructor() {
+		const lyah::vec<3, std::float_t> expected = {1.0f, 4.0f, 6.0f};
+		const lyah::vec<3, std::double_t> a = {1.0, 4.0, 6.0};
+
+		const lyah::vec<3, std::float_t> result(a);
+
+		test::assert(test::eq(result, expected));
+	}
+
 	void testEquality() {
 		const bool expected[2] = {true, false};
 		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
@@ -218,6 +227,7 @@ namespace vec3_m128 {
 		test::runTest(&testDefaultConstructor, "Default constructor");
 		test::runTest(&testComponentConstructor, "Component constructor");
 		test::runTest(&testRegisterConstructor, "Register constructor");
+		test::runTest(&testConvertingConstructor, "Converting constructor");
 
 		test::runTest(&testEquality, "Equality (==)");
 		test::runTest(&testInequality, "Inequality (!=)");

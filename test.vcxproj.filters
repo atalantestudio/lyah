@@ -69,5 +69,8 @@
     <ClInclude Include="src\test\vec2_m128d.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\test\vec3_m256d.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
