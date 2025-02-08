@@ -1,6 +1,6 @@
 #!/bin/bash
 
-files=$(git diff --name-only origin/$GITHUB_BASE_REF origin/$GITHUB_HEAD_REF lyah)
+files=$(git diff --diff-filter=d --name-only origin/$GITHUB_BASE_REF origin/$GITHUB_HEAD_REF lyah)
 error_files=()
 
 for file in $files; do
