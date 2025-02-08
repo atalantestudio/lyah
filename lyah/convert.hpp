@@ -1,4 +1,4 @@
-// Copyright 2025 Mattéo Legagneux.
+// Copyright 2025 Matteo Legagneux.
 // Licensed under the MIT License.
 
 #pragma once
