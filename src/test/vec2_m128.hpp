@@ -219,6 +219,109 @@ namespace vec2_m128 {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
+	/* void testFloor() {
+		const lyah::vec<2, std::float_t> expected = {1.0f, 4.0f};
+		const lyah::vec<2, std::float_t> a = {1.999f, 4.0f};
+
+		const lyah::vec<2, std::float_t> result = lyah::floor(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	/* void testCeil() {
+		const lyah::vec<2, std::float_t> expected = {1.0f, 4.0f};
+		const lyah::vec<2, std::float_t> a = {0.999f, 4.0f};
+
+		const lyah::vec<2, std::float_t> result = lyah::ceil(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	/* void testRound() {
+		const lyah::vec<2, std::float_t> expected = {1.0f, 4.0f};
+		const lyah::vec<2, std::float_t> a = {1.3279f, 4.007f};
+
+		const lyah::vec<2, std::float_t> result = lyah::round(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	/* void testAbs() {
+		const lyah::vec<2, std::float_t> expected = {1.0f, 4.0f};
+		const lyah::vec<2, std::float_t> a = {1.0f, -4.0f};
+
+		const lyah::vec<2, std::float_t> result = lyah::abs(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	/* void testSign() {
+		const lyah::vec<2, std::float_t> expected = {1.0f, -1.0f};
+		const lyah::vec<2, std::float_t> a = {1.0f, -4.0f};
+
+		const lyah::vec<2, std::float_t> result = lyah::sign(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	/* void testHorizontalMax() {
+		const std::float_t expected = 4.0f;
+		const lyah::vec<2, std::float_t> a = {1.0f, 4.0f};
+
+		const std::float_t result = lyah::max(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	/* void testHorizontalMin() {
+		const std::float_t expected = 1.0f;
+		const lyah::vec<2, std::float_t> a = {1.0f, 4.0f};
+
+		const std::float_t result = lyah::min(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	void testVerticalMax() {
+		const lyah::vec<2, std::float_t> expected = {5.0f, 4.0f};
+		const lyah::vec<2, std::float_t> a = {5.0f, 3.0f};
+		const lyah::vec<2, std::float_t> b = {1.0f, 4.0f};
+
+		const lyah::vec<2, std::float_t> result = lyah::max(a, b);
+
+		test::assert(test::eq(result, expected));
+	}
+
+	void testVerticalMin() {
+		const lyah::vec<2, std::float_t> expected = {1.0f, 3.0f};
+		const lyah::vec<2, std::float_t> a = {5.0f, 3.0f};
+		const lyah::vec<2, std::float_t> b = {1.0f, 4.0f};
+
+		const lyah::vec<2, std::float_t> result = lyah::min(a, b);
+
+		test::assert(test::eq(result, expected));
+	}
+
+	void testLerp() {
+		const lyah::vec<2, std::float_t> expected = {2.2f, 3.7f};
+		const lyah::vec<2, std::float_t> a = {1.0f, 4.0f};
+		const lyah::vec<2, std::float_t> b = {5.0f, 3.0f};
+		const std::float_t t = 0.3f;
+
+		const lyah::vec<2, std::float_t> result = lyah::lerp(a, b, t);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testSum() {
+		const std::float_t expected = 5.0f;
+		const lyah::vec<2, std::float_t> a = {1.0f, 4.0f};
+
+		const std::float_t result = lyah::sum(a);
+
+		test::assert(test::eq(result, expected));
+	}
+
 	void runAll() {
 		test::printTestCategory("lyah::vec<2, std::float_t> - 2-component single floating-point vector");
 
@@ -250,5 +353,17 @@ namespace vec2_m128 {
 		test::runTest(&testScalarDivisionAssignment, "Scalar division assignment (/=)");
 		test::runTest(&testDivision, "Division (/)");
 		test::runTest(&testDivisionAssignment, "Division assignment (/=)");
+
+		// test::runTest(&testFloor, "Floor");
+		// test::runTest(&testCeil, "Ceil");
+		// test::runTest(&testRound, "Round");
+		// test::runTest(&testAbs, "Abs");
+		// test::runTest(&testSign, "Sign");
+		// test::runTest(&testHorizontalMax, "Horizontal max");
+		// test::runTest(&testHorizontalMin, "Horizontal min");
+		test::runTest(&testVerticalMax, "Vertical max");
+		test::runTest(&testVerticalMin, "Vertical min");
+		test::runTest(&testLerp, "Linear interpolation");
+		test::runTest(&testSum, "Sum");
 	}
 }

@@ -219,6 +219,91 @@ namespace vec2_m128d {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
+	/* void testFloor() {
+		const lyah::vec<2, std::double_t> expected = {1.0, 4.0};
+		const lyah::vec<2, std::double_t> a = {1.999, 4.0};
+
+		const lyah::vec<2, std::double_t> result = lyah::floor(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	/* void testCeil() {
+		const lyah::vec<2, std::double_t> expected = {1.0, 4.0};
+		const lyah::vec<2, std::double_t> a = {0.999, 4.0};
+
+		const lyah::vec<2, std::double_t> result = lyah::ceil(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	/* void testRound() {
+		const lyah::vec<2, std::double_t> expected = {1.0, 4.0};
+		const lyah::vec<2, std::double_t> a = {1.3279, 4.007};
+
+		const lyah::vec<2, std::double_t> result = lyah::round(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	/* void testHorizontalMax() {
+		const std::double_t expected = 4.0f;
+		const lyah::vec<2, std::double_t> a = {1.0, 4.0};
+
+		const std::double_t result = lyah::max(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	/* void testHorizontalMin() {
+		const std::double_t expected = 1.0;
+		const lyah::vec<2, std::double_t> a = {1.0, 4.0};
+
+		const std::double_t result = lyah::min(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	void testVerticalMax() {
+		const lyah::vec<2, std::double_t> expected = {5.0, 4.0};
+		const lyah::vec<2, std::double_t> a = {5.0, 3.0};
+		const lyah::vec<2, std::double_t> b = {1.0, 4.0};
+
+		const lyah::vec<2, std::double_t> result = lyah::max(a, b);
+
+		test::assert(test::eq(result, expected));
+	}
+
+	void testVerticalMin() {
+		const lyah::vec<4, std::double_t> expected = {1.0, 3.0, 2.0, 2.0};
+		const lyah::vec<4, std::double_t> a = {5.0, 3.0, 2.0, 7.0};
+		const lyah::vec<4, std::double_t> b = {1.0, 4.0, 6.0, 2.0};
+
+		const lyah::vec<4, std::double_t> result = lyah::min(a, b);
+
+		test::assert(test::eq(result, expected));
+	}
+
+	void testLerp() {
+		const lyah::vec<2, std::double_t> expected = {2.2, 3.7};
+		const lyah::vec<2, std::double_t> a = {1.0, 4.0};
+		const lyah::vec<2, std::double_t> b = {5.0, 3.0};
+		const std::double_t t = 0.3;
+
+		const lyah::vec<2, std::double_t> result = lyah::lerp(a, b, t);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
+	void testSum() {
+		const std::double_t expected = 5.0;
+		const lyah::vec<2, std::double_t> a = {1.0, 4.0};
+
+		const std::double_t result = lyah::sum(a);
+
+		test::assert(test::eq(result, expected));
+	}
+
 	void runAll() {
 		test::printTestCategory("lyah::vec<2, std::double_t> - 2-component double floating-point vector");
 
@@ -250,5 +335,15 @@ namespace vec2_m128d {
 		test::runTest(&testScalarDivisionAssignment, "Scalar division assignment (/=)");
 		test::runTest(&testDivision, "Division (/)");
 		test::runTest(&testDivisionAssignment, "Division assignment (/=)");
+
+		// test::runTest(&testFloor, "Floor");
+		// test::runTest(&testCeil, "Ceil");
+		// test::runTest(&testRound, "Round");
+		// test::runTest(&testHorizontalMax, "Horizontal max");
+		// test::runTest(&testHorizontalMin, "Horizontal min");
+		test::runTest(&testVerticalMax, "Vertical max");
+		test::runTest(&testVerticalMin, "Vertical min");
+		test::runTest(&testLerp, "Linear interpolation");
+		test::runTest(&testSum, "Sum");
 	}
 }

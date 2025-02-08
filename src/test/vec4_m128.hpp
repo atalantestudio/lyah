@@ -223,6 +223,91 @@ namespace vec4_m128 {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
+	/* void testFloor() {
+		const lyah::vec<4, std::float_t> expected = {1.0f, 4.0f, 6.0f, -1.0f};
+		const lyah::vec<4, std::float_t> a = {1.999f, 4.0f, 6.111f, -0.5f};
+
+		const lyah::vec<4, std::float_t> result = lyah::floor(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	/* void testCeil() {
+		const lyah::vec<4, std::float_t> expected = {1.0f, 4.0f, 6.0f, -1.0f};
+		const lyah::vec<4, std::float_t> a = {0.999f, 4.0f, 5.111f, -1.5f};
+
+		const lyah::vec<4, std::float_t> result = lyah::ceil(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	/* void testRound() {
+		const lyah::vec<4, std::float_t> expected = {1.0f, 4.0f, 7.0f, 0.0f};
+		const lyah::vec<4, std::float_t> a = {1.3279f, 4.007f, 6.897f, -0.5f};
+
+		const lyah::vec<4, std::float_t> result = lyah::round(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	/* void testAbs() {
+		const lyah::vec<4, std::float_t> expected = {1.0f, 4.0f, 6.0f, 0.0f};
+		const lyah::vec<4, std::float_t> a = {1.0f, -4.0f, 6.0f, -0.0f};
+
+		const lyah::vec<4, std::float_t> result = lyah::abs(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	/* void testSign() {
+		const lyah::vec<4, std::float_t> expected = {1.0f, -1.0f, 1.0f, -0.0f};
+		const lyah::vec<4, std::float_t> a = {1.0f, -4.0f, 6.0f, -0.0f};
+
+		const lyah::vec<4, std::float_t> result = lyah::sign(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
+	void testVerticalMax() {
+		const lyah::vec<4, std::float_t> expected = {5.0f, 4.0f, 6.0f, 7.0f};
+		const lyah::vec<4, std::float_t> a = {5.0f, 3.0f, 2.0f, 7.0f};
+		const lyah::vec<4, std::float_t> b = {1.0f, 4.0f, 6.0f, 2.0f};
+
+		const lyah::vec<4, std::float_t> result = lyah::max(a, b);
+
+		test::assert(test::eq(result, expected));
+	}
+
+	void testVerticalMin() {
+		const lyah::vec<4, std::float_t> expected = {1.0f, 3.0f, 2.0f, 2.0f};
+		const lyah::vec<4, std::float_t> a = {5.0f, 3.0f, 2.0f, 7.0f};
+		const lyah::vec<4, std::float_t> b = {1.0f, 4.0f, 6.0f, 2.0f};
+
+		const lyah::vec<4, std::float_t> result = lyah::min(a, b);
+
+		test::assert(test::eq(result, expected));
+	}
+
+	void testLerp() {
+		const lyah::vec<4, std::float_t> expected = {2.2f, 3.7f, 4.8f, 1.4f};
+		const lyah::vec<4, std::float_t> a = {1.0f, 4.0f, 6.0f, -1.0f};
+		const lyah::vec<4, std::float_t> b = {5.0f, 3.0f, 2.0f, 7.0f};
+		const std::float_t t = 0.3f;
+
+		const lyah::vec<4, std::float_t> result = lyah::lerp(a, b, t);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testSum() {
+		const std::float_t expected = 13.0f;
+		const lyah::vec<4, std::float_t> a = {1.0f, 4.0f, 6.0f, 2.0f};
+
+		const std::float_t result = lyah::sum(a);
+
+		test::assert(test::eq(result, expected));
+	}
+
 	void runAll() {
 		test::printTestCategory("lyah::vec<4, std::float_t> - 4-component single floating-point vector");
 
@@ -254,5 +339,15 @@ namespace vec4_m128 {
 		test::runTest(&testScalarDivisionAssignment, "Scalar division assignment (/=)");
 		test::runTest(&testDivision, "Division (/)");
 		test::runTest(&testDivisionAssignment, "Division assignment (/=)");
+
+		// test::runTest(&testFloor, "Floor");
+		// test::runTest(&testCeil, "Ceil");
+		// test::runTest(&testRound, "Round");
+		// test::runTest(&testAbs, "Abs");
+		// test::runTest(&testSign, "Sign");
+		test::runTest(&testVerticalMax, "Vertical max");
+		test::runTest(&testVerticalMin, "Vertical min");
+		test::runTest(&testLerp, "Linear interpolation");
+		test::runTest(&testSum, "Sum");
 	}
 }
