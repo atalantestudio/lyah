@@ -5,3 +5,4 @@
 #include "vec/vec4.hpp"
 
 #include "vec/m128/base.inl"
+#include "vec/m128d/base.inl"

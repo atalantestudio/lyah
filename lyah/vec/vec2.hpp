@@ -23,3 +23,4 @@ namespace lyah {
 }
 
 #include "vec/vec2_m128.inl"
+#include "vec/vec2_m128d.inl"
