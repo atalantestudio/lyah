@@ -1,3 +1,6 @@
+// Copyright 2025 Matteo Legagneux.
+// Licensed under the MIT License.
+
 namespace lyah {
 	template<std::size_t C, typename T>
 	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE vec<C, T> LYAH_CALL operator +(vec<C, T> a) {

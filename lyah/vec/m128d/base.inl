@@ -1,3 +1,6 @@
+// Copyright 2025 Matteo Legagneux.
+// Licensed under the MIT License.
+
 namespace lyah {
 	// NOTE: SSE2
 	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator ==(vec<2, std::double_t> a, vec<2, std::double_t> b) {
