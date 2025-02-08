@@ -10,3 +10,4 @@
 #include "common.hpp"
 #include "exponential.hpp"
 #include "geometric.hpp"
+#include "trigonometric.hpp"
