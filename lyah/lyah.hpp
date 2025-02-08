@@ -5,4 +5,5 @@
 
 #include "constants.hpp"
 
+#include "convert.hpp"
 #include "types.hpp"
