@@ -6,3 +6,5 @@
 #include "constants.hpp"
 
 #include "vec.hpp"
+
+#include "common.hpp"
