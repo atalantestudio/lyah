@@ -6,3 +6,4 @@
 
 #include "vec/m128/base.inl"
 #include "vec/m128d/base.inl"
+#include "vec/m256d/base.inl"
