@@ -85,10 +85,24 @@ namespace lyah {
 	}
 
 	// NOTE: SSE
+	LYAH_NODISCARD LYAH_INLINE vec<4, std::float_t> LYAH_CALL operator /(std::float_t a, vec<4, std::float_t> b) {
+		b.m = _mm_div_ps(_mm_set1_ps(a), b.m);
+
+		return b;
+	}
+
+	// NOTE: SSE
 	template<std::size_t C>
 	LYAH_INLINE vec<C, std::float_t>& LYAH_CALL operator /=(vec<C, std::float_t>& a, vec<C, std::float_t> b) {
 		a.m = _mm_div_ps(a.m, b.m);
 		a.m = _mm_and_ps(a.m, internal::vec_t<C, std::float_t>::hmask());
+
+		return a;
+	}
+
+	// NOTE: SSE
+	LYAH_INLINE vec<4, std::float_t>& LYAH_CALL operator /=(vec<4, std::float_t>& a, vec<4, std::float_t> b) {
+		a.m = _mm_div_ps(a.m, b.m);
 
 		return a;
 	}
