@@ -71,4 +71,15 @@ namespace test {
 
 		return true;
 	}
+
+	template<std::size_t R, std::size_t C, typename T>
+	inline bool eq(const lyah::mat<R, C, T>& a, const lyah::mat<R, C, T>& b, T precision = 0) {
+		for (std::size_t i = 0; i < R; i++) {
+			if (!eq(a[i], b[i], precision)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 }
