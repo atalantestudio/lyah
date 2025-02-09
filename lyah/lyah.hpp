@@ -9,6 +9,8 @@
 #include "quat.hpp"
 #include "mat.hpp"
 
+#include "aliases.hpp"
+
 #include "common.hpp"
 #include "exponential.hpp"
 #include "geometric.hpp"
