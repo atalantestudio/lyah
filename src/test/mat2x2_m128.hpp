@@ -220,7 +220,7 @@ namespace mat2x2_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testScalarMultiplicationAB() {
+	void testMatrixScalarMultiplication() {
 		const lyah::mat<2, 2, std::float_t> expected = {
 			3.0f,  12.0f,
 			15.0f, 9.0f,
@@ -236,7 +236,7 @@ namespace mat2x2_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testScalarMultiplicationBA() {
+	void testScalarMatrixMultiplication() {
 		const lyah::mat<2, 2, std::float_t> expected = {
 			3.0f,  12.0f,
 			15.0f, 9.0f,
@@ -252,7 +252,7 @@ namespace mat2x2_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testScalarMultiplicationAssignment() {
+	void testMatrixScalarMultiplicationAssignment() {
 		const lyah::mat<2, 2, std::float_t> expected = {
 			3.0f,  12.0f,
 			15.0f, 9.0f,
@@ -372,9 +372,9 @@ namespace mat2x2_m128 {
 		test::runTest(&testSubtraction, "Subtraction (-)");
 		test::runTest(&testSubtractionAssignment, "Subtraction assignment (-)");
 
-		test::runTest(&testScalarMultiplicationAB, "Scalar multiplication (*) - AB");
-		test::runTest(&testScalarMultiplicationBA, "Scalar multiplication (*) - BA");
-		test::runTest(&testScalarMultiplicationAssignment, "Scalar multiplication assignment (*=)");
+		test::runTest(&testMatrixScalarMultiplication, "Matrix-scalar multiplication (*)");
+		test::runTest(&testScalarMatrixMultiplication, "Scalar-matrix multiplication (*)");
+		test::runTest(&testMatrixScalarMultiplicationAssignment, "Matrix-scalar multiplication assignment (*=)");
 		test::runTest(&testMatrixMatrixMultiplication, "Matrix-matrix multiplication (*)");
 		test::runTest(&testMatrixMatrixMultiplicationAssignment, "Matrix-matrix multiplication assignment (*=)");
 

@@ -287,7 +287,7 @@ namespace mat3x3_m256d {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testScalarMultiplicationAB() {
+	void testMatrixScalarMultiplication() {
 		const lyah::mat<3, 3, std::double_t> expected = {
 			3.0,   12.0,  18.0,
 			15.0,  9.0,   6.0,
@@ -305,7 +305,7 @@ namespace mat3x3_m256d {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testScalarMultiplicationBA() {
+	void testScalarMatrixMultiplication() {
 		const lyah::mat<3, 3, std::double_t> expected = {
 			3.0,   12.0,  18.0,
 			15.0,  9.0,   6.0,
@@ -323,7 +323,7 @@ namespace mat3x3_m256d {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testScalarMultiplicationAssignment() {
+	void testMatrixScalarMultiplicationAssignment() {
 		const lyah::mat<3, 3, std::double_t> expected = {
 			3.0,   12.0,  18.0,
 			15.0,  9.0,   6.0,
@@ -463,9 +463,9 @@ namespace mat3x3_m256d {
 		test::runTest(&testSubtraction, "Subtraction (-)");
 		test::runTest(&testSubtractionAssignment, "Subtraction assignment (-)");
 
-		test::runTest(&testScalarMultiplicationAB, "Scalar multiplication (*) - AB");
-		test::runTest(&testScalarMultiplicationBA, "Scalar multiplication (*) - BA");
-		test::runTest(&testScalarMultiplicationAssignment, "Scalar multiplication assignment (*=)");
+		test::runTest(&testMatrixScalarMultiplication, "Matrix-scalar multiplication (*)");
+		test::runTest(&testScalarMatrixMultiplication, "Scalar-matrix multiplication (*)");
+		test::runTest(&testMatrixScalarMultiplicationAssignment, "Matrix-scalar multiplication assignment (*=)");
 		test::runTest(&testMatrixMatrixMultiplication, "Matrix-matrix multiplication (*)");
 		test::runTest(&testMatrixMatrixMultiplicationAssignment, "Matrix-matrix multiplication assignment (*=)");
 
