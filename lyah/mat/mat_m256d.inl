@@ -39,6 +39,23 @@ namespace lyah {
 		return A;
 	}
 
+	// For 4x4 matrices.
+	// NOTE: AVX
+	// https://gist.github.com/nanaHa1003/b13b6d927b7997d5b7c9c72c0fc17a53
+	LYAH_NODISCARD LYAH_INLINE mat<4, 4, std::double_t> LYAH_CALL transpose(mat<4, 4, std::double_t> A) {
+		const __m256d a = _mm256_unpacklo_pd(A[0].m, A[1].m);
+		const __m256d b = _mm256_unpacklo_pd(A[2].m, A[3].m);
+		const __m256d c = _mm256_unpackhi_pd(A[0].m, A[1].m);
+		const __m256d d = _mm256_unpackhi_pd(A[2].m, A[3].m);
+
+		A[0].m = _mm256_permute2f128_pd(b, a, _MM_SHUFFLE2(1, 0));
+		A[1].m = _mm256_permute2f128_pd(d, c, _MM_SHUFFLE2(1, 0));
+		A[2].m = _mm256_permute2f128_pd(a, b, 0b110001);
+		A[3].m = _mm256_permute2f128_pd(c, d, 0b110001);
+
+		return A;
+	}
+
 	// NOTE: AVX2
 	// https://en.wikipedia.org/wiki/Invertible_matrix#Inversion_of_3_%C3%97_3_matrices
 	LYAH_NODISCARD LYAH_INLINE mat<3, 3, std::double_t> LYAH_CALL inverse(mat<3, 3, std::double_t> a) {

@@ -50,6 +50,22 @@ namespace lyah {
 		return AT;
 	} */
 
+	// For 2x4 matrices.
+	// NOTE: SSE
+	/* LYAH_NODISCARD LYAH_INLINE mat<4, 2, std::float_t> LYAH_CALL transpose(mat<2, 4, std::float_t> A) {
+		const __m128 a = _mm_unpacklo_ps(A[0].m, A[1].m);
+		const __m128 b = _mm_unpackhi_ps(A[0].m, A[1].m);
+
+		mat<4, 2, std::float_t> AT;
+
+		AT[0].m = a;
+		AT[1].m = _mm_movehl_ps(a, a);
+		AT[2].m = b;
+		AT[3].m = _mm_movehl_ps(b, b);
+
+		return AT;
+	} */
+
 	// For 3x2 and 4x2 matrices.
 	// NOTE: SSE
 	/* template<std::size_t N>
@@ -75,6 +91,22 @@ namespace lyah {
 		A[0].m = _mm_movelh_ps(a, A[2].m);
 		A[1].m = _mm_shuffle_ps(a, A[2].m, _MM_SHUFFLE(3, 1, 3, 2));
 		A[2].m = _mm_shuffle_ps(b, A[2].m, _MM_SHUFFLE(3, 2, 1, 0));
+
+		return A;
+	}
+
+	// For 4x4 matrices.
+	// NOTE: SSE
+	LYAH_NODISCARD LYAH_INLINE mat<4, 4, std::float_t> LYAH_CALL transpose(mat<4, 4, std::float_t> A) {
+		const __m128 a = _mm_unpacklo_ps(A[0].m, A[1].m);
+		const __m128 b = _mm_unpacklo_ps(A[2].m, A[3].m);
+		const __m128 c = _mm_unpackhi_ps(A[0].m, A[1].m);
+		const __m128 d = _mm_unpackhi_ps(A[2].m, A[3].m);
+
+		A[0].m = _mm_movelh_ps(a, b);
+		A[1].m = _mm_movehl_ps(b, a);
+		A[2].m = _mm_movelh_ps(c, d);
+		A[3].m = _mm_movehl_ps(d, c);
 
 		return A;
 	}
