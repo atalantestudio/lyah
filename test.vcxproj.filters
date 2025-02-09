@@ -105,5 +105,8 @@
     <ClInclude Include="src\test\quat_m128.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\test\quat_m256d.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
