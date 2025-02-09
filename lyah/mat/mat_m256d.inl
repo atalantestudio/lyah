@@ -53,7 +53,7 @@ namespace lyah {
 			vec<4, std::double_t>(m1),
 			vec<4, std::double_t>(m2),
 			vec<4, std::double_t>()
-		) + mat<4, 4, std::double_t>::identity();
+		) + identity();
 
 		m[0] = R[0];
 		m[1] = R[1];
