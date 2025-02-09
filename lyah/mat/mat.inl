@@ -95,6 +95,11 @@ namespace lyah {
 		return a[0][0] * a[1][1] - a[0][1] * a[1][0];
 	}
 
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE T LYAH_CALL determinant(mat<3, 3, T> a) {
+		return dot(a[0], cross(a[1], a[2]));
+	}
+
 	// https://www.dr-lex.be/random/matrix-inv.html
 	template<typename T>
 	LYAH_NODISCARD LYAH_INLINE mat<2, 2, T> LYAH_CALL inverse(mat<2, 2, T> a) {
