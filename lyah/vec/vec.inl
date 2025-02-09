@@ -33,6 +33,11 @@ namespace lyah {
 	}
 
 	template<std::size_t C, typename T>
+	LYAH_INLINE vec<C, T>& LYAH_CALL operator *=(vec<C, T>& a, mat<C, C, T> b) {
+		return a = a * b;
+	}
+
+	template<std::size_t C, typename T>
 	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator /(vec<C, T> a, T b) {
 		return a /= b;
 	}
