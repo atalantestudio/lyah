@@ -199,6 +199,26 @@ namespace vec3_m256d {
 		test::assert(test::eq(result, expected));
 	}
 
+	void testVectorQuaternionMultiplication() {
+		const lyah::vec<3, std::double_t> expected = {0.707, 0.0, -0.707};
+		const lyah::vec<3, std::double_t> a = {1.0, 0.0, 0.0};
+		const lyah::quat<std::double_t> b = lyah::quat<std::double_t>::axisAngle({0.0, 1.0, 0.0}, lyah::radians(45.0));
+
+		const lyah::vec<3, std::double_t> result = a * b;
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
+	void testVectorQuaternionMultiplicationAssignment() {
+		const lyah::vec<3, std::double_t> expected = {0.707, 0.0, -0.707};
+		const lyah::quat<std::double_t> a = lyah::quat<std::double_t>::axisAngle({0.0, 1.0, 0.0}, lyah::radians(45.0));
+		lyah::vec<3, std::double_t> result = {1.0, 0.0, 0.0};
+
+		result *= a;
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
 	void testVectorScalarDivision() {
 		const lyah::vec<3, std::double_t> expected = {0.333, 1.333, 2.0};
 		const lyah::vec<3, std::double_t> a = {1.0, 4.0, 6.0};
@@ -473,6 +493,8 @@ namespace vec3_m256d {
 		test::runTest(&testVectorVectorMultiplicationAssignment, "Vector-vector multiplication assignment (*=)");
 		test::runTest(&testVectorMatrixMultiplication, "Vector-matrix multiplication (*)");
 		test::runTest(&testVectorMatrixMultiplicationAssignment, "Vector-matrix multiplication assignment (*=)");
+		test::runTest(&testVectorQuaternionMultiplication, "Vector-quaternion multiplication (*)");
+		test::runTest(&testVectorQuaternionMultiplicationAssignment, "Vector-quaternion multiplication assignment (*=)");
 
 		test::runTest(&testVectorScalarDivision, "Vector-scalar division (/)");
 		test::runTest(&testScalarVectorDivision, "Scalar-vector division (/)");
