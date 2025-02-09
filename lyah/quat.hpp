@@ -4,3 +4,4 @@
 #pragma once
 
 #include "quat/quat_m128.inl"
+#include "quat/quat_m256d.inl"
