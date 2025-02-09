@@ -63,4 +63,11 @@ namespace test {
 
 		return stream;
 	}
+
+	template<typename T>
+	inline std::ostringstream& operator <<(std::ostringstream& stream, const lyah::quat<T>& a) {
+		stream << a[0] << "  " << a[1] << "  " << a[2] << "  " << a[3];
+
+		return stream;
+	}
 }
