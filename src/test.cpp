@@ -3,6 +3,8 @@
 #include "test.hpp"
 
 namespace test {
+	static std::int32_t passedTestCount = 0;
+
 	void printTestCategory(std::string_view name) {
 		const std::string border(name.length() + 2, '=');
 
@@ -15,5 +17,11 @@ namespace test {
 		TRACE("[]\n[]\n", name, border);
 
 		test();
+
+		passedTestCount++;
+	}
+
+	void summary() {
+		INFO("[] tests passed.", passedTestCount);
 	}
 }

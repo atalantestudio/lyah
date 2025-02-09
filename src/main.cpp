@@ -43,7 +43,7 @@ int main() {
 	mat4x4_m128::runAll();
 	mat4x4_m256d::runAll();
 
-	INFO("All tests passed.");
+	test::summary();
 
 	return 0;
 }

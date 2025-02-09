@@ -7,6 +7,8 @@ namespace test {
 
 	void runTest(void (*test)(), std::string_view name);
 
+	void summary();
+
 	inline void assert(bool condition) {
 		ASSERT(condition, "Assertion failed");
 	}
