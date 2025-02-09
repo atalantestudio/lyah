@@ -64,6 +64,20 @@ namespace mat4x4_m256d {
 		}
 	}
 
+	void testQuaternionConstructor() {
+		const lyah::mat<4, 4, std::double_t> expected = {
+			-0.370,  0.926,  0.074,  0.0,
+			 0.852,  0.370, -0.370,  0.0,
+			-0.370, -0.074, -0.926,  0.0,
+			 0.0,    0.0,    0.0,    1.0,
+		};
+		const lyah::quat<std::double_t> a = lyah::normalized(lyah::quat<std::double_t>(1.0, 4.0, 6.0, -1.0));
+
+		const lyah::mat<4, 4, std::double_t> result = lyah::mat<4, 4, std::double_t>(a);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
 	void testConvertingConstructor() {
 		const lyah::mat<4, 4, std::double_t> expected = {
 			1.0,  4.0,  6.0, -1.0,
@@ -522,6 +536,7 @@ namespace mat4x4_m256d {
 		test::runTest(&testDefaultConstructor, "Default constructor");
 		test::runTest(&testComponentConstructor, "Component constructor");
 		test::runTest(&testRowConstructor, "Row constructor");
+		test::runTest(&testQuaternionConstructor, "Quaternion constructor");
 		test::runTest(&testConvertingConstructor, "Converting constructor");
 
 		test::runTest(&testIdentity, "Identity");
