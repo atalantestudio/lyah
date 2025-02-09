@@ -121,7 +121,7 @@ namespace vec3_m256d {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testScalarMultiplicationAB() {
+	void testVectorScalarMultiplication() {
 		const lyah::vec<3, std::double_t> expected = {3.0, 12.0, 18.0};
 		const lyah::vec<3, std::double_t> a = {1.0, 4.0, 6.0};
 		const std::double_t b = 3.0;
@@ -131,7 +131,7 @@ namespace vec3_m256d {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testScalarMultiplicationBA() {
+	void testScalarVectorMultiplication() {
 		const lyah::vec<3, std::double_t> expected = {3.0, 12.0, 18.0};
 		const lyah::vec<3, std::double_t> a = {1.0, 4.0, 6.0};
 		const std::double_t b = 3.0;
@@ -141,7 +141,7 @@ namespace vec3_m256d {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testScalarMultiplicationAssignment() {
+	void testVectorScalarMultiplicationAssignment() {
 		const lyah::vec<3, std::double_t> expected = {3.0, 12.0, 18.0};
 		const std::double_t a = 3.0;
 		lyah::vec<3, std::double_t> result = {1.0, 4.0, 6.0};
@@ -151,7 +151,7 @@ namespace vec3_m256d {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testMultiplication() {
+	void testVectorVectorMultiplication() {
 		const lyah::vec<3, std::double_t> expected = {5.0, 12.0, 12.0};
 		const lyah::vec<3, std::double_t> a = {1.0, 4.0, 6.0};
 		const lyah::vec<3, std::double_t> b = {5.0, 3.0, 2.0};
@@ -161,7 +161,7 @@ namespace vec3_m256d {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testMultiplicationAssignment() {
+	void testVectorVectorMultiplicationAssignment() {
 		const lyah::vec<3, std::double_t> expected = {5.0, 12.0, 12.0};
 		const lyah::vec<3, std::double_t> a = {5.0, 3.0, 2.0};
 		lyah::vec<3, std::double_t> result = {1.0, 4.0, 6.0};
@@ -171,7 +171,35 @@ namespace vec3_m256d {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testScalarDivisionAB() {
+	void testVectorMatrixMultiplication() {
+		const lyah::vec<3, std::double_t> expected = {21.0, -32.0, 17.0};
+		const lyah::mat<3, 3, std::double_t> A = {
+			1.0,  4.0,  6.0,
+			5.0,  3.0,  2.0,
+			0.0, -8.0,  0.5,
+		};
+		const lyah::vec<3, std::double_t> x = {1.0, 4.0, 6.0};
+
+		lyah::vec<3, std::double_t> result = x * A;
+
+		test::assert(test::eq(result, expected));
+	}
+
+	void testVectorMatrixMultiplicationAssignment() {
+		const lyah::vec<3, std::double_t> expected = {21.0, -32.0, 17.0};
+		const lyah::mat<3, 3, std::double_t> A = {
+			1.0,  4.0,  6.0,
+			5.0,  3.0,  2.0,
+			0.0, -8.0,  0.5,
+		};
+		lyah::vec<3, std::double_t> result = {1.0, 4.0, 6.0};
+
+		result *= A;
+
+		test::assert(test::eq(result, expected));
+	}
+
+	void testVectorScalarDivision() {
 		const lyah::vec<3, std::double_t> expected = {0.333, 1.333, 2.0};
 		const lyah::vec<3, std::double_t> a = {1.0, 4.0, 6.0};
 		const std::double_t b = 3.0;
@@ -181,7 +209,7 @@ namespace vec3_m256d {
 		test::assert(test::eq(result, expected, 0.001));
 	}
 
-	void testScalarDivisionBA() {
+	void testScalarVectorDivision() {
 		const lyah::vec<3, std::double_t> expected = {lyah::infinity<std::double_t>(), 0.75, 0.5};
 		const lyah::vec<3, std::double_t> a = {0.0, 4.0, 6.0};
 		const std::double_t b = 3.0;
@@ -191,7 +219,7 @@ namespace vec3_m256d {
 		test::assert(test::eq(result, expected, 0.001));
 	}
 
-	void testScalarDivisionAssignment() {
+	void testVectorScalarDivisionAssignment() {
 		const lyah::vec<3, std::double_t> expected = {0.333, 1.333, 2.0};
 		const std::double_t a = 3.0;
 		lyah::vec<3, std::double_t> result = {1.0, 4.0, 6.0};
@@ -201,7 +229,7 @@ namespace vec3_m256d {
 		test::assert(test::eq(result, expected, 0.001));
 	}
 
-	void testDivision() {
+	void testVectorVectorDivision() {
 		const lyah::vec<3, std::double_t> expected = {lyah::infinity<std::double_t>(), 1.333, 3.0};
 		const lyah::vec<3, std::double_t> a = {1.0, 4.0, 6.0};
 		const lyah::vec<3, std::double_t> b = {0.0, 3.0, 2.0};
@@ -211,7 +239,7 @@ namespace vec3_m256d {
 		test::assert(test::eq(result, expected, 0.001));
 	}
 
-	void testDivisionAssignment() {
+	void testVectorVectorDivisionAssignment() {
 		const lyah::vec<3, std::double_t> expected = {lyah::infinity<std::double_t>(), 1.333, 3.0};
 		const lyah::vec<3, std::double_t> a = {0.0, 3.0, 2.0};
 		lyah::vec<3, std::double_t> result = {1.0, 4.0, 6.0};
@@ -438,17 +466,19 @@ namespace vec3_m256d {
 		test::runTest(&testSubtraction, "Subtraction (-)");
 		test::runTest(&testSubtractionAssignment, "Subtraction assignment (-=)");
 
-		test::runTest(&testScalarMultiplicationAB, "Scalar multiplication (*) - AB");
-		test::runTest(&testScalarMultiplicationBA, "Scalar multiplication (*) - BA");
-		test::runTest(&testScalarMultiplicationAssignment, "Scalar multiplication assignment (*=)");
-		test::runTest(&testMultiplication, "Multiplication (*)");
-		test::runTest(&testMultiplicationAssignment, "Multiplication assignment (*=)");
+		test::runTest(&testVectorScalarMultiplication, "Vector-scalar multiplication (*)");
+		test::runTest(&testScalarVectorMultiplication, "Scalar-vector multiplication (*)");
+		test::runTest(&testVectorScalarMultiplicationAssignment, "Vector-scalar multiplication assignment (*=)");
+		test::runTest(&testVectorVectorMultiplication, "Vector-vector multiplication (*)");
+		test::runTest(&testVectorVectorMultiplicationAssignment, "Vector-vector multiplication assignment (*=)");
+		test::runTest(&testVectorMatrixMultiplication, "Vector-matrix multiplication (*)");
+		test::runTest(&testVectorMatrixMultiplicationAssignment, "Vector-matrix multiplication assignment (*=)");
 
-		test::runTest(&testScalarDivisionAB, "Scalar division (/) - AB");
-		test::runTest(&testScalarDivisionBA, "Scalar division (/) - BA");
-		test::runTest(&testScalarDivisionAssignment, "Scalar division assignment (/=)");
-		test::runTest(&testDivision, "Division (/)");
-		test::runTest(&testDivisionAssignment, "Division assignment (/=)");
+		test::runTest(&testVectorScalarDivision, "Vector-scalar division (/)");
+		test::runTest(&testScalarVectorDivision, "Scalar-vector division (/)");
+		test::runTest(&testVectorScalarDivisionAssignment, "Vector-scalar division assignment (/=)");
+		test::runTest(&testVectorVectorDivision, "Vector-vector division (/)");
+		test::runTest(&testVectorVectorDivisionAssignment, "Vector-vector division assignment (/=)");
 
 		// test::runTest(&testFloor, "Floor");
 		// test::runTest(&testCeil, "Ceil");

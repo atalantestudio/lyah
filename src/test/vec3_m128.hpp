@@ -121,7 +121,7 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testScalarMultiplicationAB() {
+	void testVectorScalarMultiplication() {
 		const lyah::vec<3, std::float_t> expected = {3.0f, 12.0f, 18.0f};
 		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
 		const std::float_t b = 3.0f;
@@ -131,7 +131,7 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testScalarMultiplicationBA() {
+	void testScalarVectorMultiplication() {
 		const lyah::vec<3, std::float_t> expected = {3.0f, 12.0f, 18.0f};
 		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
 		const std::float_t b = 3.0f;
@@ -141,7 +141,7 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testScalarMultiplicationAssignment() {
+	void testVectorScalarMultiplicationAssignment() {
 		const lyah::vec<3, std::float_t> expected = {3.0f, 12.0f, 18.0f};
 		const std::float_t a = 3.0f;
 		lyah::vec<3, std::float_t> result = {1.0f, 4.0f, 6.0f};
@@ -151,7 +151,7 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testMultiplication() {
+	void testVectorVectorMultiplication() {
 		const lyah::vec<3, std::float_t> expected = {5.0f, 12.0f, 12.0f};
 		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
 		const lyah::vec<3, std::float_t> b = {5.0f, 3.0f, 2.0f};
@@ -161,7 +161,7 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testMultiplicationAssignment() {
+	void testVectorVectorMultiplicationAssignment() {
 		const lyah::vec<3, std::float_t> expected = {5.0f, 12.0f, 12.0f};
 		const lyah::vec<3, std::float_t> a = {5.0f, 3.0f, 2.0f};
 		lyah::vec<3, std::float_t> result = {1.0f, 4.0f, 6.0f};
@@ -171,7 +171,35 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testScalarDivisionAB() {
+	void testVectorMatrixMultiplication() {
+		const lyah::vec<3, std::float_t> expected = {21.0f, -32.0f, 17.0f};
+		const lyah::mat<3, 3, std::float_t> A = {
+			1.0f,  4.0f,  6.0f,
+			5.0f,  3.0f,  2.0f,
+			0.0f, -8.0f,  0.5f,
+		};
+		const lyah::vec<3, std::float_t> x = {1.0f, 4.0f, 6.0f};
+
+		lyah::vec<3, std::float_t> result = x * A;
+
+		test::assert(test::eq(result, expected));
+	}
+
+	void testVectorMatrixMultiplicationAssignment() {
+		const lyah::vec<3, std::float_t> expected = {21.0f, -32.0f, 17.0f};
+		const lyah::mat<3, 3, std::float_t> A = {
+			1.0f,  4.0f,  6.0f,
+			5.0f,  3.0f,  2.0f,
+			0.0f, -8.0f,  0.5f,
+		};
+		lyah::vec<3, std::float_t> result = {1.0f, 4.0f, 6.0f};
+
+		result *= A;
+
+		test::assert(test::eq(result, expected));
+	}
+
+	void testVectorScalarDivision() {
 		const lyah::vec<3, std::float_t> expected = {0.333f, 1.333f, 2.0f};
 		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
 		const std::float_t b = 3.0f;
@@ -181,7 +209,7 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
-	void testScalarDivisionBA() {
+	void testScalarVectorDivision() {
 		const lyah::vec<3, std::float_t> expected = {lyah::infinity<std::float_t>(), 0.75f, 0.5f};
 		const lyah::vec<3, std::float_t> a = {0.0f, 4.0f, 6.0f};
 		const std::float_t b = 3.0f;
@@ -191,7 +219,7 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
-	void testScalarDivisionAssignment() {
+	void testVectorScalarDivisionAssignment() {
 		const lyah::vec<3, std::float_t> expected = {0.333f, 1.333f, 2.0f};
 		const std::float_t a = 3.0f;
 		lyah::vec<3, std::float_t> result = {1.0f, 4.0f, 6.0f};
@@ -201,7 +229,7 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
-	void testDivision() {
+	void testVectorVectorDivision() {
 		const lyah::vec<3, std::float_t> expected = {lyah::infinity<std::float_t>(), 1.333f, 3.0f};
 		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
 		const lyah::vec<3, std::float_t> b = {0.0f, 3.0f, 2.0f};
@@ -211,7 +239,7 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
-	void testDivisionAssignment() {
+	void testVectorVectorDivisionAssignment() {
 		const lyah::vec<3, std::float_t> expected = {lyah::infinity<std::float_t>(), 1.333f, 3.0f};
 		const lyah::vec<3, std::float_t> a = {0.0f, 3.0f, 2.0f};
 		lyah::vec<3, std::float_t> result = {1.0f, 4.0f, 6.0f};
@@ -456,17 +484,19 @@ namespace vec3_m128 {
 		test::runTest(&testSubtraction, "Subtraction (-)");
 		test::runTest(&testSubtractionAssignment, "Subtraction assignment (-=)");
 
-		test::runTest(&testScalarMultiplicationAB, "Scalar multiplication (*) - AB");
-		test::runTest(&testScalarMultiplicationBA, "Scalar multiplication (*) - BA");
-		test::runTest(&testScalarMultiplicationAssignment, "Scalar multiplication assignment (*=)");
-		test::runTest(&testMultiplication, "Multiplication (*)");
-		test::runTest(&testMultiplicationAssignment, "Multiplication assignment (*=)");
+		test::runTest(&testVectorScalarMultiplication, "Vector-scalar multiplication (*)");
+		test::runTest(&testScalarVectorMultiplication, "Scalar-vector multiplication (*)");
+		test::runTest(&testVectorScalarMultiplicationAssignment, "Vector-scalar multiplication assignment (*=)");
+		test::runTest(&testVectorVectorMultiplication, "Vector-vector multiplication (*)");
+		test::runTest(&testVectorVectorMultiplicationAssignment, "Vector-vector multiplication assignment (*=)");
+		test::runTest(&testVectorMatrixMultiplication, "Vector-matrix multiplication (*)");
+		test::runTest(&testVectorMatrixMultiplicationAssignment, "Vector-matrix multiplication assignment (*=)");
 
-		test::runTest(&testScalarDivisionAB, "Scalar division (/) - AB");
-		test::runTest(&testScalarDivisionBA, "Scalar division (/) - BA");
-		test::runTest(&testScalarDivisionAssignment, "Scalar division assignment (/=)");
-		test::runTest(&testDivision, "Division (/)");
-		test::runTest(&testDivisionAssignment, "Division assignment (/=)");
+		test::runTest(&testVectorScalarDivision, "Vector-scalar division (/)");
+		test::runTest(&testScalarVectorDivision, "Scalar-vector division (/)");
+		test::runTest(&testVectorScalarDivisionAssignment, "Vector-scalar division assignment (/=)");
+		test::runTest(&testVectorVectorDivision, "Vector-vector division (/)");
+		test::runTest(&testVectorVectorDivisionAssignment, "Vector-vector division assignment (/=)");
 
 		// test::runTest(&testFloor, "Floor");
 		// test::runTest(&testCeil, "Ceil");
