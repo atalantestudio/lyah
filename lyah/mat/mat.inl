@@ -89,4 +89,22 @@ namespace lyah {
 	LYAH_INLINE mat<R, C, T>& LYAH_CALL operator *=(mat<R, C, T>& a, mat<R, C, T> b) {
 		return a = a * b;
 	}
+
+	template<typename T>
+	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE T LYAH_CALL determinant(mat<2, 2, T> a) {
+		return a[0][0] * a[1][1] - a[0][1] * a[1][0];
+	}
+
+	// https://www.dr-lex.be/random/matrix-inv.html
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE mat<2, 2, T> LYAH_CALL inverse(mat<2, 2, T> a) {
+		const T d = determinant(a);
+
+		LYAH_ASSERT(abs(d) >= epsilon<T>());
+
+		return static_cast<T>(1) / d * mat<2, 2, T>(
+			 a[1][1], -a[0][1],
+			-a[1][0],  a[0][0]
+		);
+	}
 }
