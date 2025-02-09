@@ -1,3 +1,6 @@
+// Copyright 2025 Matteo Legagneux.
+// Licensed under the MIT License.
+
 namespace lyah {
 	template<typename T>
 	LYAH_NODISCARD LYAH_INLINE quat<T> quat<T>::identity() {
