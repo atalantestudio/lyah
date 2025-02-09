@@ -7,6 +7,7 @@
 #include "test/mat3x3_m256d.hpp"
 #include "test/mat4x4_m128.hpp"
 #include "test/mat4x4_m256d.hpp"
+#include "test/quat_m128.hpp"
 #include "test/scalar_common.hpp"
 #include "test/scalar_exponential.hpp"
 #include "test/scalar_trigonometric.hpp"
@@ -32,6 +33,8 @@ int main() {
 	vec3_m256d::runAll();
 	vec4_m128::runAll();
 	vec4_m256d::runAll();
+
+	quat_m128::runAll();
 
 	mat2x2_m128::runAll();
 	mat2x2_m128d::runAll();
