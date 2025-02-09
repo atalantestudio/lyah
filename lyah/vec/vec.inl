@@ -37,6 +37,21 @@ namespace lyah {
 		return a = a * b;
 	}
 
+	// NOTE: Assumes b is already normalized.
+	// https://blog.molecular-matters.com/2013/05/24/a-faster-quaternion-vector-multiplication
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE vec<3, T> LYAH_CALL operator *(vec<3, T> a, quat<T> b) {
+		const vec<3, T> xyz = b.xyz();
+		const T w = b.w();
+
+		return static_cast<T>(2) * (dot(xyz, a) * xyz + w * (cross(xyz, a) + w * a)) - a;
+	}
+
+	template<typename T>
+	LYAH_INLINE vec<3, T>& LYAH_CALL operator *=(vec<3, T>& a, quat<T> b) {
+		return a = a * b;
+	}
+
 	template<std::size_t C, typename T>
 	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator /(vec<C, T> a, T b) {
 		return a /= b;
