@@ -5,6 +5,8 @@
 #include "test/mat2x2_m128d.hpp"
 #include "test/mat3x3_m128.hpp"
 #include "test/mat3x3_m256d.hpp"
+#include "test/mat4x4_m128.hpp"
+#include "test/mat4x4_m256d.hpp"
 #include "test/scalar_common.hpp"
 #include "test/scalar_exponential.hpp"
 #include "test/scalar_trigonometric.hpp"
@@ -35,6 +37,8 @@ int main() {
 	mat2x2_m128d::runAll();
 	mat3x3_m128::runAll();
 	mat3x3_m256d::runAll();
+	mat4x4_m128::runAll();
+	mat4x4_m256d::runAll();
 
 	INFO("All tests passed.");
 

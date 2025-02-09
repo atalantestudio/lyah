@@ -169,6 +169,8 @@
     <ClInclude Include="src\test\mat2x2_m128d.hpp" />
     <ClInclude Include="src\test\mat3x3_m128.hpp" />
     <ClInclude Include="src\test\mat3x3_m256d.hpp" />
+    <ClInclude Include="src\test\mat4x4_m128.hpp" />
+    <ClInclude Include="src\test\mat4x4_m256d.hpp" />
     <ClInclude Include="src\test\scalar_common.hpp" />
     <ClInclude Include="src\test\constants.hpp" />
     <ClInclude Include="src\test\scalar_exponential.hpp" />
