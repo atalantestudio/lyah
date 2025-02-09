@@ -4,6 +4,63 @@
 #include "types.hpp"
 
 namespace lyah {
+	// NOTE: AVX2
+	// https://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToMatrix/index.htm
+	LYAH_NODISCARD LYAH_INLINE mat<4, 4, std::double_t>::mat(quat<std::double_t> a) {
+		// y * y - z * z    x * y - z * w    x * z + y * w
+		// x * y + z * w    x * x - z * z    y * z - x * w
+		// x * z - y * w    y * z + x * w    x * x - y * y
+
+		__m256d m0_sign = _mm256_set_pd(0.0,  0.0, -0.0,  0.0);
+		__m256d m1_sign = _mm256_set_pd(0.0, -0.0,  0.0,  0.0);
+		__m256d m2_sign = _mm256_set_pd(0.0,  0.0,  0.0, -0.0);
+
+		__m256d m0_diagsign = _mm256_set_pd(0.0,  0.0,  0.0, -0.0);
+		__m256d m1_diagsign = _mm256_set_pd(0.0,  0.0, -0.0,  0.0);
+		__m256d m2_diagsign = _mm256_set_pd(0.0, -0.0,  0.0,  0.0);
+
+		__m256d m00 = _mm256_permute4x64_pd(a.m, _MM_SHUFFLE(0, 1, 1, 2));
+		__m256d m01 = _mm256_permute4x64_pd(a.m, _MM_SHUFFLE(0, 3, 2, 2));
+		__m256d m02 = _mm256_permute4x64_pd(a.m, _MM_SHUFFLE(0, 2, 3, 3));
+		__m256d m03 = _mm256_permute4x64_pd(a.m, _MM_SHUFFLE(0, 0, 0, 3));
+
+		__m256d m10 = _mm256_permute4x64_pd(a.m, _MM_SHUFFLE(0, 2, 1, 1));
+		__m256d m11 = _mm256_permute4x64_pd(a.m, _MM_SHUFFLE(0, 3, 1, 2));
+		__m256d m12 = _mm256_permute4x64_pd(a.m, _MM_SHUFFLE(0, 1, 3, 3));
+		__m256d m13 = _mm256_permute4x64_pd(a.m, _MM_SHUFFLE(0, 0, 3, 0));
+
+		__m256d m20 = _mm256_permute4x64_pd(a.m, _MM_SHUFFLE(0, 1, 2, 1));
+		__m256d m21 = _mm256_permute4x64_pd(a.m, _MM_SHUFFLE(0, 1, 3, 3));
+		__m256d m22 = _mm256_permute4x64_pd(a.m, _MM_SHUFFLE(0, 2, 1, 2));
+		__m256d m23 = _mm256_permute4x64_pd(a.m, _MM_SHUFFLE(0, 2, 0, 0));
+
+		__m256d m0 = _mm256_add_pd(_mm256_mul_pd(m00, m01), _mm256_xor_pd(_mm256_mul_pd(m02, m03), m0_sign));
+		__m256d m1 = _mm256_add_pd(_mm256_mul_pd(m10, m11), _mm256_xor_pd(_mm256_mul_pd(m12, m13), m1_sign));
+		__m256d m2 = _mm256_add_pd(_mm256_mul_pd(m20, m21), _mm256_xor_pd(_mm256_mul_pd(m22, m23), m2_sign));
+
+		// apply diagonal sign
+		m0 = _mm256_xor_pd(m0, m0_diagsign);
+		m1 = _mm256_xor_pd(m1, m1_diagsign);
+		m2 = _mm256_xor_pd(m2, m2_diagsign);
+
+		// mask upper
+		m0 = _mm256_and_pd(m0, internal::vec_t<3, std::double_t>::hmask());
+		m1 = _mm256_and_pd(m1, internal::vec_t<3, std::double_t>::hmask());
+		m2 = _mm256_and_pd(m2, internal::vec_t<3, std::double_t>::hmask());
+
+		mat<4, 4, std::double_t> R = 2.0 * mat<4, 4, std::double_t>(
+			vec<4, std::double_t>(m0),
+			vec<4, std::double_t>(m1),
+			vec<4, std::double_t>(m2),
+			vec<4, std::double_t>()
+		) + mat<4, 4, std::double_t>::identity();
+
+		m[0] = R[0];
+		m[1] = R[1];
+		m[2] = R[2];
+		m[3] = R[3];
+	}
+
 	// NOTE: AVX
 	// https://stackoverflow.com/a/18508113
 	template<std::size_t M, std::size_t N, std::size_t P>

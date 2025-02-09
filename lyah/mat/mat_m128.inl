@@ -4,6 +4,63 @@
 #include "types.hpp"
 
 namespace lyah {
+	// NOTE: SSE2
+	// https://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToMatrix/index.htm
+	LYAH_NODISCARD LYAH_INLINE mat<4, 4, std::float_t>::mat(quat<std::float_t> a) {
+		// y * y - z * z    x * y - z * w    x * z + y * w
+		// x * y + z * w    x * x - z * z    y * z - x * w
+		// x * z - y * w    y * z + x * w    x * x - y * y
+
+		__m128 m0_sign = _mm_set_ps(0.0f,  0.0f, -0.0f,  0.0f);
+		__m128 m1_sign = _mm_set_ps(0.0f, -0.0f,  0.0f,  0.0f);
+		__m128 m2_sign = _mm_set_ss(-0.0f);
+
+		__m128 m0_diagsign = _mm_set_ss(-0.0f);
+		__m128 m1_diagsign = _mm_set_ps(0.0f,  0.0f, -0.0f,  0.0f);
+		__m128 m2_diagsign = _mm_set_ps(0.0f, -0.0f,  0.0f,  0.0f);
+
+		__m128 m00 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 1, 1, 2));
+		__m128 m01 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 3, 2, 2));
+		__m128 m02 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 2, 3, 3));
+		__m128 m03 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 0, 0, 3));
+
+		__m128 m10 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 2, 1, 1));
+		__m128 m11 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 3, 1, 2));
+		__m128 m12 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 1, 3, 3));
+		__m128 m13 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 0, 3, 0));
+
+		__m128 m20 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 1, 2, 1));
+		__m128 m21 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 1, 3, 3));
+		__m128 m22 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 2, 1, 2));
+		__m128 m23 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 2, 0, 0));
+
+		__m128 m0 = _mm_add_ps(_mm_mul_ps(m00, m01), _mm_xor_ps(_mm_mul_ps(m02, m03), m0_sign));
+		__m128 m1 = _mm_add_ps(_mm_mul_ps(m10, m11), _mm_xor_ps(_mm_mul_ps(m12, m13), m1_sign));
+		__m128 m2 = _mm_add_ps(_mm_mul_ps(m20, m21), _mm_xor_ps(_mm_mul_ps(m22, m23), m2_sign));
+
+		// apply diagonal sign
+		m0 = _mm_xor_ps(m0, m0_diagsign);
+		m1 = _mm_xor_ps(m1, m1_diagsign);
+		m2 = _mm_xor_ps(m2, m2_diagsign);
+
+		// mask upper
+		m0 = _mm_and_ps(m0, internal::vec_t<3, std::float_t>::hmask());
+		m1 = _mm_and_ps(m1, internal::vec_t<3, std::float_t>::hmask());
+		m2 = _mm_and_ps(m2, internal::vec_t<3, std::float_t>::hmask());
+
+		mat<4, 4, std::float_t> R = 2.0f * mat<4, 4, std::float_t>(
+			vec<4, std::float_t>(m0),
+			vec<4, std::float_t>(m1),
+			vec<4, std::float_t>(m2),
+			vec<4, std::float_t>()
+		) + mat<4, 4, std::float_t>::identity();
+
+		m[0] = R[0];
+		m[1] = R[1];
+		m[2] = R[2];
+		m[3] = R[3];
+	}
+
 	// NOTE: SSE
 	// https://stackoverflow.com/a/18508113
 	template<std::size_t M, std::size_t N, std::size_t P>
