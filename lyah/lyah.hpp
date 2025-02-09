@@ -6,6 +6,7 @@
 #include "constants.hpp"
 
 #include "vec.hpp"
+#include "mat.hpp"
 
 #include "common.hpp"
 #include "exponential.hpp"
