@@ -82,4 +82,12 @@ namespace test {
 
 		return true;
 	}
+
+	inline bool eq(const lyah::quat<std::float_t>& a, const lyah::quat<std::float_t>& b, std::float_t precision = 0.0f) {
+		return eq(a.m.m128_f32, b.m.m128_f32, precision);
+	}
+
+	inline bool eq(const lyah::quat<std::double_t>& a, const lyah::quat<std::double_t>& b, std::double_t precision = 0.0) {
+		return eq(a.m.m256d_f64, b.m.m256d_f64, precision);
+	}
 }
