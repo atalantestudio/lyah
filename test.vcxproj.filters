@@ -84,5 +84,11 @@
     <ClInclude Include="src\test\scalar_trigonometric.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\test\mat2x2_m128.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test\mat2x2_m128d.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
