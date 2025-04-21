@@ -21,6 +21,7 @@
 #define LYAH_LANGUAGE_CPP17 201703L
 #define LYAH_LANGUAGE_CPP20 202003L
 #define LYAH_LANGUAGE_CPP23 202303L
+#define LYAH_LANGUAGE_CPP26 202603L
 
 #ifdef __clang__
 	#define LYAH_COMPILER LYAH_COMPILER_CLANG
@@ -62,4 +63,16 @@
 	#define LYAH_NODISCARD [[nodiscard]]
 #else
 	#define LYAH_NODISCARD
+#endif
+
+#if LYAH_LANGUAGE >= LYAH_LANGUAGE_CPP23
+	#define LYAH_CONSTEXPR_CPP23 constexpr
+#else
+	#define LYAH_CONSTEXPR_CPP23
+#endif
+
+#if LYAH_LANGUAGE >= LYAH_LANGUAGE_CPP26
+	#define LYAH_CONSTEXPR_CPP26 constexpr
+#else
+	#define LYAH_CONSTEXPR_CPP26
 #endif
