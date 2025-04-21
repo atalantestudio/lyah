@@ -21,6 +21,15 @@ namespace vec2_m128d {
 		test::assert(test::eq(result[1], expected[1]));
 	}
 
+	void testComponentBroadcastConstructor() {
+		const std::double_t expected = 1.0;
+
+		const lyah::vec<2, std::double_t> result = lyah::vec<2, std::double_t>(1.0);
+
+		test::assert(test::eq(result[0], expected));
+		test::assert(test::eq(result[1], expected));
+	}
+
 	void testSimdConstructor() {
 		const lyah::vec<2, std::double_t> expected = {1.0, 4.0};
 		const __m128d m = _mm_set_pd(4.0, 1.0);
@@ -455,6 +464,7 @@ namespace vec2_m128d {
 
 		test::runTest(&testDefaultConstructor, "Default constructor");
 		test::runTest(&testComponentConstructor, "Component constructor");
+		test::runTest(&testComponentBroadcastConstructor, "Component broadcast constructor");
 		test::runTest(&testSimdConstructor, "SIMD constructor");
 		test::runTest(&testConvertingConstructor, "Converting constructor");
 

@@ -25,6 +25,17 @@ namespace vec4_m256d {
 		test::assert(test::eq(result[3], expected[3]));
 	}
 
+	void testComponentBroadcastConstructor() {
+		const std::double_t expected = 1.0;
+
+		const lyah::vec<4, std::double_t> result = lyah::vec<4, std::double_t>(1.0);
+
+		test::assert(test::eq(result[0], expected));
+		test::assert(test::eq(result[1], expected));
+		test::assert(test::eq(result[2], expected));
+		test::assert(test::eq(result[3], expected));
+	}
+
 	void testSimdConstructor() {
 		const lyah::vec<4, std::double_t> expected = {1.0, 4.0, 6.0, -1.0};
 		const __m256d m = _mm256_set_pd(-1.0, 6.0, 4.0, 1.0);
@@ -445,6 +456,7 @@ namespace vec4_m256d {
 
 		test::runTest(&testDefaultConstructor, "Default constructor");
 		test::runTest(&testComponentConstructor, "Component constructor");
+		test::runTest(&testComponentBroadcastConstructor, "Component broadcast constructor");
 		test::runTest(&testSimdConstructor, "SIMD constructor");
 		test::runTest(&testConvertingConstructor, "Converting constructor");
 

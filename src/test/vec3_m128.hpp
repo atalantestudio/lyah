@@ -23,6 +23,16 @@ namespace vec3_m128 {
 		test::assert(test::eq(result[2], expected[2]));
 	}
 
+	void testComponentBroadcastConstructor() {
+		const std::float_t expected = 1.0f;
+
+		const lyah::vec<3, std::float_t> result = lyah::vec<3, std::float_t>(1.0f);
+
+		test::assert(test::eq(result[0], expected));
+		test::assert(test::eq(result[1], expected));
+		test::assert(test::eq(result[2], expected));
+	}
+
 	void testSimdConstructor() {
 		const lyah::vec<3, std::float_t> expected = {1.0f, 4.0f, 6.0f};
 		const __m128 m = _mm_set_ps(0.0f, 6.0f, 4.0f, 1.0f);
@@ -489,6 +499,7 @@ namespace vec3_m128 {
 
 		test::runTest(&testDefaultConstructor, "Default constructor");
 		test::runTest(&testComponentConstructor, "Component constructor");
+		test::runTest(&testComponentBroadcastConstructor, "Component broadcast constructor");
 		test::runTest(&testSimdConstructor, "SIMD constructor");
 		test::runTest(&testConvertingConstructor, "Converting constructor");
 
