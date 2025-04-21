@@ -169,6 +169,32 @@ namespace vec2_m128d {
 		test::assert(test::eq(result, expected));
 	}
 
+	void testVectorMatrixMultiplication() {
+		const lyah::vec<2, std::double_t> expected = {21.0, 16.0};
+		const lyah::mat<2, 2, std::double_t> A = {
+			1.0, 4.0,
+			5.0, 3.0,
+		};
+		const lyah::vec<2, std::double_t> x = {1.0, 4.0};
+
+		lyah::vec<2, std::double_t> result = x * A;
+
+		test::assert(test::eq(result, expected));
+	}
+
+	void testVectorMatrixMultiplicationAssignment() {
+		const lyah::vec<2, std::double_t> expected = {21.0, 16.0};
+		const lyah::mat<2, 2, std::double_t> A = {
+			1.0, 4.0,
+			5.0, 3.0,
+		};
+		lyah::vec<2, std::double_t> result = {1.0, 4.0};
+
+		result *= A;
+
+		test::assert(test::eq(result, expected));
+	}
+
 	void testVectorScalarDivision() {
 		const lyah::vec<2, std::double_t> expected = {0.333, 1.3330};
 		const lyah::vec<2, std::double_t> a = {1.0, 4.0};
@@ -449,6 +475,8 @@ namespace vec2_m128d {
 		test::runTest(&testVectorScalarMultiplicationAssignment, "Vector-scalar multiplication assignment (*=)");
 		test::runTest(&testVectorVectorMultiplication, "Vector-vector multiplication (*)");
 		test::runTest(&testVectorVectorMultiplicationAssignment, "Vector-vector multiplication assignment (*=)");
+		test::runTest(&testVectorMatrixMultiplication, "Vector-matrix multiplication (*)");
+		test::runTest(&testVectorMatrixMultiplicationAssignment, "Vector-matrix multiplication assignment (*=)");
 
 		test::runTest(&testVectorScalarDivision, "Vector-scalar division (/)");
 		test::runTest(&testScalarVectorDivision, "Scalar-vector division (/)");
