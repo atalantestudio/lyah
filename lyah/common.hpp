@@ -14,6 +14,6 @@ namespace lyah {
 	}
 }
 
-#include "vec/m128/common.inl"
-#include "vec/m128d/common.inl"
-#include "vec/m256d/common.inl"
+#include "vec/m128/common.ipp"
+#include "vec/m128d/common.ipp"
+#include "vec/m256d/common.ipp"

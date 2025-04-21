@@ -25,5 +25,5 @@ namespace lyah {
 	};
 }
 
-#include "vec/vec4_m128.inl"
-#include "vec/vec4_m256d.inl"
+#include "vec/vec4_m128.ipp"
+#include "vec/vec4_m256d.ipp"

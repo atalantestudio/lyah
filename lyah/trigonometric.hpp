@@ -33,6 +33,6 @@ namespace lyah {
 	using std::tan;
 }
 
-#include "vec/m128/trigonometric.inl"
-#include "vec/m128d/trigonometric.inl"
-#include "vec/m256d/trigonometric.inl"
+#include "vec/m128/trigonometric.ipp"
+#include "vec/m128d/trigonometric.ipp"
+#include "vec/m256d/trigonometric.ipp"

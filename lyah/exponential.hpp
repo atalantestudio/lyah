@@ -31,6 +31,6 @@ namespace lyah {
 	}
 }
 
-#include "vec/m128/exponential.inl"
-#include "vec/m128d/exponential.inl"
-#include "vec/m256d/exponential.inl"
+#include "vec/m128/exponential.ipp"
+#include "vec/m128d/exponential.ipp"
+#include "vec/m256d/exponential.ipp"

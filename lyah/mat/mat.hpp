@@ -11,4 +11,4 @@ namespace lyah {
 	struct mat;
 }
 
-#include "mat/mat.inl"
+#include "mat/mat.ipp"

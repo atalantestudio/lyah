@@ -19,4 +19,4 @@ namespace lyah {
 	struct vec;
 }
 
-#include "vec/vec.inl"
+#include "vec/vec.ipp"

@@ -33,4 +33,4 @@ namespace lyah {
 	};
 }
 
-#include "quat/quat.inl"
+#include "quat/quat.ipp"

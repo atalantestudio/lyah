@@ -27,6 +27,6 @@ namespace lyah {
 	}
 }
 
-#include "vec/m128/geometric.inl"
-#include "vec/m128d/geometric.inl"
-#include "vec/m256d/geometric.inl"
+#include "vec/m128/geometric.ipp"
+#include "vec/m128d/geometric.ipp"
+#include "vec/m256d/geometric.ipp"
