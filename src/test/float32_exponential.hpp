@@ -2,7 +2,7 @@
 
 #include "pch.hpp"
 
-namespace scalar_exponential {
+namespace float32_exponential {
 	void testPow() {
 		const std::float_t expected = 128.0f;
 		const std::float_t a = 2.0f;
@@ -41,7 +41,7 @@ namespace scalar_exponential {
 	}
 
 	void runAll() {
-		test::printTestCategory("Scalar exponential functions");
+		test::printTestCategory("32-bit float exponential functions");
 
 		test::runTest(&testPow, "Power");
 		test::runTest(&testRcp, "Reciprocal");

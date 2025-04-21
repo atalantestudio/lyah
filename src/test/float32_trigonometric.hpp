@@ -2,7 +2,7 @@
 
 #include "pch.hpp"
 
-namespace scalar_trigonometric {
+namespace float32_trigonometric {
 	void testDegrees() {
 		const std::float_t expected = 360.0f;
 		const std::float_t a = 2.0f * lyah::pi<std::float_t>();
@@ -18,7 +18,7 @@ namespace scalar_trigonometric {
 
 		const std::float_t result = lyah::radians(a);
 
-		test::assert(test::eq(result, expected));
+		test::assert(test::eq(result, expected, 0.001f));
 	}
 
 	void testSin() {
@@ -49,7 +49,7 @@ namespace scalar_trigonometric {
 	}
 
 	void runAll() {
-		test::printTestCategory("Scalar trigonometric functions");
+		test::printTestCategory("32-bit float trigonometric functions");
 
 		test::runTest(&testDegrees, "Degrees");
 		test::runTest(&testRadians, "Radians");

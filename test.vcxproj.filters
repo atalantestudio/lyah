@@ -75,13 +75,13 @@
     <ClInclude Include="src\test\vec4_m256d.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\test\scalar_common.hpp">
+    <ClInclude Include="src\test\float64_common.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\test\scalar_exponential.hpp">
+    <ClInclude Include="src\test\float32_exponential.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\test\scalar_trigonometric.hpp">
+    <ClInclude Include="src\test\float32_trigonometric.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\test\mat2x2_m128.hpp">
@@ -106,6 +106,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\test\quat_m256d.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test\float32_common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test\float64_exponential.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test\float64_trigonometric.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,7 +2,7 @@
 
 #include "pch.hpp"
 
-namespace scalar_common {
+namespace float32_common {
 	static void testAbs() {
 		const std::float_t expected = 1.0f;
 		const std::float_t a = -1.0f;
@@ -13,7 +13,7 @@ namespace scalar_common {
 	}
 
 	static void runAll() {
-		test::printTestCategory("Scalar common functions");
+		test::printTestCategory("32-bit float common functions");
 
 		test::runTest(&testAbs, "Absolute value");
 	}

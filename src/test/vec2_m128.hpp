@@ -245,6 +245,56 @@ namespace vec2_m128 {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
+	/*void testVectorScalarRemainder() {
+		const lyah::vec<2, std::float_t> expected = {1.0f, 1.0f};
+		const lyah::vec<2, std::float_t> a = {1.0f, 4.0f};
+		const std::float_t b = 3.0f;
+
+		const lyah::vec<2, std::float_t> result = a % b;
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testScalarVectorRemainder() {
+		const lyah::vec<2, std::float_t> expected = {lyah::nan<std::float_t>(), 3.0f};
+		const lyah::vec<2, std::float_t> a = {0.0f, 4.0f};
+		const std::float_t b = 3.0f;
+
+		const lyah::vec<2, std::float_t> result = b % a;
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testVectorScalarRemainderAssignment() {
+		const lyah::vec<2, std::float_t> expected = {1.0f, 1.0f};
+		const std::float_t a = 3.0f;
+		lyah::vec<2, std::float_t> result = {1.0f, 4.0f};
+
+		result %= a;
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testVectorVectorRemainder() {
+		const lyah::vec<2, std::float_t> expected = {lyah::nan<std::float_t>(), 1.0f};
+		const lyah::vec<2, std::float_t> a = {1.0f, 4.0f};
+		const lyah::vec<2, std::float_t> b = {0.0f, 3.0f};
+
+		const lyah::vec<2, std::float_t> result = a % b;
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testVectorVectorRemainderAssignment() {
+		const lyah::vec<2, std::float_t> expected = {lyah::nan<std::float_t>(), 1.0f};
+		const lyah::vec<2, std::float_t> a = {0.0f, 3.0f};
+		lyah::vec<2, std::float_t> result = {1.0f, 4.0f};
+
+		result %= a;
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}*/
+
 	/* void testFloor() {
 		const lyah::vec<2, std::float_t> expected = {1.0f, 4.0f};
 		const lyah::vec<2, std::float_t> a = {1.999f, 4.0f};
@@ -502,13 +552,19 @@ namespace vec2_m128 {
 		test::runTest(&testVectorVectorDivision, "Vector-vector division (/)");
 		test::runTest(&testVectorVectorDivisionAssignment, "Vector-vector division assignment (/=)");
 
-		// test::runTest(&testFloor, "Floor");
-		// test::runTest(&testCeil, "Ceil");
-		// test::runTest(&testRound, "Round");
-		// test::runTest(&testAbs, "Abs");
-		// test::runTest(&testSign, "Sign");
-		// test::runTest(&testHorizontalMax, "Horizontal max");
-		// test::runTest(&testHorizontalMin, "Horizontal min");
+		/*test::runTest(&testVectorScalarRemainder, "Vector-scalar remainder (%)");
+		test::runTest(&testScalarVectorRemainder, "Scalar-vector remainder (%)");
+		test::runTest(&testVectorScalarRemainderAssignment, "Vector-scalar remainder assignment (%=)");
+		test::runTest(&testVectorVectorRemainder, "Vector-vector remainder (%)");
+		test::runTest(&testVectorVectorRemainderAssignment, "Vector-vector remainder assignment (%=)");*/
+
+		/*test::runTest(&testFloor, "Floor");
+		test::runTest(&testCeil, "Ceil");
+		test::runTest(&testRound, "Round");
+		test::runTest(&testAbs, "Abs");
+		test::runTest(&testSign, "Sign");
+		test::runTest(&testHorizontalMax, "Horizontal max");
+		test::runTest(&testHorizontalMin, "Horizontal min");*/
 		test::runTest(&testVerticalMax, "Vertical max");
 		test::runTest(&testVerticalMin, "Vertical min");
 		test::runTest(&testLerp, "Linear interpolation");

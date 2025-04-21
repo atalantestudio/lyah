@@ -1,6 +1,12 @@
 #include "pch.hpp"
 
 #include "test/constants.hpp"
+#include "test/float32_common.hpp"
+#include "test/float32_exponential.hpp"
+#include "test/float32_trigonometric.hpp"
+#include "test/float64_common.hpp"
+#include "test/float64_exponential.hpp"
+#include "test/float64_trigonometric.hpp"
 #include "test/mat2x2_m128.hpp"
 #include "test/mat2x2_m128d.hpp"
 #include "test/mat3x3_m128.hpp"
@@ -9,9 +15,6 @@
 #include "test/mat4x4_m256d.hpp"
 #include "test/quat_m128.hpp"
 #include "test/quat_m256d.hpp"
-#include "test/scalar_common.hpp"
-#include "test/scalar_exponential.hpp"
-#include "test/scalar_trigonometric.hpp"
 #include "test/vec2_m128.hpp"
 #include "test/vec2_m128d.hpp"
 #include "test/vec3_m128.hpp"
@@ -24,9 +27,12 @@ int main() {
 
 	constants::runAll();
 
-	scalar_common::runAll();
-	scalar_exponential::runAll();
-	scalar_trigonometric::runAll();
+	float32_common::runAll();
+	float64_common::runAll();
+	float32_exponential::runAll();
+	float64_exponential::runAll();
+	float32_trigonometric::runAll();
+	float64_trigonometric::runAll();
 
 	vec2_m128::runAll();
 	vec2_m128d::runAll();
