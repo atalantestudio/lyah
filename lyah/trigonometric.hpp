@@ -26,11 +26,29 @@ namespace lyah {
 		return a * static_cast<T>(0.017453292519943);
 	}
 
-	using std::sin;
+	LYAH_NODISCARD LYAH_INLINE std::float_t LYAH_CALL sin(std::float_t a) {
+		return std::sinf(a);
+	}
 
-	using std::cos;
+	LYAH_NODISCARD LYAH_INLINE std::double_t LYAH_CALL sin(std::double_t a) {
+		return std::sinl(a);
+	}
 
-	using std::tan;
+	LYAH_NODISCARD LYAH_INLINE std::float_t LYAH_CALL cos(std::float_t a) {
+		return std::cosf(a);
+	}
+
+	LYAH_NODISCARD LYAH_INLINE std::double_t LYAH_CALL cos(std::double_t a) {
+		return std::cosl(a);
+	}
+
+	LYAH_NODISCARD LYAH_INLINE std::float_t LYAH_CALL tan(std::float_t a) {
+		return std::tanf(a);
+	}
+
+	LYAH_NODISCARD LYAH_INLINE std::double_t LYAH_CALL tan(std::double_t a) {
+		return std::tanl(a);
+	}
 }
 
 #include "vec/m128/trigonometric.ipp"
