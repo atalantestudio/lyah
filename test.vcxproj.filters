@@ -117,5 +117,11 @@
     <ClInclude Include="src\test\float64_trigonometric.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\test\int32_common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test\int64_common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

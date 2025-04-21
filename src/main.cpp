@@ -7,6 +7,8 @@
 #include "test/float64_common.hpp"
 #include "test/float64_exponential.hpp"
 #include "test/float64_trigonometric.hpp"
+#include "test/int32_common.hpp"
+#include "test/int64_common.hpp"
 #include "test/mat2x2_m128.hpp"
 #include "test/mat2x2_m128d.hpp"
 #include "test/mat3x3_m128.hpp"
@@ -27,6 +29,8 @@ int main() {
 
 	constants::runAll();
 
+	int32_common::runAll();
+	int64_common::runAll();
 	float32_common::runAll();
 	float64_common::runAll();
 	float32_exponential::runAll();

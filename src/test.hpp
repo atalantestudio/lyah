@@ -18,7 +18,15 @@ namespace test {
 	}
 
 	template<typename T>
-	inline bool eq(T a, T b, T precision = static_cast<T>(0)) {
+	inline bool eq(T a, T b) {
+		return a == b;
+	}
+
+	inline bool eq(std::float_t a, std::float_t b, std::float_t precision = 0.0f) {
+		return std::abs(a - b) <= precision;
+	}
+
+	inline bool eq(std::double_t a, std::double_t b, std::double_t precision = 0.0) {
 		return std::abs(a - b) <= precision;
 	}
 

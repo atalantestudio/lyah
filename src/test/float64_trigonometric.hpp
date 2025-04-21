@@ -49,7 +49,7 @@ namespace float64_trigonometric {
 	}
 
 	void runAll() {
-		test::printTestCategory("64-bit float trigonometric functions");
+		test::printTestCategory("64-bit double floating-point trigonometric functions");
 
 		test::runTest(&testDegrees, "Degrees");
 		test::runTest(&testRadians, "Radians");

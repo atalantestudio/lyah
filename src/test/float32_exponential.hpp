@@ -41,7 +41,7 @@ namespace float32_exponential {
 	}
 
 	void runAll() {
-		test::printTestCategory("32-bit float exponential functions");
+		test::printTestCategory("32-bit single floating-point exponential functions");
 
 		test::runTest(&testPow, "Power");
 		test::runTest(&testRcp, "Reciprocal");

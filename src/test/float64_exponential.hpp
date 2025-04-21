@@ -41,7 +41,7 @@ namespace float64_exponential {
 	}
 
 	void runAll() {
-		test::printTestCategory("64-bit float exponential functions");
+		test::printTestCategory("64-bit double floating-point exponential functions");
 
 		test::runTest(&testPow, "Power");
 		test::runTest(&testRcp, "Reciprocal");
