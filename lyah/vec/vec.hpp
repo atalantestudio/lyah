@@ -3,8 +3,6 @@
 
 #pragma once
 
-#include "base.hpp"
-
 namespace lyah {
 	// fwd
 	template<std::size_t R, std::size_t C, typename T>
