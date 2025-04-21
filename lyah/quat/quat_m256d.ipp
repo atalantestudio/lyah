@@ -26,11 +26,7 @@ namespace lyah {
 
 	// NOTE: AVX2
 	LYAH_INLINE vec<3, std::double_t> quat<std::double_t>::xyz() const {
-		vec<3, std::double_t> a;
-
-		a.m = _mm256_permute4x64_pd(m, _MM_SHUFFLE(0, 3, 2, 1));
-
-		return a;
+		return vec<3, std::double_t>(_mm256_permute4x64_pd(m, _MM_SHUFFLE(0, 3, 2, 1)));
 	}
 
 	// NOTE: AVX2

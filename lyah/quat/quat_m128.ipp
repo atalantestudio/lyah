@@ -26,11 +26,7 @@ namespace lyah {
 
 	// NOTE: SSE
 	LYAH_INLINE vec<3, std::float_t> quat<std::float_t>::xyz() const {
-		vec<3, std::float_t> a;
-
-		a.m = _mm_shuffle_ps(m, m, _MM_SHUFFLE(0, 3, 2, 1));
-
-		return a;
+		return vec<3, std::float_t>(_mm_shuffle_ps(m, m, _MM_SHUFFLE(0, 3, 2, 1)));
 	}
 
 	// NOTE: SSE
