@@ -18,12 +18,12 @@ namespace test {
 	}
 
 	template<typename T>
-	inline bool eq(T a, T b, T precision = 0) {
+	inline bool eq(T a, T b, T precision = static_cast<T>(0)) {
 		return std::abs(a - b) <= precision;
 	}
 
 	template<typename T>
-	inline bool eq(const T* a, const T* b, T precision = 0) {
+	inline bool eq(const T* a, const T* b, T precision = static_cast<T>(0)) {
 		for (std::size_t i = 0; i < 4; i++) {
 			if (std::abs(a[i] - b[i]) > precision) {
 				return false;
@@ -38,7 +38,7 @@ namespace test {
 		const std::float_t* bufferA = a.m.m128_f32;
 		const std::float_t* bufferB = b.m.m128_f32;
 
-		for (std::size_t i = 0; i < 4; i++) {
+		for (std::size_t i = 0; i < C; i++) {
 			if (std::abs(bufferA[i] - bufferB[i]) > precision) {
 				return false;
 			}
@@ -65,7 +65,7 @@ namespace test {
 		const std::double_t* bufferA = a.m.m256d_f64;
 		const std::double_t* bufferB = b.m.m256d_f64;
 
-		for (std::size_t i = 0; i < 4; i++) {
+		for (std::size_t i = 0; i < C; i++) {
 			if (std::abs(bufferA[i] - bufferB[i]) > precision) {
 				return false;
 			}
@@ -75,7 +75,7 @@ namespace test {
 	}
 
 	template<std::size_t R, std::size_t C, typename T>
-	inline bool eq(const lyah::mat<R, C, T>& a, const lyah::mat<R, C, T>& b, T precision = 0) {
+	inline bool eq(const lyah::mat<R, C, T>& a, const lyah::mat<R, C, T>& b, T precision = static_cast<T>(0)) {
 		for (std::size_t i = 0; i < R; i++) {
 			if (!eq(a[i], b[i], precision)) {
 				return false;
