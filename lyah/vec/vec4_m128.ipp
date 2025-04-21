@@ -3,14 +3,14 @@
 
 namespace lyah {
 	// NOTE: SSE
-	template<>
 	LYAH_INLINE vec<4, std::float_t>::vec() : m(_mm_setzero_ps()) {}
 
 	// NOTE: SSE
-	template<>
 	LYAH_INLINE vec<4, std::float_t>::vec(std::float_t x, std::float_t y, std::float_t z, std::float_t w) : m(_mm_set_ps(w, z, y, x)) {}
 
-	template<>
+	// NOTE: SSE
+	LYAH_INLINE vec<4, std::float_t>::vec(std::float_t a) : m(_mm_set1_ps(a)) {}
+
 	LYAH_CONSTEXPR LYAH_INLINE vec<4, std::float_t>::vec(__m128 m) : m(m) {}
 
 	// NOTE: SSE

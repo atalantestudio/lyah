@@ -3,14 +3,14 @@
 
 namespace lyah {
 	// NOTE: AVX
-	template<>
 	LYAH_INLINE vec<3, std::double_t>::vec() : m(_mm256_setzero_pd()) {}
 
 	// NOTE: AVX
-	template<>
 	LYAH_INLINE vec<3, std::double_t>::vec(std::double_t x, std::double_t y, std::double_t z) : m(_mm256_set_pd(0.0, z, y, x)) {}
 
-	template<>
+	// NOTE: AVX
+	LYAH_INLINE vec<3, std::double_t>::vec(std::double_t a) : m(_mm256_set1_pd(a)) {}
+
 	LYAH_CONSTEXPR LYAH_INLINE vec<3, std::double_t>::vec(__m256d m) : m(m) {}
 
 	// NOTE: AVX2
