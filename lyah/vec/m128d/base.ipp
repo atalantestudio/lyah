@@ -51,6 +51,8 @@ namespace lyah {
 		return a;
 	}
 
+	// TODO: vec<2, std::double_t> * mat<2, 2, std::double_t>
+
 	// NOTE: SSE2
 	LYAH_NODISCARD LYAH_INLINE vec<2, std::double_t> LYAH_CALL operator /(std::double_t a, vec<2, std::double_t> b) {
 		b.m = _mm_div_pd(_mm_set1_pd(a), b.m);

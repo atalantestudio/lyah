@@ -6,18 +6,24 @@ namespace lyah {
 	// https://stackoverflow.com/a/6042506
 	template<std::size_t C>
 	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator ==(vec<C, std::float_t> a, vec<C, std::float_t> b) {
-		const __m128 m = _mm_cmpneq_ps(a.m, b.m);
+		static const std::int32_t bitMask = static_cast<std::int32_t>(pow(2, C)) - 1;
 
-		return _mm_movemask_ps(m) == 0;
+		const __m128 m = _mm_cmpneq_ps(a.m, b.m);
+		const std::int32_t mask = _mm_movemask_ps(m); & bitMask;
+
+		return mask == 0;
 	}
 
 	// NOTE: SSE
 	// https://stackoverflow.com/a/6042506
 	template<std::size_t C>
 	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator !=(vec<C, std::float_t> a, vec<C, std::float_t> b) {
-		const __m128 m = _mm_cmpneq_ps(a.m, b.m);
+		static const std::int32_t bitMask = static_cast<std::int32_t>(pow(2, C)) - 1;
 
-		return _mm_movemask_ps(m) != 0;
+		const __m128 m = _mm_cmpneq_ps(a.m, b.m);
+		const std::int32_t mask = _mm_movemask_ps(m) & bitMask;
+
+		return mask != 0;
 	}
 
 	// NOTE: SSE
@@ -82,14 +88,6 @@ namespace lyah {
 	template<std::size_t C>
 	LYAH_NODISCARD LYAH_INLINE vec<C, std::float_t> LYAH_CALL operator /(std::float_t a, vec<C, std::float_t> b) {
 		b.m = _mm_div_ps(_mm_set1_ps(a), b.m);
-		b.m = _mm_and_ps(b.m, internal::vec_t<C, std::float_t>::hmask());
-
-		return b;
-	}
-
-	// NOTE: SSE
-	LYAH_NODISCARD LYAH_INLINE vec<4, std::float_t> LYAH_CALL operator /(std::float_t a, vec<4, std::float_t> b) {
-		b.m = _mm_div_ps(_mm_set1_ps(a), b.m);
 
 		return b;
 	}
@@ -97,14 +95,6 @@ namespace lyah {
 	// NOTE: SSE
 	template<std::size_t C>
 	LYAH_INLINE vec<C, std::float_t>& LYAH_CALL operator /=(vec<C, std::float_t>& a, vec<C, std::float_t> b) {
-		a.m = _mm_div_ps(a.m, b.m);
-		a.m = _mm_and_ps(a.m, internal::vec_t<C, std::float_t>::hmask());
-
-		return a;
-	}
-
-	// NOTE: SSE
-	LYAH_INLINE vec<4, std::float_t>& LYAH_CALL operator /=(vec<4, std::float_t>& a, vec<4, std::float_t> b) {
 		a.m = _mm_div_ps(a.m, b.m);
 
 		return a;

@@ -54,13 +54,6 @@ namespace lyah {
 		template<>
 		struct vec_t<2, std::float_t> {
 			using __m_t = __m128;
-
-			// NOTE: SSE2
-			static __m_t LYAH_CALL hmask() {
-				static const __m_t hmask = _mm_castsi128_ps(_mm_set_epi32(0, 0, -1, -1));
-
-				return hmask;
-			}
 		};
 
 		template<>
