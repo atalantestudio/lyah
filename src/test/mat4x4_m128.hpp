@@ -13,8 +13,8 @@ namespace mat4x4_m128 {
 
 		const lyah::mat<4, 4, std::float_t> result;
 
-		for (std::size_t i = 0; i < 4; i++) {
-			for (std::size_t j = 0; j < 4; j++) {
+		for (std::size_t i = 0; i < 4; i += 1) {
+			for (std::size_t j = 0; j < 4; j += 1) {
 				test::assert(test::eq(result[i][j], expected[i * 4 + j]));
 			}
 		}
@@ -35,8 +35,8 @@ namespace mat4x4_m128 {
 			2.0f,  4.0f, -2.0f,  1.0f,
 		};
 
-		for (std::size_t i = 0; i < 4; i++) {
-			for (std::size_t j = 0; j < 4; j++) {
+		for (std::size_t i = 0; i < 4; i += 1) {
+			for (std::size_t j = 0; j < 4; j += 1) {
 				test::assert(test::eq(result[i][j], expected[i * 4 + j]));
 			}
 		}
@@ -57,8 +57,8 @@ namespace mat4x4_m128 {
 			{2.0f,  4.0f, -2.0f,  1.0f},
 		};
 
-		for (std::size_t i = 0; i < 4; i++) {
-			for (std::size_t j = 0; j < 4; j++) {
+		for (std::size_t i = 0; i < 4; i += 1) {
+			for (std::size_t j = 0; j < 4; j += 1) {
 				test::assert(test::eq(result[i][j], expected[i * 4 + j]));
 			}
 		}

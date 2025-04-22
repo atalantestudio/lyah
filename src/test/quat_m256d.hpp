@@ -8,7 +8,7 @@ namespace quat_m256d {
 
 		const lyah::quat<std::double_t> result;
 
-		for (std::size_t i = 0; i < 4; i++) {
+		for (std::size_t i = 0; i < 4; i += 1) {
 			test::assert(test::eq(result[i], expected[i]));
 		}
 	}
@@ -18,7 +18,7 @@ namespace quat_m256d {
 
 		const lyah::quat<std::double_t> result = {1.0, 4.0, 6.0, -1.0};
 
-		for (std::size_t i = 0; i < 4; i++) {
+		for (std::size_t i = 0; i < 4; i += 1) {
 			test::assert(test::eq(result[i], expected[i]));
 		}
 	}

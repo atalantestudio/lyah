@@ -18,7 +18,7 @@ namespace test {
 
 		test();
 
-		passedTestCount++;
+		passedTestCount += 1;
 	}
 
 	void summary() {

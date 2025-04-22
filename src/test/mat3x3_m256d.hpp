@@ -12,8 +12,8 @@ namespace mat3x3_m256d {
 
 		const lyah::mat<3, 3, std::double_t> result;
 
-		for (std::size_t i = 0; i < 3; i++) {
-			for (std::size_t j = 0; j < 3; j++) {
+		for (std::size_t i = 0; i < 3; i += 1) {
+			for (std::size_t j = 0; j < 3; j += 1) {
 				test::assert(test::eq(result[i][j], expected[i * 3 + j]));
 			}
 		}
@@ -32,8 +32,8 @@ namespace mat3x3_m256d {
 			0.0, -8.0,  0.5,
 		};
 
-		for (std::size_t i = 0; i < 3; i++) {
-			for (std::size_t j = 0; j < 3; j++) {
+		for (std::size_t i = 0; i < 3; i += 1) {
+			for (std::size_t j = 0; j < 3; j += 1) {
 				test::assert(test::eq(result[i][j], expected[i * 3 + j]));
 			}
 		}
@@ -52,8 +52,8 @@ namespace mat3x3_m256d {
 			{0.0, -8.0,  0.5},
 		};
 
-		for (std::size_t i = 0; i < 3; i++) {
-			for (std::size_t j = 0; j < 3; j++) {
+		for (std::size_t i = 0; i < 3; i += 1) {
+			for (std::size_t j = 0; j < 3; j += 1) {
 				test::assert(test::eq(result[i][j], expected[i * 3 + j]));
 			}
 		}

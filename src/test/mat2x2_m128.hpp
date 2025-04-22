@@ -11,8 +11,8 @@ namespace mat2x2_m128 {
 
 		const lyah::mat<2, 2, std::float_t> result;
 
-		for (std::size_t i = 0; i < 2; i++) {
-			for (std::size_t j = 0; j < 2; j++) {
+		for (std::size_t i = 0; i < 2; i += 1) {
+			for (std::size_t j = 0; j < 2; j += 1) {
 				test::assert(test::eq(result[i][j], expected[i * 2 + j]));
 			}
 		}
@@ -29,8 +29,8 @@ namespace mat2x2_m128 {
 			5.0f, 3.0f,
 		};
 
-		for (std::size_t i = 0; i < 2; i++) {
-			for (std::size_t j = 0; j < 2; j++) {
+		for (std::size_t i = 0; i < 2; i += 1) {
+			for (std::size_t j = 0; j < 2; j += 1) {
 				test::assert(test::eq(result[i][j], expected[i * 2 + j]));
 			}
 		}
@@ -47,8 +47,8 @@ namespace mat2x2_m128 {
 			{5.0f, 3.0f},
 		};
 
-		for (std::size_t i = 0; i < 2; i++) {
-			for (std::size_t j = 0; j < 2; j++) {
+		for (std::size_t i = 0; i < 2; i += 1) {
+			for (std::size_t j = 0; j < 2; j += 1) {
 				test::assert(test::eq(result[i][j], expected[i * 2 + j]));
 			}
 		}

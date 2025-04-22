@@ -8,7 +8,7 @@ namespace quat_m128 {
 
 		const lyah::quat<std::float_t> result;
 
-		for (std::size_t i = 0; i < 4; i++) {
+		for (std::size_t i = 0; i < 4; i += 1) {
 			test::assert(test::eq(result[i], expected[i]));
 		}
 	}
@@ -18,7 +18,7 @@ namespace quat_m128 {
 
 		const lyah::quat<std::float_t> result = {1.0f, 4.0f, 6.0f, -1.0f};
 
-		for (std::size_t i = 0; i < 4; i++) {
+		for (std::size_t i = 0; i < 4; i += 1) {
 			test::assert(test::eq(result[i], expected[i]));
 		}
 	}
