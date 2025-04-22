@@ -37,7 +37,7 @@ namespace lyah {
 		return a = a * b;
 	}
 
-	// NOTE: Assumes b is already normalized.
+	// NOTE: b is assumed to be normalized.
 	// https://blog.molecular-matters.com/2013/05/24/a-faster-quaternion-vector-multiplication
 	template<typename T>
 	LYAH_NODISCARD LYAH_INLINE vec<3, T> LYAH_CALL operator *(vec<3, T> a, quat<T> b) {

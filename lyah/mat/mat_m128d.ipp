@@ -9,8 +9,8 @@ namespace lyah {
 		__m128d aij_bj = _mm_undefined_pd();
 		mat<M, 2, std::double_t> result;
 
-		for (std::size_t i = 0; i < M; i++) {
-			for (std::size_t j = 0; j < 2; j++) {
+		for (std::size_t i = 0; i < M; i += 1) {
+			for (std::size_t j = 0; j < 2; j += 1) {
 				broadcastj = _mm_set1_pd(a[i][j]);
 				aij_bj = _mm_mul_pd(broadcastj, b[j].m);
 

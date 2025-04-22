@@ -69,8 +69,8 @@ namespace lyah {
 		__m128 aij_bj = _mm_undefined_ps();
 		mat<M, P, std::float_t> result;
 
-		for (std::size_t i = 0; i < M; i++) {
-			for (std::size_t j = 0; j < P; j++) {
+		for (std::size_t i = 0; i < M; i += 1) {
+			for (std::size_t j = 0; j < P; j += 1) {
 				broadcastj = _mm_set1_ps(a[i][j]);
 				aij_bj = _mm_mul_ps(broadcastj, b[j].m);
 

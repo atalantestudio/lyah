@@ -10,7 +10,7 @@
 namespace lyah {
 	template<typename T>
 	struct vec<4, T> {
-		using __m_t = typename internal::vec_t<4, T>::__m_t;
+		using __m_t = typename internal::vec_t<4, T>::m_t;
 
 		__m_t m;
 

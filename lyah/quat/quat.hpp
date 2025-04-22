@@ -10,7 +10,7 @@
 namespace lyah {
 	template<typename T>
 	struct quat {
-		using __m_t = typename internal::quat_t<T>::__m_t;
+		using __m_t = typename internal::quat_t<T>::m_t;
 
 		__m_t m;
 

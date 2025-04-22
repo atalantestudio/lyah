@@ -2,9 +2,9 @@
 // Licensed under the MIT License.
 
 namespace lyah {
-	template<std::size_t R, std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator ==(mat<R, C, T> a, mat<R, C, T> b) {
-		for (std::size_t i = 0; i < R; i++) {
+	template<std::size_t M, std::size_t N, typename T>
+	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator ==(mat<M, N, T> a, mat<M, N, T> b) {
+		for (std::size_t i = 0; i < M; i += 1) {
 			if (a[i] != b[i]) {
 				return false;
 			}
@@ -13,9 +13,9 @@ namespace lyah {
 		return true;
 	}
 
-	template<std::size_t R, std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator !=(mat<R, C, T> a, mat<R, C, T> b) {
-		for (std::size_t i = 0; i < R; i++) {
+	template<std::size_t M, std::size_t N, typename T>
+	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator !=(mat<M, N, T> a, mat<M, N, T> b) {
+		for (std::size_t i = 0; i < M; i += 1) {
 			if (a[i] != b[i]) {
 				return true;
 			}
@@ -24,42 +24,42 @@ namespace lyah {
 		return false;
 	}
 
-	template<std::size_t R, std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE mat<R, C, T> LYAH_CALL operator +(mat<R, C, T> a) {
+	template<std::size_t M, std::size_t N, typename T>
+	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE mat<M, N, T> LYAH_CALL operator +(mat<M, N, T> a) {
 		return a;
 	}
 
-	template<std::size_t R, std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE mat<R, C, T> LYAH_CALL operator -(mat<R, C, T> a) {
-		for (std::size_t i = 0; i < R; i++) {
+	template<std::size_t M, std::size_t N, typename T>
+	LYAH_NODISCARD LYAH_INLINE mat<M, N, T> LYAH_CALL operator -(mat<M, N, T> a) {
+		for (std::size_t i = 0; i < M; i += 1) {
 			a[i] = -a[i];
 		}
 
 		return a;
 	}
 
-	template<std::size_t R, std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE mat<R, C, T> LYAH_CALL operator +(mat<R, C, T> a, mat<R, C, T> b) {
+	template<std::size_t M, std::size_t N, typename T>
+	LYAH_NODISCARD LYAH_INLINE mat<M, N, T> LYAH_CALL operator +(mat<M, N, T> a, mat<M, N, T> b) {
 		return a += b;
 	}
 
-	template<std::size_t R, std::size_t C, typename T>
-	LYAH_INLINE mat<R, C, T>& LYAH_CALL operator +=(mat<R, C, T>& a, mat<R, C, T> b) {
-		for (std::size_t i = 0; i < R; i++) {
+	template<std::size_t M, std::size_t N, typename T>
+	LYAH_INLINE mat<M, N, T>& LYAH_CALL operator +=(mat<M, N, T>& a, mat<M, N, T> b) {
+		for (std::size_t i = 0; i < M; i += 1) {
 			a[i] += b[i];
 		}
 
 		return a;
 	}
 
-	template<std::size_t C, std::size_t R, typename T>
-	LYAH_NODISCARD LYAH_INLINE mat<R, C, T> LYAH_CALL operator -(mat<R, C, T> a, mat<R, C, T> b) {
+	template<std::size_t M, std::size_t N, typename T>
+	LYAH_NODISCARD LYAH_INLINE mat<M, N, T> LYAH_CALL operator -(mat<M, N, T> a, mat<M, N, T> b) {
 		return a -= b;
 	}
 
-	template<std::size_t R, std::size_t C, typename T>
-	LYAH_INLINE mat<R, C, T>& LYAH_CALL operator -=(mat<R, C, T>& a, mat<R, C, T> b) {
-		for (std::size_t i = 0; i < R; i++) {
+	template<std::size_t M, std::size_t N, typename T>
+	LYAH_INLINE mat<M, N, T>& LYAH_CALL operator -=(mat<M, N, T>& a, mat<M, N, T> b) {
+		for (std::size_t i = 0; i < M; i += 1) {
 			a[i] -= b[i];
 		}
 
@@ -78,7 +78,7 @@ namespace lyah {
 
 	template<std::size_t R, std::size_t C, typename T>
 	LYAH_INLINE mat<R, C, T>& LYAH_CALL operator *=(mat<R, C, T>& a, T b) {
-		for (std::size_t i = 0; i < R; i++) {
+		for (std::size_t i = 0; i < R; i += 1) {
 			a[i] *= b;
 		}
 

@@ -72,7 +72,7 @@ namespace lyah {
 		__m256d ai_bi = _mm256_undefined_pd();
 		vec<P, std::double_t> result;
 
-		for (std::size_t i = 0; i < P; i++) {
+		for (std::size_t i = 0; i < P; i += 1) {
 			broadcasti = _mm256_set1_pd(a[i]);
 			ai_bi = _mm256_mul_pd(broadcasti, b[i].m);
 

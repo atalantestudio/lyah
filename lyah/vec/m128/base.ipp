@@ -74,7 +74,7 @@ namespace lyah {
 		__m128 ai_bi = _mm_undefined_ps();
 		vec<P, std::float_t> result;
 
-		for (std::size_t i = 0; i < P; i++) {
+		for (std::size_t i = 0; i < P; i += 1) {
 			broadcasti = _mm_set1_ps(a[i]);
 			ai_bi = _mm_mul_ps(broadcasti, b[i].m);
 

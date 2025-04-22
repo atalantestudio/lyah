@@ -69,8 +69,8 @@ namespace lyah {
 		__m256d aij_bj = _mm256_undefined_pd();
 		mat<M, P, std::double_t> result;
 
-		for (std::size_t i = 0; i < M; i++) {
-			for (std::size_t j = 0; j < P; j++) {
+		for (std::size_t i = 0; i < M; i += 1) {
+			for (std::size_t j = 0; j < P; j += 1) {
 				broadcastj = _mm256_set1_pd(a[i][j]);
 				aij_bj = _mm256_mul_pd(broadcastj, b[j].m);
 

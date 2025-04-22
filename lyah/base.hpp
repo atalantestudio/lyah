@@ -9,6 +9,7 @@
 #include <limits>
 
 #define LYAH_ASSERT assert
+#define LYAH_STATIC_ASSERT static_assert
 
 #define LYAH_CALL __vectorcall
 

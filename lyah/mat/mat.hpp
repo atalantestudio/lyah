@@ -6,8 +6,10 @@
 #include "base.hpp"
 
 namespace lyah {
-	// A RxC row-major matrix.
-	template<std::size_t R, std::size_t C, typename T>
+	// A MxN row-major matrix.
+	// M is the row count.
+	// N is the column count.
+	template<std::size_t M, std::size_t N, typename T>
 	struct mat;
 }
 

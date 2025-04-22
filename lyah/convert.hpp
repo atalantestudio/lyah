@@ -10,7 +10,7 @@ namespace lyah {
 		template<typename T, typename U>
 		LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE U LYAH_CALL convert(T m) {
 			// should not be here
-			LYAH_ASSERT(false);
+			LYAH_STATIC_ASSERT(false);
 		}
 
 		// NOTE: SSE2
