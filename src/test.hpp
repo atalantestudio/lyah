@@ -42,6 +42,34 @@ namespace test {
 	}
 
 	template<std::size_t C>
+	inline bool eq(const lyah::vec<C, std::int32_t>& a, const lyah::vec<C, std::int32_t>& b) {
+		const std::int32_t* bufferA = a.m.m128i_i32;
+		const std::int32_t* bufferB = b.m.m128i_i32;
+
+		for (std::size_t i = 0; i < C; i += 1) {
+			if (bufferA[i] != bufferB[i]) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	template<std::size_t C>
+	inline bool eq(const lyah::vec<C, std::int64_t>& a, const lyah::vec<C, std::int64_t>& b) {
+		const std::int64_t* bufferA = a.m.m256i_i64;
+		const std::int64_t* bufferB = b.m.m256i_i64;
+
+		for (std::size_t i = 0; i < C; i += 1) {
+			if (bufferA[i] != bufferB[i]) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	template<std::size_t C>
 	inline bool eq(const lyah::vec<C, std::float_t>& a, const lyah::vec<C, std::float_t>& b, std::float_t precision = 0.0f) {
 		const std::float_t* bufferA = a.m.m128_f32;
 		const std::float_t* bufferB = b.m.m128_f32;
