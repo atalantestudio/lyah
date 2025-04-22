@@ -11,8 +11,6 @@ namespace lyah {
 	// NOTE: SSE
 	LYAH_INLINE vec<4, std::float_t>::vec(std::float_t a) : m(_mm_set1_ps(a)) {}
 
-	LYAH_CONSTEXPR LYAH_INLINE vec<4, std::float_t>::vec(__m128 m) : m(m) {}
-
 	// NOTE: SSE
 	LYAH_INLINE std::float_t vec<4, std::float_t>::operator [](std::size_t index) const LYAH_NOEXCEPT {
 		LYAH_ASSERT(index < 4);

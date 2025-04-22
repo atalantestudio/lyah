@@ -11,8 +11,6 @@ namespace lyah {
 	// NOTE: AVX
 	LYAH_INLINE vec<3, std::double_t>::vec(std::double_t a) : m(_mm256_set1_pd(a)) {}
 
-	LYAH_CONSTEXPR LYAH_INLINE vec<3, std::double_t>::vec(__m256d m) : m(m) {}
-
 	// NOTE: AVX2
 	LYAH_INLINE std::double_t vec<3, std::double_t>::operator [](std::size_t index) const LYAH_NOEXCEPT {
 		LYAH_ASSERT(index < 3);

@@ -52,6 +52,16 @@ namespace lyah {
 		struct vec_t;
 
 		template<>
+		struct vec_t<4, std::int32_t> {
+			using m_t = __m128i;
+		};
+
+		template<>
+		struct vec_t<4, std::int64_t> {
+			using m_t = __m256i;
+		};
+
+		template<>
 		struct vec_t<2, std::float_t> {
 			using m_t = __m128;
 		};
