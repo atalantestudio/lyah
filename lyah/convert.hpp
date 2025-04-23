@@ -37,25 +37,11 @@ namespace lyah {
 			return _mm256_cvtps_pd(m);
 		}
 
-		/*template<>
-		LYAH_NODISCARD LYAH_INLINE __m256i LYAH_CALL convert(__m128 m) {
-			return convert<__m128i, __m256i>(convert<__m128, __m128i>(m));
-		}*/
-
 		// NOTE: SSE2
 		template<>
 		LYAH_NODISCARD LYAH_INLINE __m128 LYAH_CALL convert(__m128d m) {
 			return _mm_cvtpd_ps(m);
 		}
-
-		/*// NOTE: SSE2
-		template<>
-		LYAH_NODISCARD LYAH_INLINE __m128i LYAH_CALL convert(__m128d m) {
-			const std::int64_t x = static_cast<std::int64_t>(_mm_cvtsd_f64(m));
-			const std::int64_t y = static_cast<std::int64_t>(_mm_cvtsd_f64(_mm_unpackhi_pd(m, m)));
-
-			return _mm_set_epi64(y, x);
-		}*/
 
 		// NOTE: AVX2
 		template<>
