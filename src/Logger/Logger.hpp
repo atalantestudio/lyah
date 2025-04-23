@@ -109,8 +109,9 @@ namespace test {
 				stream << std::setw(padding + log.size());
 				stream << log;
 				stream << "\033[m";
+				stream << '\n';
 
-				*LOG_LEVEL_OUTPUT_STREAMS[logLevelIndex] << stream.str() << std::endl;
+				*LOG_LEVEL_OUTPUT_STREAMS[logLevelIndex] << stream.str();
 
 				clear();
 			}

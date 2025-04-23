@@ -110,9 +110,9 @@ namespace test {
 		return true;
 	}
 
-	template<std::size_t R, std::size_t C, typename T>
-	inline bool eq(const lyah::mat<R, C, T>& a, const lyah::mat<R, C, T>& b, T precision = static_cast<T>(0)) {
-		for (std::size_t i = 0; i < R; i += 1) {
+	template<std::size_t M, std::size_t N, typename T>
+	inline bool eq(const lyah::mat<M, N, T>& a, const lyah::mat<M, N, T>& b, T precision = static_cast<T>(0)) {
+		for (std::size_t i = 0; i < M; i += 1) {
 			if (!eq(a[i], b[i], precision)) {
 				return false;
 			}

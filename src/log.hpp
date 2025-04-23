@@ -53,13 +53,13 @@ namespace test {
 		return stream;
 	}
 
-	template<std::size_t R, std::size_t C, typename T>
-	inline std::ostringstream& operator <<(std::ostringstream& stream, const lyah::mat<R, C, T>& a) {
-		for (std::size_t index = 0; index < R - 1; index += 1) {
-			stream << a[index] << std::endl;
+	template<std::size_t M, std::size_t N, typename T>
+	inline std::ostringstream& operator <<(std::ostringstream& stream, const lyah::mat<M, N, T>& a) {
+		for (std::size_t index = 0; index < M - 1; index += 1) {
+			stream << a[index] << '\n';
 		}
 
-		stream << a[R - 1];
+		stream << a[M - 1];
 
 		return stream;
 	}
