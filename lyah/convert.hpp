@@ -20,11 +20,16 @@ namespace lyah {
 			return _mm_cvtps_pd(m);
 		}
 
-		/*// NOTE: SSE2
+		// Converts the 2 lower 32-bit floats to 2 64-bit integers.
+		// NOTE: SSE2
 		template<>
 		LYAH_NODISCARD LYAH_INLINE __m128i LYAH_CALL convert(__m128 m) {
-			return _mm_cvttps_epi32(m);
-		}*/
+			const __m128i cvt = _mm_cvtps_epi32(m);
+			const std::int64_t lo = static_cast<std::int64_t>(_mm_cvtsi128_si32(cvt));
+			const std::int64_t hi = static_cast<std::int64_t>(_mm_cvtsi128_si32(_mm_srli_si128(cvt, 4)));
+
+			return _mm_set_epi64x(hi, lo);
+		}
 
 		// NOTE: AVX
 		template<>

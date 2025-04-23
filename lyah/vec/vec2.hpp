@@ -28,3 +28,4 @@ namespace lyah {
 
 #include "vec/vec2_m128.ipp"
 #include "vec/vec2_m128d.ipp"
+#include "vec/vec2_m128i.ipp"
