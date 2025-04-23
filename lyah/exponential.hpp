@@ -6,7 +6,13 @@
 #include "base.hpp"
 
 namespace lyah {
-	using std::pow;
+	LYAH_NODISCARD LYAH_CONSTEXPR_CPP26 LYAH_INLINE std::double_t pow(std::double_t a, std::double_t e) {
+		return std::powl(a, e);
+	}
+
+	LYAH_NODISCARD LYAH_CONSTEXPR_CPP26 LYAH_INLINE std::float_t pow(std::float_t a, std::float_t e) {
+		return std::powf(a, e);
+	}
 
 	template<typename T>
 	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE T LYAH_CALL rcp(T a) {
@@ -18,7 +24,13 @@ namespace lyah {
 		return static_cast<T>(1) / a;
 	}
 
-	using std::sqrt;
+	LYAH_NODISCARD LYAH_CONSTEXPR_CPP26 LYAH_INLINE std::float_t sqrt(std::float_t a) {
+		return std::sqrtf(a);
+	}
+
+	LYAH_NODISCARD LYAH_CONSTEXPR_CPP26 LYAH_INLINE std::double_t sqrt(std::double_t a) {
+		return std::sqrtl(a);
+	}
 
 	template<typename T>
 	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE T LYAH_CALL rsqrt(T a) {
