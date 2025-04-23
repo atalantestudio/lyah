@@ -6,10 +6,10 @@ namespace lyah {
 	// https://stackoverflow.com/a/64191351
 	template<std::size_t C>
 	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator ==(vec<C, std::double_t> a, vec<C, std::double_t> b) {
-		static const std::int32_t bitMask = static_cast<std::int32_t>(pow(2, C)) - 1;
+		static LYAH_CONSTEXPR_CPP26 const std::int32_t bitMask = static_cast<std::int32_t>(pow(2, C)) - 1;
 
 		const __m256d m = _mm256_cmp_pd(a.m, b.m, _CMP_NEQ_OQ);
-		const std::int32_t mask = _mm256_movemask_pd(m); & bitMask;
+		const std::int32_t mask = _mm256_movemask_pd(m) & bitMask;
 
 		return mask == 0;
 	}
@@ -17,10 +17,10 @@ namespace lyah {
 	// NOTE: AVX
 	template<std::size_t C>
 	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator !=(vec<C, std::double_t> a, vec<C, std::double_t> b) {
-		static const std::int32_t bitMask = static_cast<std::int32_t>(pow(2, C)) - 1;
+		static LYAH_CONSTEXPR_CPP26 const std::int32_t bitMask = static_cast<std::int32_t>(pow(2, C)) - 1;
 
 		const __m256d m = _mm256_cmp_pd(a.m, b.m, _CMP_NEQ_OQ);
-		const std::int32_t mask = _mm256_movemask_pd(m); & bitMask;
+		const std::int32_t mask = _mm256_movemask_pd(m) & bitMask;
 
 		return mask != 0;
 	}
