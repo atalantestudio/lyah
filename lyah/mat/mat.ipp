@@ -66,27 +66,27 @@ namespace lyah {
 		return a;
 	}
 
-	template<std::size_t C, std::size_t R, typename T>
-	LYAH_NODISCARD LYAH_INLINE mat<R, C, T> LYAH_CALL operator *(mat<R, C, T> a, T b) {
+	template<std::size_t M, std::size_t N, typename T>
+	LYAH_NODISCARD LYAH_INLINE mat<M, N, T> LYAH_CALL operator *(mat<M, N, T> a, T b) {
 		return a *= b;
 	}
 
-	template<std::size_t C, std::size_t R, typename T>
-	LYAH_NODISCARD LYAH_INLINE mat<R, C, T> LYAH_CALL operator *(T a, mat<R, C, T> b) {
+	template<std::size_t M, std::size_t N, typename T>
+	LYAH_NODISCARD LYAH_INLINE mat<M, N, T> LYAH_CALL operator *(T a, mat<M, N, T> b) {
 		return b *= a;
 	}
 
-	template<std::size_t R, std::size_t C, typename T>
-	LYAH_INLINE mat<R, C, T>& LYAH_CALL operator *=(mat<R, C, T>& a, T b) {
-		for (std::size_t i = 0; i < R; i += 1) {
+	template<std::size_t M, std::size_t N, typename T>
+	LYAH_INLINE mat<M, N, T>& LYAH_CALL operator *=(mat<M, N, T>& a, T b) {
+		for (std::size_t i = 0; i < M; i += 1) {
 			a[i] *= b;
 		}
 
 		return a;
 	}
 
-	template<std::size_t R, std::size_t C, typename T>
-	LYAH_INLINE mat<R, C, T>& LYAH_CALL operator *=(mat<R, C, T>& a, mat<R, C, T> b) {
+	template<std::size_t M, std::size_t N, typename T>
+	LYAH_INLINE mat<M, N, T>& LYAH_CALL operator *=(mat<M, N, T>& a, mat<M, N, T> b) {
 		return a = a * b;
 	}
 
