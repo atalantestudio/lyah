@@ -184,6 +184,7 @@
     <ClInclude Include="src\test\float32_trigonometric.hpp" />
     <ClInclude Include="src\test\vec2_m128.hpp" />
     <ClInclude Include="src\test\vec2_m128d.hpp" />
+    <ClInclude Include="src\test\vec2_m128i.hpp" />
     <ClInclude Include="src\test\vec3_m128.hpp" />
     <ClInclude Include="src\test\vec3_m256d.hpp" />
     <ClInclude Include="src\test\vec4_m128.hpp" />
