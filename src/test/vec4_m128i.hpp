@@ -134,30 +134,30 @@ namespace vec4_m128i {
 		test::assert(test::eq(result, expected));
 	}
 
-	/*void testVectorScalarMultiplication() {
-		const lyah::vec<4, std::double_t> expected = {3.0, 12.0, 18.0, -3.0};
-		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, -1.0};
-		const std::double_t b = 3.0;
+	void testVectorScalarMultiplication() {
+		const lyah::vec<4, std::int32_t> expected = {3, 12, 18, -3};
+		const lyah::vec<4, std::int32_t> a = {1, 4, 6, -1};
+		const std::int32_t b = 3;
 
-		const lyah::vec<4, std::double_t> result = a * b;
+		const lyah::vec<4, std::int32_t> result = a * b;
 
 		test::assert(test::eq(result, expected));
 	}
 
 	void testScalarVectorMultiplication() {
-		const lyah::vec<4, std::double_t> expected = {3.0, 12.0, 18.0, -3.0};
-		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, -1.0};
-		const std::double_t b = 3.0;
+		const lyah::vec<4, std::int32_t> expected = {3, 12, 18, -3};
+		const lyah::vec<4, std::int32_t> a = {1, 4, 6, -1};
+		const std::int32_t b = 3;
 
-		const lyah::vec<4, std::double_t> result = b * a;
+		const lyah::vec<4, std::int32_t> result = b * a;
 
 		test::assert(test::eq(result, expected));
 	}
 
 	void testVectorScalarMultiplicationAssignment() {
-		const lyah::vec<4, std::double_t> expected = {3.0, 12.0, 18.0, -3.0};
-		const std::double_t a = 3.0;
-		lyah::vec<4, std::double_t> result = {1.0, 4.0, 6.0, -1.0};
+		const lyah::vec<4, std::int32_t> expected = {3, 12, 18, -3};
+		const std::int32_t a = 3;
+		lyah::vec<4, std::int32_t> result = {1, 4, 6, -1};
 
 		result *= a;
 
@@ -165,290 +165,260 @@ namespace vec4_m128i {
 	}
 
 	void testVectorVectorMultiplication() {
-		const lyah::vec<4, std::double_t> expected = {5.0, 12.0, 12.0, -7.0};
-		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, -1.0};
-		const lyah::vec<4, std::double_t> b = {5.0, 3.0, 2.0, 7.0};
+		const lyah::vec<4, std::int32_t> expected = {5, 12, 12, -7};
+		const lyah::vec<4, std::int32_t> a = {1, 4, 6, -1};
+		const lyah::vec<4, std::int32_t> b = {5, 3, 2, 7};
 
-		const lyah::vec<4, std::double_t> result = a * b;
+		const lyah::vec<4, std::int32_t> result = a * b;
 
 		test::assert(test::eq(result, expected));
 	}
 
 	void testVectorVectorMultiplicationAssignment() {
-		const lyah::vec<4, std::double_t> expected = {5.0, 12.0, 12.0, -7.0};
-		const lyah::vec<4, std::double_t> a = {5.0, 3.0, 2.0, 7.0};
-		lyah::vec<4, std::double_t> result = {1.0, 4.0, 6.0, -1.0};
+		const lyah::vec<4, std::int32_t> expected = {5, 12, 12, -7};
+		const lyah::vec<4, std::int32_t> a = {5, 3, 2, 7};
+		lyah::vec<4, std::int32_t> result = {1, 4, 6, -1};
 
 		result *= a;
 
 		test::assert(test::eq(result, expected));
 	}
 
-	void testVectorMatrixMultiplication() {
-		const lyah::vec<4, std::double_t> expected = {19.0, -36.0, 19.0, 44.0};
-		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, -1.0};
-		const lyah::mat<4, 4, std::double_t> b = {
-			1.0,  4.0,  6.0, -1.0,
-			5.0,  3.0,  2.0,  7.0,
-			0.0, -8.0,  0.5,  3.0,
-			2.0,  4.0, -2.0,  1.0,
-		};
+	/*void testVectorScalarDivision() {
+		const lyah::vec<4, std::int32_t> expected = {0.333, 1.333, 2, -0.333};
+		const lyah::vec<4, std::int32_t> a = {1, 4, 6, -1};
+		const std::int32_t b = 3;
 
-		const lyah::vec<4, std::double_t> result = a * b;
+		const lyah::vec<4, std::int32_t> result = a / b;
 
-		test::assert(test::eq(result, expected));
-	}
-
-	void testVectorMatrixMultiplicationAssignment() {
-		const lyah::vec<4, std::double_t> expected = {19.0, -36.0, 19.0, 44.0};
-		const lyah::mat<4, 4, std::double_t> a = {
-			1.0,  4.0,  6.0, -1.0,
-			5.0,  3.0,  2.0,  7.0,
-			0.0, -8.0,  0.5,  3.0,
-			2.0,  4.0, -2.0,  1.0,
-		};
-		lyah::vec<4, std::double_t> result = {1.0, 4.0, 6.0, -1.0};
-
-		result *= a;
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testVectorScalarDivision() {
-		const lyah::vec<4, std::double_t> expected = {0.333, 1.333, 2.0, -0.333};
-		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, -1.0};
-		const std::double_t b = 3.0;
-
-		const lyah::vec<4, std::double_t> result = a / b;
-
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}
 
 	void testScalarVectorDivision() {
-		const lyah::vec<4, std::double_t> expected = {lyah::infinity<std::double_t>(), 0.75, 0.5, -3.0};
-		const lyah::vec<4, std::double_t> a = {0.0, 4.0, 6.0, -1.0};
-		const std::double_t b = 3.0;
+		const lyah::vec<4, std::int32_t> expected = {lyah::infinity<std::int32_t>(), 0.75, 0.5, -3};
+		const lyah::vec<4, std::int32_t> a = {0, 4, 6, -1};
+		const std::int32_t b = 3;
 
-		const lyah::vec<4, std::double_t> result = b / a;
+		const lyah::vec<4, std::int32_t> result = b / a;
 
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}
 
 	void testVectorScalarDivisionAssignment() {
-		const lyah::vec<4, std::double_t> expected = {0.333, 1.333, 2.0, -0.333};
-		const std::double_t a = 3.0;
-		lyah::vec<4, std::double_t> result = {1.0, 4.0, 6.0, -1.0};
+		const lyah::vec<4, std::int32_t> expected = {0.333, 1.333, 2, -0.333};
+		const std::int32_t a = 3;
+		lyah::vec<4, std::int32_t> result = {1, 4, 6, -1};
 
 		result /= a;
 
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}
 
 	void testVectorVectorDivision() {
-		const lyah::vec<4, std::double_t> expected = {lyah::infinity<std::double_t>(), 1.333, 3.0, -0.143};
-		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, -1.0};
-		const lyah::vec<4, std::double_t> b = {0.0, 3.0, 2.0, 7.0};
+		const lyah::vec<4, std::int32_t> expected = {lyah::infinity<std::int32_t>(), 1.333, 3, -0.143};
+		const lyah::vec<4, std::int32_t> a = {1, 4, 6, -1};
+		const lyah::vec<4, std::int32_t> b = {0, 3, 2, 7};
 
-		const lyah::vec<4, std::double_t> result = a / b;
+		const lyah::vec<4, std::int32_t> result = a / b;
 
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}
 
 	void testVectorVectorDivisionAssignment() {
-		const lyah::vec<4, std::double_t> expected = {lyah::infinity<std::double_t>(), 1.333, 3.0, -0.143};
-		const lyah::vec<4, std::double_t> a = {0.0, 3.0, 2.0, 7.0};
-		lyah::vec<4, std::double_t> result = {1.0, 4.0, 6.0, -1.0};
+		const lyah::vec<4, std::int32_t> expected = {lyah::infinity<std::int32_t>(), 1.333, 3, -0.143};
+		const lyah::vec<4, std::int32_t> a = {0, 3, 2, 7};
+		lyah::vec<4, std::int32_t> result = {1, 4, 6, -1};
 
 		result /= a;
 
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}
 
 	void testFloor() {
-		const lyah::vec<4, std::double_t> expected = {1.0, 4.0, 6.0, -1.0};
-		const lyah::vec<4, std::double_t> a = {1.999, 4.0, 6.111, -0.5};
+		const lyah::vec<4, std::int32_t> expected = {1, 4, 6, -1};
+		const lyah::vec<4, std::int32_t> a = {1.999, 4, 6.111, -0.5};
 
-		const lyah::vec<4, std::double_t> result = lyah::floor(a);
+		const lyah::vec<4, std::int32_t> result = lyah::floor(a);
 
 		test::assert(test::eq(result, expected));
 	}
 
 	void testCeil() {
-		const lyah::vec<4, std::double_t> expected = {1.0, 4.0, 6.0, -1.0};
-		const lyah::vec<4, std::double_t> a = {0.999, 4.0, 5.111, -1.5};
+		const lyah::vec<4, std::int32_t> expected = {1, 4, 6, -1};
+		const lyah::vec<4, std::int32_t> a = {0.999, 4, 5.111, -1.5};
 
-		const lyah::vec<4, std::double_t> result = lyah::ceil(a);
+		const lyah::vec<4, std::int32_t> result = lyah::ceil(a);
 
 		test::assert(test::eq(result, expected));
 	}
 
 	void testRound() {
-		const lyah::vec<4, std::double_t> expected = {1.0, 4.0, 7.0, 0.0};
-		const lyah::vec<4, std::double_t> a = {1.3279, 4.007, 6.897, -0.5};
+		const lyah::vec<4, std::int32_t> expected = {1, 4, 7, 0};
+		const lyah::vec<4, std::int32_t> a = {1.3279, 407, 6.897, -0.5};
 
-		const lyah::vec<4, std::double_t> result = lyah::round(a);
+		const lyah::vec<4, std::int32_t> result = lyah::round(a);
 
 		test::assert(test::eq(result, expected));
 	}
 
 	void testVerticalMax() {
-		const lyah::vec<4, std::double_t> expected = {5.0, 4.0, 6.0, 7.0};
-		const lyah::vec<4, std::double_t> a = {5.0, 3.0, 2.0, 7.0};
-		const lyah::vec<4, std::double_t> b = {1.0, 4.0, 6.0, 2.0};
+		const lyah::vec<4, std::int32_t> expected = {5, 4, 6, 7};
+		const lyah::vec<4, std::int32_t> a = {5, 3, 2, 7};
+		const lyah::vec<4, std::int32_t> b = {1, 4, 6, 2};
 
-		const lyah::vec<4, std::double_t> result = lyah::max(a, b);
+		const lyah::vec<4, std::int32_t> result = lyah::max(a, b);
 
 		test::assert(test::eq(result, expected));
 	}
 
 	void testVerticalMin() {
-		const lyah::vec<4, std::double_t> expected = {1.0, 3.0, 2.0, 2.0};
-		const lyah::vec<4, std::double_t> a = {5.0, 3.0, 2.0, 7.0};
-		const lyah::vec<4, std::double_t> b = {1.0, 4.0, 6.0, 2.0};
+		const lyah::vec<4, std::int32_t> expected = {1, 3, 2, 2};
+		const lyah::vec<4, std::int32_t> a = {5, 3, 2, 7};
+		const lyah::vec<4, std::int32_t> b = {1, 4, 6, 2};
 
-		const lyah::vec<4, std::double_t> result = lyah::min(a, b);
+		const lyah::vec<4, std::int32_t> result = lyah::min(a, b);
 
 		test::assert(test::eq(result, expected));
 	}
 
 	void testLerp() {
-		const lyah::vec<4, std::double_t> expected = {2.2, 3.7, 4.8, 1.4};
-		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, -1.0};
-		const lyah::vec<4, std::double_t> b = {5.0, 3.0, 2.0, 7.0};
-		const std::double_t t = 0.3;
+		const lyah::vec<4, std::int32_t> expected = {2.2, 3.7, 4.8, 1.4};
+		const lyah::vec<4, std::int32_t> a = {1, 4, 6, -1};
+		const lyah::vec<4, std::int32_t> b = {5, 3, 2, 7};
+		const std::int32_t t = 0.3;
 
-		const lyah::vec<4, std::double_t> result = lyah::lerp(a, b, t);
+		const lyah::vec<4, std::int32_t> result = lyah::lerp(a, b, t);
 
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}
 
 	void testSum() {
-		const std::double_t expected = 13.0;
-		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, 2.0};
+		const std::int32_t expected = 13;
+		const lyah::vec<4, std::int32_t> a = {1, 4, 6, 2};
 
-		const std::double_t result = lyah::sum(a);
+		const std::int32_t result = lyah::sum(a);
 
 		test::assert(test::eq(result, expected));
 	}
 
 	void testPow() {
-		const lyah::vec<4, std::double_t> expected = {1.0, 64.0, 36.0, -1.0};
-		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, -1.0};
-		const lyah::vec<4, std::double_t> b = {5.0, 3.0, 2.0, 7.0};
+		const lyah::vec<4, std::int32_t> expected = {1, 64, 36, -1};
+		const lyah::vec<4, std::int32_t> a = {1, 4, 6, -1};
+		const lyah::vec<4, std::int32_t> b = {5, 3, 2, 7};
 
-		const lyah::vec<4, std::double_t> result = lyah::pow(a, b);
+		const lyah::vec<4, std::int32_t> result = lyah::pow(a, b);
 
 		test::assert(test::eq(result, expected));
 	}
 
 	void testRcp() {
-		const lyah::vec<4, std::double_t> expected = {lyah::infinity<std::double_t>(), 0.25, 0.167, -1.0};
-		const lyah::vec<4, std::double_t> a = {0.0, 4.0, 6.0, -1.0};
+		const lyah::vec<4, std::int32_t> expected = {lyah::infinity<std::int32_t>(), 0.25, 0.167, -1};
+		const lyah::vec<4, std::int32_t> a = {0, 4, 6, -1};
 
-		const lyah::vec<4, std::double_t> result = lyah::rcp(a);
+		const lyah::vec<4, std::int32_t> result = lyah::rcp(a);
 
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}
 
 	void testSqrt() {
-		const lyah::vec<4, std::double_t> expected = {1.0, 2.0, 2.449, 0.707};
-		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, 0.5};
+		const lyah::vec<4, std::int32_t> expected = {1, 2, 2.449, 0.707};
+		const lyah::vec<4, std::int32_t> a = {1, 4, 6, 0.5};
 
-		const lyah::vec<4, std::double_t> result = lyah::sqrt(a);
+		const lyah::vec<4, std::int32_t> result = lyah::sqrt(a);
 
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}
 
 	void testRsqrt() {
-		const lyah::vec<4, std::double_t> expected = {1.0, 0.5, 0.408, 1.414};
-		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, 0.5};
+		const lyah::vec<4, std::int32_t> expected = {1, 0.5, 0.408, 1.414};
+		const lyah::vec<4, std::int32_t> a = {1, 4, 6, 0.5};
 
-		const lyah::vec<4, std::double_t> result = lyah::rsqrt(a);
+		const lyah::vec<4, std::int32_t> result = lyah::rsqrt(a);
 
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}
 
 	void testDotProduct() {
-		const std::double_t expected = 22.0;
-		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, -1.0};
-		const lyah::vec<4, std::double_t> b = {5.0, 3.0, 2.0, 7.0};
+		const std::int32_t expected = 22;
+		const lyah::vec<4, std::int32_t> a = {1, 4, 6, -1};
+		const lyah::vec<4, std::int32_t> b = {5, 3, 2, 7};
 
-		const std::double_t result = lyah::dot(a, b);
+		const std::int32_t result = lyah::dot(a, b);
 
 		test::assert(test::eq(result, expected));
 	}
 
 	void testLength() {
-		const std::double_t expected = 7.348;
-		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, -1.0};
+		const std::int32_t expected = 7.348;
+		const lyah::vec<4, std::int32_t> a = {1, 4, 6, -1};
 
-		const std::double_t result = lyah::length(a);
+		const std::int32_t result = lyah::length(a);
 
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}
 
 	void testDistance() {
-		const std::double_t expected = 9.849;
-		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, -1.0};
-		const lyah::vec<4, std::double_t> b = {5.0, 3.0, 2.0, 7.0};
+		const std::int32_t expected = 9.849;
+		const lyah::vec<4, std::int32_t> a = {1, 4, 6, -1};
+		const lyah::vec<4, std::int32_t> b = {5, 3, 2, 7};
 
-		const std::double_t result = lyah::distance(a, b);
+		const std::int32_t result = lyah::distance(a, b);
 
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}
 
 	void testNormalization() {
-		const lyah::vec<4, std::double_t> expected = {0.136, 0.544, 0.816, -0.136};
-		const lyah::vec<4, std::double_t> a = {1.0, 4.0, 6.0, -1.0};
+		const lyah::vec<4, std::int32_t> expected = {0.136, 0.544, 0.816, -0.136};
+		const lyah::vec<4, std::int32_t> a = {1, 4, 6, -1};
 
-		const lyah::vec<4, std::double_t> result = lyah::normalized(a);
+		const lyah::vec<4, std::int32_t> result = lyah::normalized(a);
 
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}
 
 	void testDegrees() {
-		const lyah::vec<4, std::double_t> expected = {180.0, -45.0, 0.0, 360.0};
-		const lyah::vec<4, std::double_t> a = {lyah::pi<std::double_t>(), -lyah::pi<std::double_t>() * 0.25, 0.0, 2.0 * lyah::pi<std::double_t>()};
+		const lyah::vec<4, std::int32_t> expected = {180, -45, 0, 360};
+		const lyah::vec<4, std::int32_t> a = {lyah::pi<std::int32_t>(), -lyah::pi<std::int32_t>() * 0.25, 0, 2 * lyah::pi<std::int32_t>()};
 
-		const lyah::vec<4, std::double_t> result = lyah::degrees(a);
+		const lyah::vec<4, std::int32_t> result = lyah::degrees(a);
 
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}
 
 	void testRadians() {
-		const lyah::vec<4, std::double_t> expected = {lyah::pi<std::double_t>(), -lyah::pi<std::double_t>() * 0.25, 0.0, 2.0 * lyah::pi<std::double_t>()};
-		const lyah::vec<4, std::double_t> a = {180.0, -45.0, 0.0, 360.0};
+		const lyah::vec<4, std::int32_t> expected = {lyah::pi<std::int32_t>(), -lyah::pi<std::int32_t>() * 0.25, 0, 2 * lyah::pi<std::int32_t>()};
+		const lyah::vec<4, std::int32_t> a = {180, -45, 0, 360};
 
-		const lyah::vec<4, std::double_t> result = lyah::radians(a);
+		const lyah::vec<4, std::int32_t> result = lyah::radians(a);
 
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}
 
 	void testSin() {
-		const lyah::vec<4, std::double_t> expected = {0.841, 0.479, 0.894, 0.0};
-		const lyah::vec<4, std::double_t> a = {1.0, 0.5, 90.0, 0.0};
+		const lyah::vec<4, std::int32_t> expected = {0.841, 0.479, 0.894, 0};
+		const lyah::vec<4, std::int32_t> a = {1, 0.5, 90, 0};
 
-		const lyah::vec<4, std::double_t> result = lyah::sin(a);
+		const lyah::vec<4, std::int32_t> result = lyah::sin(a);
 
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}
 
 	void testCos() {
-		const lyah::vec<4, std::double_t> expected = {0.540, 0.878, -0.448, 1.0};
-		const lyah::vec<4, std::double_t> a = {1.0, 0.5, 90.0, 0.0};
+		const lyah::vec<4, std::int32_t> expected = {0.540, 0.878, -0.448, 1};
+		const lyah::vec<4, std::int32_t> a = {1, 0.5, 90, 0};
 
-		const lyah::vec<4, std::double_t> result = lyah::cos(a);
+		const lyah::vec<4, std::int32_t> result = lyah::cos(a);
 
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}
 
 	void testTan() {
-		const lyah::vec<4, std::double_t> expected = {1.557, 0.546, -1.995, 0.0};
-		const lyah::vec<4, std::double_t> a = {1.0, 0.5, 90.0, 0.0};
+		const lyah::vec<4, std::int32_t> expected = {1.557, 0.546, -1.995, 0};
+		const lyah::vec<4, std::int32_t> a = {1, 0.5, 90, 0};
 
-		const lyah::vec<4, std::double_t> result = lyah::tan(a);
+		const lyah::vec<4, std::int32_t> result = lyah::tan(a);
 
-		test::assert(test::eq(result, expected, 0.001));
+		test::assert(test::eq(result, expected, 001));
 	}*/
 
 	void runAll() {
@@ -472,15 +442,13 @@ namespace vec4_m128i {
 		test::runTest(&testSubtraction, "Subtraction (-)");
 		test::runTest(&testSubtractionAssignment, "Subtraction assignment (-=)");
 
-		/*test::runTest(&testVectorScalarMultiplication, "Vector-scalar multiplication (*)");
+		test::runTest(&testVectorScalarMultiplication, "Vector-scalar multiplication (*)");
 		test::runTest(&testScalarVectorMultiplication, "Scalar-vector multiplication (*)");
 		test::runTest(&testVectorScalarMultiplicationAssignment, "Vector-scalar multiplication assignment (*=)");
 		test::runTest(&testVectorVectorMultiplication, "Vector-vector multiplication (*)");
 		test::runTest(&testVectorVectorMultiplicationAssignment, "Vector-vector multiplication assignment (*=)");
-		test::runTest(&testVectorMatrixMultiplication, "Vector-matrix multiplication (*)");
-		test::runTest(&testVectorMatrixMultiplicationAssignment, "Vector-matrix multiplication assignment (*=)");
 
-		test::runTest(&testVectorScalarDivision, "Vector-scalar division (/)");
+		/*test::runTest(&testVectorScalarDivision, "Vector-scalar division (/)");
 		test::runTest(&testScalarVectorDivision, "Scalar-vector division (/)");
 		test::runTest(&testVectorScalarDivisionAssignment, "Vector-scalar division assignment (/=)");
 		test::runTest(&testVectorVectorDivision, "Vector-vector division (/)");
