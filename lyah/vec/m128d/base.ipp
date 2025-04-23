@@ -38,13 +38,6 @@ namespace lyah {
 	}
 
 	// NOTE: SSE2
-	LYAH_INLINE vec<2, std::double_t>& LYAH_CALL operator *=(vec<2, std::double_t>& a, std::double_t b) {
-		a.m = _mm_mul_pd(a.m, _mm_set1_pd(b));
-
-		return a;
-	}
-
-	// NOTE: SSE2
 	LYAH_INLINE vec<2, std::double_t>& LYAH_CALL operator *=(vec<2, std::double_t>& a, vec<2, std::double_t> b) {
 		a.m = _mm_mul_pd(a.m, b.m);
 
