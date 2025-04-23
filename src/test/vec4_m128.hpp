@@ -329,11 +329,22 @@ namespace vec4_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testLerp() {
+	void testLerpScalarInterpolator() {
 		const lyah::vec<4, std::float_t> expected = {2.2f, 3.7f, 4.8f, 1.4f};
 		const lyah::vec<4, std::float_t> a = {1.0f, 4.0f, 6.0f, -1.0f};
 		const lyah::vec<4, std::float_t> b = {5.0f, 3.0f, 2.0f, 7.0f};
 		const std::float_t t = 0.3f;
+
+		const lyah::vec<4, std::float_t> result = lyah::lerp(a, b, t);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testLerpVectorInterpolator() {
+		const lyah::vec<4, std::float_t> expected = {2.2f, 3.7f, 4.8f, 1.4f};
+		const lyah::vec<4, std::float_t> a = {1.0f, 4.0f, 6.0f, -1.0f};
+		const lyah::vec<4, std::float_t> b = {5.0f, 3.0f, 2.0f, 7.0f};
+		const lyah::vec<4, std::float_t> t(0.3f);
 
 		const lyah::vec<4, std::float_t> result = lyah::lerp(a, b, t);
 
@@ -511,7 +522,8 @@ namespace vec4_m128 {
 		// test::runTest(&testSign, "Sign");
 		test::runTest(&testVerticalMax, "Vertical max");
 		test::runTest(&testVerticalMin, "Vertical min");
-		test::runTest(&testLerp, "Linear interpolation");
+		test::runTest(&testLerpScalarInterpolator, "Linear interpolation (scalar interpolator)");
+		test::runTest(&testLerpVectorInterpolator, "Linear interpolation (vector interpolator)");
 		test::runTest(&testSum, "Sum");
 
 		test::runTest(&testPow, "Power");

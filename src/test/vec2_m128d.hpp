@@ -319,11 +319,22 @@ namespace vec2_m128d {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testLerp() {
+	void testLerpScalarInterpolator() {
 		const lyah::vec<2, std::double_t> expected = {2.2, 3.7};
 		const lyah::vec<2, std::double_t> a = {1.0, 4.0};
 		const lyah::vec<2, std::double_t> b = {5.0, 3.0};
 		const std::double_t t = 0.3;
+
+		const lyah::vec<2, std::double_t> result = lyah::lerp(a, b, t);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
+	void testLerpVectorInterpolator() {
+		const lyah::vec<2, std::double_t> expected = {2.2, 3.7};
+		const lyah::vec<2, std::double_t> a = {1.0, 4.0};
+		const lyah::vec<2, std::double_t> b = {5.0, 3.0};
+		const lyah::vec<2, std::double_t> t(0.3);
 
 		const lyah::vec<2, std::double_t> result = lyah::lerp(a, b, t);
 
@@ -501,7 +512,8 @@ namespace vec2_m128d {
 		// test::runTest(&testHorizontalMin, "Horizontal min");
 		test::runTest(&testVerticalMax, "Vertical max");
 		test::runTest(&testVerticalMin, "Vertical min");
-		test::runTest(&testLerp, "Linear interpolation");
+		test::runTest(&testLerpScalarInterpolator, "Linear interpolation (scalar interpolator)");
+		test::runTest(&testLerpVectorInterpolator, "Linear interpolation (vector interpolator)");
 		test::runTest(&testSum, "Sum");
 
 		test::runTest(&testPow, "Power");
