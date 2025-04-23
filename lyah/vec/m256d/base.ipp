@@ -76,14 +76,6 @@ namespace lyah {
 
 	// NOTE: AVX
 	template<std::size_t C>
-	LYAH_NODISCARD LYAH_INLINE vec<C, std::double_t> LYAH_CALL operator /(std::double_t a, vec<C, std::double_t> b) {
-		b.m = _mm256_div_pd(_mm256_set1_pd(a), b.m);
-
-		return b;
-	}
-
-	// NOTE: AVX
-	template<std::size_t C>
 	LYAH_INLINE vec<C, std::double_t>& LYAH_CALL operator /=(vec<C, std::double_t>& a, vec<C, std::double_t> b) {
 		a.m = _mm256_div_pd(a.m, b.m);
 

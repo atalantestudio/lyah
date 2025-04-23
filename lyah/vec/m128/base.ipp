@@ -78,14 +78,6 @@ namespace lyah {
 
 	// NOTE: SSE
 	template<std::size_t C>
-	LYAH_NODISCARD LYAH_INLINE vec<C, std::float_t> LYAH_CALL operator /(std::float_t a, vec<C, std::float_t> b) {
-		b.m = _mm_div_ps(_mm_set1_ps(a), b.m);
-
-		return b;
-	}
-
-	// NOTE: SSE
-	template<std::size_t C>
 	LYAH_INLINE vec<C, std::float_t>& LYAH_CALL operator /=(vec<C, std::float_t>& a, vec<C, std::float_t> b) {
 		a.m = _mm_div_ps(a.m, b.m);
 

@@ -67,8 +67,15 @@ namespace lyah {
 	}
 
 	template<std::size_t C, typename T>
+	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator /(T a, vec<C, T> b) {
+		return vec<C, T>(a) / b;
+	}
+
+	template<std::size_t C, typename T>
 	LYAH_INLINE vec<C, T>& LYAH_CALL operator /=(vec<C, T>& a, T b) {
-		return a *= static_cast<T>(1) / b;
+		a = a / vec<C, T>(b);
+
+		return a;
 	}
 
 	template<std::size_t C, typename T>

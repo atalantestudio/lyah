@@ -48,8 +48,8 @@ namespace lyah {
 		return a;
 	}
 
+	// This operation is only done on the low 32-bit signed integers of the 64-bit elements.
 	// NOTE: AVX2
-	// NOTE: The multiplication is only done on the low 32-bit signed integers of the 64-bit elements.
 	template<std::size_t C>
 	LYAH_INLINE vec<C, std::int64_t>& LYAH_CALL operator *=(vec<C, std::int64_t>& a, vec<C, std::int64_t> b) {
 		a.m = _mm256_mul_epi32(a.m, b.m);
