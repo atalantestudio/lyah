@@ -2,7 +2,6 @@
 // Licensed under the MIT License.
 
 namespace lyah {
-	// TODO: Apply bitmask.
 	// NOTE: AVX2
 	// https://stackoverflow.com/a/26881190/17136841
 	template<std::size_t C>
@@ -13,7 +12,6 @@ namespace lyah {
 		return mask == -1;
 	}
 
-	// TODO: Apply bitmask.
 	// NOTE: AVX2
 	// https://stackoverflow.com/a/26881190/17136841
 	template<std::size_t C>
