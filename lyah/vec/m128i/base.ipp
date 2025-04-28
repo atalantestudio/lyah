@@ -10,7 +10,6 @@ namespace lyah {
 		return mask == 0xffff;
 	}
 
-	// TODO: Apply bitmask.
 	// NOTE: SSE2
 	// https://stackoverflow.com/a/26881190/17136841
 	template<std::size_t C>
@@ -29,7 +28,6 @@ namespace lyah {
 		return mask != 0xffff;
 	}
 
-	// TODO: Apply bitmask.
 	// NOTE: SSE2
 	// https://stackoverflow.com/a/26881190/17136841
 	template<std::size_t C>
