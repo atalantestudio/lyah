@@ -11,28 +11,28 @@ namespace lyah {
 		// x * y + z * w    x * x - z * z    y * z - x * w
 		// x * z - y * w    y * z + x * w    x * x - y * y
 
-		__m128 m0_sign = _mm_set_ps(0.0f,  0.0f, -0.0f,  0.0f);
-		__m128 m1_sign = _mm_set_ps(0.0f, -0.0f,  0.0f,  0.0f);
-		__m128 m2_sign = _mm_set_ss(-0.0f);
+		const __m128 m0_sign = _mm_set_ps(0.0f,  0.0f, -0.0f,  0.0f);
+		const __m128 m1_sign = _mm_set_ps(0.0f, -0.0f,  0.0f,  0.0f);
+		const __m128 m2_sign = _mm_set_ss(-0.0f);
 
-		__m128 m0_diagsign = _mm_set_ss(-0.0f);
-		__m128 m1_diagsign = _mm_set_ps(0.0f,  0.0f, -0.0f,  0.0f);
-		__m128 m2_diagsign = _mm_set_ps(0.0f, -0.0f,  0.0f,  0.0f);
+		const __m128 m0_diagsign = _mm_set_ss(-0.0f);
+		const __m128 m1_diagsign = _mm_set_ps(0.0f,  0.0f, -0.0f,  0.0f);
+		const __m128 m2_diagsign = _mm_set_ps(0.0f, -0.0f,  0.0f,  0.0f);
 
-		__m128 m00 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 1, 1, 2));
-		__m128 m01 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 3, 2, 2));
-		__m128 m02 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 2, 3, 3));
-		__m128 m03 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 0, 0, 3));
+		const __m128 m00 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 1, 1, 2));
+		const __m128 m01 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 3, 2, 2));
+		const __m128 m02 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 2, 3, 3));
+		const __m128 m03 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 0, 0, 3));
 
-		__m128 m10 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 2, 1, 1));
-		__m128 m11 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 3, 1, 2));
-		__m128 m12 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 1, 3, 3));
-		__m128 m13 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 0, 3, 0));
+		const __m128 m10 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 2, 1, 1));
+		const __m128 m11 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 3, 1, 2));
+		const __m128 m12 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 1, 3, 3));
+		const __m128 m13 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 0, 3, 0));
 
-		__m128 m20 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 1, 2, 1));
-		__m128 m21 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 1, 3, 3));
-		__m128 m22 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 2, 1, 2));
-		__m128 m23 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 2, 0, 0));
+		const __m128 m20 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 1, 2, 1));
+		const __m128 m21 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 1, 3, 3));
+		const __m128 m22 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 2, 1, 2));
+		const __m128 m23 = _mm_shuffle_ps(a.m, a.m, _MM_SHUFFLE(0, 2, 0, 0));
 
 		__m128 m0 = _mm_add_ps(_mm_mul_ps(m00, m01), _mm_xor_ps(_mm_mul_ps(m02, m03), m0_sign));
 		__m128 m1 = _mm_add_ps(_mm_mul_ps(m10, m11), _mm_xor_ps(_mm_mul_ps(m12, m13), m1_sign));
@@ -48,7 +48,7 @@ namespace lyah {
 		m1 = _mm_and_ps(m1, internal::vec_t<3, std::float_t>::hmask());
 		m2 = _mm_and_ps(m2, internal::vec_t<3, std::float_t>::hmask());
 
-		mat<4, 4, std::float_t> R = 2.0f * mat<4, 4, std::float_t>(
+		const mat<4, 4, std::float_t> R = 2.0f * mat<4, 4, std::float_t>(
 			vec<4, std::float_t>(m0),
 			vec<4, std::float_t>(m1),
 			vec<4, std::float_t>(m2),
@@ -183,19 +183,19 @@ namespace lyah {
 		// DEF = (b  a  a  0) * (i  i  h  0) - (c  c  b  0) * (h  g  g  0)
 		// GHI = (b  a  a  0) * (f  f  e  0) - (c  c  b  0) * (e  d  d  0)
 
-		__m128 m0 = a[0].m;
-		__m128 m1 = a[1].m;
-		__m128 m2 = a[2].m;
+		const __m128 m0 = a[0].m;
+		const __m128 m1 = a[1].m;
+		const __m128 m2 = a[2].m;
 
-		__m128 ABC_GHI_sign = _mm_set_ps(0.0f, 0.0f, -0.0f, 0.0f);
-		__m128 DEF_sign = _mm_set_ps(0.0f, -0.0f, 0.0f, -0.0f);
+		const __m128 ABC_GHI_sign = _mm_set_ps(0.0f, 0.0f, -0.0f, 0.0f);
+		const __m128 DEF_sign = _mm_set_ps(0.0f, -0.0f, 0.0f, -0.0f);
 
-		__m128 baa = _mm_shuffle_ps(m0, m0, _MM_SHUFFLE(0, 0, 0, 1));
-		__m128 ccb = _mm_shuffle_ps(m0, m0, _MM_SHUFFLE(0, 1, 2, 2));
-		__m128 edd = _mm_shuffle_ps(m1, m1, _MM_SHUFFLE(0, 0, 0, 1));
-		__m128 ffe = _mm_shuffle_ps(m1, m1, _MM_SHUFFLE(0, 1, 2, 2));
-		__m128 hgg = _mm_shuffle_ps(m2, m2, _MM_SHUFFLE(0, 0, 0, 1));
-		__m128 iih = _mm_shuffle_ps(m2, m2, _MM_SHUFFLE(0, 1, 2, 2));
+		const __m128 baa = _mm_shuffle_ps(m0, m0, _MM_SHUFFLE(0, 0, 0, 1));
+		const __m128 ccb = _mm_shuffle_ps(m0, m0, _MM_SHUFFLE(0, 1, 2, 2));
+		const __m128 edd = _mm_shuffle_ps(m1, m1, _MM_SHUFFLE(0, 0, 0, 1));
+		const __m128 ffe = _mm_shuffle_ps(m1, m1, _MM_SHUFFLE(0, 1, 2, 2));
+		const __m128 hgg = _mm_shuffle_ps(m2, m2, _MM_SHUFFLE(0, 0, 0, 1));
+		const __m128 iih = _mm_shuffle_ps(m2, m2, _MM_SHUFFLE(0, 1, 2, 2));
 
 		__m128 ABC = _mm_sub_ps(_mm_mul_ps(edd, iih), _mm_mul_ps(ffe, hgg));
 		__m128 DEF = _mm_sub_ps(_mm_mul_ps(baa, iih), _mm_mul_ps(ccb, hgg));
