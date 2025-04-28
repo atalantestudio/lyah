@@ -12,6 +12,7 @@ namespace lyah {
 
 		template<>
 		struct quat_t<std::float_t> {
+			// NOTE: SSE
 			using m_t = __m128;
 
 			// NOTE: SSE
@@ -31,6 +32,7 @@ namespace lyah {
 
 		template<>
 		struct quat_t<std::double_t> {
+			// NOTE: AVX
 			using m_t = __m256d;
 
 			// NOTE: AVX
@@ -53,11 +55,13 @@ namespace lyah {
 
 		template<>
 		struct vec_t<2, std::float_t> {
+			// NOTE: SSE
 			using m_t = __m128;
 		};
 
 		template<>
 		struct vec_t<3, std::float_t> {
+			// NOTE: SSE
 			using m_t = __m128;
 
 			// NOTE: SSE2
@@ -70,16 +74,19 @@ namespace lyah {
 
 		template<>
 		struct vec_t<4, std::float_t> {
+			// NOTE: SSE
 			using m_t = __m128;
 		};
 
 		template<>
 		struct vec_t<2, std::double_t> {
+			// NOTE: SSE2
 			using m_t = __m128d;
 		};
 
 		template<>
 		struct vec_t<3, std::double_t> {
+			// NOTE: AVX
 			using m_t = __m256d;
 
 			// NOTE: AVX
@@ -92,21 +99,25 @@ namespace lyah {
 
 		template<>
 		struct vec_t<4, std::double_t> {
+			// NOTE: AVX
 			using m_t = __m256d;
 		};
 
 		template<>
 		struct vec_t<4, std::int32_t> {
+			// NOTE: SSE2
 			using m_t = __m128i;
 		};
 
 		template<>
 		struct vec_t<2, std::int64_t> {
+			// NOTE: SSE2
 			using m_t = __m128i;
 		};
 
 		template<>
 		struct vec_t<4, std::int64_t> {
+			// NOTE: AVX
 			using m_t = __m256i;
 		};
 	}

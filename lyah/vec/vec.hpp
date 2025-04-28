@@ -4,11 +4,9 @@
 #pragma once
 
 namespace lyah {
-	// fwd
 	template<std::size_t M, std::size_t N, typename T>
 	struct mat;
 
-	// fwd
 	template<typename T>
 	struct quat;
 
