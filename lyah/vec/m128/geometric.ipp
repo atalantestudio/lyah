@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 namespace lyah {
+	// NOTE: SSE
 	// http://www.codersnotes.com/notes/maths-lib-2016
 	// https://geometrian.com/programming/tutorials/cross-product/index.php
 	LYAH_NODISCARD LYAH_INLINE vec<3, std::float_t> LYAH_CALL cross(vec<3, std::float_t> a, vec<3, std::float_t> b) {

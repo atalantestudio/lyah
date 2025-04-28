@@ -26,8 +26,8 @@ namespace lyah {
 			};
 		}
 
-		// NOTE: Axis must be already normalized.
-		// NOTE: Angle must be given in radians.
+		// axis is assumed to be normalized.
+		// angle is in radians.
 		LYAH_NODISCARD LYAH_INLINE static mat<4, 4, T> LYAH_CALL rotation(vec<3, T> axis, T angle) {
 			const T cosAngle = cos(angle);
 			const T sinAngle = sin(angle);
@@ -50,7 +50,7 @@ namespace lyah {
 			};
 		}
 
-		// NOTE: Returns a left-handed matrix.
+		// Returns a left-handed matrix.
 		LYAH_NODISCARD LYAH_INLINE static mat<4, 4, T> LYAH_CALL orthographic(T left, T right, T bottom, T top, T near, T far) {
 			const vec<4, T> m0 = vec<4, T>(static_cast<T>(2), static_cast<T>(0), static_cast<T>(0), -(left + right)) / (right - left);
 			const vec<4, T> m1 = vec<4, T>(static_cast<T>(0), static_cast<T>(2), static_cast<T>(0), -(bottom + top)) / (top - bottom);
@@ -60,7 +60,7 @@ namespace lyah {
 			return {m0, m1, m2, m3};
 		}
 
-		// NOTE: Returns a left-handed matrix.
+		// Returns a left-handed matrix.
 		LYAH_NODISCARD LYAH_INLINE static mat<4, 4, T> LYAH_CALL lookAt(vec<3, T> eye, vec<3, T> center, vec<3, T> up) {
 			const vec<3, T> f = normalized(center - eye);
 			const vec<3, T> r = normalized(cross(up, f));
@@ -92,8 +92,8 @@ namespace lyah {
 
 		LYAH_NODISCARD LYAH_INLINE mat(vec<4, T> m0, vec<4, T> m1, vec<4, T> m2, vec<4, T> m3) : m{m0, m1, m2, m3} {}
 
-		// Returns a rotation matrix computed from the quaternion a.
-		// NOTE: Assumes a is normalized.
+		// Returns a rotation matrix computed from a.
+		// a is assumed to be normalized.
 		LYAH_NODISCARD explicit mat(quat<T> a);
 
 		template<typename U>
