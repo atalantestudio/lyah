@@ -6,7 +6,7 @@ namespace lyah {
 	// https://stackoverflow.com/a/6042506
 	template<std::size_t C>
 	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator ==(vec<C, std::float_t> a, vec<C, std::float_t> b) {
-		static LYAH_CONSTEXPR_CPP26 const std::int32_t bitMask = static_cast<std::int32_t>(pow(2, C)) - 1;
+		static LYAH_CONSTEXPR_CPP26 const std::int32_t bitMask = static_cast<std::int32_t>(pow(2.0f, static_cast<std::float_t>(C))) - 1;
 
 		const __m128 m = _mm_cmpneq_ps(a.m, b.m);
 		const std::int32_t mask = _mm_movemask_ps(m) & bitMask;
@@ -18,7 +18,7 @@ namespace lyah {
 	// https://stackoverflow.com/a/6042506
 	template<std::size_t C>
 	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator !=(vec<C, std::float_t> a, vec<C, std::float_t> b) {
-		static LYAH_CONSTEXPR_CPP26 const std::int32_t bitMask = static_cast<std::int32_t>(pow(2, C)) - 1;
+		static LYAH_CONSTEXPR_CPP26 const std::int32_t bitMask = static_cast<std::int32_t>(pow(2.0f, static_cast<std::float_t>(C))) - 1;
 
 		const __m128 m = _mm_cmpneq_ps(a.m, b.m);
 		const std::int32_t mask = _mm_movemask_ps(m) & bitMask;
