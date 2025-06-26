@@ -17,7 +17,10 @@ namespace lyah {
 		LYAH_NODISCARD vec();
 		LYAH_NODISCARD vec(T x, T y);
 		LYAH_NODISCARD explicit vec(T a);
-		LYAH_NODISCARD LYAH_CONSTEXPR explicit vec(__m_t m) : m(m) {}
+
+		LYAH_NODISCARD explicit vec(__m_t m) :
+			m(m)
+		{}
 
 		template<typename U>
 		LYAH_NODISCARD explicit vec(vec<2, U> a) : m(internal::convert<typename vec<2, U>::__m_t, __m_t>(a.m)) {}

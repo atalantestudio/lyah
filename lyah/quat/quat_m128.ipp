@@ -5,11 +5,15 @@
 
 namespace lyah {
 	// NOTE: SSE
-	LYAH_INLINE quat<std::float_t>::quat() : m(_mm_setzero_ps()) {}
+	LYAH_INLINE quat<std::float_t>::quat() :
+		m(_mm_setzero_ps())
+	{}
 
 	// NOTE: SSE
 	template<>
-	LYAH_INLINE quat<std::float_t>::quat(std::float_t w, std::float_t x, std::float_t y, std::float_t z) : m(_mm_set_ps(z, y, x, w)) {}
+	LYAH_INLINE quat<std::float_t>::quat(std::float_t w, std::float_t x, std::float_t y, std::float_t z) :
+		m(_mm_set_ps(z, y, x, w))
+	{}
 
 	// NOTE: SSE
 	LYAH_INLINE std::float_t quat<std::float_t>::operator [](std::size_t index) const LYAH_NOEXCEPT {

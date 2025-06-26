@@ -76,28 +76,26 @@ namespace lyah {
 
 		vec<4, T> m[4];
 
-		LYAH_NODISCARD LYAH_INLINE mat() : m{} {}
+		LYAH_NODISCARD LYAH_INLINE mat() :
+			m{}
+		{}
 
-		LYAH_NODISCARD LYAH_INLINE mat(
-			T m00, T m01, T m02, T m03,
-			T m10, T m11, T m12, T m13,
-			T m20, T m21, T m22, T m23,
-			T m30, T m31, T m32, T m33
-		) : m{
-			{m00, m01, m02, m03},
-			{m10, m11, m12, m13},
-			{m20, m21, m22, m23},
-			{m30, m31, m32, m33},
-		} {}
+		LYAH_NODISCARD LYAH_INLINE mat(T m00, T m01, T m02, T m03, T m10, T m11, T m12, T m13, T m20, T m21, T m22, T m23, T m30, T m31, T m32, T m33) :
+			m{{m00, m01, m02, m03}, {m10, m11, m12, m13}, {m20, m21, m22, m23}, {m30, m31, m32, m33}}
+		{}
 
-		LYAH_NODISCARD LYAH_INLINE mat(vec<4, T> m0, vec<4, T> m1, vec<4, T> m2, vec<4, T> m3) : m{m0, m1, m2, m3} {}
+		LYAH_NODISCARD LYAH_INLINE mat(vec<4, T> m0, vec<4, T> m1, vec<4, T> m2, vec<4, T> m3) :
+			m{m0, m1, m2, m3}
+		{}
 
 		// Returns a rotation matrix computed from a.
 		// a is assumed to be normalized.
 		LYAH_NODISCARD explicit mat(quat<T> a);
 
 		template<typename U>
-		LYAH_NODISCARD LYAH_INLINE explicit mat(mat<4, 4, U> a) : m{vec<4, T>(a.m[0]), vec<4, T>(a.m[1]), vec<4, T>(a.m[2]), vec<4, T>(a.m[3])} {}
+		LYAH_NODISCARD LYAH_INLINE explicit mat(mat<4, 4, U> a) :
+			m{vec<4, T>(a.m[0]), vec<4, T>(a.m[1]), vec<4, T>(a.m[2]), vec<4, T>(a.m[3])}
+		{}
 
 		LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE const vec<4, T>& LYAH_CALL operator [](std::size_t index) const LYAH_NOEXCEPT {
 			LYAH_ASSERT(index < 4);

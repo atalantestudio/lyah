@@ -91,7 +91,7 @@ namespace lyah {
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE T LYAH_CALL determinant(mat<2, 2, T> a) {
+	LYAH_NODISCARD LYAH_INLINE T LYAH_CALL determinant(mat<2, 2, T> a) {
 		return a[0][0] * a[1][1] - a[0][1] * a[1][0];
 	}
 
