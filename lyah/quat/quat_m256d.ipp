@@ -29,14 +29,14 @@ namespace lyah {
 		return vec<3, std::double_t>(_mm256_permute4x64_pd(m, _MM_SHUFFLE(0, 3, 2, 1)));
 	}
 
-	// NOTE: AVX2
+	// NOTE: AVX
 	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator ==(quat<std::double_t> a, quat<std::double_t> b) {
 		const __m256d m = _mm256_cmp_pd(a.m, b.m, _CMP_NEQ_OQ);
 
 		return _mm256_movemask_pd(m) == 0;
 	}
 
-	// NOTE: AVX2
+	// NOTE: AVX
 	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator !=(quat<std::double_t> a, quat<std::double_t> b) {
 		const __m256d m = _mm256_cmp_pd(a.m, b.m, _CMP_NEQ_OQ);
 
