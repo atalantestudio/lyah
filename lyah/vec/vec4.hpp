@@ -18,7 +18,7 @@ namespace lyah {
 		LYAH_NODISCARD vec(T x, T y, T z, T w);
 		LYAH_NODISCARD explicit vec(T a);
 
-		LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE explicit vec(__m_t m) :
+		LYAH_NODISCARD LYAH_INLINE explicit vec(__m_t m) :
 			m(m)
 		{}
 
