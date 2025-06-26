@@ -5,6 +5,7 @@
 
 #include <cassert>
 #include <cmath>
+#include <cstdint>
 #include <immintrin.h>
 #include <limits>
 
