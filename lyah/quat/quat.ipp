@@ -16,11 +16,15 @@ namespace lyah {
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE quat<T>::quat(__m_t m) : m(m) {}
+	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE quat<T>::quat(__m_t m) :
+		m(m)
+	{}
 
 	template<typename T>
 	template<typename U>
-	LYAH_NODISCARD LYAH_INLINE quat<T>::quat(quat<U> a) : m(internal::convert<typename quat<U>::__m_t, __m_t>(a.m)) {}
+	LYAH_NODISCARD LYAH_INLINE quat<T>::quat(quat<U> a) :
+		m(internal::convert<typename quat<U>::__m_t, __m_t>(a.m))
+	{}
 
 	template<typename T>
 	LYAH_NODISCARD LYAH_INLINE T quat<T>::w() const {

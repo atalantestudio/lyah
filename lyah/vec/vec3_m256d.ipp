@@ -3,13 +3,19 @@
 
 namespace lyah {
 	// NOTE: AVX
-	LYAH_INLINE vec<3, std::double_t>::vec() : m(_mm256_setzero_pd()) {}
+	LYAH_INLINE vec<3, std::double_t>::vec() :
+		m(_mm256_setzero_pd())
+	{}
 
 	// NOTE: AVX
-	LYAH_INLINE vec<3, std::double_t>::vec(std::double_t x, std::double_t y, std::double_t z) : m(_mm256_set_pd(0.0, z, y, x)) {}
+	LYAH_INLINE vec<3, std::double_t>::vec(std::double_t x, std::double_t y, std::double_t z) :
+		m(_mm256_set_pd(0.0, z, y, x))
+	{}
 
 	// NOTE: AVX
-	LYAH_INLINE vec<3, std::double_t>::vec(std::double_t a) : m(_mm256_set1_pd(a)) {}
+	LYAH_INLINE vec<3, std::double_t>::vec(std::double_t a) :
+		m(_mm256_set1_pd(a))
+	{}
 
 	// NOTE: AVX2
 	LYAH_INLINE std::double_t vec<3, std::double_t>::operator [](std::size_t index) const LYAH_NOEXCEPT {

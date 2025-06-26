@@ -5,11 +5,15 @@
 
 namespace lyah {
 	// NOTE: AVX
-	LYAH_INLINE quat<std::double_t>::quat() : m(_mm256_setzero_pd()) {}
+	LYAH_INLINE quat<std::double_t>::quat() :
+		m(_mm256_setzero_pd())
+	{}
 
 	// NOTE: AVX
 	template<>
-	LYAH_INLINE quat<std::double_t>::quat(std::double_t w, std::double_t x, std::double_t y, std::double_t z) : m(_mm256_set_pd(z, y, x, w)) {}
+	LYAH_INLINE quat<std::double_t>::quat(std::double_t w, std::double_t x, std::double_t y, std::double_t z) :
+		m(_mm256_set_pd(z, y, x, w))
+	{}
 
 	// NOTE: AVX2
 	LYAH_INLINE std::double_t quat<std::double_t>::operator [](std::size_t index) const LYAH_NOEXCEPT {

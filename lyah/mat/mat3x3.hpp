@@ -45,34 +45,22 @@ namespace lyah {
 
 		vec<3, T> m[3];
 
-		LYAH_NODISCARD LYAH_INLINE mat() : m{} {}
+		LYAH_NODISCARD LYAH_INLINE mat() :
+			m{}
+		{}
 
-		LYAH_NODISCARD LYAH_INLINE mat(
-			T m00, T m01, T m02,
-			T m10, T m11, T m12,
-			T m20, T m21, T m22
-		) : m{
-			{m00, m01, m02},
-			{m10, m11, m12},
-			{m20, m21, m22},
-		} {}
+		LYAH_NODISCARD LYAH_INLINE mat(T m00, T m01, T m02, T m10, T m11, T m12, T m20, T m21, T m22) :
+			m{{m00, m01, m02}, {m10, m11, m12}, {m20, m21, m22}}
+		{}
 
-		LYAH_NODISCARD LYAH_INLINE mat(
-			vec<3, T> m0,
-			vec<3, T> m1,
-			vec<3, T> m2
-		) : m{
-			m0,
-			m1,
-			m2,
-		} {}
+		LYAH_NODISCARD LYAH_INLINE mat(vec<3, T> m0, vec<3, T> m1, vec<3, T> m2) :
+			m{m0, m1, m2}
+		{}
 
 		template<typename U>
-		LYAH_NODISCARD LYAH_INLINE explicit mat(mat<3, 3, U> a) : m{
-			vec<3, T>(a.m[0]),
-			vec<3, T>(a.m[1]),
-			vec<3, T>(a.m[2]),
-		} {}
+		LYAH_NODISCARD LYAH_INLINE explicit mat(mat<3, 3, U> a) :
+			m{vec<3, T>(a.m[0]), vec<3, T>(a.m[1]), vec<3, T>(a.m[2])}
+		{}
 
 		LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE const vec<3, T>& LYAH_CALL operator [](std::size_t index) const LYAH_NOEXCEPT {
 			LYAH_ASSERT(index < 3);

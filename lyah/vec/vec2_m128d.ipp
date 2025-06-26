@@ -3,13 +3,19 @@
 
 namespace lyah {
 	// NOTE: SSE2
-	LYAH_INLINE vec<2, std::double_t>::vec() : m(_mm_setzero_pd()) {}
+	LYAH_INLINE vec<2, std::double_t>::vec() :
+		m(_mm_setzero_pd())
+	{}
 
 	// NOTE: SSE2
-	LYAH_INLINE vec<2, std::double_t>::vec(std::double_t x, std::double_t y) : m(_mm_set_pd(y, x)) {}
+	LYAH_INLINE vec<2, std::double_t>::vec(std::double_t x, std::double_t y) :
+		m(_mm_set_pd(y, x))
+	{}
 
 	// NOTE: SSE2
-	LYAH_INLINE vec<2, std::double_t>::vec(std::double_t a) : m(_mm_set1_pd(a)) {}
+	LYAH_INLINE vec<2, std::double_t>::vec(std::double_t a) :
+		m(_mm_set1_pd(a))
+	{}
 
 	// NOTE: SSE2
 	LYAH_INLINE std::double_t vec<2, std::double_t>::operator [](std::size_t index) const LYAH_NOEXCEPT {
