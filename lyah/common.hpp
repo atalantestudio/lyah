@@ -6,19 +6,19 @@
 #include "base.hpp"
 
 namespace lyah {
-	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::float_t abs(std::float_t a) {
+	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::float_t LYAH_CALL abs(std::float_t a) {
 		return std::fabsf(a);
 	}
 
-	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::double_t abs(std::double_t a) {
+	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::double_t LYAH_CALL abs(std::double_t a) {
 		return std::fabsl(a);
 	}
 
-	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::int32_t abs(std::int32_t a) {
+	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::int32_t LYAH_CALL abs(std::int32_t a) {
 		return static_cast<std::int32_t>(std::fabs(a));
 	}
 
-	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::int64_t abs(std::int64_t a) {
+	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::int64_t LYAH_CALL abs(std::int64_t a) {
 		return static_cast<std::int64_t>(std::fabs(a));
 	}
 
