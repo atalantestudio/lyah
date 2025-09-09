@@ -15,6 +15,16 @@ namespace lyah {
 			};
 		}
 
+		LYAH_NODISCARD LYAH_INLINE static mat<2, 2, T> LYAH_CALL rotation(T a) {
+			const T c = cos(a);
+			const T s = sin(a);
+
+			return {
+				c, -s,
+				s,  c,
+			};
+		}
+
 		vec<2, T> m[2];
 
 		LYAH_NODISCARD LYAH_INLINE mat() :

@@ -24,6 +24,7 @@ namespace lyah {
 			};
 		}
 
+		// NOTE: Rotates around the Z axis.
 		LYAH_NODISCARD LYAH_INLINE static mat<3, 3, T> LYAH_CALL rotation(T a) {
 			const T c = cos(a);
 			const T s = sin(a);
