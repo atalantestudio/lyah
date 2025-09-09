@@ -80,6 +80,18 @@ namespace mat2x2_m128d {
 		test::assert(test::eq(result, expected));
 	}
 
+	void testRotation() {
+		const lyah::mat<2, 2, std::double_t> expected = {
+			0.070, -0.997,
+			0.997,  0.070,
+		};
+		const std::double_t angle = 1.5;
+
+		const lyah::mat<2, 2, std::double_t> result = lyah::mat<2, 2, std::double_t>::rotation(angle);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
 	void testEquality() {
 		const bool expected[2] = {true, false};
 		const lyah::mat<2, 2, std::double_t> a = {
@@ -359,6 +371,7 @@ namespace mat2x2_m128d {
 		test::runTest(&testConvertingConstructor, "Converting constructor");
 
 		test::runTest(&testIdentity, "Identity");
+		test::runTest(&testRotation, "Rotation");
 
 		test::runTest(&testEquality, "Equality (==)");
 		test::runTest(&testInequality, "Inequality (!=)");
