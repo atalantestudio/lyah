@@ -406,12 +406,31 @@ namespace vec2_m128d {
 		test::assert(test::eq(result, expected, 0.001));
 	}
 
+	void testLengthSquared() {
+		const std::double_t expected = 17.0;
+		const lyah::vec<2, std::double_t> a = {1.0, 4.0};
+
+		const std::double_t result = lyah::lengthSquared(a);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
 	void testDistance() {
 		const std::double_t expected = 4.123;
 		const lyah::vec<2, std::double_t> a = {1.0, 4.0};
 		const lyah::vec<2, std::double_t> b = {5.0, 3.0};
 
 		const std::double_t result = lyah::distance(a, b);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
+	void testDistanceSquared() {
+		const std::double_t expected = 17.0;
+		const lyah::vec<2, std::double_t> a = {1.0, 4.0};
+		const lyah::vec<2, std::double_t> b = {5.0, 3.0};
+
+		const std::double_t result = lyah::distanceSquared(a, b);
 
 		test::assert(test::eq(result, expected, 0.001));
 	}
@@ -523,7 +542,9 @@ namespace vec2_m128d {
 
 		test::runTest(&testDotProduct, "Dot product");
 		test::runTest(&testLength, "Length");
+		test::runTest(&testLengthSquared, "Squared length");
 		test::runTest(&testDistance, "Distance");
+		test::runTest(&testDistanceSquared, "Squared distance");
 		test::runTest(&testNormalization, "Normalization");
 
 		test::runTest(&testDegrees, "Degrees");
