@@ -6,6 +6,12 @@
 #include "base.hpp"
 
 namespace lyah {
+	// Returns the signed parallelogram area formed by a and b.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE T LYAH_CALL area(vec<2, T> a, vec<2, T> b) {
+		return a[0] * b[1] - a[1] * b[0];
+	}
+
 	template<std::size_t C, typename T>
 	LYAH_NODISCARD LYAH_INLINE T LYAH_CALL dot(vec<C, T> a, vec<C, T> b) {
 		return sum(a * b);
