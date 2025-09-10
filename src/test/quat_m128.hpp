@@ -294,6 +294,15 @@ namespace quat_m128 {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
+	void testLengthSquared() {
+		const std::float_t expected = 54.0f;
+		const lyah::quat<std::float_t> a = {1.0f, 4.0f, 6.0f, -1.0f};
+
+		const std::float_t result = lyah::lengthSquared(a);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
 	void testNormalization() {
 		const lyah::quat<std::float_t> expected = {0.136f, 0.544f, 0.816f, -0.136f};
 		const lyah::quat<std::float_t> a = {1.0f, 4.0f, 6.0f, -1.0f};
@@ -345,6 +354,7 @@ namespace quat_m128 {
 		test::runTest(&testDotProduct, "Dot product");
 		test::runTest(&testInverse, "Inverse");
 		test::runTest(&testLength, "Length");
+		test::runTest(&testLengthSquared, "Squared length");
 		test::runTest(&testNormalization, "Normalization");
 	}
 }

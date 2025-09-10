@@ -294,6 +294,15 @@ namespace quat_m256d {
 		test::assert(test::eq(result, expected, 0.001));
 	}
 
+	void testLengthSquared() {
+		const std::double_t expected = 54.0;
+		const lyah::quat<std::double_t> a = {1.0, 4.0, 6.0, -1.0};
+
+		const std::double_t result = lyah::lengthSquared(a);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
 	void testNormalization() {
 		const lyah::quat<std::double_t> expected = {0.136, 0.544, 0.816, -0.136};
 		const lyah::quat<std::double_t> a = {1.0, 4.0, 6.0, -1.0};
@@ -345,6 +354,7 @@ namespace quat_m256d {
 		test::runTest(&testDotProduct, "Dot product");
 		test::runTest(&testInverse, "Inverse");
 		test::runTest(&testLength, "Length");
+		test::runTest(&testLengthSquared, "Squared length");
 		test::runTest(&testNormalization, "Normalization");
 	}
 }
