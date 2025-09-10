@@ -93,7 +93,12 @@ namespace lyah {
 
 	template<typename T>
 	LYAH_NODISCARD LYAH_INLINE T LYAH_CALL length(quat<T> a) {
-		return sqrt(dot(a, a));
+		return sqrt(lengthSquared(a));
+	}
+
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE T LYAH_CALL lengthSquared(quat<T> a) {
+		return dot(a, a);
 	}
 
 	template<typename T>
