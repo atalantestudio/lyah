@@ -387,6 +387,16 @@ namespace vec2_m128d {
 		test::assert(test::eq(result, expected, 0.001));
 	}
 
+	void testArea() {
+		const std::double_t expected = -17.0;
+		const lyah::vec<2, std::double_t> a = {1.0, 4.0};
+		const lyah::vec<2, std::double_t> b = {5.0, 3.0};
+
+		const std::double_t result = lyah::area(a, b);
+
+		test::assert(test::eq(result, expected));
+	}
+
 	void testDotProduct() {
 		const std::double_t expected = 17.0;
 		const lyah::vec<2, std::double_t> a = {1.0, 4.0};
@@ -540,6 +550,7 @@ namespace vec2_m128d {
 		test::runTest(&testSqrt, "Square root");
 		test::runTest(&testRsqrt, "Inverse square root");
 
+		test::runTest(&testArea, "Area");
 		test::runTest(&testDotProduct, "Dot product");
 		test::runTest(&testLength, "Length");
 		test::runTest(&testLengthSquared, "Squared length");
