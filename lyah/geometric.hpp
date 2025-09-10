@@ -13,12 +13,24 @@ namespace lyah {
 
 	template<std::size_t C, typename T>
 	LYAH_NODISCARD LYAH_INLINE T LYAH_CALL length(vec<C, T> a) {
-		return sqrt(dot(a, a));
+		return sqrt(lengthSquared(a));
+	}
+
+	// Returns the squared length of a.
+	template<std::size_t C, typename T>
+	LYAH_NODISCARD LYAH_INLINE T LYAH_CALL lengthSquared(vec<C, T> a) {
+		return dot(a, a);
 	}
 
 	template<std::size_t C, typename T>
 	LYAH_NODISCARD LYAH_INLINE T LYAH_CALL distance(vec<C, T> a, vec<C, T> b) {
 		return length(b - a);
+	}
+
+	// Returns the squared distance between a and b.
+	template<std::size_t C, typename T>
+	LYAH_NODISCARD LYAH_INLINE T LYAH_CALL distanceSquared(vec<C, T> a, vec<C, T> b) {
+		return lengthSquared(b - a);
 	}
 
 	template<std::size_t C, typename T>
