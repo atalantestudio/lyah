@@ -16,7 +16,7 @@ namespace lyah {
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE quat<T>::quat(__m_t m) :
+	LYAH_NODISCARD LYAH_INLINE quat<T>::quat(__m_t m) :
 		m(m)
 	{}
 
