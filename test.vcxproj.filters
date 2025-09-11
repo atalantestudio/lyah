@@ -54,7 +54,7 @@
     <ClInclude Include="src\test.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\test\constants.hpp">
+    <ClInclude Include="src\test\float32_constants.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\test\vec2_m128.hpp">
@@ -130,6 +130,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\test\vec2_m128i.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test\float64_constants.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

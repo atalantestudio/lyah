@@ -159,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\base.hpp" />
+    <ClInclude Include="src\test\float64_constants.hpp" />
     <ClInclude Include="src\Logger\Logger.hpp" />
     <ClInclude Include="src\Logger\LogLevel.hpp" />
     <ClInclude Include="src\Logger\LogStructure.hpp" />
@@ -179,7 +180,7 @@
     <ClInclude Include="src\test\quat_m128.hpp" />
     <ClInclude Include="src\test\quat_m256d.hpp" />
     <ClInclude Include="src\test\float64_common.hpp" />
-    <ClInclude Include="src\test\constants.hpp" />
+    <ClInclude Include="src\test\float32_constants.hpp" />
     <ClInclude Include="src\test\float32_exponential.hpp" />
     <ClInclude Include="src\test\float32_trigonometric.hpp" />
     <ClInclude Include="src\test\vec2_m128.hpp" />

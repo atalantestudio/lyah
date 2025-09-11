@@ -2,7 +2,7 @@
 
 #include "pch.hpp"
 
-namespace constants {
+namespace float32_constants {
 	static void testEpsilon() {
 		const std::float_t expected = std::numeric_limits<std::float_t>::epsilon();
 
@@ -32,7 +32,7 @@ namespace constants {
 	}
 
 	static void runAll() {
-		test::printTestCategory("Constants");
+		test::printTestCategory("32-bit single floating-point constants");
 
 		test::runTest(&testEpsilon, "Epsilon");
 		test::runTest(&testInfinity, "Infinity");

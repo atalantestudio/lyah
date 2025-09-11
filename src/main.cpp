@@ -1,10 +1,11 @@
 #include "pch.hpp"
 
-#include "test/constants.hpp"
 #include "test/float32_common.hpp"
+#include "test/float32_constants.hpp"
 #include "test/float32_exponential.hpp"
 #include "test/float32_trigonometric.hpp"
 #include "test/float64_common.hpp"
+#include "test/float64_constants.hpp"
 #include "test/float64_exponential.hpp"
 #include "test/float64_trigonometric.hpp"
 #include "test/int32_common.hpp"
@@ -30,12 +31,12 @@
 int main() {
 	test::Logger::initialize();
 
-	constants::runAll();
-
 	int32_common::runAll();
 	int64_common::runAll();
 	float32_common::runAll();
 	float64_common::runAll();
+	float32_constants::runAll();
+	float64_constants::runAll();
 	float32_exponential::runAll();
 	float64_exponential::runAll();
 	float32_trigonometric::runAll();
