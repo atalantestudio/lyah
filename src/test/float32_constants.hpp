@@ -31,6 +31,14 @@ namespace float32_constants {
 		test::assert(test::eq(result, expected));
 	}
 
+	static void testTau() {
+		const std::float_t expected = 6.283185307179586f;
+
+		const std::float_t result = lyah::tau<std::float_t>();
+
+		test::assert(test::eq(result, expected));
+	}
+
 	static void runAll() {
 		test::printTestCategory("32-bit single floating-point constants");
 
@@ -38,5 +46,6 @@ namespace float32_constants {
 		test::runTest(&testInfinity, "Infinity");
 		test::runTest(&testNaN, "NaN");
 		test::runTest(&testPi, "Pi");
+		test::runTest(&testTau, "Tau");
 	}
 }

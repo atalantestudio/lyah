@@ -31,6 +31,14 @@ namespace float64_constants {
 		test::assert(test::eq(result, expected));
 	}
 
+	static void testTau() {
+		const std::double_t expected = 6.283185307179586;
+
+		const std::double_t result = lyah::tau<std::double_t>();
+
+		test::assert(test::eq(result, expected));
+	}
+
 	static void runAll() {
 		test::printTestCategory("64-bit double floating-point constants");
 
@@ -38,5 +46,6 @@ namespace float64_constants {
 		test::runTest(&testInfinity, "Infinity");
 		test::runTest(&testNaN, "NaN");
 		test::runTest(&testPi, "Pi");
+		test::runTest(&testTau, "Tau");
 	}
 }

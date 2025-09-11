@@ -5,7 +5,7 @@
 namespace float32_trigonometric {
 	void testDegrees() {
 		const std::float_t expected = 360.0f;
-		const std::float_t a = 2.0f * lyah::pi<std::float_t>();
+		const std::float_t a = lyah::tau<std::float_t>();
 
 		const std::float_t result = lyah::degrees(a);
 
@@ -13,7 +13,7 @@ namespace float32_trigonometric {
 	}
 
 	void testRadians() {
-		const std::float_t expected = 2.0f * lyah::pi<std::float_t>();
+		const std::float_t expected = lyah::tau<std::float_t>();
 		const std::float_t a = 360.0f;
 
 		const std::float_t result = lyah::radians(a);
