@@ -49,6 +49,10 @@
 	#define LYAH_LANGUAGE _cplusplus
 #endif
 
+#if LYAH_LANGUAGE < LYAH_LANGUAGE_CPP11
+	#error "Lyah does not support language versions below C++11."
+#endif
+
 #if LYAH_COMPILER == LYAH_COMPILER_CLANG
 	#define LYAH_INLINE __attribute__((always_inline))
 #elif LYAH_COMPILER == LYAH_COMPILER_GCC
@@ -59,17 +63,9 @@
 	#define LYAH_INLINE inline
 #endif
 
-#if LYAH_LANGUAGE >= LYAH_LANGUAGE_CPP11
-	#define LYAH_CONSTEXPR constexpr
-#else
-	#define LYAH_CONSTEXPR
-#endif
+#define LYAH_CONSTEXPR constexpr
 
-#if LYAH_LANGUAGE >= LYAH_LANGUAGE_CPP11
-	#define LYAH_NOEXCEPT noexcept
-#else
-	#define LYAH_NOEXCEPT
-#endif
+#define LYAH_NOEXCEPT noexcept
 
 #if LYAH_LANGUAGE >= LYAH_LANGUAGE_CPP17
 	#define LYAH_NODISCARD [[nodiscard]]
@@ -89,6 +85,7 @@
 	#define LYAH_CONSTEXPR_CPP26
 #endif
 
+// Select instruction set per type.
 #define LYAH_FLOAT32_MAX_INSTRUCTION_SET LYAH_INSTRUCTION_SET_SSE3
 #define LYAH_FLOAT64_MAX_INSTRUCTION_SET LYAH_INSTRUCTION_SET_AVX2
 #define LYAH_INT32_MAX_INSTRUCTION_SET LYAH_INSTRUCTION_SET_SSE3
