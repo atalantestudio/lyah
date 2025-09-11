@@ -29,4 +29,9 @@ namespace lyah {
 	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE T LYAH_CALL pi() {
 		return static_cast<T>(3.141592653589793);
 	}
+
+	template<typename T>
+	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE T LYAH_CALL tau() {
+		return static_cast<T>(6.283185307179586);
+	}
 }
