@@ -73,6 +73,12 @@
 	#define LYAH_NODISCARD
 #endif
 
+#if LYAH_LANGUAGE >= LYAH_LANGUAGE_CPP14
+	#define LYAH_CONSTEXPR_CPP14 constexpr
+#else
+	#define LYAH_CONSTEXPR_CPP14
+#endif
+
 #if LYAH_LANGUAGE >= LYAH_LANGUAGE_CPP23
 	#define LYAH_CONSTEXPR_CPP23 constexpr
 #else
