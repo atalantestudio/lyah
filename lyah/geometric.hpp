@@ -12,6 +12,14 @@ namespace lyah {
 		return a[0] * b[1] - a[1] * b[0];
 	}
 
+	// Returns the "2D cross product" of a and b.
+	// If b is -1, the perpendicular vector to the left of a is returned.
+	// If b is 1, the perpendicular vector to the right of a is returned.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE vec<2, T> LYAH_CALL cross(vec<2, T> a, T b) {
+		return {a[1] * b, a[0] * -b};
+	}
+
 	template<std::size_t C, typename T>
 	LYAH_NODISCARD LYAH_INLINE T LYAH_CALL dot(vec<C, T> a, vec<C, T> b) {
 		return sum(a * b);
