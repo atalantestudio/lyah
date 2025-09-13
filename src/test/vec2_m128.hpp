@@ -649,7 +649,7 @@ namespace vec2_m128 {
 		test::runTest(&testRsqrt, "Inverse square root");
 
 		test::runTest(&testArea, "Area");
-		test::runTest(&testCrossProduct, "vCross product");
+		test::runTest(&testCrossProduct, "Cross product");
 		test::runTest(&testDotProduct, "Dot product");
 		test::runTest(&testLength, "Length");
 		test::runTest(&testLengthSquared, "Squared length");
