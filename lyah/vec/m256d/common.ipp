@@ -4,16 +4,16 @@
 namespace lyah {
 	// NOTE: AVX
 	template<std::size_t C>
-	LYAH_NODISCARD LYAH_INLINE vec<C, std::double_t> LYAH_CALL max(vec<C, std::double_t> a, vec<C, std::double_t> b) {
-		a.m = _mm256_max_pd(a.m, b.m);
+	LYAH_NODISCARD LYAH_INLINE vec<C, std::double_t> LYAH_CALL min(vec<C, std::double_t> a, vec<C, std::double_t> b) {
+		a.m = _mm256_min_pd(a.m, b.m);
 
 		return a;
 	}
 
 	// NOTE: AVX
 	template<std::size_t C>
-	LYAH_NODISCARD LYAH_INLINE vec<C, std::double_t> LYAH_CALL min(vec<C, std::double_t> a, vec<C, std::double_t> b) {
-		a.m = _mm256_min_pd(a.m, b.m);
+	LYAH_NODISCARD LYAH_INLINE vec<C, std::double_t> LYAH_CALL max(vec<C, std::double_t> a, vec<C, std::double_t> b) {
+		a.m = _mm256_max_pd(a.m, b.m);
 
 		return a;
 	}
