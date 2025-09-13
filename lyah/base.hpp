@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <algorithm>
 #include <cassert>
 #include <cmath>
 #include <cstdint>
@@ -71,6 +72,12 @@
 	#define LYAH_NODISCARD [[nodiscard]]
 #else
 	#define LYAH_NODISCARD
+#endif
+
+#if LYAH_LANGUAGE >= LYAH_LANGUAGE_CPP14
+	#define LYAH_CONSTEXPR_CPP14 constexpr
+#else
+	#define LYAH_CONSTEXPR_CPP14
 #endif
 
 #if LYAH_LANGUAGE >= LYAH_LANGUAGE_CPP23

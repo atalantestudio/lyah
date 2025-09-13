@@ -14,4 +14,5 @@
 #include "common.hpp"
 #include "exponential.hpp"
 #include "geometric.hpp"
+#include "limits.hpp"
 #include "trigonometric.hpp"

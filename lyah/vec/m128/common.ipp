@@ -26,14 +26,6 @@ namespace lyah {
 	} */
 
 	// NOTE: SSE3
-	/* LYAH_NODISCARD LYAH_INLINE std::float_t LYAH_CALL max(vec<2, std::float_t> a) {
-		const __m128 hdup = _mm_movehdup_ps(a.m);
-		const __m128 max = _mm_max_ss(a.m, hdup);
-
-		return _mm_cvtss_f32(max);
-	} */
-
-	// NOTE: SSE3
 	/* LYAH_NODISCARD LYAH_INLINE std::float_t LYAH_CALL min(vec<2, std::float_t> a) {
 		const __m128 hdup = _mm_movehdup_ps(a.m);
 		const __m128 min = _mm_min_ss(a.m, hdup);
@@ -41,18 +33,26 @@ namespace lyah {
 		return _mm_cvtss_f32(min);
 	} */
 
+	// NOTE: SSE3
+	/* LYAH_NODISCARD LYAH_INLINE std::float_t LYAH_CALL max(vec<2, std::float_t> a) {
+		const __m128 hdup = _mm_movehdup_ps(a.m);
+		const __m128 max = _mm_max_ss(a.m, hdup);
+
+		return _mm_cvtss_f32(max);
+	} */
+
 	// NOTE: SSE
 	template<std::size_t C>
-	LYAH_NODISCARD LYAH_INLINE vec<C, std::float_t> LYAH_CALL max(vec<C, std::float_t> a, vec<C, std::float_t> b) {
-		a.m = _mm_max_ps(a.m, b.m);
+	LYAH_NODISCARD LYAH_INLINE vec<C, std::float_t> LYAH_CALL min(vec<C, std::float_t> a, vec<C, std::float_t> b) {
+		a.m = _mm_min_ps(a.m, b.m);
 
 		return a;
 	}
 
 	// NOTE: SSE
 	template<std::size_t C>
-	LYAH_NODISCARD LYAH_INLINE vec<C, std::float_t> LYAH_CALL min(vec<C, std::float_t> a, vec<C, std::float_t> b) {
-		a.m = _mm_min_ps(a.m, b.m);
+	LYAH_NODISCARD LYAH_INLINE vec<C, std::float_t> LYAH_CALL max(vec<C, std::float_t> a, vec<C, std::float_t> b) {
+		a.m = _mm_max_ps(a.m, b.m);
 
 		return a;
 	}
