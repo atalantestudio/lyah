@@ -306,6 +306,16 @@ namespace vec3_m256d {
 		test::assert(test::eq(result, expected));
 	} */
 
+	void testVerticalMin() {
+		const lyah::vec<4, std::double_t> expected = {1.0, 3.0, 2.0, 2.0};
+		const lyah::vec<4, std::double_t> a = {5.0, 3.0, 2.0, 7.0};
+		const lyah::vec<4, std::double_t> b = {1.0, 4.0, 6.0, 2.0};
+
+		const lyah::vec<4, std::double_t> result = lyah::min(a, b);
+
+		test::assert(test::eq(result, expected));
+	}
+
 	void testVerticalMax() {
 		const lyah::vec<3, std::double_t> expected = {5.0, 4.0, 6.0};
 		const lyah::vec<3, std::double_t> a = {5.0, 3.0, 2.0};
@@ -316,12 +326,13 @@ namespace vec3_m256d {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testVerticalMin() {
-		const lyah::vec<4, std::double_t> expected = {1.0, 3.0, 2.0, 2.0};
-		const lyah::vec<4, std::double_t> a = {5.0, 3.0, 2.0, 7.0};
-		const lyah::vec<4, std::double_t> b = {1.0, 4.0, 6.0, 2.0};
+	void testVerticalClamp() {
+		const lyah::vec<3, std::double_t> expected = {1.0, 3.0, 2.0};
+		const lyah::vec<3, std::double_t> a = {5.0, 3.0, 2.0};
+		const lyah::vec<3, std::double_t> min = {0.0, 3.0, 2.0};
+		const lyah::vec<3, std::double_t> max = {1.0, 4.0, 6.0};
 
-		const lyah::vec<4, std::double_t> result = lyah::min(a, b);
+		const lyah::vec<3, std::double_t> result = lyah::clamp(a, min, max);
 
 		test::assert(test::eq(result, expected));
 	}
@@ -543,11 +554,12 @@ namespace vec3_m256d {
 		test::runTest(&testVectorVectorDivision, "Vector-vector division (/)");
 		test::runTest(&testVectorVectorDivisionAssignment, "Vector-vector division assignment (/=)");
 
-		// test::runTest(&testFloor, "Floor");
-		// test::runTest(&testCeil, "Ceil");
-		// test::runTest(&testRound, "Round");
-		test::runTest(&testVerticalMax, "Vertical max");
+		/* test::runTest(&testFloor, "Floor");
+		test::runTest(&testCeil, "Ceil");
+		test::runTest(&testRound, "Round"); */
 		test::runTest(&testVerticalMin, "Vertical min");
+		test::runTest(&testVerticalMax, "Vertical max");
+		test::runTest(&testVerticalClamp, "Vertical clamp");
 		test::runTest(&testLerpScalarInterpolator, "Linear interpolation (scalar interpolator)");
 		test::runTest(&testLerpVectorInterpolator, "Linear interpolation (vector interpolator)");
 		test::runTest(&testSum, "Sum");

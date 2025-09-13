@@ -9,4 +9,7 @@
 
 #include "base.hpp"
 #include "log.hpp"
+
+#undef assert
+
 #include "test.hpp"

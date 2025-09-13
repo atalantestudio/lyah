@@ -309,6 +309,16 @@ namespace vec4_m128 {
 		test::assert(test::eq(result, expected));
 	} */
 
+	void testVerticalMin() {
+		const lyah::vec<4, std::float_t> expected = {1.0f, 3.0f, 2.0f, 2.0f};
+		const lyah::vec<4, std::float_t> a = {5.0f, 3.0f, 2.0f, 7.0f};
+		const lyah::vec<4, std::float_t> b = {1.0f, 4.0f, 6.0f, 2.0f};
+
+		const lyah::vec<4, std::float_t> result = lyah::min(a, b);
+
+		test::assert(test::eq(result, expected));
+	}
+
 	void testVerticalMax() {
 		const lyah::vec<4, std::float_t> expected = {5.0f, 4.0f, 6.0f, 7.0f};
 		const lyah::vec<4, std::float_t> a = {5.0f, 3.0f, 2.0f, 7.0f};
@@ -319,12 +329,13 @@ namespace vec4_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testVerticalMin() {
-		const lyah::vec<4, std::float_t> expected = {1.0f, 3.0f, 2.0f, 2.0f};
+	void testVerticalClamp() {
+		const lyah::vec<4, std::float_t> expected = {1.0f, 3.0f, 2.0f, 5.0f};
 		const lyah::vec<4, std::float_t> a = {5.0f, 3.0f, 2.0f, 7.0f};
-		const lyah::vec<4, std::float_t> b = {1.0f, 4.0f, 6.0f, 2.0f};
+		const lyah::vec<4, std::float_t> min = {0.0f, 3.0f, 2.0f, 2.0f};
+		const lyah::vec<4, std::float_t> max = {1.0f, 4.0f, 6.0f, 5.0f};
 
-		const lyah::vec<4, std::float_t> result = lyah::min(a, b);
+		const lyah::vec<4, std::float_t> result = lyah::clamp(a, min, max);
 
 		test::assert(test::eq(result, expected));
 	}
@@ -534,13 +545,14 @@ namespace vec4_m128 {
 		test::runTest(&testVectorVectorDivision, "Vector-vector division (/)");
 		test::runTest(&testVectorVectorDivisionAssignment, "Vector-vector division assignment (/=)");
 
-		// test::runTest(&testFloor, "Floor");
-		// test::runTest(&testCeil, "Ceil");
-		// test::runTest(&testRound, "Round");
-		// test::runTest(&testAbs, "Abs");
-		// test::runTest(&testSign, "Sign");
-		test::runTest(&testVerticalMax, "Vertical max");
+		/* test::runTest(&testFloor, "Floor");
+		test::runTest(&testCeil, "Ceil");
+		test::runTest(&testRound, "Round");
+		test::runTest(&testAbs, "Abs");
+		test::runTest(&testSign, "Sign"); */
 		test::runTest(&testVerticalMin, "Vertical min");
+		test::runTest(&testVerticalMax, "Vertical max");
+		test::runTest(&testVerticalClamp, "Vertical clamp");
 		test::runTest(&testLerpScalarInterpolator, "Linear interpolation (scalar interpolator)");
 		test::runTest(&testLerpVectorInterpolator, "Linear interpolation (vector interpolator)");
 		test::runTest(&testSum, "Sum");

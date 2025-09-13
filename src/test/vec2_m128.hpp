@@ -349,6 +349,15 @@ namespace vec2_m128 {
 		test::assert(test::eq(result, expected));
 	} */
 
+	/* void testHorizontalMin() {
+		const std::float_t expected = 1.0f;
+		const lyah::vec<2, std::float_t> a = {1.0f, 4.0f};
+
+		const std::float_t result = lyah::min(a);
+
+		test::assert(test::eq(result, expected));
+	} */
+
 	/* void testHorizontalMax() {
 		const std::float_t expected = 4.0f;
 		const lyah::vec<2, std::float_t> a = {1.0f, 4.0f};
@@ -358,14 +367,15 @@ namespace vec2_m128 {
 		test::assert(test::eq(result, expected));
 	} */
 
-	/* void testHorizontalMin() {
-		const std::float_t expected = 1.0f;
-		const lyah::vec<2, std::float_t> a = {1.0f, 4.0f};
+	void testVerticalMin() {
+		const lyah::vec<2, std::float_t> expected = {1.0f, 3.0f};
+		const lyah::vec<2, std::float_t> a = {5.0f, 3.0f};
+		const lyah::vec<2, std::float_t> b = {1.0f, 4.0f};
 
-		const std::float_t result = lyah::min(a);
+		const lyah::vec<2, std::float_t> result = lyah::min(a, b);
 
 		test::assert(test::eq(result, expected));
-	} */
+	}
 
 	void testVerticalMax() {
 		const lyah::vec<2, std::float_t> expected = {5.0f, 4.0f};
@@ -377,12 +387,13 @@ namespace vec2_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testVerticalMin() {
+	void testVerticalClamp() {
 		const lyah::vec<2, std::float_t> expected = {1.0f, 3.0f};
 		const lyah::vec<2, std::float_t> a = {5.0f, 3.0f};
-		const lyah::vec<2, std::float_t> b = {1.0f, 4.0f};
+		const lyah::vec<2, std::float_t> min = {0.0f, 3.0f};
+		const lyah::vec<2, std::float_t> max = {1.0f, 4.0f};
 
-		const lyah::vec<2, std::float_t> result = lyah::min(a, b);
+		const lyah::vec<2, std::float_t> result = lyah::clamp(a, min, max);
 
 		test::assert(test::eq(result, expected));
 	}
@@ -461,6 +472,16 @@ namespace vec2_m128 {
 		const lyah::vec<2, std::float_t> b = {5.0f, 3.0f};
 
 		const std::float_t result = lyah::area(a, b);
+
+		test::assert(test::eq(result, expected));
+	}
+
+	void testCrossProduct() {
+		const lyah::vec<2, std::float_t> expected = {4.0f, 1.0f};
+		const lyah::vec<2, std::float_t> a = {1.0f, -4.0f};
+		const std::float_t b = -1.0f;
+
+		const lyah::vec<2, std::float_t> result = lyah::cross(a, b);
 
 		test::assert(test::eq(result, expected));
 	}
@@ -602,21 +623,22 @@ namespace vec2_m128 {
 		test::runTest(&testVectorVectorDivision, "Vector-vector division (/)");
 		test::runTest(&testVectorVectorDivisionAssignment, "Vector-vector division assignment (/=)");
 
-		/*test::runTest(&testVectorScalarRemainder, "Vector-scalar remainder (%)");
+		/* test::runTest(&testVectorScalarRemainder, "Vector-scalar remainder (%)");
 		test::runTest(&testScalarVectorRemainder, "Scalar-vector remainder (%)");
 		test::runTest(&testVectorScalarRemainderAssignment, "Vector-scalar remainder assignment (%=)");
 		test::runTest(&testVectorVectorRemainder, "Vector-vector remainder (%)");
-		test::runTest(&testVectorVectorRemainderAssignment, "Vector-vector remainder assignment (%=)");*/
+		test::runTest(&testVectorVectorRemainderAssignment, "Vector-vector remainder assignment (%=)"); */
 
-		/*test::runTest(&testFloor, "Floor");
+		/* test::runTest(&testFloor, "Floor");
 		test::runTest(&testCeil, "Ceil");
 		test::runTest(&testRound, "Round");
 		test::runTest(&testAbs, "Abs");
 		test::runTest(&testSign, "Sign");
-		test::runTest(&testHorizontalMax, "Horizontal max");
-		test::runTest(&testHorizontalMin, "Horizontal min");*/
-		test::runTest(&testVerticalMax, "Vertical max");
+		test::runTest(&testHorizontalMin, "Horizontal min");
+		test::runTest(&testHorizontalMax, "Horizontal max"); */
 		test::runTest(&testVerticalMin, "Vertical min");
+		test::runTest(&testVerticalMax, "Vertical max");
+		test::runTest(&testVerticalClamp, "Vertical clamp");
 		test::runTest(&testLerpScalarInterpolator, "Linear interpolation (scalar interpolator)");
 		test::runTest(&testLerpVectorInterpolator, "Linear interpolation (vector interpolator)");
 		test::runTest(&testSum, "Sum");
@@ -627,6 +649,7 @@ namespace vec2_m128 {
 		test::runTest(&testRsqrt, "Inverse square root");
 
 		test::runTest(&testArea, "Area");
+		test::runTest(&testCrossProduct, "vCross product");
 		test::runTest(&testDotProduct, "Dot product");
 		test::runTest(&testLength, "Length");
 		test::runTest(&testLengthSquared, "Squared length");

@@ -3,13 +3,17 @@
 #include "test/float32_common.hpp"
 #include "test/float32_constants.hpp"
 #include "test/float32_exponential.hpp"
+#include "test/float32_limits.hpp"
 #include "test/float32_trigonometric.hpp"
 #include "test/float64_common.hpp"
 #include "test/float64_constants.hpp"
 #include "test/float64_exponential.hpp"
+#include "test/float64_limits.hpp"
 #include "test/float64_trigonometric.hpp"
 #include "test/int32_common.hpp"
+#include "test/int32_limits.hpp"
 #include "test/int64_common.hpp"
+#include "test/int64_limits.hpp"
 #include "test/mat2x2_m128.hpp"
 #include "test/mat2x2_m128d.hpp"
 #include "test/mat3x3_m128.hpp"
@@ -31,14 +35,18 @@
 int main() {
 	test::Logger::initialize();
 
-	int32_common::runAll();
-	int64_common::runAll();
 	float32_common::runAll();
 	float64_common::runAll();
+	int32_common::runAll();
+	int64_common::runAll();
 	float32_constants::runAll();
 	float64_constants::runAll();
 	float32_exponential::runAll();
 	float64_exponential::runAll();
+	float32_limits::runAll();
+	float64_limits::runAll();
+	int32_limits::runAll();
+	int64_limits::runAll();
 	float32_trigonometric::runAll();
 	float64_trigonometric::runAll();
 

@@ -159,6 +159,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\base.hpp" />
+    <ClInclude Include="src\test\int32_limits.hpp" />
+    <ClInclude Include="src\test\int64_limits.hpp" />
+    <ClInclude Include="src\test\float64_limits.hpp" />
+    <ClInclude Include="src\test\float32_limits.hpp" />
     <ClInclude Include="src\test\float64_constants.hpp" />
     <ClInclude Include="src\Logger\Logger.hpp" />
     <ClInclude Include="src\Logger\LogLevel.hpp" />

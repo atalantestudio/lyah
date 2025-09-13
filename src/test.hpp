@@ -1,7 +1,5 @@
 #pragma once
 
-#undef assert
-
 namespace test {
 	void printTestCategory(std::string_view name);
 
