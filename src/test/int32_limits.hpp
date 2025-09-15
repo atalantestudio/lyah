@@ -3,7 +3,7 @@
 #include "pch.hpp"
 
 namespace int32_limits {
-	static void testMin() {
+	void testMin() {
 		const std::int32_t expected = 1;
 		const std::int32_t a = 1;
 		const std::int32_t b = 4;
@@ -13,7 +13,7 @@ namespace int32_limits {
 		test::assert(test::eq(result, expected));
 	}
 
-	static void testMax() {
+	void testMax() {
 		const std::int32_t expected = 4;
 		const std::int32_t a = 1;
 		const std::int32_t b = 4;
@@ -23,7 +23,7 @@ namespace int32_limits {
 		test::assert(test::eq(result, expected));
 	}
 
-	static void testClamp() {
+	void testClamp() {
 		const std::int32_t expected = 4;
 		const std::int32_t a = 1;
 		const std::int32_t min = 4;
@@ -34,7 +34,7 @@ namespace int32_limits {
 		test::assert(test::eq(result, expected));
 	}
 
-	static void runAll() {
+	void runAll() {
 		test::printTestCategory("32-bit integer limit-related functions");
 
 		test::runTest(&testMin, "Min");

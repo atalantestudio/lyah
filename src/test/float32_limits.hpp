@@ -3,7 +3,7 @@
 #include "pch.hpp"
 
 namespace float32_limits {
-	static void testMin() {
+	void testMin() {
 		const std::float_t expected = 1.0f;
 		const std::float_t a = 1.0f;
 		const std::float_t b = 4.0f;
@@ -13,7 +13,7 @@ namespace float32_limits {
 		test::assert(test::eq(result, expected));
 	}
 
-	static void testMax() {
+	void testMax() {
 		const std::float_t expected = 4.0f;
 		const std::float_t a = 1.0f;
 		const std::float_t b = 4.0f;
@@ -23,7 +23,7 @@ namespace float32_limits {
 		test::assert(test::eq(result, expected));
 	}
 
-	static void testClamp() {
+	void testClamp() {
 		const std::float_t expected = 4.0f;
 		const std::float_t a = 1.0f;
 		const std::float_t min = 4.0f;
@@ -34,7 +34,7 @@ namespace float32_limits {
 		test::assert(test::eq(result, expected));
 	}
 
-	static void runAll() {
+	void runAll() {
 		test::printTestCategory("32-bit single floating-point limit-related functions");
 
 		test::runTest(&testMin, "Min");

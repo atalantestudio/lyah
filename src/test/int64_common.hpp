@@ -3,7 +3,7 @@
 #include "pch.hpp"
 
 namespace int64_common {
-	static void testAbs() {
+	void testAbs() {
 		const std::int64_t expected = 1;
 		const std::int64_t a = -1;
 
@@ -12,7 +12,7 @@ namespace int64_common {
 		test::assert(test::eq(result, expected));
 	}
 
-	static void runAll() {
+	void runAll() {
 		test::printTestCategory("64-bit integer common functions");
 
 		test::runTest(&testAbs, "Absolute value");

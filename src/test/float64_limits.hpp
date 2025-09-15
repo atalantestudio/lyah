@@ -3,7 +3,7 @@
 #include "pch.hpp"
 
 namespace float64_limits {
-	static void testMin() {
+	void testMin() {
 		const std::double_t expected = 1.0;
 		const std::double_t a = 1.0;
 		const std::double_t b = 4.0;
@@ -13,7 +13,7 @@ namespace float64_limits {
 		test::assert(test::eq(result, expected));
 	}
 
-	static void testMax() {
+	void testMax() {
 		const std::double_t expected = 4.0;
 		const std::double_t a = 1.0;
 		const std::double_t b = 4.0;
@@ -23,7 +23,7 @@ namespace float64_limits {
 		test::assert(test::eq(result, expected));
 	}
 
-	static void testClamp() {
+	void testClamp() {
 		const std::double_t expected = 4.0;
 		const std::double_t a = 1.0;
 		const std::double_t min = 4.0;
@@ -34,7 +34,7 @@ namespace float64_limits {
 		test::assert(test::eq(result, expected));
 	}
 
-	static void runAll() {
+	void runAll() {
 		test::printTestCategory("64-bit double floating-point limit-related functions");
 
 		test::runTest(&testMin, "Min");
