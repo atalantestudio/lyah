@@ -23,19 +23,19 @@ namespace lyah {
 	}
 
 	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::float_t LYAH_CALL ceil(std::float_t a) {
-		return std::ceil(a);
+		return std::ceilf(a);
 	}
 
 	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::double_t LYAH_CALL ceil(std::double_t a) {
-		return std::ceil(a);
+		return std::ceill(a);
 	}
 
 	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::float_t LYAH_CALL floor(std::float_t a) {
-		return std::floor(a);
+		return std::floorf(a);
 	}
 
 	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::double_t LYAH_CALL floor(std::double_t a) {
-		return std::floor(a);
+		return std::floorl(a);
 	}
 
 	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE std::float_t LYAH_CALL lerp(std::float_t a, std::float_t b, std::float_t t) {
