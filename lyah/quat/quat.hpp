@@ -17,6 +17,7 @@ namespace lyah {
 			LYAH_NODISCARD static quat<T> LYAH_CALL identity();
 			LYAH_NODISCARD static quat<T> LYAH_CALL axisAngle(vec<3, T> axis, T angle);
 
+		public:
 			LYAH_NODISCARD quat();
 			LYAH_NODISCARD quat(T w, T x, T y, T z);
 
