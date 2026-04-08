@@ -1,10 +1,11 @@
 // Copyright 2025 Matteo Legagneux.
 // Licensed under the MIT License.
 
-#include "quat/quat.hpp"
+#include "lyah/quat/quat.hpp"
 
 namespace lyah {
 	// NOTE: SSE
+	template<>
 	LYAH_INLINE quat<std::float_t>::quat() :
 		m(_mm_setzero_ps())
 	{}
@@ -16,6 +17,7 @@ namespace lyah {
 	{}
 
 	// NOTE: SSE
+	template<>
 	LYAH_INLINE std::float_t quat<std::float_t>::operator [](std::size_t index) const LYAH_NOEXCEPT {
 		LYAH_ASSERT(index < 4);
 
@@ -29,6 +31,7 @@ namespace lyah {
 	}
 
 	// NOTE: SSE
+	template<>
 	LYAH_INLINE vec<3, std::float_t> quat<std::float_t>::xyz() const {
 		return vec<3, std::float_t>(_mm_shuffle_ps(m, m, _MM_SHUFFLE(0, 3, 2, 1)));
 	}

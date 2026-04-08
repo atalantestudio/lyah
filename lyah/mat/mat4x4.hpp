@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "mat/mat.hpp"
+#include "lyah/mat/mat.hpp"
 
 namespace lyah {
 	template<typename T>

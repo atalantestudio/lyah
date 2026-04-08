@@ -3,21 +3,25 @@
 
 namespace lyah {
 	// NOTE: AVX
+	template<>
 	LYAH_INLINE vec<4, std::int64_t>::vec() :
 		m(_mm256_setzero_si256())
 	{}
 
 	// NOTE: AVX
+	template<>
 	LYAH_INLINE vec<4, std::int64_t>::vec(std::int64_t x, std::int64_t y, std::int64_t z, std::int64_t w) :
 		m(_mm256_set_epi64x(w, z, y, x))
 	{}
 
 	// NOTE: AVX
+	template<>
 	LYAH_INLINE vec<4, std::int64_t>::vec(std::int64_t a) :
 		m(_mm256_set1_epi64x(a))
 	{}
 
 	// NOTE: AVX2
+	template<>
 	LYAH_INLINE std::int64_t vec<4, std::int64_t>::operator [](std::size_t index) const LYAH_NOEXCEPT {
 		LYAH_ASSERT(index < 4);
 

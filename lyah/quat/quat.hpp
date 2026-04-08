@@ -3,9 +3,9 @@
 
 #pragma once
 
-#include "base.hpp"
-#include "convert.hpp"
-#include "types.hpp"
+#include "lyah/base.hpp"
+#include "lyah/convert.hpp"
+#include "lyah/types.hpp"
 
 namespace lyah {
 	template<typename T>
@@ -37,4 +37,4 @@ namespace lyah {
 	};
 }
 
-#include "quat/quat.ipp"
+#include "lyah/quat/quat.ipp"

@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "base.hpp"
+#include "lyah/base.hpp"
 
 namespace lyah {
 	// A MxN row-major matrix.
@@ -13,4 +13,4 @@ namespace lyah {
 	struct mat;
 }
 
-#include "mat/mat.ipp"
+#include "lyah/mat/mat.ipp"

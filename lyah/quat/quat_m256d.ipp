@@ -1,10 +1,11 @@
 // Copyright 2025 Matteo Legagneux.
 // Licensed under the MIT License.
 
-#include "quat/quat.hpp"
+#include "lyah/quat/quat.hpp"
 
 namespace lyah {
 	// NOTE: AVX
+	template<>
 	LYAH_INLINE quat<std::double_t>::quat() :
 		m(_mm256_setzero_pd())
 	{}
@@ -16,6 +17,7 @@ namespace lyah {
 	{}
 
 	// NOTE: AVX2
+	template<>
 	LYAH_INLINE std::double_t quat<std::double_t>::operator [](std::size_t index) const LYAH_NOEXCEPT {
 		LYAH_ASSERT(index < 4);
 
@@ -29,6 +31,7 @@ namespace lyah {
 	}
 
 	// NOTE: AVX2
+	template<>
 	LYAH_INLINE vec<3, std::double_t> quat<std::double_t>::xyz() const {
 		return vec<3, std::double_t>(_mm256_permute4x64_pd(m, _MM_SHUFFLE(0, 3, 2, 1)));
 	}

@@ -3,9 +3,9 @@
 
 #pragma once
 
-#include "vec/vec.hpp"
-#include "convert.hpp"
-#include "types.hpp"
+#include "lyah/vec/vec.hpp"
+#include "lyah/convert.hpp"
+#include "lyah/types.hpp"
 
 namespace lyah {
 	template<typename T>
@@ -32,7 +32,7 @@ namespace lyah {
 	};
 }
 
-#include "vec/vec4_m128.ipp"
-#include "vec/vec4_m128i.ipp"
-#include "vec/vec4_m256d.ipp"
-#include "vec/vec4_m256i.ipp"
+#include "lyah/vec/vec4_m128.ipp"
+#include "lyah/vec/vec4_m128i.ipp"
+#include "lyah/vec/vec4_m256d.ipp"
+#include "lyah/vec/vec4_m256i.ipp"
