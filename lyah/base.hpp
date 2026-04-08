@@ -35,18 +35,18 @@
 #define LYAH_INSTRUCTION_SET_AVX 7
 #define LYAH_INSTRUCTION_SET_AVX2 8
 
-#ifdef __clang__
+#if defined(__clang__)
 	#define LYAH_COMPILER LYAH_COMPILER_CLANG
-	#define LYAH_STANDARD _cplusplus
-#elif __GNUC__
+	#define LYAH_STANDARD __cplusplus
+#elif defined(__GNUC__)
 	#define LYAH_COMPILER LYAH_COMPILER_GCC
-	#define LYAH_STANDARD _cplusplus
-#elif _MSC_VER
+	#define LYAH_STANDARD __cplusplus
+#elif defined(_MSC_VER)
 	#define LYAH_COMPILER LYAH_COMPILER_MSVC
 	#define LYAH_STANDARD _MSVC_LANG
 #else
 	#define LYAH_COMPILER
-	#define LYAH_STANDARD _cplusplus
+	#define LYAH_STANDARD __cplusplus
 #endif
 
 #if LYAH_STANDARD < LYAH_STANDARD_CPP11
