@@ -9,10 +9,10 @@ namespace lyah {
 
 	template<typename T>
 	LYAH_NODISCARD LYAH_INLINE quat<T> quat<T>::axisAngle(vec<3, T> axis, T angle) {
-		angle *= 0.5;
-		axis *= sin(angle);
+		angle *= static_cast<T>(0.5);
+		axis *= static_cast<T>(sin(angle));
 
-		return {cos(angle), axis[0], axis[1], axis[2]};
+		return {static_cast<T>(cos(angle)), axis[0], axis[1], axis[2]};
 	}
 
 	template<typename T>
