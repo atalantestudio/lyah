@@ -52,9 +52,9 @@
 #endif
 
 #if LYAH_COMPILER == LYAH_COMPILER_CLANG
-	#define LYAH_INLINE __attribute__((always_inline))
+	#define LYAH_INLINE inline
 #elif LYAH_COMPILER == LYAH_COMPILER_GCC
-	#define LYAH_INLINE __attribute__((always_inline))
+	#define LYAH_INLINE __attribute__((always_inline)) inline
 #elif LYAH_COMPILER == LYAH_COMPILER_MSVC
 	#define LYAH_INLINE __forceinline
 #else
