@@ -13,8 +13,6 @@
 #define LYAH_ASSERT assert
 #define LYAH_STATIC_ASSERT static_assert
 
-#define LYAH_CALL __vectorcall
-
 #define LYAH_COMPILER_CLANG 1
 #define LYAH_COMPILER_GCC 2
 #define LYAH_COMPILER_MSVC 3
@@ -61,6 +59,16 @@
 	#define LYAH_INLINE __forceinline
 #else
 	#define LYAH_INLINE inline
+#endif
+
+#if LYAH_COMPILER == LYAH_COMPILER_MSVC
+	#define LYAH_CALL __vectorcall
+
+	#if _MSC_VER > 1900
+		#define LYAH_SVML
+	#endif
+#else
+	#define LYAH_CALL
 #endif
 
 #define LYAH_CONSTEXPR constexpr
