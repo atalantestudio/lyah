@@ -97,13 +97,13 @@ namespace lyah {
 			// a is assumed to be normalized.
 			LYAH_NODISCARD explicit mat(quat<T> a);
 
-			LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE const vec<4, T>& LYAH_CALL operator [](std::size_t index) const LYAH_NOEXCEPT {
+			LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE const vec<4, T>& LYAH_CALL operator[](std::size_t index) const LYAH_NOEXCEPT {
 				LYAH_ASSERT(index < 4);
 
 				return m[index];
 			}
 
-			LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE vec<4, T>& LYAH_CALL operator [](std::size_t index) LYAH_NOEXCEPT {
+			LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE vec<4, T>& LYAH_CALL operator[](std::size_t index) LYAH_NOEXCEPT {
 				LYAH_ASSERT(index < 4);
 
 				return m[index];

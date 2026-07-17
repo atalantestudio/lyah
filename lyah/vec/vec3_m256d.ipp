@@ -22,7 +22,7 @@ namespace lyah {
 
 	// NOTE: AVX2
 	template<>
-	LYAH_INLINE std::double_t vec<3, std::double_t>::operator [](std::size_t index) const LYAH_NOEXCEPT {
+	LYAH_INLINE std::double_t vec<3, std::double_t>::operator[](std::size_t index) const LYAH_NOEXCEPT {
 		LYAH_ASSERT(index < 3);
 
 		switch (index) {

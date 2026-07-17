@@ -3,44 +3,44 @@
 
 namespace lyah {
 	template<std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE vec<C, T> LYAH_CALL operator +(vec<C, T> a) {
+	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE vec<C, T> LYAH_CALL operator+(vec<C, T> a) {
 		return a;
 	}
 
 	template<std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator +(vec<C, T> a, vec<C, T> b) {
+	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator+(vec<C, T> a, vec<C, T> b) {
 		return a += b;
 	}
 
 	template<std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator -(vec<C, T> a, vec<C, T> b) {
+	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator-(vec<C, T> a, vec<C, T> b) {
 		return a -= b;
 	}
 
 	template<std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator *(vec<C, T> a, T b) {
+	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator*(vec<C, T> a, T b) {
 		return a *= b;
 	}
 
 	template<std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator *(T a, vec<C, T> b) {
+	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator*(T a, vec<C, T> b) {
 		return b *= a;
 	}
 
 	template<std::size_t C, typename T>
-	LYAH_INLINE vec<C, T>& LYAH_CALL operator *=(vec<C, T>& a, T b) {
+	LYAH_INLINE vec<C, T>& LYAH_CALL operator*=(vec<C, T>& a, T b) {
 		a = a * vec<C, T>(b);
 
 		return a;
 	}
 
 	template<std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator *(vec<C, T> a, vec<C, T> b) {
+	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator*(vec<C, T> a, vec<C, T> b) {
 		return a *= b;
 	}
 
 	template<std::size_t C, typename T>
-	LYAH_INLINE vec<C, T>& LYAH_CALL operator *=(vec<C, T>& a, mat<C, C, T> b) {
+	LYAH_INLINE vec<C, T>& LYAH_CALL operator*=(vec<C, T>& a, mat<C, C, T> b) {
 		a = a * b;
 
 		return a;
@@ -49,7 +49,7 @@ namespace lyah {
 	// NOTE: b is assumed to be normalized.
 	// https://blog.molecular-matters.com/2013/05/24/a-faster-quaternion-vector-multiplication
 	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE vec<3, T> LYAH_CALL operator *(vec<3, T> a, quat<T> b) {
+	LYAH_NODISCARD LYAH_INLINE vec<3, T> LYAH_CALL operator*(vec<3, T> a, quat<T> b) {
 		const vec<3, T> xyz = b.xyz();
 		const T w = b.w();
 
@@ -57,29 +57,29 @@ namespace lyah {
 	}
 
 	template<typename T>
-	LYAH_INLINE vec<3, T>& LYAH_CALL operator *=(vec<3, T>& a, quat<T> b) {
+	LYAH_INLINE vec<3, T>& LYAH_CALL operator*=(vec<3, T>& a, quat<T> b) {
 		return a = a * b;
 	}
 
 	template<std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator /(vec<C, T> a, T b) {
+	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator/(vec<C, T> a, T b) {
 		return a /= b;
 	}
 
 	template<std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator /(T a, vec<C, T> b) {
+	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator/(T a, vec<C, T> b) {
 		return vec<C, T>(a) / b;
 	}
 
 	template<std::size_t C, typename T>
-	LYAH_INLINE vec<C, T>& LYAH_CALL operator /=(vec<C, T>& a, T b) {
+	LYAH_INLINE vec<C, T>& LYAH_CALL operator/=(vec<C, T>& a, T b) {
 		a = a / vec<C, T>(b);
 
 		return a;
 	}
 
 	template<std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator /(vec<C, T> a, vec<C, T> b) {
+	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL operator/(vec<C, T> a, vec<C, T> b) {
 		return a /= b;
 	}
 }

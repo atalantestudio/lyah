@@ -18,7 +18,7 @@ namespace lyah {
 
 	// NOTE: SSE
 	template<>
-	LYAH_INLINE std::float_t quat<std::float_t>::operator [](std::size_t index) const LYAH_NOEXCEPT {
+	LYAH_INLINE std::float_t quat<std::float_t>::operator[](std::size_t index) const LYAH_NOEXCEPT {
 		LYAH_ASSERT(index < 4);
 
 		switch (index) {
@@ -37,14 +37,14 @@ namespace lyah {
 	}
 
 	// NOTE: SSE
-	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator ==(quat<std::float_t> a, quat<std::float_t> b) {
+	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator==(quat<std::float_t> a, quat<std::float_t> b) {
 		const __m128 m = _mm_cmpneq_ps(a.m, b.m);
 
 		return _mm_movemask_ps(m) == 0;
 	}
 
 	// NOTE: SSE
-	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator !=(quat<std::float_t> a, quat<std::float_t> b) {
+	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator!=(quat<std::float_t> a, quat<std::float_t> b) {
 		const __m128 m = _mm_cmpneq_ps(a.m, b.m);
 
 		return _mm_movemask_ps(m) != 0;
@@ -52,35 +52,35 @@ namespace lyah {
 
 	// NOTE: SSE
 	// https://stackoverflow.com/a/20084034/17136841
-	LYAH_NODISCARD LYAH_INLINE quat<std::float_t> LYAH_CALL operator -(quat<std::float_t> a) {
+	LYAH_NODISCARD LYAH_INLINE quat<std::float_t> LYAH_CALL operator-(quat<std::float_t> a) {
 		a.m = _mm_xor_ps(a.m, _mm_set1_ps(-0.0f));
 
 		return a;
 	}
 
 	// NOTE: SSE
-	LYAH_INLINE quat<std::float_t>& LYAH_CALL operator +=(quat<std::float_t>& a, quat<std::float_t> b) {
+	LYAH_INLINE quat<std::float_t>& LYAH_CALL operator+=(quat<std::float_t>& a, quat<std::float_t> b) {
 		a.m = _mm_add_ps(a.m, b.m);
 
 		return a;
 	}
 
 	// NOTE: SSE
-	LYAH_INLINE quat<std::float_t>& LYAH_CALL operator -=(quat<std::float_t>& a, quat<std::float_t> b) {
+	LYAH_INLINE quat<std::float_t>& LYAH_CALL operator-=(quat<std::float_t>& a, quat<std::float_t> b) {
 		a.m = _mm_sub_ps(a.m, b.m);
 
 		return a;
 	}
 
 	// NOTE: SSE
-	LYAH_INLINE quat<std::float_t>& LYAH_CALL operator *=(quat<std::float_t>& a, std::float_t b) {
+	LYAH_INLINE quat<std::float_t>& LYAH_CALL operator*=(quat<std::float_t>& a, std::float_t b) {
 		a.m = _mm_mul_ps(a.m, _mm_set1_ps(b));
 
 		return a;
 	}
 
 	// NOTE: SSE
-	LYAH_INLINE quat<std::float_t>& LYAH_CALL operator *=(quat<std::float_t>& a, quat<std::float_t> b) {
+	LYAH_INLINE quat<std::float_t>& LYAH_CALL operator*=(quat<std::float_t>& a, quat<std::float_t> b) {
 		const __m128 m0l = a.m;
 		const __m128 m0r = _mm_set1_ps(_mm_cvtss_f32(b.m));
 		const __m128 m0 = _mm_mul_ps(m0l, m0r);

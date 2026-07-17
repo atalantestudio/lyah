@@ -25,7 +25,7 @@ namespace lyah {
 			template<typename U>
 			LYAH_NODISCARD explicit vec(vec<2, U> a) : m(internal::convert<typename vec<2, U>::__m_t, __m_t>(a.m)) {}
 
-			LYAH_NODISCARD T LYAH_CALL operator [](std::size_t index) const LYAH_NOEXCEPT;
+			LYAH_NODISCARD T LYAH_CALL operator[](std::size_t index) const LYAH_NOEXCEPT;
 
 		public:
 			__m_t m;

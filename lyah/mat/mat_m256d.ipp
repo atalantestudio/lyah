@@ -65,7 +65,7 @@ namespace lyah {
 	// NOTE: AVX
 	// https://stackoverflow.com/a/18508113
 	template<std::size_t M, std::size_t N, std::size_t P>
-	LYAH_NODISCARD LYAH_INLINE mat<M, P, std::double_t> LYAH_CALL operator *(mat<M, N, std::double_t> a, mat<N, P, std::double_t> b) {
+	LYAH_NODISCARD LYAH_INLINE mat<M, P, std::double_t> LYAH_CALL operator*(mat<M, N, std::double_t> a, mat<N, P, std::double_t> b) {
 		__m256d broadcastj = _mm256_undefined_pd();
 		__m256d aij_bj = _mm256_undefined_pd();
 		mat<M, P, std::double_t> result;

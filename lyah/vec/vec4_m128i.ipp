@@ -22,7 +22,7 @@ namespace lyah {
 
 	// NOTE: SSE2
 	template<>
-	LYAH_INLINE std::int32_t vec<4, std::int32_t>::operator [](std::size_t index) const LYAH_NOEXCEPT {
+	LYAH_INLINE std::int32_t vec<4, std::int32_t>::operator[](std::size_t index) const LYAH_NOEXCEPT {
 		LYAH_ASSERT(index < 4);
 
 		switch (index) {

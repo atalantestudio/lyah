@@ -26,7 +26,7 @@ namespace lyah {
 			template<typename U>
 			LYAH_NODISCARD explicit quat(quat<U> a);
 
-			LYAH_NODISCARD T LYAH_CALL operator [](std::size_t index) const LYAH_NOEXCEPT;
+			LYAH_NODISCARD T LYAH_CALL operator[](std::size_t index) const LYAH_NOEXCEPT;
 
 			LYAH_NODISCARD T LYAH_CALL w() const;
 

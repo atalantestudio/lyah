@@ -3,7 +3,7 @@
 
 namespace lyah {
 	template<std::size_t M, std::size_t N, typename T>
-	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator ==(mat<M, N, T> a, mat<M, N, T> b) {
+	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator==(mat<M, N, T> a, mat<M, N, T> b) {
 		for (std::size_t i = 0; i < M; i += 1) {
 			if (a[i] != b[i]) {
 				return false;
@@ -14,7 +14,7 @@ namespace lyah {
 	}
 
 	template<std::size_t M, std::size_t N, typename T>
-	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator !=(mat<M, N, T> a, mat<M, N, T> b) {
+	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator!=(mat<M, N, T> a, mat<M, N, T> b) {
 		for (std::size_t i = 0; i < M; i += 1) {
 			if (a[i] != b[i]) {
 				return true;
@@ -25,12 +25,12 @@ namespace lyah {
 	}
 
 	template<std::size_t M, std::size_t N, typename T>
-	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE mat<M, N, T> LYAH_CALL operator +(mat<M, N, T> a) {
+	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE mat<M, N, T> LYAH_CALL operator+(mat<M, N, T> a) {
 		return a;
 	}
 
 	template<std::size_t M, std::size_t N, typename T>
-	LYAH_NODISCARD LYAH_INLINE mat<M, N, T> LYAH_CALL operator -(mat<M, N, T> a) {
+	LYAH_NODISCARD LYAH_INLINE mat<M, N, T> LYAH_CALL operator-(mat<M, N, T> a) {
 		for (std::size_t i = 0; i < M; i += 1) {
 			a[i] = -a[i];
 		}
@@ -39,12 +39,12 @@ namespace lyah {
 	}
 
 	template<std::size_t M, std::size_t N, typename T>
-	LYAH_NODISCARD LYAH_INLINE mat<M, N, T> LYAH_CALL operator +(mat<M, N, T> a, mat<M, N, T> b) {
+	LYAH_NODISCARD LYAH_INLINE mat<M, N, T> LYAH_CALL operator+(mat<M, N, T> a, mat<M, N, T> b) {
 		return a += b;
 	}
 
 	template<std::size_t M, std::size_t N, typename T>
-	LYAH_INLINE mat<M, N, T>& LYAH_CALL operator +=(mat<M, N, T>& a, mat<M, N, T> b) {
+	LYAH_INLINE mat<M, N, T>& LYAH_CALL operator+=(mat<M, N, T>& a, mat<M, N, T> b) {
 		for (std::size_t i = 0; i < M; i += 1) {
 			a[i] += b[i];
 		}
@@ -53,12 +53,12 @@ namespace lyah {
 	}
 
 	template<std::size_t M, std::size_t N, typename T>
-	LYAH_NODISCARD LYAH_INLINE mat<M, N, T> LYAH_CALL operator -(mat<M, N, T> a, mat<M, N, T> b) {
+	LYAH_NODISCARD LYAH_INLINE mat<M, N, T> LYAH_CALL operator-(mat<M, N, T> a, mat<M, N, T> b) {
 		return a -= b;
 	}
 
 	template<std::size_t M, std::size_t N, typename T>
-	LYAH_INLINE mat<M, N, T>& LYAH_CALL operator -=(mat<M, N, T>& a, mat<M, N, T> b) {
+	LYAH_INLINE mat<M, N, T>& LYAH_CALL operator-=(mat<M, N, T>& a, mat<M, N, T> b) {
 		for (std::size_t i = 0; i < M; i += 1) {
 			a[i] -= b[i];
 		}
@@ -67,17 +67,17 @@ namespace lyah {
 	}
 
 	template<std::size_t M, std::size_t N, typename T>
-	LYAH_NODISCARD LYAH_INLINE mat<M, N, T> LYAH_CALL operator *(mat<M, N, T> a, T b) {
+	LYAH_NODISCARD LYAH_INLINE mat<M, N, T> LYAH_CALL operator*(mat<M, N, T> a, T b) {
 		return a *= b;
 	}
 
 	template<std::size_t M, std::size_t N, typename T>
-	LYAH_NODISCARD LYAH_INLINE mat<M, N, T> LYAH_CALL operator *(T a, mat<M, N, T> b) {
+	LYAH_NODISCARD LYAH_INLINE mat<M, N, T> LYAH_CALL operator*(T a, mat<M, N, T> b) {
 		return b *= a;
 	}
 
 	template<std::size_t M, std::size_t N, typename T>
-	LYAH_INLINE mat<M, N, T>& LYAH_CALL operator *=(mat<M, N, T>& a, T b) {
+	LYAH_INLINE mat<M, N, T>& LYAH_CALL operator*=(mat<M, N, T>& a, T b) {
 		for (std::size_t i = 0; i < M; i += 1) {
 			a[i] *= b;
 		}
@@ -86,7 +86,7 @@ namespace lyah {
 	}
 
 	template<std::size_t M, std::size_t N, typename T>
-	LYAH_INLINE mat<M, N, T>& LYAH_CALL operator *=(mat<M, N, T>& a, mat<M, N, T> b) {
+	LYAH_INLINE mat<M, N, T>& LYAH_CALL operator*=(mat<M, N, T>& a, mat<M, N, T> b) {
 		return a = a * b;
 	}
 
