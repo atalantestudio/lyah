@@ -1,5 +1,5 @@
-// Copyright 2025 Matteo Legagneux.
-// Licensed under the MIT License.
+// Copyright 2025 Atalante Studio.
+// Distributed under the MIT License.
 
 #pragma once
 
@@ -48,7 +48,7 @@
 #endif
 
 #if LYAH_STANDARD < LYAH_STANDARD_CPP11
-	#error "Lyah does not support language versions below C++11."
+	#error Language standards below C++11 are not supported.
 #endif
 
 #if LYAH_COMPILER == LYAH_COMPILER_CLANG
