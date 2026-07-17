@@ -20,7 +20,8 @@ jobs:
           chmod +x ./scripts/check_copyright_license_headers.sh
           ./scripts/check_copyright_license_headers.sh
         env:
-          HEADER: "// Copyright 2025 Matteo Legagneux.\n// Licensed under the MIT License."
           GITHUB_BASE_REF: ${{github.base_ref}}
           GITHUB_HEAD_REF: ${{github.head_ref}}
           GITHUB_TREE_URL: ${{github.server_url}}/${{github.repository}}/tree/${{github.head_ref}}
+          HEADER_COPYRIGHT_START: "// Copyright"
+          HEADER_LICENSE_START: "// Distributed under the"
