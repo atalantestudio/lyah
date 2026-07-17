@@ -18,7 +18,7 @@
 }
 
 namespace test {
-	inline std::ostringstream& operator <<(std::ostringstream& stream, __m128 m) {
+	inline std::ostringstream& operator<<(std::ostringstream& stream, __m128 m) {
 		const std::float_t* buffer = m.m128_f32;
 
 		stream << buffer[0] << "  " << buffer[1] << "  " << buffer[2] << "  " << buffer[3];
@@ -26,7 +26,7 @@ namespace test {
 		return stream;
 	}
 
-	inline std::ostringstream& operator <<(std::ostringstream& stream, __m128d m) {
+	inline std::ostringstream& operator<<(std::ostringstream& stream, __m128d m) {
 		const std::double_t* buffer = m.m128d_f64;
 
 		stream << buffer[0] << "  " << buffer[1];
@@ -34,7 +34,7 @@ namespace test {
 		return stream;
 	}
 
-	inline std::ostringstream& operator <<(std::ostringstream& stream, __m256d m) {
+	inline std::ostringstream& operator<<(std::ostringstream& stream, __m256d m) {
 		const std::double_t* buffer = m.m256d_f64;
 
 		stream << buffer[0] << "  " << buffer[1] << "  " << buffer[2] << "  " << buffer[3];
@@ -43,7 +43,7 @@ namespace test {
 	}
 
 	template<std::size_t C, typename T>
-	inline std::ostringstream& operator <<(std::ostringstream& stream, const lyah::vec<C, T>& a) {
+	inline std::ostringstream& operator<<(std::ostringstream& stream, const lyah::vec<C, T>& a) {
 		for (std::size_t index = 0; index < C - 1; index += 1) {
 			stream << a[index] << "  ";
 		}
@@ -54,7 +54,7 @@ namespace test {
 	}
 
 	template<std::size_t M, std::size_t N, typename T>
-	inline std::ostringstream& operator <<(std::ostringstream& stream, const lyah::mat<M, N, T>& a) {
+	inline std::ostringstream& operator<<(std::ostringstream& stream, const lyah::mat<M, N, T>& a) {
 		for (std::size_t index = 0; index < M - 1; index += 1) {
 			stream << a[index] << '\n';
 		}
@@ -65,7 +65,7 @@ namespace test {
 	}
 
 	template<typename T>
-	inline std::ostringstream& operator <<(std::ostringstream& stream, const lyah::quat<T>& a) {
+	inline std::ostringstream& operator<<(std::ostringstream& stream, const lyah::quat<T>& a) {
 		stream << a[0] << "  " << a[1] << "  " << a[2] << "  " << a[3];
 
 		return stream;
