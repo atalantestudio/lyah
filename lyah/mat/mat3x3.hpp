@@ -1,9 +1,9 @@
-// Copyright 2025 Matteo Legagneux.
-// Licensed under the MIT License.
+// Copyright 2025 Atalante Studio.
+// Distributed under the MIT License.
 
 #pragma once
 
-#include "mat/mat.hpp"
+#include "lyah/mat/mat.hpp"
 
 namespace lyah {
 	template<typename T>
@@ -63,13 +63,13 @@ namespace lyah {
 				m{vec<3, T>(a.m[0]), vec<3, T>(a.m[1]), vec<3, T>(a.m[2])}
 			{}
 
-			LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE const vec<3, T>& LYAH_CALL operator [](std::size_t index) const LYAH_NOEXCEPT {
+			LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE const vec<3, T>& LYAH_CALL operator[](std::size_t index) const LYAH_NOEXCEPT {
 				LYAH_ASSERT(index < 3);
 
 				return m[index];
 			}
 
-			LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE vec<3, T>& LYAH_CALL operator [](std::size_t index) LYAH_NOEXCEPT {
+			LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE vec<3, T>& LYAH_CALL operator[](std::size_t index) LYAH_NOEXCEPT {
 				LYAH_ASSERT(index < 3);
 
 				return m[index];

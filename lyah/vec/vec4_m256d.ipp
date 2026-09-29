@@ -1,24 +1,28 @@
-// Copyright 2025 Matteo Legagneux.
-// Licensed under the MIT License.
+// Copyright 2025 Atalante Studio.
+// Distributed under the MIT License.
 
 namespace lyah {
 	// NOTE: AVX
+	template<>
 	LYAH_INLINE vec<4, std::double_t>::vec() :
 		m(_mm256_setzero_pd())
 	{}
 
 	// NOTE: AVX
+	template<>
 	LYAH_INLINE vec<4, std::double_t>::vec(std::double_t x, std::double_t y, std::double_t z, std::double_t w) :
 		m(_mm256_set_pd(w, z, y, x))
 	{}
 
 	// NOTE: AVX
+	template<>
 	LYAH_INLINE vec<4, std::double_t>::vec(std::double_t a) :
 		m(_mm256_set1_pd(a))
 	{}
 
 	// NOTE: AVX2
-	LYAH_INLINE std::double_t vec<4, std::double_t>::operator [](std::size_t index) const LYAH_NOEXCEPT {
+	template<>
+	LYAH_INLINE std::double_t vec<4, std::double_t>::operator[](std::size_t index) const LYAH_NOEXCEPT {
 		LYAH_ASSERT(index < 4);
 
 		switch (index) {

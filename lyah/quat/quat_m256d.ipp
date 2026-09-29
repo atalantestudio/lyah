@@ -1,10 +1,11 @@
-// Copyright 2025 Matteo Legagneux.
-// Licensed under the MIT License.
+// Copyright 2025 Atalante Studio.
+// Distributed under the MIT License.
 
-#include "quat/quat.hpp"
+#include "lyah/quat/quat.hpp"
 
 namespace lyah {
 	// NOTE: AVX
+	template<>
 	LYAH_INLINE quat<std::double_t>::quat() :
 		m(_mm256_setzero_pd())
 	{}
@@ -16,7 +17,8 @@ namespace lyah {
 	{}
 
 	// NOTE: AVX2
-	LYAH_INLINE std::double_t quat<std::double_t>::operator [](std::size_t index) const LYAH_NOEXCEPT {
+	template<>
+	LYAH_INLINE std::double_t quat<std::double_t>::operator[](std::size_t index) const LYAH_NOEXCEPT {
 		LYAH_ASSERT(index < 4);
 
 		switch (index) {
@@ -29,19 +31,20 @@ namespace lyah {
 	}
 
 	// NOTE: AVX2
+	template<>
 	LYAH_INLINE vec<3, std::double_t> quat<std::double_t>::xyz() const {
 		return vec<3, std::double_t>(_mm256_permute4x64_pd(m, _MM_SHUFFLE(0, 3, 2, 1)));
 	}
 
 	// NOTE: AVX
-	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator ==(quat<std::double_t> a, quat<std::double_t> b) {
+	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator==(quat<std::double_t> a, quat<std::double_t> b) {
 		const __m256d m = _mm256_cmp_pd(a.m, b.m, _CMP_NEQ_OQ);
 
 		return _mm256_movemask_pd(m) == 0;
 	}
 
 	// NOTE: AVX
-	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator !=(quat<std::double_t> a, quat<std::double_t> b) {
+	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator!=(quat<std::double_t> a, quat<std::double_t> b) {
 		const __m256d m = _mm256_cmp_pd(a.m, b.m, _CMP_NEQ_OQ);
 
 		return _mm256_movemask_pd(m) != 0;
@@ -49,35 +52,35 @@ namespace lyah {
 
 	// NOTE: AVX
 	// https://stackoverflow.com/a/20084034/17136841
-	LYAH_NODISCARD LYAH_INLINE quat<std::double_t> LYAH_CALL operator -(quat<std::double_t> a) {
+	LYAH_NODISCARD LYAH_INLINE quat<std::double_t> LYAH_CALL operator-(quat<std::double_t> a) {
 		a.m = _mm256_xor_pd(a.m, _mm256_set1_pd(-0.0));
 
 		return a;
 	}
 
 	// NOTE: AVX
-	LYAH_INLINE quat<std::double_t>& LYAH_CALL operator +=(quat<std::double_t>& a, quat<std::double_t> b) {
+	LYAH_INLINE quat<std::double_t>& LYAH_CALL operator+=(quat<std::double_t>& a, quat<std::double_t> b) {
 		a.m = _mm256_add_pd(a.m, b.m);
 
 		return a;
 	}
 
 	// NOTE: AVX
-	LYAH_INLINE quat<std::double_t>& LYAH_CALL operator -=(quat<std::double_t>& a, quat<std::double_t> b) {
+	LYAH_INLINE quat<std::double_t>& LYAH_CALL operator-=(quat<std::double_t>& a, quat<std::double_t> b) {
 		a.m = _mm256_sub_pd(a.m, b.m);
 
 		return a;
 	}
 
 	// NOTE: AVX
-	LYAH_INLINE quat<std::double_t>& LYAH_CALL operator *=(quat<std::double_t>& a, std::double_t b) {
+	LYAH_INLINE quat<std::double_t>& LYAH_CALL operator*=(quat<std::double_t>& a, std::double_t b) {
 		a.m = _mm256_mul_pd(a.m, _mm256_set1_pd(b));
 
 		return a;
 	}
 
 	// NOTE: AVX2
-	LYAH_INLINE quat<std::double_t>& LYAH_CALL operator *=(quat<std::double_t>& a, quat<std::double_t> b) {
+	LYAH_INLINE quat<std::double_t>& LYAH_CALL operator*=(quat<std::double_t>& a, quat<std::double_t> b) {
 		const __m256d m0l = a.m;
 		const __m256d m0r = _mm256_set1_pd(_mm256_cvtsd_f64(b.m));
 		const __m256d m0 = _mm256_mul_pd(m0l, m0r);

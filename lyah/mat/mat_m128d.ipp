@@ -1,10 +1,10 @@
-// Copyright 2025 Matteo Legagneux.
-// Licensed under the MIT License.
+// Copyright 2025 Atalante Studio.
+// Distributed under the MIT License.
 
 namespace lyah {
 	// NOTE: SSE2
 	template<std::size_t M, std::size_t N>
-	LYAH_NODISCARD LYAH_INLINE mat<M, 2, std::double_t> LYAH_CALL operator *(mat<M, N, std::double_t> a, mat<N, 2, std::double_t> b) {
+	LYAH_NODISCARD LYAH_INLINE mat<M, 2, std::double_t> LYAH_CALL operator*(mat<M, N, std::double_t> a, mat<N, 2, std::double_t> b) {
 		__m128d broadcastj = _mm_undefined_pd();
 		__m128d aij_bj = _mm_undefined_pd();
 		mat<M, 2, std::double_t> result;

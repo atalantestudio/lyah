@@ -1,11 +1,11 @@
-// Copyright 2025 Matteo Legagneux.
-// Licensed under the MIT License.
+// Copyright 2025 Atalante Studio.
+// Distributed under the MIT License.
 
 #pragma once
 
-#include "vec/vec.hpp"
-#include "convert.hpp"
-#include "types.hpp"
+#include "lyah/vec/vec.hpp"
+#include "lyah/convert.hpp"
+#include "lyah/types.hpp"
 
 namespace lyah {
 	template<typename T>
@@ -25,13 +25,13 @@ namespace lyah {
 			template<typename U>
 			LYAH_NODISCARD explicit vec(vec<2, U> a) : m(internal::convert<typename vec<2, U>::__m_t, __m_t>(a.m)) {}
 
-			LYAH_NODISCARD T LYAH_CALL operator [](std::size_t index) const LYAH_NOEXCEPT;
+			LYAH_NODISCARD T LYAH_CALL operator[](std::size_t index) const LYAH_NOEXCEPT;
 
 		public:
 			__m_t m;
 	};
 }
 
-#include "vec/vec2_m128.ipp"
-#include "vec/vec2_m128d.ipp"
-#include "vec/vec2_m128i.ipp"
+#include "lyah/vec/vec2_m128.ipp"
+#include "lyah/vec/vec2_m128d.ipp"
+#include "lyah/vec/vec2_m128i.ipp"

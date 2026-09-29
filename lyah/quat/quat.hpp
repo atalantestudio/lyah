@@ -1,11 +1,11 @@
-// Copyright 2025 Matteo Legagneux.
-// Licensed under the MIT License.
+// Copyright 2025 Atalante Studio.
+// Distributed under the MIT License.
 
 #pragma once
 
-#include "base.hpp"
-#include "convert.hpp"
-#include "types.hpp"
+#include "lyah/base.hpp"
+#include "lyah/convert.hpp"
+#include "lyah/types.hpp"
 
 namespace lyah {
 	template<typename T>
@@ -26,7 +26,7 @@ namespace lyah {
 			template<typename U>
 			LYAH_NODISCARD explicit quat(quat<U> a);
 
-			LYAH_NODISCARD T LYAH_CALL operator [](std::size_t index) const LYAH_NOEXCEPT;
+			LYAH_NODISCARD T LYAH_CALL operator[](std::size_t index) const LYAH_NOEXCEPT;
 
 			LYAH_NODISCARD T LYAH_CALL w() const;
 
@@ -37,4 +37,4 @@ namespace lyah {
 	};
 }
 
-#include "quat/quat.ipp"
+#include "lyah/quat/quat.ipp"

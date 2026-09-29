@@ -1,5 +1,5 @@
-// Copyright 2025 Matteo Legagneux.
-// Licensed under the MIT License.
+// Copyright 2025 Atalante Studio.
+// Distributed under the MIT License.
 
 #pragma once
 
@@ -15,4 +15,4 @@ namespace lyah {
 	struct vec;
 }
 
-#include "vec/vec.ipp"
+#include "lyah/vec/vec.ipp"

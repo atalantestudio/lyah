@@ -1,11 +1,12 @@
-// Copyright 2025 Matteo Legagneux.
-// Licensed under the MIT License.
+// Copyright 2025 Atalante Studio.
+// Distributed under the MIT License.
 
-#include "types.hpp"
+#include "lyah/types.hpp"
 
 namespace lyah {
 	// NOTE: SSE2
 	// https://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToMatrix/index.htm
+	template<>
 	LYAH_NODISCARD LYAH_INLINE mat<4, 4, std::float_t>::mat(quat<std::float_t> a) {
 		// y * y - z * z    x * y - z * w    x * z + y * w
 		// x * y + z * w    x * x - z * z    y * z - x * w
@@ -64,7 +65,7 @@ namespace lyah {
 	// NOTE: SSE
 	// https://stackoverflow.com/a/18508113
 	template<std::size_t M, std::size_t N, std::size_t P>
-	LYAH_NODISCARD LYAH_INLINE mat<M, P, std::float_t> LYAH_CALL operator *(mat<M, N, std::float_t> a, mat<N, P, std::float_t> b) {
+	LYAH_NODISCARD LYAH_INLINE mat<M, P, std::float_t> LYAH_CALL operator*(mat<M, N, std::float_t> a, mat<N, P, std::float_t> b) {
 		__m128 broadcastj = _mm_undefined_ps();
 		__m128 aij_bj = _mm_undefined_ps();
 		mat<M, P, std::float_t> result;

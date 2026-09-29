@@ -1,5 +1,5 @@
-// Copyright 2025 Matteo Legagneux.
-// Licensed under the MIT License.
+// Copyright 2025 Atalante Studio.
+// Distributed under the MIT License.
 
 namespace lyah {
 	template<typename T>
@@ -9,10 +9,10 @@ namespace lyah {
 
 	template<typename T>
 	LYAH_NODISCARD LYAH_INLINE quat<T> quat<T>::axisAngle(vec<3, T> axis, T angle) {
-		angle *= 0.5;
-		axis *= sin(angle);
+		angle *= static_cast<T>(0.5);
+		axis *= static_cast<T>(sin(angle));
 
-		return {cos(angle), axis[0], axis[1], axis[2]};
+		return {static_cast<T>(cos(angle)), axis[0], axis[1], axis[2]};
 	}
 
 	template<typename T>
@@ -32,57 +32,57 @@ namespace lyah {
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE quat<T> LYAH_CALL operator +(quat<T> a) {
+	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE quat<T> LYAH_CALL operator+(quat<T> a) {
 		return a;
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE quat<T> LYAH_CALL operator +(quat<T> a, quat<T> b) {
+	LYAH_NODISCARD LYAH_INLINE quat<T> LYAH_CALL operator+(quat<T> a, quat<T> b) {
 		return a += b;
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE quat<T> LYAH_CALL operator -(quat<T> a, quat<T> b) {
+	LYAH_NODISCARD LYAH_INLINE quat<T> LYAH_CALL operator-(quat<T> a, quat<T> b) {
 		return a -= b;
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE quat<T> LYAH_CALL operator *(quat<T> a, T b) {
+	LYAH_NODISCARD LYAH_INLINE quat<T> LYAH_CALL operator*(quat<T> a, T b) {
 		return a *= b;
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE quat<T> LYAH_CALL operator *(T a, quat<T> b) {
+	LYAH_NODISCARD LYAH_INLINE quat<T> LYAH_CALL operator*(T a, quat<T> b) {
 		return b *= a;
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE quat<T> LYAH_CALL operator *(quat<T> a, quat<T> b) {
+	LYAH_NODISCARD LYAH_INLINE quat<T> LYAH_CALL operator*(quat<T> a, quat<T> b) {
 		return a *= b;
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE quat<T> LYAH_CALL operator /(quat<T> a, T b) {
+	LYAH_NODISCARD LYAH_INLINE quat<T> LYAH_CALL operator/(quat<T> a, T b) {
 		return a /= b;
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE quat<T> LYAH_CALL operator /(T a, quat<T> b) {
+	LYAH_NODISCARD LYAH_INLINE quat<T> LYAH_CALL operator/(T a, quat<T> b) {
 		return inverse(b) * a;
 	}
 
 	template<typename T>
-	LYAH_INLINE quat<T>& LYAH_CALL operator /=(quat<T>& a, T b) {
+	LYAH_INLINE quat<T>& LYAH_CALL operator/=(quat<T>& a, T b) {
 		return a *= static_cast<T>(1) / b;
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE quat<T> LYAH_CALL operator /(quat<T> a, quat<T> b) {
+	LYAH_NODISCARD LYAH_INLINE quat<T> LYAH_CALL operator/(quat<T> a, quat<T> b) {
 		return a /= b;
 	}
 
 	template<typename T>
-	LYAH_INLINE quat<T>& LYAH_CALL operator /=(quat<T>& a, quat<T> b) {
+	LYAH_INLINE quat<T>& LYAH_CALL operator/=(quat<T>& a, quat<T> b) {
 		return a *= inverse(b);
 	}
 
