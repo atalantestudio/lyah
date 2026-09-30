@@ -3,5 +3,4 @@
 
 #pragma once
 
-#include "quat/quat_m128.ipp"
-#include "quat/quat_m256d.ipp"
+#include "lyah/quat/quat.hpp"

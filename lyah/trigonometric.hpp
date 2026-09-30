@@ -50,7 +50,3 @@ namespace lyah {
 		return std::tanl(a);
 	}
 }
-
-#include "vec/m128/trigonometric.ipp"
-#include "vec/m128d/trigonometric.ipp"
-#include "vec/m256d/trigonometric.ipp"

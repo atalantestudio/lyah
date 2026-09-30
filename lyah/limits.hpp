@@ -17,7 +17,7 @@ namespace lyah {
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_CONSTEXPR_CPP14 LYAH_INLINE T LYAH_CALL clamp(T a, T min, T max) {
-		return lyah::min(lyah::max(a, min), max);
+	LYAH_NODISCARD LYAH_CONSTEXPR_CPP14 LYAH_INLINE T LYAH_CALL clamp(T a, T b, T c) {
+		return min(max(a, b), c);
 	}
 }

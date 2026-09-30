@@ -52,6 +52,3 @@ namespace lyah {
 		return a / length(a);
 	}
 }
-
-#include "vec/m128/geometric.ipp"
-#include "vec/m256d/geometric.ipp"
