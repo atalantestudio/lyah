@@ -8,7 +8,7 @@
 namespace lyah {
 	template<typename T>
 	struct mat<2, 2, T> {
-		/// Returns a 2x2 identity matrix.
+		/// Creates and returns a 2x2 identity matrix.
 		LYAH_NODISCARD static mat<2, 2, T> LYAH_CALL identity();
 
 		LYAH_NODISCARD LYAH_INLINE static mat<2, 2, T> LYAH_CALL rotation(T a);
@@ -76,48 +76,6 @@ namespace lyah {
 		m{}
 	{}
 
-	template<std::size_t M, typename T>
-	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator==(mat<M, 2, T> a, mat<M, 2, T> b) {
-		return a[0] == b[0] && a[1] == b[1];
-	}
-
-	template<std::size_t M, typename T>
-	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator!=(mat<M, 2, T> a, mat<M, 2, T> b) {
-		return a[0] != b[0] || a[1] != b[1];
-	}
-
-	template<std::size_t M, typename T>
-	LYAH_NODISCARD LYAH_INLINE mat<M, 2, T> LYAH_CALL operator-(mat<M, 2, T> A) {
-		A[0] = -A[0];
-		A[1] = -A[1];
-
-		return A;
-	}
-
-	template<std::size_t M, typename T>
-	LYAH_INLINE mat<M, 2, T>& LYAH_CALL operator+=(mat<M, 2, T>& A, mat<M, 2, T> B) {
-		A[0] += B[0];
-		A[1] += B[1];
-
-		return A;
-	}
-
-	template<std::size_t M, typename T>
-	LYAH_INLINE mat<M, 2, T>& LYAH_CALL operator-=(mat<M, 2, T>& A, mat<M, 2, T> B) {
-		A[0] -= B[0];
-		A[1] -= B[1];
-
-		return A;
-	}
-
-	template<std::size_t M, typename T>
-	LYAH_INLINE mat<M, 2, T>& LYAH_CALL operator*=(mat<M, 2, T>& A, T b) {
-		A[0] *= b;
-		A[1] *= b;
-
-		return A;
-	}
-
 	template<typename T>
 	LYAH_INLINE mat<2, 2, T>& LYAH_CALL operator*=(mat<2, 2, T>& A, mat<2, 2, T> B) {
 		A = {
@@ -126,16 +84,6 @@ namespace lyah {
 		};
 
 		return A;
-	}
-
-	template<std::size_t M, std::size_t N, typename T>
-	LYAH_INLINE mat<M, N, T>& LYAH_CALL operator/=(mat<M, N, T>& A, T b) {
-		return A *= static_cast<T>(1) / b;
-	}
-
-	template<std::size_t M, std::size_t N, typename T>
-	LYAH_NODISCARD LYAH_INLINE mat<M, N, T> LYAH_CALL operator/(mat<M, N, T> A, T b) {
-		return A /= b;
 	}
 
 	template<typename T>

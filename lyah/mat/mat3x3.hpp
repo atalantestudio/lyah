@@ -101,52 +101,6 @@ namespace lyah {
 		m[2] = {xz - yw,      yz + xw,      _1 - xx - yy};
 	}
 
-	template<std::size_t M, typename T>
-	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator==(mat<M, 3, T> a, mat<M, 3, T> b) {
-		return a[0] == b[0] && a[1] == b[1] && a[2] == b[2];
-	}
-
-	template<std::size_t M, typename T>
-	LYAH_NODISCARD LYAH_INLINE bool LYAH_CALL operator!=(mat<M, 3, T> a, mat<M, 3, T> b) {
-		return a[0] != b[0] || a[1] != b[1] || a[2] != b[2];
-	}
-
-	template<std::size_t M, typename T>
-	LYAH_NODISCARD LYAH_INLINE mat<M, 3, T> LYAH_CALL operator-(mat<M, 3, T> a) {
-		a[0] = -a[0];
-		a[1] = -a[1];
-		a[2] = -a[2];
-
-		return a;
-	}
-
-	template<std::size_t M, typename T>
-	LYAH_INLINE mat<M, 3, T>& LYAH_CALL operator+=(mat<M, 3, T>& a, mat<M, 3, T> b) {
-		a[0] += b[0];
-		a[1] += b[1];
-		a[2] += b[2];
-
-		return a;
-	}
-
-	template<std::size_t M, typename T>
-	LYAH_INLINE mat<M, 3, T>& LYAH_CALL operator-=(mat<M, 3, T>& a, mat<M, 3, T> b) {
-		a[0] -= b[0];
-		a[1] -= b[1];
-		a[2] -= b[2];
-
-		return a;
-	}
-
-	template<std::size_t M, typename T>
-	LYAH_INLINE mat<M, 3, T>& LYAH_CALL operator*=(mat<M, 3, T>& a, T b) {
-		a[0] *= b;
-		a[1] *= b;
-		a[2] *= b;
-
-		return a;
-	}
-
 	template<typename T>
 	LYAH_INLINE mat<3, 3, T>& LYAH_CALL operator*=(mat<3, 3, T>& A, mat<3, 3, T> B) {
 		/*const vec<3, T> a0 = A[0];

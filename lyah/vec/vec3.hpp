@@ -9,7 +9,6 @@
 #include "lyah/geometric.hpp"
 #include "lyah/limits.hpp"
 #include "lyah/trigonometric.hpp"
-#include "lyah/types.hpp"
 
 namespace lyah {
 	template<typename T>
