@@ -15,11 +15,11 @@ namespace lyah {
 	}
 
 	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::int32_t LYAH_CALL abs(std::int32_t a) {
-		return static_cast<std::int32_t>(std::fabs(a));
+		return std::abs(a);
 	}
 
 	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::int64_t LYAH_CALL abs(std::int64_t a) {
-		return static_cast<std::int64_t>(std::fabs(a));
+		return std::abs(a);
 	}
 
 	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::float_t LYAH_CALL ceil(std::float_t a) {
@@ -55,8 +55,12 @@ namespace lyah {
 	LYAH_NODISCARD LYAH_INLINE vec<C, T> LYAH_CALL lerp(vec<C, T> a, vec<C, T> b, vec<C, T> t) {
 		return a * (vec<C, T>(static_cast<T>(1)) - t) + b * t;
 	}
-}
 
-#include "vec/m128/common.ipp"
-#include "vec/m128d/common.ipp"
-#include "vec/m256d/common.ipp"
+	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::float_t LYAH_CALL fma(std::float_t a, std::float_t b, std::float_t c) {
+		return std::fmaf(a, b, c);
+	}
+
+	LYAH_NODISCARD LYAH_CONSTEXPR_CPP23 LYAH_INLINE std::double_t LYAH_CALL fma(std::double_t a, std::double_t b, std::double_t c) {
+		return std::fmal(a, b, c);
+	}
+}
