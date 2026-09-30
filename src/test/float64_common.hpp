@@ -30,6 +30,17 @@ namespace float64_common {
 		test::assert(test::eq(result, expected));
 	}
 
+	void testFma() {
+		const std::double_t expected = 10.0;
+		const std::double_t a = 1.0;
+		const std::double_t b = 4.0;
+		const std::double_t c = 6.0;
+
+		const std::double_t result = lyah::fma(a, b, c);
+
+		test::assert(test::eq(result, expected));
+	}
+
 	void testLerp() {
 		const std::double_t expected = 3.0;
 		const std::double_t a = 0.0;
@@ -47,6 +58,7 @@ namespace float64_common {
 		test::runTest(&testAbs, "Absolute value");
 		test::runTest(&testCeil, "Ceil");
 		test::runTest(&testFloor, "Floor");
+		test::runTest(&testFma, "Fused multiply-add");
 		test::runTest(&testLerp, "Linear interpolation");
 	}
 }

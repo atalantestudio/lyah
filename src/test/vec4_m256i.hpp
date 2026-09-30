@@ -36,15 +36,6 @@ namespace vec4_m256i {
 		test::assert(test::eq(result[3], expected));
 	}
 
-	void testSimdConstructor() {
-		const lyah::vec<4, std::int64_t> expected = {1, 4, 6, -1};
-		const __m256i m = _mm256_set_epi64x(-1, 6, 4, 1);
-
-		const lyah::vec<4, std::int64_t> result(m);
-
-		test::assert(test::eq(result, expected));
-	}
-
 	void testConvertingConstructor() {
 		const lyah::vec<4, std::int64_t> expected = {1, 4, 6, -1};
 		const lyah::vec<4, std::int32_t> a = {1, 4, 6, -1};
@@ -190,7 +181,6 @@ namespace vec4_m256i {
 		test::runTest(&testDefaultConstructor, "Default constructor");
 		test::runTest(&testComponentConstructor, "Component constructor");
 		test::runTest(&testComponentBroadcastConstructor, "Component broadcast constructor");
-		test::runTest(&testSimdConstructor, "SIMD constructor");
 		test::runTest(&testConvertingConstructor, "Converting constructor");
 
 		test::runTest(&testEquality, "Equality (==)");

@@ -22,15 +22,6 @@ namespace float32_exponential {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testRcp() {
-		const std::float_t expected = 0.2f;
-		const std::float_t a = 5.0f;
-
-		const std::float_t result = lyah::rcp(a);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
 	void testSqrt() {
 		const std::float_t expected = 5.0f;
 		const std::float_t a = 25.0f;
@@ -40,22 +31,11 @@ namespace float32_exponential {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
-	void testRsqrt() {
-		const std::float_t expected = 0.2f;
-		const std::float_t a = 25.0f;
-
-		const std::float_t result = lyah::rsqrt(a);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
 	void runAll() {
 		test::printTestCategory("32-bit single floating-point exponential functions");
 
 		test::runTest(&testLog2, "Base 2 logarithm");
 		test::runTest(&testPow, "Power");
-		test::runTest(&testRcp, "Reciprocal");
 		test::runTest(&testSqrt, "Square root");
-		test::runTest(&testRsqrt, "Inverse square root");
 	}
 }

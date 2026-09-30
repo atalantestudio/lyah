@@ -59,6 +59,19 @@ namespace mat3x3_m128 {
 		}
 	}
 
+	void testQuaternionConstructor() {
+		const lyah::mat<3, 3, std::float_t> expected = {
+			-0.370f,  0.926f,  0.074f,
+			 0.852f,  0.370f, -0.370f,
+			-0.370f, -0.074f, -0.926f,
+		};
+		const lyah::quat<std::float_t> a = lyah::normalized(lyah::quat<std::float_t>(1.0f, 4.0f, 6.0f, -1.0f));
+
+		const lyah::mat<3, 3, std::float_t> result = lyah::mat<3, 3, std::float_t>(a);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
 	void testConvertingConstructor() {
 		const lyah::mat<3, 3, std::float_t> expected = {
 			1.0f,  4.0f,  6.0f,
@@ -385,6 +398,42 @@ namespace mat3x3_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
+	void testMatrixScalarDivision() {
+		const lyah::mat<3, 3, std::float_t> expected = {
+			 0.333f,  1.333f,  2.0f,
+			 1.666f,  1.0f,    0.666f,
+			 0.0f,   -2.666f,  0.166f,
+		};
+		const lyah::mat<3, 3, std::float_t> a = {
+			1.0f,  4.0f,  6.0f,
+			5.0f,  3.0f,  2.0f,
+			0.0f, -8.0f,  0.5f,
+		};
+		const std::float_t b = 3.0f;
+
+		const lyah::mat<3, 3, std::float_t> result = a / b;
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testMatrixScalarDivisionAssignment() {
+		const lyah::mat<3, 3, std::float_t> expected = {
+			 0.333f,  1.333f,  2.0f,
+			 1.666f,  1.0f,    0.666f,
+			 0.0f,   -2.666f,  0.166f,
+		};
+		const std::float_t a = 3.0f;
+		lyah::mat<3, 3, std::float_t> result = {
+			1.0f,  4.0f,  6.0f,
+			5.0f,  3.0f,  2.0f,
+			0.0f, -8.0f,  0.5f,
+		};
+
+		result /= a;
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
 	void testDeterminant() {
 		const std::float_t expected = -232.5f;
 		const lyah::mat<3, 3, std::float_t> a = {
@@ -444,6 +493,7 @@ namespace mat3x3_m128 {
 		test::runTest(&testDefaultConstructor, "Default constructor");
 		test::runTest(&testComponentConstructor, "Component constructor");
 		test::runTest(&testRowConstructor, "Row constructor");
+		test::runTest(&testQuaternionConstructor, "Quaternion constructor");
 		test::runTest(&testConvertingConstructor, "Converting constructor");
 
 		test::runTest(&testIdentity, "Identity");
@@ -468,6 +518,9 @@ namespace mat3x3_m128 {
 		test::runTest(&testMatrixScalarMultiplicationAssignment, "Matrix-scalar multiplication assignment (*=)");
 		test::runTest(&testMatrixMatrixMultiplication, "Matrix-matrix multiplication (*)");
 		test::runTest(&testMatrixMatrixMultiplicationAssignment, "Matrix-matrix multiplication assignment (*=)");
+
+		test::runTest(&testMatrixScalarDivision, "Matrix-scalar division (/)");
+		test::runTest(&testMatrixScalarDivisionAssignment, "Matrix-scalar division assignment (/=)");
 
 		test::runTest(&testDeterminant, "Determinant");
 		test::runTest(&testInverse, "Inverse");

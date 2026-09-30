@@ -478,6 +478,46 @@ namespace mat4x4_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
+	void testMatrixScalarDivision() {
+		const lyah::mat<4, 4, std::float_t> expected = {
+			0.333f,  1.333f,  2.0f,   -0.333f,
+			 1.666f,  1.0f,    0.666f,  2.333f,
+			 0.0f,   -2.666f,  0.166f,  1.0f,
+			 0.666f,  1.333f,  -0.666f, 0.333f,
+		};
+		const lyah::mat<4, 4, std::float_t> a = {
+			1.0f,  4.0f,  6.0f, -1.0f,
+			5.0f,  3.0f,  2.0f,  7.0f,
+			0.0f, -8.0f,  0.5f,  3.0f,
+			2.0f,  4.0f, -2.0f,  1.0f,
+		};
+		const std::float_t b = 3.0;
+
+		const lyah::mat<4, 4, std::float_t> result = a / b;
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
+	void testMatrixScalarDivisionAssignment() {
+		const lyah::mat<4, 4, std::float_t> expected = {
+			 0.333f,  1.333f,  2.0f,   -0.333f,
+			 1.666f,  1.0f,    0.666f,  2.333f,
+			 0.0f,   -2.666f,  0.166f,  1.0f,
+			 0.666f,  1.333f,  -0.666f, 0.333f,
+		};
+		const std::float_t a = 3.0;
+		lyah::mat<4, 4, std::float_t> result = {
+			1.0f,  4.0f,  6.0f, -1.0f,
+			5.0f,  3.0f,  2.0f,  7.0f,
+			0.0f, -8.0f,  0.5f,  3.0f,
+			2.0f,  4.0f, -2.0f,  1.0f,
+		};
+
+		result /= a;
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
 	void testDeterminant() {
 		const std::float_t expected = 292.5f;
 		const lyah::mat<4, 4, std::float_t> a = {
@@ -563,6 +603,9 @@ namespace mat4x4_m128 {
 		test::runTest(&testMatrixScalarMultiplicationAssignment, "Matrix-scalar multiplication assignment (*=)");
 		test::runTest(&testMatrixMatrixMultiplication, "Matrix-matrix multiplication (*)");
 		test::runTest(&testMatrixMatrixMultiplicationAssignment, "Matrix-matrix multiplication assignment (*=)");
+
+		test::runTest(&testMatrixScalarDivision, "Matrix-scalar division (/)");
+		test::runTest(&testMatrixScalarDivisionAssignment, "Matrix-scalar division assignment (/=)");
 
 		test::runTest(&testDeterminant, "Determinant");
 		test::runTest(&testInverse, "Inverse");

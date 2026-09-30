@@ -23,15 +23,6 @@ namespace quat_m256d {
 		}
 	}
 
-	void testSimdConstructor() {
-		const lyah::quat<std::double_t> expected = {1.0, 4.0, 6.0, -1.0};
-		const __m256d m = _mm256_set_pd(-1.0, 6.0, 4.0, 1.0);
-
-		const lyah::quat<std::double_t> result(m);
-
-		test::assert(test::eq(result, expected));
-	}
-
 	void testConvertingConstructor() {
 		const lyah::quat<std::double_t> expected = {1.0, 4.0, 6.0, -1.0};
 		const lyah::quat<std::float_t> a = {1.0f, 4.0f, 6.0f, -1.0f};
@@ -62,7 +53,7 @@ namespace quat_m256d {
 		const std::double_t expected = 1.0;
 		const lyah::quat<std::double_t> a = {1.0, 4.0, 6.0, -1.0};
 
-		const std::double_t result = a.w();
+		const std::double_t result = a.w;
 
 		test::assert(test::eq(result, expected));
 	}
@@ -71,8 +62,7 @@ namespace quat_m256d {
 		const lyah::vec<3, std::double_t> expected = {4.0, 6.0, -1.0};
 		const lyah::quat<std::double_t> a = {1.0, 4.0, 6.0, -1.0};
 
-		lyah::vec<3, std::double_t> result = a.xyz();
-		result.m.m256d_f64[3] = 0.0; // Reset upper (hidden) element
+		const lyah::vec<3, std::double_t> result = {a.x, a.y, a.z};
 
 		test::assert(test::eq(result, expected));
 	}
@@ -317,7 +307,6 @@ namespace quat_m256d {
 
 		test::runTest(&testDefaultConstructor, "Default constructor");
 		test::runTest(&testComponentConstructor, "Component constructor");
-		test::runTest(&testSimdConstructor, "SIMD constructor");
 		test::runTest(&testConvertingConstructor, "Converting constructor");
 
 		test::runTest(&testIdentity, "Identity");

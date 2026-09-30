@@ -33,15 +33,6 @@ namespace vec3_m128 {
 		test::assert(test::eq(result[2], expected));
 	}
 
-	void testSimdConstructor() {
-		const lyah::vec<3, std::float_t> expected = {1.0f, 4.0f, 6.0f};
-		const __m128 m = _mm_set_ps(0.0f, 6.0f, 4.0f, 1.0f);
-
-		const lyah::vec<3, std::float_t> result(m);
-
-		test::assert(test::eq(result, expected));
-	}
-
 	void testConvertingConstructor() {
 		const lyah::vec<3, std::float_t> expected = {1.0f, 4.0f, 6.0f};
 		const lyah::vec<3, std::double_t> a = {1.0, 4.0, 6.0};
@@ -279,6 +270,17 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
+	void testFma() {
+		const lyah::vec<3, std::float_t> expected = {5.0f, 4.0f, 12.5f};
+		const lyah::vec<3, std::float_t> a = {1.0f,  4.0f,  6.0f};
+		const lyah::vec<3, std::float_t> b = {5.0f,  3.0f,  2.0f};
+		const lyah::vec<3, std::float_t> c = {0.0f, -8.0f,  0.5f};
+
+		const lyah::vec<3, std::float_t> result = lyah::fma(a, b, c);
+
+		test::assert(test::eq(result, expected, 0.001f));
+	}
+
 	/* void testFloor() {
 		const lyah::vec<3, std::float_t> expected = {1.0f, 4.0f, 6.0f};
 		const lyah::vec<3, std::float_t> a = {1.999f, 4.0f, 6.111f};
@@ -396,29 +398,11 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
-	void testRcp() {
-		const lyah::vec<3, std::float_t> expected = {lyah::infinity<std::float_t>(), 0.25f, 0.167f};
-		const lyah::vec<3, std::float_t> a = {0.0f, 4.0f, 6.0f};
-
-		const lyah::vec<3, std::float_t> result = lyah::rcp(a);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
 	void testSqrt() {
 		const lyah::vec<3, std::float_t> expected = {1.0f, 2.0f, 2.449f};
 		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
 
 		const lyah::vec<3, std::float_t> result = lyah::sqrt(a);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	void testRsqrt() {
-		const lyah::vec<3, std::float_t> expected = {1.0f, 0.5f, 0.408f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-
-		const lyah::vec<3, std::float_t> result = lyah::rsqrt(a);
 
 		test::assert(test::eq(result, expected, 0.001f));
 	}
@@ -541,7 +525,6 @@ namespace vec3_m128 {
 		test::runTest(&testDefaultConstructor, "Default constructor");
 		test::runTest(&testComponentConstructor, "Component constructor");
 		test::runTest(&testComponentBroadcastConstructor, "Component broadcast constructor");
-		test::runTest(&testSimdConstructor, "SIMD constructor");
 		test::runTest(&testConvertingConstructor, "Converting constructor");
 
 		test::runTest(&testEquality, "Equality (==)");
@@ -572,6 +555,8 @@ namespace vec3_m128 {
 		test::runTest(&testVectorVectorDivision, "Vector-vector division (/)");
 		test::runTest(&testVectorVectorDivisionAssignment, "Vector-vector division assignment (/=)");
 
+		test::runTest(&testFma, "Fused multiply-add");
+
 		/* test::runTest(&testFloor, "Floor");
 		test::runTest(&testCeil, "Ceil");
 		test::runTest(&testRound, "Round");
@@ -585,9 +570,7 @@ namespace vec3_m128 {
 		test::runTest(&testSum, "Sum");
 
 		test::runTest(&testPow, "Power");
-		test::runTest(&testRcp, "Reciprocal");
 		test::runTest(&testSqrt, "Square root");
-		test::runTest(&testRsqrt, "Inverse square root");
 
 		test::runTest(&testCrossProduct, "Cross product");
 		test::runTest(&testDotProduct, "Dot product");

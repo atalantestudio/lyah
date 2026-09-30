@@ -23,15 +23,6 @@ namespace quat_m128 {
 		}
 	}
 
-	void testSimdConstructor() {
-		const lyah::quat<std::float_t> expected = {1.0f, 4.0f, 6.0f, -1.0f};
-		const __m128 m = _mm_set_ps(-1.0f, 6.0f, 4.0f, 1.0f);
-
-		const lyah::quat<std::float_t> result(m);
-
-		test::assert(test::eq(result, expected));
-	}
-
 	void testConvertingConstructor() {
 		const lyah::quat<std::float_t> expected = {1.0f, 4.0f, 6.0f, -1.0f};
 		const lyah::quat<std::double_t> a = {1.0, 4.0, 6.0, -1.0};
@@ -62,7 +53,7 @@ namespace quat_m128 {
 		const std::float_t expected = 1.0f;
 		const lyah::quat<std::float_t> a = {1.0f, 4.0f, 6.0f, -1.0f};
 
-		const std::float_t result = a.w();
+		const std::float_t result = a.w;
 
 		test::assert(test::eq(result, expected));
 	}
@@ -71,8 +62,7 @@ namespace quat_m128 {
 		const lyah::vec<3, std::float_t> expected = {4.0f, 6.0f, -1.0f};
 		const lyah::quat<std::float_t> a = {1.0f, 4.0f, 6.0f, -1.0f};
 
-		lyah::vec<3, std::float_t> result = a.xyz();
-		result.m.m128_f32[3] = 0.0f; // Reset upper (hidden) element
+		const lyah::vec<3, std::float_t> result = {a.x, a.y, a.z};
 
 		test::assert(test::eq(result, expected));
 	}
@@ -317,7 +307,6 @@ namespace quat_m128 {
 
 		test::runTest(&testDefaultConstructor, "Default constructor");
 		test::runTest(&testComponentConstructor, "Component constructor");
-		test::runTest(&testSimdConstructor, "SIMD constructor");
 		test::runTest(&testConvertingConstructor, "Converting constructor");
 
 		test::runTest(&testIdentity, "Identity");

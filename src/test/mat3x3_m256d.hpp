@@ -59,6 +59,19 @@ namespace mat3x3_m256d {
 		}
 	}
 
+	void testQuaternionConstructor() {
+		const lyah::mat<3, 3, std::double_t> expected = {
+			-0.370,  0.926,  0.074,
+			 0.852,  0.370, -0.370,
+			-0.370, -0.074, -0.926,
+		};
+		const lyah::quat<std::double_t> a = lyah::normalized(lyah::quat<std::double_t>(1.0, 4.0, 6.0, -1.0));
+
+		const lyah::mat<3, 3, std::double_t> result = lyah::mat<3, 3, std::double_t>(a);
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
 	void testConvertingConstructor() {
 		const lyah::mat<3, 3, std::double_t> expected = {
 			1.0,  4.0,  6.0,
@@ -253,7 +266,7 @@ namespace mat3x3_m256d {
 			1.0,  4.0,  6.0,
 			5.0,  3.0,  2.0,
 			0.0, -8.0,  0.5,
-	};
+		};
 		const lyah::mat<3, 3, std::double_t> b = {
 			-3.0,  2.5,  1.0,
 			 4.0,  9.0, -2.0,
@@ -385,6 +398,42 @@ namespace mat3x3_m256d {
 		test::assert(test::eq(result, expected));
 	}
 
+	void testMatrixScalarDivision() {
+		const lyah::mat<3, 3, std::double_t> expected = {
+			 0.333,  1.333,  2.0,
+			 1.666,  1.0,    0.666,
+			 0.0,   -2.666,  0.166,
+		};
+		const lyah::mat<3, 3, std::double_t> a = {
+			1.0,  4.0,  6.0,
+			5.0,  3.0,  2.0,
+			0.0, -8.0,  0.5,
+		};
+		const std::double_t b = 3.0;
+
+		const lyah::mat<3, 3, std::double_t> result = a / b;
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
+	void testMatrixScalarDivisionAssignment() {
+		const lyah::mat<3, 3, std::double_t> expected = {
+			 0.333,  1.333,  2.0,
+			 1.666,  1.0,    0.666,
+			 0.0,   -2.666,  0.166,
+		};
+		const std::double_t a = 3.0;
+		lyah::mat<3, 3, std::double_t> result = {
+			1.0,  4.0,  6.0,
+			5.0,  3.0,  2.0,
+			0.0, -8.0,  0.5,
+		};
+
+		result /= a;
+
+		test::assert(test::eq(result, expected, 0.001));
+	}
+
 	void testDeterminant() {
 		const std::double_t expected = -232.5;
 		const lyah::mat<3, 3, std::double_t> a = {
@@ -444,6 +493,7 @@ namespace mat3x3_m256d {
 		test::runTest(&testDefaultConstructor, "Default constructor");
 		test::runTest(&testComponentConstructor, "Component constructor");
 		test::runTest(&testRowConstructor, "Row constructor");
+		test::runTest(&testQuaternionConstructor, "Quaternion constructor");
 		test::runTest(&testConvertingConstructor, "Converting constructor");
 
 		test::runTest(&testIdentity, "Identity");
@@ -468,6 +518,9 @@ namespace mat3x3_m256d {
 		test::runTest(&testMatrixScalarMultiplicationAssignment, "Matrix-scalar multiplication assignment (*=)");
 		test::runTest(&testMatrixMatrixMultiplication, "Matrix-matrix multiplication (*)");
 		test::runTest(&testMatrixMatrixMultiplicationAssignment, "Matrix-matrix multiplication assignment (*=)");
+
+		test::runTest(&testMatrixScalarDivision, "Matrix-scalar division (/)");
+		test::runTest(&testMatrixScalarDivisionAssignment, "Matrix-scalar division assignment (/=)");
 
 		test::runTest(&testDeterminant, "Determinant");
 		test::runTest(&testInverse, "Inverse");

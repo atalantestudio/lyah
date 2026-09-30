@@ -40,24 +40,11 @@ namespace test {
 	}
 
 	template<std::size_t C>
-	inline bool eq(const lyah::vec<C, std::float_t>& a, const lyah::vec<C, std::float_t>& b, std::float_t precision = 0.0f) {
-		const std::float_t* bufferA = a.m.m128_f32;
-		const std::float_t* bufferB = b.m.m128_f32;
+	inline bool eq(lyah::vec<C, std::float_t> a, lyah::vec<C, std::float_t> b, std::float_t precision = 0.0f) {
+		const std::float_t* bufferA = reinterpret_cast<const std::float_t*>(&a);
+		const std::float_t* bufferB = reinterpret_cast<const std::float_t*>(&b);
 
 		for (std::size_t i = 0; i < C; i += 1) {
-			if (std::abs(bufferA[i] - bufferB[i]) > precision) {
-				return false;
-			}
-		}
-
-		return true;
-	}
-
-	inline bool eq(const lyah::vec<2, std::double_t>& a, const lyah::vec<2, std::double_t>& b, std::double_t precision = 0.0) {
-		const std::double_t* bufferA = a.m.m128d_f64;
-		const std::double_t* bufferB = b.m.m128d_f64;
-
-		for (std::size_t i = 0; i < 2; i += 1) {
 			if (std::abs(bufferA[i] - bufferB[i]) > precision) {
 				return false;
 			}
@@ -68,8 +55,8 @@ namespace test {
 
 	template<std::size_t C>
 	inline bool eq(const lyah::vec<C, std::double_t>& a, const lyah::vec<C, std::double_t>& b, std::double_t precision = 0.0) {
-		const std::double_t* bufferA = a.m.m256d_f64;
-		const std::double_t* bufferB = b.m.m256d_f64;
+		const std::double_t* bufferA = reinterpret_cast<const std::double_t*>(&a);
+		const std::double_t* bufferB = reinterpret_cast<const std::double_t*>(&b);
 
 		for (std::size_t i = 0; i < C; i += 1) {
 			if (std::abs(bufferA[i] - bufferB[i]) > precision) {
@@ -81,9 +68,9 @@ namespace test {
 	}
 
 	template<std::size_t C>
-	inline bool eq(const lyah::vec<C, std::int32_t>& a, const lyah::vec<C, std::int32_t>& b) {
-		const std::int32_t* bufferA = a.m.m128i_i32;
-		const std::int32_t* bufferB = b.m.m128i_i32;
+	inline bool eq(lyah::vec<C, std::int32_t> a, lyah::vec<C, std::int32_t> b) {
+		const std::int32_t* bufferA = reinterpret_cast<const std::int32_t*>(&a);
+		const std::int32_t* bufferB = reinterpret_cast<const std::int32_t*>(&b);
 
 		for (std::size_t i = 0; i < C; i += 1) {
 			if (bufferA[i] != bufferB[i]) {
@@ -94,23 +81,10 @@ namespace test {
 		return true;
 	}
 
-	inline bool eq(const lyah::vec<2, std::int64_t>& a, const lyah::vec<2, std::int64_t>& b) {
-		const std::int64_t* bufferA = a.m.m128i_i64;
-		const std::int64_t* bufferB = b.m.m128i_i64;
-
-		for (std::size_t i = 0; i < 2; i += 1) {
-			if (bufferA[i] != bufferB[i]) {
-				return false;
-			}
-		}
-
-		return true;
-	}
-
 	template<std::size_t C>
 	inline bool eq(const lyah::vec<C, std::int64_t>& a, const lyah::vec<C, std::int64_t>& b) {
-		const std::int64_t* bufferA = a.m.m256i_i64;
-		const std::int64_t* bufferB = b.m.m256i_i64;
+		const std::int64_t* bufferA = reinterpret_cast<const std::int64_t*>(&a);
+		const std::int64_t* bufferB = reinterpret_cast<const std::int64_t*>(&b);
 
 		for (std::size_t i = 0; i < C; i += 1) {
 			if (bufferA[i] != bufferB[i]) {
@@ -132,11 +106,29 @@ namespace test {
 		return true;
 	}
 
-	inline bool eq(const lyah::quat<std::float_t>& a, const lyah::quat<std::float_t>& b, std::float_t precision = 0.0f) {
-		return eq(a.m.m128_f32, b.m.m128_f32, precision);
+	inline bool eq(lyah::quat<std::float_t> a, lyah::quat<std::float_t> b, std::float_t precision = 0.0f) {
+		const std::float_t* bufferA = reinterpret_cast<const std::float_t*>(&a);
+		const std::float_t* bufferB = reinterpret_cast<const std::float_t*>(&b);
+
+		for (std::size_t i = 0; i < 4; i += 1) {
+			if (std::abs(bufferA[i] - bufferB[i]) > precision) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
-	inline bool eq(const lyah::quat<std::double_t>& a, const lyah::quat<std::double_t>& b, std::double_t precision = 0.0) {
-		return eq(a.m.m256d_f64, b.m.m256d_f64, precision);
+	inline bool eq(lyah::quat<std::double_t> a, lyah::quat<std::double_t> b, std::double_t precision = 0.0) {
+		const std::double_t* bufferA = reinterpret_cast<const std::double_t*>(&a);
+		const std::double_t* bufferB = reinterpret_cast<const std::double_t*>(&b);
+
+		for (std::size_t i = 0; i < 4; i += 1) {
+			if (std::abs(bufferA[i] - bufferB[i]) > precision) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 }
