@@ -13,3 +13,6 @@ namespace lyah {
 }
 
 #include "lyah/mat/mat.ipp"
+#include "lyah/mat/matMx2.ipp"
+#include "lyah/mat/matMx3.ipp"
+#include "lyah/mat/matMx4.ipp"
