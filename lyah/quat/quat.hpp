@@ -4,7 +4,6 @@
 #pragma once
 
 #include "lyah/base.hpp"
-#include "lyah/convert.hpp"
 
 namespace lyah {
 	template<typename T/*, typename std::enable_if<std::is_same<T, std::float_t>::value || std::is_same<T, std::double_t>::value, T>::type*/>

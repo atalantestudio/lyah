@@ -5,7 +5,6 @@
 
 #include "lyah/vec/vec.hpp"
 #include "lyah/common.hpp"
-#include "lyah/convert.hpp"
 #include "lyah/geometric.hpp"
 #include "lyah/limits.hpp"
 #include "lyah/trigonometric.hpp"
