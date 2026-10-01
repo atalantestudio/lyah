@@ -51,19 +51,12 @@
 	#define LYAH_INLINE inline
 #endif
 
-#if LYAH_COMPILER == LYAH_COMPILER_MSVC
-	#define LYAH_CALL __vectorcall
-
-	#if _MSC_VER > 1900
-		#define LYAH_SVML
-	#endif
-#else
-	#define LYAH_CALL
-#endif
+#define LYAH_CALL __cdecl
 
 #define LYAH_CONSTEXPR constexpr
 
-#define LYAH_NOEXCEPT noexcept
+#define LYAH_NOEXCEPT
+//#define LYAH_NOEXCEPT noexcept
 
 #if LYAH_STANDARD >= LYAH_STANDARD_CPP17
 	#define LYAH_NODISCARD [[nodiscard]]

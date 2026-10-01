@@ -1,4 +1,4 @@
-// Copyright 2025 Atalante Studio.
+// Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
 #pragma once
@@ -6,28 +6,37 @@
 #include "lyah/base.hpp"
 
 namespace lyah {
-	template<typename T/*, typename std::enable_if<std::is_same<T, std::float_t>::value || std::is_same<T, std::double_t>::value, T>::type*/>
-	struct quat {
-		LYAH_NODISCARD static quat<T> LYAH_CALL identity();
+	#define QUAT(T) \
+		template<> \
+		struct quat<T> { \
+			LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static quat<T> LYAH_CALL identity(); \
+			\
+			/* TODO: Make constexpr. */ \
+			LYAH_NODISCARD LYAH_INLINE /*LYAH_CONSTEXPR*/ static quat<T> LYAH_CALL axisAngle(vec<3, T> axis, T angle); \
+			\
+			LYAH_INLINE LYAH_CONSTEXPR quat(); \
+			\
+			LYAH_INLINE LYAH_CONSTEXPR quat(T w, T x, T y, T z); \
+			\
+			template<typename U> \
+			LYAH_INLINE LYAH_CONSTEXPR explicit quat(quat<U> a); \
+			\
+			LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL operator[](std::size_t index) const LYAH_NOEXCEPT; \
+			\
+			LYAH_NODISCARD LYAH_INLINE T& LYAH_CALL operator[](std::size_t index) LYAH_NOEXCEPT; \
+			\
+			T w; \
+			T x; \
+			T y; \
+			T z; \
+		};
 
-		LYAH_NODISCARD static quat<T> LYAH_CALL axisAngle(vec<3, T> axis, T angle);
+	QUAT(std::float_t);
+	QUAT(std::double_t);
 
-		LYAH_NODISCARD quat();
-
-		LYAH_NODISCARD quat(T w, T x, T y, T z);
-
-		template<typename U>
-		LYAH_NODISCARD explicit quat(quat<U> a);
-
-		LYAH_NODISCARD T LYAH_CALL operator[](std::size_t index) const LYAH_NOEXCEPT;
-
-		LYAH_NODISCARD T& LYAH_CALL operator[](std::size_t index) LYAH_NOEXCEPT;
-
-		T w;
-		T x;
-		T y;
-		T z;
-	};
+	#undef QUAT
 }
 
+#include "lyah/quat/quat_float.ipp"
+#include "lyah/quat/quat_double.ipp"
 #include "lyah/quat/quat.ipp"

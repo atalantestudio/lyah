@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include "lyah_adapter.hpp"
+
 #include "constants.hpp"
 
 #include "vec.hpp"
