@@ -6,8 +6,7 @@ namespace lyah {
 		return {1.0f, 0.0f, 0.0f, 0.0f};
 	}
 
-	// TODO: Make constexpr.
-	/*LYAH_CONSTEXPR*/ quat<std::float_t> quat<std::float_t>::axisAngle(vec<3, std::float_t> axis, std::float_t angle) {
+	LYAH_CONSTEXPR_CPP26 quat<std::float_t> quat<std::float_t>::axisAngle(vec<3, std::float_t> axis, std::float_t angle) {
 		angle *= 0.5f;
 		axis *= sin(angle);
 
@@ -36,13 +35,13 @@ namespace lyah {
 		z(static_cast<std::float_t>(a.z))
 	{}
 
-	LYAH_CONSTEXPR std::float_t quat<std::float_t>::operator[](std::size_t index) const LYAH_NOEXCEPT {
+	LYAH_CONSTEXPR std::float_t quat<std::float_t>::operator[](std::size_t index) const {
 		LYAH_ASSERT(index < 4);
 
 		return static_cast<const std::float_t*>(static_cast<const void*>(this))[index];
 	}
 
-	std::float_t& quat<std::float_t>::operator[](std::size_t index) LYAH_NOEXCEPT {
+	std::float_t& quat<std::float_t>::operator[](std::size_t index) {
 		LYAH_ASSERT(index < 4);
 
 		return static_cast<std::float_t*>(static_cast<void*>(this))[index];

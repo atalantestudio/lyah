@@ -3,13 +3,15 @@
 
 #pragma once
 
-#include "lyah_adapter.hpp"
+#include "lyah/lyah_adapter.hpp"
+
+#include "lyah/base.hpp"
 
 #include "constants.hpp"
 
-#include "vec.hpp"
-#include "quat.hpp"
-#include "mat.hpp"
+#include "vec/vec.hpp"
+#include "quat/quat.hpp"
+#include "mat/mat.hpp"
 
 #include "aliases.hpp"
 

@@ -4,12 +4,15 @@
 #pragma once
 
 namespace lyah {
+	/// A quaternion of type T.
 	template<typename T>
 	struct quat;
 
+	/// A single floating point quaternion.
 	template<>
 	struct quat<std::float_t>;
 
+	/// A double floating point quaternion.
 	template<>
 	struct quat<std::double_t>;
 

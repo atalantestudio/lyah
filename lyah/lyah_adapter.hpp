@@ -5,7 +5,9 @@
 
 #include "lyah/base.hpp"
 
+#include "lyah/adapter/vec.hpp"
 #include "lyah/adapter/quat.hpp"
+#include "lyah/adapter/mat.hpp"
 
 namespace lyah {
 	// TODO
