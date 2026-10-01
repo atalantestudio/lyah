@@ -1,18 +1,10 @@
-// Copyright 2025 Atalante Studio.
+// Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
 #pragma once
 
-namespace lyah {
-	template<std::size_t M, std::size_t N, typename T>
-	struct mat;
-
-	template<typename T>
-	struct quat;
-
-	// A C-component vector.
-	template<std::size_t C, typename T>
-	struct vec;
-}
+#include "lyah/vec/vec2.hpp"
+#include "lyah/vec/vec3.hpp"
+#include "lyah/vec/vec4.hpp"
 
 #include "lyah/vec/vec.ipp"

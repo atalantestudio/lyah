@@ -11,8 +11,7 @@ namespace lyah {
 		struct quat<T> { \
 			LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static quat<T> LYAH_CALL identity(); \
 			\
-			/* TODO: Make constexpr. */ \
-			LYAH_NODISCARD LYAH_INLINE /*LYAH_CONSTEXPR*/ static quat<T> LYAH_CALL axisAngle(vec<3, T> axis, T angle); \
+			LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 static quat<T> LYAH_CALL axisAngle(vec<3, T> axis, T angle); \
 			\
 			LYAH_INLINE LYAH_CONSTEXPR quat(); \
 			\
@@ -21,9 +20,9 @@ namespace lyah {
 			template<typename U> \
 			LYAH_INLINE LYAH_CONSTEXPR explicit quat(quat<U> a); \
 			\
-			LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL operator[](std::size_t index) const LYAH_NOEXCEPT; \
+			LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL operator[](std::size_t index) const; \
 			\
-			LYAH_NODISCARD LYAH_INLINE T& LYAH_CALL operator[](std::size_t index) LYAH_NOEXCEPT; \
+			LYAH_NODISCARD LYAH_INLINE T& LYAH_CALL operator[](std::size_t index); \
 			\
 			T w; \
 			T x; \

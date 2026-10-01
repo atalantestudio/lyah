@@ -6,8 +6,7 @@ namespace lyah {
 		return {1.0, 0.0, 0.0, 0.0};
 	}
 
-	// TODO: Make constexpr.
-	/*LYAH_CONSTEXPR*/ quat<std::double_t> quat<std::double_t>::axisAngle(vec<3, std::double_t> axis, std::double_t angle) {
+	LYAH_CONSTEXPR_CPP26 quat<std::double_t> quat<std::double_t>::axisAngle(vec<3, std::double_t> axis, std::double_t angle) {
 		angle *= 0.5;
 		axis *= sin(angle);
 
