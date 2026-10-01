@@ -1,4 +1,4 @@
-// Copyright 2025 Atalante Studio.
+// Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
 #pragma once

@@ -55,9 +55,6 @@
 
 #define LYAH_CONSTEXPR constexpr
 
-#define LYAH_NOEXCEPT
-//#define LYAH_NOEXCEPT noexcept
-
 #if LYAH_STANDARD >= LYAH_STANDARD_CPP17
 	#define LYAH_NODISCARD [[nodiscard]]
 #else

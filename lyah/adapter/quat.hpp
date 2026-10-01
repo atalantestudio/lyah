@@ -3,11 +3,9 @@
 
 #pragma once
 
-namespace lyah {
-	/// A quaternion of type T.
-	template<typename T>
-	struct quat;
+#include "lyah/adapter/base.hpp"
 
+namespace lyah {
 	/// A single floating point quaternion.
 	template<>
 	struct quat<std::float_t>;

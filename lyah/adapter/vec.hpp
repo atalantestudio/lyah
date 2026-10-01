@@ -3,11 +3,9 @@
 
 #pragma once
 
-namespace lyah {
-	/// A C-component vector of type T.
-	template<std::size_t C, typename T>
-	struct vec;
+#include "lyah/adapter/base.hpp"
 
+namespace lyah {
 	/// A 2-component single floating point vector.
 	template<>
 	struct vec<2, std::float_t>;
@@ -94,6 +92,20 @@ namespace lyah {
 
 	template<std::size_t C, typename T>
 	LYAH_INLINE vec<C, T>& LYAH_CALL operator*=(vec<C, T>& a, vec<C, T> b);
+
+	/// (post-multiply)
+	template<std::size_t C, typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL operator*(vec<C, T> a, mat<C, C, T> B);
+
+	/// (post-multiply)
+	template<std::size_t C, typename T>
+	LYAH_INLINE vec<C, T>& LYAH_CALL operator*=(vec<C, T>& a, mat<C, C, T> B);
+
+	template<std::size_t C, typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL operator*(vec<C, T> a, quat<T> b);
+
+	template<std::size_t C, typename T>
+	LYAH_INLINE vec<C, T>& LYAH_CALL operator*=(vec<C, T>& a, quat<T> b);
 
 	template<std::size_t C, typename T>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL operator/(vec<C, T> a, T b);
