@@ -75,36 +75,6 @@ namespace lyah {
 	}
 
 	template<typename T>
-	LYAH_CONSTEXPR_CPP23 vec<4, T> fma(vec<4, T> a, vec<4, T> b, vec<4, T> c) {
-		a.x = fma(a.x, b.x, c.x);
-		a.y = fma(a.y, b.y, c.y);
-		a.z = fma(a.z, b.z, c.z);
-		a.w = fma(a.w, b.w, c.w);
-
-		return a;
-	}
-
-	template<typename T>
-	vec<4, T> max(vec<4, T> a, vec<4, T> b) {
-		a.x = max(a.x, b.x);
-		a.y = max(a.y, b.y);
-		a.z = max(a.z, b.z);
-		a.w = max(a.w, b.w);
-
-		return a;
-	}
-
-	template<typename T>
-	vec<4, T> min(vec<4, T> a, vec<4, T> b) {
-		a.x = min(a.x, b.x);
-		a.y = min(a.y, b.y);
-		a.z = min(a.z, b.z);
-		a.w = min(a.w, b.w);
-
-		return a;
-	}
-
-	template<typename T>
 	T sum(vec<4, T> a) {
 		return a.x + a.y + a.z + a.w;
 	}
@@ -125,36 +95,6 @@ namespace lyah {
 		a.y = sqrt(a.y);
 		a.z = sqrt(a.z);
 		a.w = sqrt(a.w);
-
-		return a;
-	}
-
-	template<typename T>
-	vec<4, T> cos(vec<4, T> a) {
-		a.x = cos(a.x);
-		a.y = cos(a.y);
-		a.z = cos(a.z);
-		a.w = cos(a.w);
-
-		return a;
-	}
-
-	template<typename T>
-	vec<4, T> sin(vec<4, T> a) {
-		a.x = sin(a.x);
-		a.y = sin(a.y);
-		a.z = sin(a.z);
-		a.w = sin(a.w);
-
-		return a;
-	}
-
-	template<typename T>
-	vec<4, T> tan(vec<4, T> a) {
-		a.x = tan(a.x);
-		a.y = tan(a.y);
-		a.z = tan(a.z);
-		a.w = tan(a.w);
 
 		return a;
 	}

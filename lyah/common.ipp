@@ -1,0 +1,107 @@
+// Copyright 2026 Atalante Studio.
+// Distributed under the MIT License.
+
+namespace lyah {
+	LYAH_CONSTEXPR_CPP23 std::float_t abs(std::float_t a) {
+		return std::fabsf(a);
+	}
+
+	LYAH_CONSTEXPR_CPP23 std::double_t abs(std::double_t a) {
+		return std::fabsl(a);
+	}
+
+	LYAH_CONSTEXPR_CPP23 std::int32_t abs(std::int32_t a) {
+		return std::abs(a);
+	}
+
+	LYAH_CONSTEXPR_CPP23 std::int64_t abs(std::int64_t a) {
+		return std::abs(a);
+	}
+
+	LYAH_CONSTEXPR_CPP23 std::float_t ceil(std::float_t a) {
+		return std::ceilf(a);
+	}
+
+	LYAH_CONSTEXPR_CPP23 std::double_t ceil(std::double_t a) {
+		return std::ceill(a);
+	}
+
+	LYAH_CONSTEXPR_CPP23 std::float_t floor(std::float_t a) {
+		return std::floorf(a);
+	}
+
+	LYAH_CONSTEXPR_CPP23 std::double_t floor(std::double_t a) {
+		return std::floorl(a);
+	}
+
+	LYAH_CONSTEXPR_CPP23 std::float_t fma(std::float_t a, std::float_t b, std::float_t c) {
+		return std::fmaf(a, b, c);
+	}
+
+	LYAH_CONSTEXPR_CPP23 std::double_t fma(std::double_t a, std::double_t b, std::double_t c) {
+		return std::fmal(a, b, c);
+	}
+
+	LYAH_CONSTEXPR_CPP23 vec<2, std::float_t> fma(vec<2, std::float_t> a, vec<2, std::float_t> b, vec<2, std::float_t> c) {
+		a.x = fma(a.x, b.x, c.x);
+		a.y = fma(a.y, b.y, c.y);
+
+		return a;
+	}
+
+	LYAH_CONSTEXPR_CPP23 vec<2, std::double_t> fma(vec<2, std::double_t> a, vec<2, std::double_t> b, vec<2, std::double_t> c) {
+		a.x = fma(a.x, b.x, c.x);
+		a.y = fma(a.y, b.y, c.y);
+
+		return a;
+	}
+
+	LYAH_CONSTEXPR_CPP23 vec<3, std::float_t> fma(vec<3, std::float_t> a, vec<3, std::float_t> b, vec<3, std::float_t> c) {
+		a.x = fma(a.x, b.x, c.x);
+		a.y = fma(a.y, b.y, c.y);
+		a.z = fma(a.z, b.z, c.z);
+
+		return a;
+	}
+
+	LYAH_CONSTEXPR_CPP23 vec<3, std::double_t> fma(vec<3, std::double_t> a, vec<3, std::double_t> b, vec<3, std::double_t> c) {
+		a.x = fma(a.x, b.x, c.x);
+		a.y = fma(a.y, b.y, c.y);
+		a.z = fma(a.z, b.z, c.z);
+
+		return a;
+	}
+
+	LYAH_CONSTEXPR_CPP23 vec<4, std::float_t> fma(vec<4, std::float_t> a, vec<4, std::float_t> b, vec<4, std::float_t> c) {
+		a.x = fma(a.x, b.x, c.x);
+		a.y = fma(a.y, b.y, c.y);
+		a.z = fma(a.z, b.z, c.z);
+		a.w = fma(a.w, b.w, c.w);
+
+		return a;
+	}
+
+	LYAH_CONSTEXPR_CPP23 vec<4, std::double_t> fma(vec<4, std::double_t> a, vec<4, std::double_t> b, vec<4, std::double_t> c) {
+		a.x = fma(a.x, b.x, c.x);
+		a.y = fma(a.y, b.y, c.y);
+		a.z = fma(a.z, b.z, c.z);
+		a.w = fma(a.w, b.w, c.w);
+
+		return a;
+	}
+
+	template<typename T, typename>
+	LYAH_CONSTEXPR T lerp(T a, T b, T t) {
+		return a * (static_cast<T>(1) - t) + b * t;
+	}
+
+	template<std::size_t C, typename T, typename>
+	LYAH_CONSTEXPR vec<C, T> lerp(vec<C, T> a, vec<C, T> b, T t) {
+		return a * (static_cast<T>(1) - t) + b * t;
+	}
+
+	template<std::size_t C, typename T, typename>
+	LYAH_CONSTEXPR vec<C, T> lerp(vec<C, T> a, vec<C, T> b, vec<C, T> t) {
+		return a * (vec<C, T>(static_cast<T>(1)) - t) + b * t;
+	}
+}

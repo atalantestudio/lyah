@@ -3,9 +3,9 @@
 
 #pragma once
 
-#include "lyah/lyah_adapter.hpp"
-
 #include "lyah/base.hpp"
+
+#include "lyah/adapter/base.hpp"
 
 #include "constants.hpp"
 
@@ -15,8 +15,8 @@
 
 #include "aliases.hpp"
 
-#include "common.hpp"
-#include "exponential.hpp"
-#include "geometric.hpp"
-#include "limits.hpp"
-#include "trigonometric.hpp"
+#include "common.ipp"
+#include "exponential.ipp"
+#include "geometric.ipp"
+#include "limits.ipp"
+#include "trigonometric.ipp"

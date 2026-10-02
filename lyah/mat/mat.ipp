@@ -3,6 +3,11 @@
 
 namespace lyah {
 	template<std::size_t M, std::size_t N, typename T>
+	LYAH_CONSTEXPR mat<M, N, T> operator+(mat<M, N, T> a) {
+		return a;
+	}
+
+	template<std::size_t M, std::size_t N, typename T>
 	mat<M, N, T>& operator+=(mat<M, N, T>& a, mat<M, N, T> b) {
 		return a = a + b;
 	}
@@ -23,7 +28,7 @@ namespace lyah {
 	}
 
 	template<std::size_t M, std::size_t N, typename T>
-	mat<M, N, T>& operator*=(mat<M, N, T> a, T b) {
+	mat<M, N, T>& operator*=(mat<M, N, T>& a, T b) {
 		return a = a * b;
 	}
 

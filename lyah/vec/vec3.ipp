@@ -85,44 +85,8 @@ namespace lyah {
 	}
 
 	template<typename T>
-	LYAH_CONSTEXPR_CPP23 vec<3, T> fma(vec<3, T> a, vec<3, T> b, vec<3, T> c) {
-		a.x = fma(a.x, b.x, c.x);
-		a.y = fma(a.y, b.y, c.y);
-		a.z = fma(a.z, b.z, c.z);
-
-		return a;
-	}
-
-	template<typename T>
-	vec<3, T> max(vec<3, T> a, vec<3, T> b) {
-		a.x = max(a.x, b.x);
-		a.y = max(a.y, b.y);
-		a.z = max(a.z, b.z);
-
-		return a;
-	}
-
-	template<typename T>
-	vec<3, T> min(vec<3, T> a, vec<3, T> b) {
-		a.x = min(a.x, b.x);
-		a.y = min(a.y, b.y);
-		a.z = min(a.z, b.z);
-
-		return a;
-	}
-
-	template<typename T>
 	T sum(vec<3, T> a) {
 		return a.x + a.y + a.z;
-	}
-
-	template<typename T>
-	vec<3, T> cross(vec<3, T> a, vec<3, T> b) {
-		return {
-			fma(a.y, b.z, -a.z * b.y),
-			fma(a.z, b.x, -a.x * b.z),
-			fma(a.x, b.y, -a.y * b.x),
-		};
 	}
 
 	template<typename T>
@@ -139,33 +103,6 @@ namespace lyah {
 		a.x = sqrt(a.x);
 		a.y = sqrt(a.y);
 		a.z = sqrt(a.z);
-
-		return a;
-	}
-
-	template<typename T>
-	vec<3, T> cos(vec<3, T> a) {
-		a.x = cos(a.x);
-		a.y = cos(a.y);
-		a.z = cos(a.z);
-
-		return a;
-	}
-
-	template<typename T>
-	vec<3, T> sin(vec<3, T> a) {
-		a.x = sin(a.x);
-		a.y = sin(a.y);
-		a.z = sin(a.z);
-
-		return a;
-	}
-
-	template<typename T>
-	vec<3, T> tan(vec<3, T> a) {
-		a.x = tan(a.x);
-		a.y = tan(a.y);
-		a.z = tan(a.z);
 
 		return a;
 	}

@@ -3,12 +3,6 @@
 
 #pragma once
 
-#include "lyah/common.hpp"
-#include "lyah/exponential.hpp"
-#include "lyah/geometric.hpp"
-#include "lyah/limits.hpp"
-#include "lyah/trigonometric.hpp"
-
 namespace lyah {
 	#define VEC2(T) \
 		template<> \

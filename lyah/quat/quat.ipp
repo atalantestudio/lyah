@@ -146,27 +146,7 @@ namespace lyah {
 	}
 
 	template<typename T>
-	LYAH_CONSTEXPR T dot(quat<T> a, quat<T> b) {
-		return a.w * b.w + a.x * b.x + a.y * b.y + a.z * b.z;
-	}
-
-	template<typename T>
 	LYAH_CONSTEXPR quat<T> inverse(quat<T> a) {
 		return conjugate(a) / dot(a, a);
-	}
-
-	template<typename T>
-	LYAH_CONSTEXPR T length(quat<T> a) {
-		return sqrt(lengthSquared(a));
-	}
-
-	template<typename T>
-	LYAH_CONSTEXPR T lengthSquared(quat<T> a) {
-		return dot(a, a);
-	}
-
-	template<typename T>
-	LYAH_CONSTEXPR quat<T> normalized(quat<T> a) {
-		return a / length(a);
 	}
 }

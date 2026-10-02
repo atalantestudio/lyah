@@ -3,8 +3,6 @@
 
 #pragma once
 
-#include "lyah/adapter/base.hpp"
-
 namespace lyah {
 	/// A 2-component single floating point vector.
 	template<>
@@ -121,7 +119,4 @@ namespace lyah {
 
 	template<std::size_t C, typename T>
 	LYAH_INLINE vec<C, T>& LYAH_CALL operator/=(vec<C, T>& a, vec<C, T> b);
-
-	template<std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL fma(vec<C, T> a, vec<C, T> b, vec<C, T> c);
 }

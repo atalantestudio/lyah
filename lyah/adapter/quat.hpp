@@ -3,8 +3,6 @@
 
 #pragma once
 
-#include "lyah/adapter/base.hpp"
-
 namespace lyah {
 	/// A single floating point quaternion.
 	template<>
@@ -72,17 +70,5 @@ namespace lyah {
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL conjugate(quat<T> a);
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL dot(quat<T> a, quat<T> b);
-
-	template<typename T>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL inverse(quat<T> a);
-
-	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL length(quat<T> a);
-
-	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL lengthSquared(quat<T> a);
-
-	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL normalized(quat<T> a);
 }
