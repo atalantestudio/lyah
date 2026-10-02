@@ -382,12 +382,12 @@ namespace vec2_m128d {
 		test::assert(test::eq(result, expected, 0.001));
 	}
 
-	void testArea() {
+	void testParalellogramArea() {
 		const std::double_t expected = -17.0;
 		const lyah::vec<2, std::double_t> a = {1.0, 4.0};
 		const lyah::vec<2, std::double_t> b = {5.0, 3.0};
 
-		const std::double_t result = lyah::area(a, b);
+		const std::double_t result = lyah::parallelogramArea(a, b);
 
 		test::assert(test::eq(result, expected));
 	}
@@ -555,7 +555,7 @@ namespace vec2_m128d {
 		test::runTest(&testPow, "Power");
 		test::runTest(&testSqrt, "Square root");
 
-		test::runTest(&testArea, "Area");
+		test::runTest(&testParalellogramArea, "Paralellogram area");
 		test::runTest(&testCrossProduct, "Cross product");
 		test::runTest(&testDotProduct, "Dot product");
 		test::runTest(&testLength, "Length");

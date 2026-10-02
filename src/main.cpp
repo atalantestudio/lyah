@@ -1,6 +1,9 @@
+// Copyright 2026 Atalante Studio.
+// Distributed under the MIT License.
+
 #include "pch.hpp"
 
-#include "test/float32_common.hpp"
+/*#include "test/float32_common.hpp"
 #include "test/float32_constants.hpp"
 #include "test/float32_exponential.hpp"
 #include "test/float32_limits.hpp"
@@ -30,10 +33,10 @@
 #include "test/vec4_m128.hpp"
 #include "test/vec4_m128i.hpp"
 #include "test/vec4_m256d.hpp"
-#include "test/vec4_m256i.hpp"
+#include "test/vec4_m256i.hpp"*/
 
 int main() {
-	test::Logger::initialize();
+	/*test::Logger::initialize();
 
 	float32_common::runAll();
 	float64_common::runAll();
@@ -70,7 +73,19 @@ int main() {
 	mat4x4_m128::runAll();
 	mat4x4_m256d::runAll();
 
-	test::summary();
+	test::summary();*/
+
+	std::random_device device;
+	std::mt19937 engine(device());
+
+	Generator<std::float_t> floatGen(engine);
+	Generator<lyah::vec<2, std::float_t>> vec2Gen(engine);
+	//IntervalGenerator<std::int32_t> intervalGen(engine, 0, 32);
+
+	logStart();
+
+	runTest<20>(lyah::lerp<std::float_t>, glm_adapter::floatlerp, "float_t - Linear interpolation", floatGen, floatGen, floatGen);
+	runTest<20>(lyah::lerp, glm_adapter::lerp, "vec<2, float_t> - Linear interpolation", vec2Gen, vec2Gen, vec2Gen);
 
 	return 0;
 }
