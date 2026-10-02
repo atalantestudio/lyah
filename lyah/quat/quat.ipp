@@ -39,9 +39,7 @@ namespace lyah {
 
 	template<typename T>
 	quat<T>& operator+=(quat<T>& a, quat<T> b) {
-		a = a + b;
-
-		return a;
+		return a = a + b;
 	}
 
 	template<typename T>
@@ -56,9 +54,7 @@ namespace lyah {
 
 	template<typename T>
 	quat<T>& operator-=(quat<T>& a, quat<T> b) {
-		a = a - b;
-
-		return a;
+		return a = a - b;
 	}
 
 	template<typename T>
@@ -83,28 +79,22 @@ namespace lyah {
 
 	template<typename T>
 	quat<T>& operator*=(quat<T>& a, T b) {
-		a = a * b;
-
-		return a;
+		return a = a * b;
 	}
 
 	template<typename T>
 	LYAH_CONSTEXPR quat<T> operator*(quat<T> a, quat<T> b) {
-		a = {
+		return {
 			a.w * b.w - (a.x * b.x + a.y * b.y) - a.z * b.z,
 			a.w * b.x +  a.x * b.w + a.y * b.z  - a.z * b.y,
 			a.w * b.y +  a.y * b.w + a.z * b.x  - a.x * b.z,
 			a.w * b.z +  a.z * b.w + a.x * b.y  - a.y * b.x,
 		};
-
-		return a;
 	}
 
 	template<typename T>
 	quat<T>& operator*=(quat<T>& a, quat<T> b) {
-		a = a * b;
-
-		return a;
+		return a = a * b;
 	}
 
 	template<typename T>
@@ -119,9 +109,7 @@ namespace lyah {
 
 	template<typename T>
 	quat<T>& operator/=(quat<T>& a, T b) {
-		a = a / b;
-
-		return a;
+		return a = a / b;
 	}
 
 	template<typename T>
@@ -131,9 +119,7 @@ namespace lyah {
 
 	template<typename T>
 	quat<T>& operator/=(quat<T>& a, quat<T> b) {
-		a = a / b;
-
-		return a;
+		return a = a / b;
 	}
 
 	template<typename T>

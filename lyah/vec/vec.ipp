@@ -9,9 +9,7 @@ namespace lyah {
 
 	template<std::size_t C, typename T>
 	vec<C, T>& operator+=(vec<C, T>& a, vec<C, T> b) {
-		a = a + b;
-
-		return a;
+		return a = a + b;
 	}
 
 	template<std::size_t C, typename T>
@@ -21,9 +19,7 @@ namespace lyah {
 
 	template<std::size_t C, typename T>
 	vec<C, T>& operator-=(vec<C, T>& a, vec<C, T> b) {
-		a = a - b;
-
-		return a;
+		return a = a - b;
 	}
 
 	template<std::size_t C, typename T>
@@ -33,23 +29,17 @@ namespace lyah {
 
 	template<std::size_t C, typename T>
 	vec<C, T>& operator*=(vec<C, T>& a, T b) {
-		a = a * b;
-
-		return a;
+		return a = a * b;
 	}
 
 	template<std::size_t C, typename T>
 	vec<C, T>& operator*=(vec<C, T>& a, vec<C, T> b) {
-		a = a * b;
-
-		return a;
+		return a = a * b;
 	}
 
 	template<std::size_t C, typename T>
 	vec<C, T>& operator*=(vec<C, T>& a, mat<C, C, T> b) {
-		a = a * b;
-
-		return a;
+		return a = a * b;
 	}
 
 	template<std::size_t C, typename T>
@@ -59,22 +49,16 @@ namespace lyah {
 
 	template<std::size_t C, typename T>
 	vec<C, T>& operator/=(vec<C, T>& a, T b) {
-		a = a * (static_cast<T>(1) / b);
-
-		return a;
+		return a = a * (static_cast<T>(1) / b);
 	}
 
 	template<std::size_t C, typename T>
 	LYAH_CONSTEXPR vec<C, T> operator/(vec<C, T> a, vec<C, T> b) {
-		a = a * (static_cast<T>(1) / b);
-
-		return a;
+		return a = a * (static_cast<T>(1) / b);
 	}
 
 	template<std::size_t C, typename T>
 	vec<C, T>& operator/=(vec<C, T>& a, vec<C, T> b) {
-		a = a / b;
-
-		return a;
+		return a = a / b;
 	}
 }
