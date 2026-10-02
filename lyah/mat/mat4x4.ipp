@@ -41,7 +41,10 @@ namespace lyah {
 			a[3][2], a[3][3],
 		};
 
-		return determinant(aa - ab * inverse(ad) * ac) * determinant(ad);
+		const T det = determinant(ad);
+		const T invDet = static_cast<T>(1) / det;
+
+		return determinant(aa - ab * (adjugate(ad) * invDet) * ac) * det;
 	}
 
 	template<typename T>
