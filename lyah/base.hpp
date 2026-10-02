@@ -51,7 +51,7 @@
 	#define LYAH_INLINE inline
 #endif
 
-#define LYAH_CALL __cdecl
+#define LYAH_CALL
 
 #define LYAH_CONSTEXPR constexpr
 
