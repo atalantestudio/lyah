@@ -19,7 +19,7 @@ namespace lyah {
 			\
 			LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static mat<4, 4, T> LYAH_CALL orthographic(T left, T right, T bottom, T top, T near, T far); \
 			\
-			LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static mat<4, 4, T> LYAH_CALL lookAt(vec<3, T> eye, vec<3, T> target, vec<3, T> up); \
+			LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 static mat<4, 4, T> LYAH_CALL lookAt(vec<3, T> eye, vec<3, T> target, vec<3, T> up); \
 			\
 			LYAH_INLINE LYAH_CONSTEXPR mat(); \
 			\
@@ -27,7 +27,7 @@ namespace lyah {
 			\
 			LYAH_INLINE LYAH_CONSTEXPR mat(vec<4, T> m0, vec<4, T> m1, vec<4, T> m2, vec<4, T> m3); \
 			\
-			LYAH_INLINE LYAH_CONSTEXPR mat(quat<T> a); \
+			LYAH_INLINE LYAH_CONSTEXPR_CPP23 mat(quat<T> a); \
 			\
 			template<typename U> \
 			LYAH_INLINE LYAH_CONSTEXPR explicit mat(mat<4, 4, U> a); \

@@ -17,3 +17,12 @@ namespace lyah {
 	template<typename T>
 	struct quat;
 }
+
+#include "lyah/adapter/vec.hpp"
+#include "lyah/adapter/quat.hpp"
+#include "lyah/adapter/mat.hpp"
+
+#include "lyah/adapter/common.hpp"
+#include "lyah/adapter/exponential.hpp"
+#include "lyah/adapter/geometric.hpp"
+#include "lyah/adapter/trigonometric.hpp"

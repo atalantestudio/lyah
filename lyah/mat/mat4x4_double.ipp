@@ -55,7 +55,7 @@ namespace lyah {
 	}
 
 	/// Returns a left-handed matrix.
-	LYAH_CONSTEXPR mat<4, 4, std::double_t> mat<4, 4, std::double_t>::lookAt(vec<3, std::double_t> eye, vec<3, std::double_t> target, vec<3, std::double_t> up) {
+	LYAH_CONSTEXPR_CPP26 mat<4, 4, std::double_t> mat<4, 4, std::double_t>::lookAt(vec<3, std::double_t> eye, vec<3, std::double_t> target, vec<3, std::double_t> up) {
 		const vec<3, std::double_t> f = normalized(target - eye);
 		const vec<3, std::double_t> r = normalized(cross(up, f));
 		const vec<3, std::double_t> u = cross(f, r);
@@ -102,7 +102,7 @@ namespace lyah {
 
 	/// `a` is assumed to be normalized.
 	/// See https://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToMatrix.
-	LYAH_CONSTEXPR mat<4, 4, std::double_t>::mat(quat<std::double_t> a) {
+	LYAH_CONSTEXPR_CPP23 mat<4, 4, std::double_t>::mat(quat<std::double_t> a) {
 		a = a * 1.41421356237;
 
 		const std::double_t xx = a.x * a.x;
