@@ -27,12 +27,12 @@ namespace lyah {
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<4, std::float_t> LYAH_CALL fma(vec<4, std::float_t> a, vec<4, std::float_t> b, vec<4, std::float_t> c);
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<4, std::double_t> LYAH_CALL fma(vec<4, std::double_t> a, vec<4, std::double_t> b, vec<4, std::double_t> c);
 
-	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL lerp(T a, T b, T t);
 
-	template<std::size_t C, typename T, typename = std::enable_if<std::is_floating_point<T>::value>>
+	template<std::size_t C, typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL lerp(vec<C, T> a, vec<C, T> b, T t);
 
-	template<std::size_t C, typename T, typename = std::enable_if<std::is_floating_point<T>::value>>
+	template<std::size_t C, typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL lerp(vec<C, T> a, vec<C, T> b, vec<C, T> t);
 }
