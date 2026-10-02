@@ -45,13 +45,11 @@ namespace lyah {
 	}
 
 	template<typename T>
-	LYAH_CONSTEXPR vec<2, T> operator*(vec<2, T> a, mat<2, 2, T> B) {
-		a = {
-			dot({B[0][0], B[1][0]}, a),
-			dot({B[0][1], B[1][1]}, a),
+	LYAH_CONSTEXPR vec<2, T> operator*(vec<2, T> a, mat<2, 2, T> b) {
+		return {
+			dot({b[0][0], b[1][0]}, a),
+			dot({b[0][1], b[1][1]}, a),
 		};
-
-		return a;
 	}
 
 	template<typename T>

@@ -50,11 +50,9 @@ namespace lyah {
 	/// See https://www.dr-lex.be/random/matrix-inv.html.
 	template<std::size_t M, typename T>
 	LYAH_CONSTEXPR mat<M, M, T> inverse(mat<M, M, T> a) {
-		static constexpr T e = static_cast<T>(1e-4);
-
 		const T d = determinant(a);
 
-		LYAH_ASSERT(abs(d) >= e);
+		LYAH_ASSERT(abs(d) >= static_cast<T>(1e-4));
 
 		return adjugate(a) / d;
 	}
