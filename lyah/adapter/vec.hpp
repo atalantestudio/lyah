@@ -28,27 +28,27 @@ namespace lyah {
 	template<>
 	struct vec<4, std::double_t>;
 
-	/// A 2-component 32-bit integer point vector.
+	/// A 2-component 32-bit signed integer vector.
 	template<>
 	struct vec<2, std::int32_t>;
 
-	/// A 3-component 32-bit integer point vector.
+	/// A 3-component 32-bit signed integer vector.
 	template<>
 	struct vec<3, std::int32_t>;
 
-	/// A 4-component 32-bit integer point vector.
+	/// A 4-component 32-bit signed integer vector.
 	template<>
 	struct vec<4, std::int32_t>;
 
-	/// A 2-component 64-bit integer point vector.
+	/// A 2-component 64-bit signed integer vector.
 	template<>
 	struct vec<2, std::int64_t>;
 
-	/// A 3-component 64-bit integer point vector.
+	/// A 3-component 64-bit signed integer vector.
 	template<>
 	struct vec<3, std::int64_t>;
 
-	/// A 4-component 64-bit integer point vector.
+	/// A 4-component 64-bit signed integer vector.
 	template<>
 	struct vec<4, std::int64_t>;
 
