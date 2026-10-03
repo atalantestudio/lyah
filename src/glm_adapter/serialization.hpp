@@ -58,7 +58,31 @@ namespace glm_adapter {
 		return *static_cast<const glm::vec2*>(static_cast<const void*>(&a));
 	}
 
+	inline glm::vec3 lyah2glm(vec3<std::float_t> a) {
+		return *static_cast<const glm::vec3*>(static_cast<const void*>(&a));
+	}
+
+	inline glm::vec4 lyah2glm(vec4<std::float_t> a) {
+		return *static_cast<const glm::vec4*>(static_cast<const void*>(&a));
+	}
+
+	inline glm::quat lyah2glm(quat<std::float_t> a) {
+		return {a.w, a.x, a.y, a.z};
+	}
+
 	inline vec2<std::float_t> glm2lyah(glm::vec2 a) {
 		return *static_cast<const vec2<std::float_t>*>(static_cast<const void*>(&a));
+	}
+
+	inline vec3<std::float_t> glm2lyah(glm::vec3 a) {
+		return *static_cast<const vec3<std::float_t>*>(static_cast<const void*>(&a));
+	}
+
+	inline vec4<std::float_t> glm2lyah(glm::vec4 a) {
+		return *static_cast<const vec4<std::float_t>*>(static_cast<const void*>(&a));
+	}
+
+	inline quat<std::float_t> glm2lyah(glm::quat a) {
+		return {a.w, a.x, a.y, a.z};
 	}
 }

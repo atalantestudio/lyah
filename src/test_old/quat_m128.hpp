@@ -49,24 +49,6 @@ namespace quat_m128 {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
-	void testWGetter() {
-		const std::float_t expected = 1.0f;
-		const lyah::quat<std::float_t> a = {1.0f, 4.0f, 6.0f, -1.0f};
-
-		const std::float_t result = a.w;
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testXYZGetter() {
-		const lyah::vec<3, std::float_t> expected = {4.0f, 6.0f, -1.0f};
-		const lyah::quat<std::float_t> a = {1.0f, 4.0f, 6.0f, -1.0f};
-
-		const lyah::vec<3, std::float_t> result = {a.x, a.y, a.z};
-
-		test::assert(test::eq(result, expected));
-	}
-
 	void testEquality() {
 		const bool expected[2] = {true, false};
 		const lyah::quat<std::float_t> a = {1.0f, 4.0f, 6.0f, -1.0f};
@@ -311,9 +293,6 @@ namespace quat_m128 {
 
 		test::runTest(&testIdentity, "Identity");
 		test::runTest(&testAxisAngle, "Axis-angle");
-
-		test::runTest(&testWGetter, "W getter");
-		test::runTest(&testXYZGetter, "XYZ getter");
 
 		test::runTest(&testEquality, "Equality (==)");
 		test::runTest(&testInequality, "Inequality (!=)");

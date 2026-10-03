@@ -49,24 +49,6 @@ namespace quat_m256d {
 		test::assert(test::eq(result, expected, 0.001));
 	}
 
-	void testWGetter() {
-		const std::double_t expected = 1.0;
-		const lyah::quat<std::double_t> a = {1.0, 4.0, 6.0, -1.0};
-
-		const std::double_t result = a.w;
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testXYZGetter() {
-		const lyah::vec<3, std::double_t> expected = {4.0, 6.0, -1.0};
-		const lyah::quat<std::double_t> a = {1.0, 4.0, 6.0, -1.0};
-
-		const lyah::vec<3, std::double_t> result = {a.x, a.y, a.z};
-
-		test::assert(test::eq(result, expected));
-	}
-
 	void testEquality() {
 		const bool expected[2] = {true, false};
 		const lyah::quat<std::double_t> a = {1.0, 4.0, 6.0, -1.0};
@@ -311,9 +293,6 @@ namespace quat_m256d {
 
 		test::runTest(&testIdentity, "Identity");
 		test::runTest(&testAxisAngle, "Axis-angle");
-
-		test::runTest(&testWGetter, "W getter");
-		test::runTest(&testXYZGetter, "XYZ getter");
 
 		test::runTest(&testEquality, "Equality (==)");
 		test::runTest(&testInequality, "Inequality (!=)");

@@ -1,32 +1,52 @@
 // Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
-//#include "pch.hpp"
+#include "pch.hpp"
 
-//#include "test/generator/generator.hpp"
-
-template<>
-struct Generator<std::float_t> : public BaseGenerator {
-	using BaseGenerator::BaseGenerator;
-
-	std::uniform_real_distribution<std::float_t> distribution;
-};
+#include "test/generator/generator.hpp"
 
 template<>
-inline std::float_t next(Generator<std::float_t>& generator) {
+std::float_t next(Generator<std::float_t>& generator) {
 	return generator.distribution(generator.engine);
 }
 
 template<>
-struct Generator<lyah::vec<2, std::float_t>> : public BaseGenerator {
-	using BaseGenerator::BaseGenerator;
-
-	std::uniform_real_distribution<std::float_t> distribution;
-};
+std::double_t next(Generator<std::double_t>& generator) {
+	return generator.distribution(generator.engine);
+}
 
 template<>
-inline lyah::vec<2, std::float_t> next(Generator<lyah::vec<2, std::float_t>>& generator) {
+lyah::vec<2, std::float_t> next(Generator<lyah::vec<2, std::float_t>>& generator) {
 	return {
+		generator.distribution(generator.engine),
+		generator.distribution(generator.engine),
+	};
+}
+
+template<>
+lyah::vec<3, std::float_t> next(Generator<lyah::vec<3, std::float_t>>& generator) {
+	return {
+		generator.distribution(generator.engine),
+		generator.distribution(generator.engine),
+		generator.distribution(generator.engine),
+	};
+}
+
+template<>
+lyah::vec<4, std::float_t> next(Generator<lyah::vec<4, std::float_t>>& generator) {
+	return {
+		generator.distribution(generator.engine),
+		generator.distribution(generator.engine),
+		generator.distribution(generator.engine),
+		generator.distribution(generator.engine),
+	};
+}
+
+template<>
+lyah::quat<std::float_t> next(Generator<lyah::quat<std::float_t>>& generator) {
+	return {
+		generator.distribution(generator.engine),
+		generator.distribution(generator.engine),
 		generator.distribution(generator.engine),
 		generator.distribution(generator.engine),
 	};

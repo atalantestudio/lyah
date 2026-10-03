@@ -11,19 +11,18 @@
 
 #include <lyah/lyah.hpp>
 
+#define GLM_FORCE_CTOR_INIT
 #define GLM_ENABLE_EXPERIMENTAL
+#define GLM_FORCE_QUAT_DATA_WXYZ
 
 #include <glm/glm.hpp>
 #include <glm/gtx/compatibility.hpp>
+//#include <glm/gtx/norm.hpp>
 
-//#include "base.hpp"
-//#include "log.hpp"
-
-//#undef assert
-
+#include "glm_adapter/adapter.hpp"
+#include "glm_adapter/equality.hpp"
 #include "glm_adapter/serialization.hpp"
 #include "glm_adapter/common.hpp"
 
 #include "test/generator/generator.hpp"
-#include "random_test_log.hpp"
-#include "random_test.hpp"
+#include "test/ClassTest.hpp"

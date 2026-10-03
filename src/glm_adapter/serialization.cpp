@@ -22,7 +22,7 @@ std::ostream& operator<<(std::ostream& stream, lyah::vec<4, T> a) {
 
 template<typename T>
 std::ostream& operator<<(std::ostream& stream, lyah::quat<T> a) {
-	return stream << a.w << ' ' << a.x << ' ' << a.y << ' ' << a.z;
+	return stream << '(' << a.w << ' ' << a.x << ' ' << a.y << ' ' << a.z << ')';
 }
 
 template<typename T>

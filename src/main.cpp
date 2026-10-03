@@ -3,6 +3,8 @@
 
 #include "pch.hpp"
 
+#define RUN_TESTS(className) {className testClass; testClass.runTests();}
+
 /*#include "test/float32_common.hpp"
 #include "test/float32_constants.hpp"
 #include "test/float32_exponential.hpp"
@@ -75,17 +77,9 @@ int main() {
 
 	test::summary();*/
 
-	std::random_device device;
-	std::mt19937 engine(device());
+	ClassTest::logStart();
 
-	Generator<std::float_t> floatGen(engine);
-	Generator<lyah::vec<2, std::float_t>> vec2Gen(engine);
-	//IntervalGenerator<std::int32_t> intervalGen(engine, 0, 32);
-
-	logStart();
-
-	runTest<20>(lyah::lerp<std::float_t>, glm_adapter::floatlerp, "float_t - Linear interpolation", floatGen, floatGen, floatGen);
-	runTest<20>(lyah::lerp, glm_adapter::lerp, "vec<2, float_t> - Linear interpolation", vec2Gen, vec2Gen, vec2Gen);
+	RUN_TESTS(SingleFloatingPointQuaternion);
 
 	return 0;
 }
