@@ -18,5 +18,4 @@
 #include "common.ipp"
 #include "exponential.ipp"
 #include "geometric.ipp"
-#include "limits.ipp"
 #include "trigonometric.ipp"

@@ -24,18 +24,37 @@ namespace lyah {
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<4, std::float_t> LYAH_CALL fma(vec<4, std::float_t> x, vec<4, std::float_t> y, vec<4, std::float_t> z);
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<4, std::double_t> LYAH_CALL fma(vec<4, std::double_t> x, vec<4, std::double_t> y, vec<4, std::double_t> z);
 
+	/// Returns the minimum value between `x` and `y`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL min(T x, T y);
+
+	/// Returns the component-wise minimum value between `x` and `y`.
+	template<std::size_t C, typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL min(vec<C, T> x, vec<C, T> y);
+
+	/// Returns the maximum value between `x` and `y`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL max(T x, T y);
+
+	/// Returns the component-wise maximum value between `x` and `y`.
+	template<std::size_t C, typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL max(vec<C, T> x, vec<C, T> y);
+
+	/// Returns `x` clamped between `min` and `max`.
+	/// `max` must be >= `min`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL clamp(T x, T min, T max);
+
 	/// Returns the linear interpolation of `t` between `a` and `b`.
 	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL lerp(T a, T b, T t);
 
 	/// Returns the linear interpolation of `t` between `a` and `b`.
-	/// `t` is applied to every component of `a` and `b`.
 	template<std::size_t C, typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL lerp(vec<C, T> a, vec<C, T> b, T t);
 
 	/// Returns the linear interpolation of `t` between `a` and `b`.
+	/// `t` is applied component-wise.
 	template<std::size_t C, typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL lerp(vec<C, T> a, vec<C, T> b, vec<C, T> t);
-
-	// TODO: min/max/clamp
 }

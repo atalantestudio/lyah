@@ -117,6 +117,75 @@ namespace lyah {
 		return a;
 	}
 
+	template<typename T>
+	LYAH_CONSTEXPR T min(T x, T y) {
+		return x < y ? x : y;
+	}
+
+	template<typename T>
+	LYAH_CONSTEXPR vec<2, T> min(vec<2, T> x, vec<2, T> y) {
+		x.x = min(x.x, y.x);
+		x.y = min(x.y, y.y);
+
+		return x;
+	}
+
+	template<typename T>
+	LYAH_CONSTEXPR vec<3, T> min(vec<3, T> x, vec<3, T> y) {
+		x.x = min(x.x, y.x);
+		x.y = min(x.y, y.y);
+		x.z = min(x.z, y.z);
+
+		return x;
+	}
+
+	template<typename T>
+	LYAH_CONSTEXPR vec<4, T> min(vec<4, T> x, vec<4, T> y) {
+		x.x = min(x.x, y.x);
+		x.y = min(x.y, y.y);
+		x.z = min(x.z, y.z);
+		x.w = min(x.w, y.w);
+
+		return x;
+	}
+
+	template<typename T>
+	LYAH_CONSTEXPR T max(T x, T y) {
+		return x > y ? x : y;
+	}
+
+	template<typename T>
+	LYAH_CONSTEXPR vec<2, T> max(vec<2, T> x, vec<2, T> y) {
+		x.x = max(x.x, y.x);
+		x.y = max(x.y, y.y);
+
+		return x;
+	}
+
+	template<typename T>
+	LYAH_CONSTEXPR vec<3, T> max(vec<3, T> x, vec<3, T> y) {
+		x.x = max(x.x, y.x);
+		x.y = max(x.y, y.y);
+		x.z = max(x.z, y.z);
+
+		return x;
+	}
+
+	template<typename T>
+	LYAH_CONSTEXPR vec<4, T> max(vec<4, T> x, vec<4, T> y) {
+		x.x = max(x.x, y.x);
+		x.y = max(x.y, y.y);
+		x.z = max(x.z, y.z);
+		x.w = max(x.w, y.w);
+
+		return x;
+	}
+
+	template<typename T>
+	LYAH_CONSTEXPR T clamp(T x, T _min, T _max) {
+		return min(max(x, _min), _max);
+	}
+
 	template<typename T, typename>
 	LYAH_CONSTEXPR T lerp(T a, T b, T t) {
 		return a * (static_cast<T>(1) - t) + b * t;
