@@ -3,8 +3,6 @@
 
 #include "pch.hpp"
 
-#define RUN_TESTS(className) {className testClass; testClass.runTests();}
-
 /*#include "test/float32_common.hpp"
 #include "test/float32_constants.hpp"
 #include "test/float32_exponential.hpp"
@@ -77,9 +75,10 @@ int main() {
 
 	test::summary();*/
 
-	ClassTest::logStart();
+	std::cout << "\033[0;2mStarting tests...\033[0m\n\n";
 
-	RUN_TESTS(SingleFloatingPointQuaternion);
+	ClassTest<lyah::quat<std::float_t>>::runTests();
+	ClassTest<lyah::quat<std::double_t>>::runTests();
 
 	return 0;
 }

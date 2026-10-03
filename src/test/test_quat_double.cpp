@@ -6,19 +6,19 @@
 #include "test/ClassTest.hpp"
 
 template<>
-const char* ClassTest<lyah::quat<std::float_t>>::getClassName() {
-	return "quat<float_t>";
+const char* ClassTest<lyah::quat<std::double_t>>::getClassName() {
+	return "quat<double_t>";
 }
 
 template<>
-void ClassTest<lyah::quat<std::float_t>>::runTests() {
-	typedef lyah::quat<std::float_t> T;
+void ClassTest<lyah::quat<std::double_t>>::runTests() {
+	typedef lyah::quat<std::double_t> T;
 
 	std::random_device device;
 	std::mt19937 engine(device());
 
-	Generator<std::float_t> scalar(engine, -1.0f, 1.0f);
-	Generator<lyah::vec<3, std::float_t>> vector(engine, -1.0f, 1.0f);
+	Generator<std::double_t> scalar(engine, -1.0f, 1.0f);
+	Generator<lyah::vec<3, std::double_t>> vector(engine, -1.0f, 1.0f);
 	Generator<T> quaternion(engine);
 
 	runTest("Identity", T::identity, glm_adapter::identity);
@@ -32,17 +32,17 @@ void ClassTest<lyah::quat<std::float_t>>::runTests() {
 
 	runTest<T, T, T>("Addition", lyah::operator+, glm_adapter::operator+, quaternion, quaternion);
 	runTest<T, T, T>("Subtraction", lyah::operator-, glm_adapter::operator-, quaternion, quaternion);
-	runTest<T, T, std::float_t>("Multiplication (quaternion-scalar)", lyah::operator*, glm_adapter::operator*, quaternion, scalar);
-	runTest<T, std::float_t, T>("Multiplication (scalar-quaternion)", lyah::operator*, glm_adapter::operator*, scalar, quaternion);
+	runTest<T, T, std::double_t>("Multiplication (quaternion-scalar)", lyah::operator*, glm_adapter::operator*, quaternion, scalar);
+	runTest<T, std::double_t, T>("Multiplication (scalar-quaternion)", lyah::operator*, glm_adapter::operator*, scalar, quaternion);
 	runTest<T, T, T>("Multiplication (quaternion-quaternion)", lyah::operator*, glm_adapter::operator*, quaternion, quaternion);
 	runTest<T>("Division (quaternion-scalar)", lyah::operator/, glm_adapter::operator/, quaternion, scalar);
 
 	runTest<T>("Conjugate", lyah::conjugate, glm_adapter::conjugate, quaternion);
-	runTest<std::float_t>("Dot product", lyah::dot, glm_adapter::dot, quaternion, quaternion);
+	runTest<std::double_t>("Dot product", lyah::dot, glm_adapter::dot, quaternion, quaternion);
 	runTest<T>("Inverse", lyah::inverse, glm_adapter::inverse, quaternion);
-	runTest<std::float_t>("Length", lyah::length, glm_adapter::length, quaternion);
-	runTest<std::float_t>("Squared length", lyah::lengthSquared, glm_adapter::lengthSquared, quaternion);
-	runTest<std::float_t>("Distance", lyah::distance, glm_adapter::distance, quaternion, quaternion);
-	runTest<std::float_t>("Squared distance", lyah::distanceSquared, glm_adapter::distanceSquared, quaternion, quaternion);
+	runTest<std::double_t>("Length", lyah::length, glm_adapter::length, quaternion);
+	runTest<std::double_t>("Squared length", lyah::lengthSquared, glm_adapter::lengthSquared, quaternion);
+	runTest<std::double_t>("Distance", lyah::distance, glm_adapter::distance, quaternion, quaternion);
+	runTest<std::double_t>("Squared distance", lyah::distanceSquared, glm_adapter::distanceSquared, quaternion, quaternion);
 	runTest<T>("Normalization", lyah::normalized, glm_adapter::normalized, quaternion);
 }

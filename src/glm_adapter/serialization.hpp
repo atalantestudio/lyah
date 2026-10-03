@@ -4,85 +4,48 @@
 #pragma once
 
 template<typename T>
-std::ostream& operator<<(std::ostream& stream, lyah::vec<2, T> a);
-
-template std::ostream& operator<<(std::ostream& stream, lyah::vec<2, std::float_t> a);
-template std::ostream& operator<<(std::ostream& stream, lyah::vec<2, std::double_t> a);
-template std::ostream& operator<<(std::ostream& stream, lyah::vec<2, std::int32_t> a);
-template std::ostream& operator<<(std::ostream& stream, lyah::vec<2, std::int64_t> a);
+inline std::ostream& operator<<(std::ostream& stream, lyah::vec<2, T> a) {
+	return stream << a.x << ' ' << a.y;
+}
 
 template<typename T>
-std::ostream& operator<<(std::ostream& stream, lyah::vec<3, T> a);
-
-template std::ostream& operator<<(std::ostream& stream, lyah::vec<3, std::float_t> a);
-template std::ostream& operator<<(std::ostream& stream, lyah::vec<3, std::double_t> a);
-template std::ostream& operator<<(std::ostream& stream, lyah::vec<3, std::int32_t> a);
-template std::ostream& operator<<(std::ostream& stream, lyah::vec<3, std::int64_t> a);
+inline std::ostream& operator<<(std::ostream& stream, lyah::vec<3, T> a) {
+	return stream << a.x << ' ' << a.y << ' ' << a.z;
+}
 
 template<typename T>
-std::ostream& operator<<(std::ostream& stream, lyah::vec<4, T> a);
-
-template std::ostream& operator<<(std::ostream& stream, lyah::vec<4, std::float_t> a);
-template std::ostream& operator<<(std::ostream& stream, lyah::vec<4, std::double_t> a);
-template std::ostream& operator<<(std::ostream& stream, lyah::vec<4, std::int32_t> a);
-template std::ostream& operator<<(std::ostream& stream, lyah::vec<4, std::int64_t> a);
+inline std::ostream& operator<<(std::ostream& stream, lyah::vec<4, T> a) {
+	return stream << a.x << ' ' << a.y << ' ' << a.z << ' ' << a.w;
+}
 
 template<typename T>
-std::ostream& operator<<(std::ostream& stream, lyah::quat<T> a);
-
-template std::ostream& operator<<(std::ostream& stream, lyah::quat<std::float_t> a);
-template std::ostream& operator<<(std::ostream& stream, lyah::quat<std::double_t> a);
-
-template<typename T>
-std::ostream& operator<<(std::ostream& stream, lyah::mat<2, 2, T> a);
-
-template std::ostream& operator<<(std::ostream& stream, lyah::mat<2, 2, std::float_t> a);
-template std::ostream& operator<<(std::ostream& stream, lyah::mat<2, 2, std::double_t> a);
+inline std::ostream& operator<<(std::ostream& stream, lyah::quat<T> a) {
+	return stream << '(' << a.w << ' ' << a.x << ' ' << a.y << ' ' << a.z << ')';
+}
 
 template<typename T>
-std::ostream& operator<<(std::ostream& stream, const lyah::mat<3, 3, T>& a);
+inline std::ostream& operator<<(std::ostream& stream, lyah::mat<2, 2, T> a) {
+	stream << a[0].x << ' ' << a[0].y << '\n';
+	stream << a[1].x << ' ' << a[1].y << '\n';
 
-template std::ostream& operator<<(std::ostream& stream, const lyah::mat<3, 3, std::float_t>& a);
-template std::ostream& operator<<(std::ostream& stream, const lyah::mat<3, 3, std::double_t>& a);
+	return stream;
+}
 
 template<typename T>
-std::ostream& operator<<(std::ostream& stream, const lyah::mat<4, 4, T>& a);
+inline std::ostream& operator<<(std::ostream& stream, lyah::mat<3, 3, T> a) {
+	stream << a[0].x << ' ' << a[0].y << ' ' << a[0].z << '\n';
+	stream << a[1].x << ' ' << a[1].y << ' ' << a[1].z << '\n';
+	stream << a[2].x << ' ' << a[2].y << ' ' << a[2].z << '\n';
 
-template std::ostream& operator<<(std::ostream& stream, const lyah::mat<4, 4, std::float_t>& a);
-template std::ostream& operator<<(std::ostream& stream, const lyah::mat<4, 4, std::double_t>& a);
+	return stream;
+}
 
-namespace glm_adapter {
-	using namespace lyah;
+template<typename T>
+inline std::ostream& operator<<(std::ostream& stream, lyah::mat<4, 4, T> a) {
+	stream << a[0].x << ' ' << a[0].y << ' ' << a[0].z << ' ' << a[0].w << '\n';
+	stream << a[1].x << ' ' << a[1].y << ' ' << a[1].z << ' ' << a[1].w << '\n';
+	stream << a[2].x << ' ' << a[2].y << ' ' << a[2].z << ' ' << a[2].w << '\n';
+	stream << a[3].x << ' ' << a[3].y << ' ' << a[3].z << ' ' << a[3].w << '\n';
 
-	inline glm::vec2 lyah2glm(vec2<std::float_t> a) {
-		return *static_cast<const glm::vec2*>(static_cast<const void*>(&a));
-	}
-
-	inline glm::vec3 lyah2glm(vec3<std::float_t> a) {
-		return *static_cast<const glm::vec3*>(static_cast<const void*>(&a));
-	}
-
-	inline glm::vec4 lyah2glm(vec4<std::float_t> a) {
-		return *static_cast<const glm::vec4*>(static_cast<const void*>(&a));
-	}
-
-	inline glm::quat lyah2glm(quat<std::float_t> a) {
-		return {a.w, a.x, a.y, a.z};
-	}
-
-	inline vec2<std::float_t> glm2lyah(glm::vec2 a) {
-		return *static_cast<const vec2<std::float_t>*>(static_cast<const void*>(&a));
-	}
-
-	inline vec3<std::float_t> glm2lyah(glm::vec3 a) {
-		return *static_cast<const vec3<std::float_t>*>(static_cast<const void*>(&a));
-	}
-
-	inline vec4<std::float_t> glm2lyah(glm::vec4 a) {
-		return *static_cast<const vec4<std::float_t>*>(static_cast<const void*>(&a));
-	}
-
-	inline quat<std::float_t> glm2lyah(glm::quat a) {
-		return {a.w, a.x, a.y, a.z};
-	}
+	return stream;
 }

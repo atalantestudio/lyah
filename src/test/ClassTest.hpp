@@ -3,9 +3,12 @@
 
 #pragma once
 
+#include "test/compare.hpp"
+
+template<typename T>
 class ClassTest {
 	public:
-		static void logStart();
+		inline static constexpr std::size_t RUN_COUNT = 1;
 
 	private:
 		template<typename TupleType, std::size_t ArgumentCount>
@@ -18,11 +21,17 @@ class ClassTest {
 			generateParameters<TupleType, ArgumentIndex + 1, ArgumentType...>(parameters, std::forward<Generator<ArgumentType>&>(generators)...);
 		}
 
-		static void logTestName(const char* className, const char* testName);
+		inline static void logTestName(const char* className, const char* testName) {
+			std::cout << "\033[0;1m" << className << " - " << testName << "\033[0m ";
+		}
 
-		static void logFailed();
+		inline static void logFailed() {
+			std::cout << "\033[101;97m FAILED \033[0m\n";
+		}
 
-		static void logPassed();
+		inline static void logPassed() {
+			std::cout << "\033[42;30m PASSED \033[0m\n";
+		}
 
 		template<typename ReturnType, typename... ParameterType>
 		inline static void logRun(std::size_t runIndex, std::tuple<ParameterType...> parameters, ReturnType result, ReturnType referenceResult) {
@@ -48,16 +57,15 @@ class ClassTest {
 			logParameters(std::forward<ParameterType>(parameters)...);
 		}
 
+		static const char* getClassName();
+
+	public:
+		static void runTests();
+
 	protected:
-		virtual const char* getClassName() const = 0;
-
-		virtual void runTests() const = 0;
-
 		template<typename ReturnType, typename... ArgumentType>
-		inline void runTest(const char* name, ReturnType (*function)(ArgumentType...), ReturnType (*referenceAdapter)(ArgumentType...), Generator<ArgumentType>&... generators) const {
+		inline static void runTest(const char* name, ReturnType (*function)(ArgumentType...), ReturnType (*referenceAdapter)(ArgumentType...), Generator<ArgumentType>&... generators) {
 			typedef std::tuple<ArgumentType...> TupleType;
-
-			static constexpr std::size_t RunCount = 1;
 
 			logTestName(getClassName(), name);
 
@@ -65,7 +73,7 @@ class ClassTest {
 			std::size_t runIndex = 0;
 			bool failedRuns = false;
 
-			while (runIndex < RunCount) {
+			while (runIndex < RUN_COUNT) {
 				generateParameters<TupleType, 0>(parameters, std::forward<Generator<ArgumentType>&>(generators)...);
 
 				const ReturnType result = std::apply(function, parameters);
@@ -91,16 +99,5 @@ class ClassTest {
 			if (!failedRuns) {
 				logPassed();
 			}
-
-			std::cout << '\n';
 		}
-};
-
-class SingleFloatingPointQuaternion : public ClassTest {
-	public:
-		using ClassTest::ClassTest;
-
-		const char* getClassName() const final override;
-
-		void runTests() const final override;
 };

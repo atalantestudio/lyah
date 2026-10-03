@@ -20,9 +20,8 @@
 //#include <glm/gtx/norm.hpp>
 
 #include "glm_adapter/adapter.hpp"
-#include "glm_adapter/equality.hpp"
 #include "glm_adapter/serialization.hpp"
 #include "glm_adapter/common.hpp"
 
-#include "test/generator/generator.hpp"
+#include "test/Generator/Generator.hpp"
 #include "test/ClassTest.hpp"

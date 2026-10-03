@@ -21,13 +21,10 @@
     <ClCompile Include="src\pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\glm_adapter\serialization.cpp">
+    <ClCompile Include="src\test\Generator\float.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\test\generator\float.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\generator\int32.cpp">
+    <ClCompile Include="src\test\Generator\int32.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\glm_adapter\quat_float.cpp">
@@ -36,7 +33,13 @@
     <ClCompile Include="src\test\test_quat_float.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\test\ClassTest.cpp">
+    <ClCompile Include="src\test\test_quat_double.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\glm_adapter\quat_double.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\Generator\double.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -51,7 +54,7 @@
     <ClInclude Include="src\glm_adapter\common.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\test\generator\generator.hpp">
+    <ClInclude Include="src\test\Generator\Generator.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\glm_adapter\serialization.hpp">
@@ -60,7 +63,7 @@
     <ClInclude Include="src\glm_adapter\adapter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\glm_adapter\equality.hpp">
+    <ClInclude Include="src\test\compare.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\test\ClassTest.hpp">

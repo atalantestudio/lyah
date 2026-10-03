@@ -1,20 +1,6 @@
 #pragma once
 
 namespace test {
-	void printTestCategory(std::string_view name);
-
-	void runTest(void (*test)(), std::string_view name);
-
-	void summary();
-
-	inline void assert(bool condition) {
-		ASSERT(condition, "Assertion failed");
-	}
-
-	inline bool eq(bool a, bool b) {
-		return a == b;
-	}
-
 	template<typename T>
 	inline bool eq(T a, T b) {
 		return a == b;

@@ -6,6 +6,6 @@
 #include "test/Generator/Generator.hpp"
 
 template<>
-std::float_t next(Generator<std::float_t>& generator) {
+std::double_t next(Generator<std::double_t>& generator) {
 	return generator.distribution(generator.engine);
 }

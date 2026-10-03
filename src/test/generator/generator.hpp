@@ -34,21 +34,21 @@ struct Generator<std::double_t> : public BaseGenerator {
 	std::uniform_real_distribution<std::double_t> distribution;
 };
 
-template<std::size_t C>
-struct Generator<lyah::vec<C, std::float_t>> : public BaseGenerator {
-	explicit Generator(std::mt19937& engine, std::float_t min = 0.0f, std::float_t max = 1.0f) :
+template<std::size_t C, typename T>
+struct Generator<lyah::vec<C, T>> : public BaseGenerator {
+	explicit Generator(std::mt19937& engine, T min = static_cast<T>(0), T max = static_cast<T>(1)) :
 		BaseGenerator(engine),
 		distribution(min, max)
 	{}
 
-	std::uniform_real_distribution<std::float_t> distribution;
+	std::uniform_real_distribution<T> distribution;
 };
 
 template<typename T>
 struct Generator<lyah::quat<T>> : public BaseGenerator {
-	explicit Generator(std::mt19937& engine) :
+	explicit Generator(std::mt19937& engine, T min = static_cast<T>(0), T max = static_cast<T>(1)) :
 		BaseGenerator(engine),
-		distribution(0.0f, 1.0f)
+		distribution(min, max)
 	{}
 
 	std::uniform_real_distribution<T> distribution;
@@ -56,3 +56,40 @@ struct Generator<lyah::quat<T>> : public BaseGenerator {
 
 template<typename T>
 T next(Generator<T>& generator);
+
+template<typename T>
+lyah::vec<2, T> next(Generator<lyah::vec<2, T>>& generator) {
+	return {
+		generator.distribution(generator.engine),
+		generator.distribution(generator.engine),
+	};
+}
+
+template<typename T>
+lyah::vec<3, T> next(Generator<lyah::vec<3, T>>& generator) {
+	return {
+		generator.distribution(generator.engine),
+		generator.distribution(generator.engine),
+		generator.distribution(generator.engine),
+	};
+}
+
+template<typename T>
+lyah::vec<4, T> next(Generator<lyah::vec<4, T>>& generator) {
+	return {
+		generator.distribution(generator.engine),
+		generator.distribution(generator.engine),
+		generator.distribution(generator.engine),
+		generator.distribution(generator.engine),
+	};
+}
+
+template<typename T>
+lyah::quat<T> next(Generator<lyah::quat<T>>& generator) {
+	return {
+		generator.distribution(generator.engine),
+		generator.distribution(generator.engine),
+		generator.distribution(generator.engine),
+		generator.distribution(generator.engine),
+	};
+}
