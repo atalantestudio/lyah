@@ -52,7 +52,29 @@ namespace lyah {
 	template<>
 	struct vec<4, std::int64_t>;
 
-	// TODO: Add unsigned integer vectors.
+	/// A 2-component 32-bit unsigned integer vector.
+	template<>
+	struct vec<2, std::uint32_t>;
+
+	/// A 3-component 32-bit unsigned integer vector.
+	template<>
+	struct vec<3, std::uint32_t>;
+
+	/// A 4-component 32-bit unsigned integer vector.
+	template<>
+	struct vec<4, std::uint32_t>;
+
+	/// A 2-component 64-bit unsigned integer vector.
+	template<>
+	struct vec<2, std::uint64_t>;
+
+	/// A 3-component 64-bit unsigned integer vector.
+	template<>
+	struct vec<3, std::uint64_t>;
+
+	/// A 4-component 64-bit unsigned integer vector.
+	template<>
+	struct vec<4, std::uint64_t>;
 
 	template<std::size_t C, typename T>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR bool LYAH_CALL operator==(vec<C, T> a, vec<C, T> b);
