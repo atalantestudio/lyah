@@ -4,12 +4,11 @@
 #pragma once
 
 namespace lyah {
-	/// A C-component vector of type T.
+	/// A C-dimensional vector of type T.
 	template<std::size_t C, typename T>
 	struct vec;
 
 	/// A MxN row-major matrix of type T.
-	/// M is the row count and N is the column count.
 	template<std::size_t M, std::size_t N, typename T>
 	struct mat;
 
@@ -18,11 +17,13 @@ namespace lyah {
 	struct quat;
 }
 
-#include "lyah/adapter/vec.hpp"
-#include "lyah/adapter/quat.hpp"
-#include "lyah/adapter/mat.hpp"
+#include "lyah/adapter/types/vec.hpp"
+#include "lyah/adapter/types/quat.hpp"
+#include "lyah/adapter/types/mat.hpp"
 
 #include "lyah/adapter/common.hpp"
+#include "lyah/adapter/constants.hpp"
 #include "lyah/adapter/exponential.hpp"
 #include "lyah/adapter/geometric.hpp"
+#include "lyah/adapter/rounding.hpp"
 #include "lyah/adapter/trigonometric.hpp"

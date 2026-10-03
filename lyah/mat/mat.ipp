@@ -52,7 +52,9 @@ namespace lyah {
 	LYAH_CONSTEXPR mat<M, M, T> inverse(mat<M, M, T> a) {
 		const T d = determinant(a);
 
-		LYAH_ASSERT(abs(d) >= static_cast<T>(1e-4));
+		if (abs(d) <= static_cast<T>(1e-6)) {
+			return {};
+		}
 
 		return adjugate(a) / d;
 	}
