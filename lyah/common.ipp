@@ -45,22 +45,6 @@ namespace lyah {
 		return x;
 	}
 
-	LYAH_CONSTEXPR_CPP23 std::float_t ceil(std::float_t a) {
-		return std::ceilf(a);
-	}
-
-	LYAH_CONSTEXPR_CPP23 std::double_t ceil(std::double_t a) {
-		return std::ceill(a);
-	}
-
-	LYAH_CONSTEXPR_CPP23 std::float_t floor(std::float_t a) {
-		return std::floorf(a);
-	}
-
-	LYAH_CONSTEXPR_CPP23 std::double_t floor(std::double_t a) {
-		return std::floorl(a);
-	}
-
 	LYAH_CONSTEXPR_CPP23 std::float_t fma(std::float_t a, std::float_t b, std::float_t c) {
 		return std::fmaf(a, b, c);
 	}
