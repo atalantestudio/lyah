@@ -18,4 +18,5 @@
 #include "common.ipp"
 #include "exponential.ipp"
 #include "geometric.ipp"
+#include "rounding.ipp"
 #include "trigonometric.ipp"
