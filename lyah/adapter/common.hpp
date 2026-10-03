@@ -4,6 +4,7 @@
 #pragma once
 
 namespace lyah {
+	// TODO: Add abs for unsigned integer vectors.
 	/// Returns the absolute value of `x`.
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 std::float_t LYAH_CALL abs(std::float_t x);
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 std::double_t LYAH_CALL abs(std::double_t x);
