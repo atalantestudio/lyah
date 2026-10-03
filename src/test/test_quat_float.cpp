@@ -11,12 +11,9 @@ const char* ClassTest<lyah::quat<std::float_t>>::getClassName() {
 }
 
 template<>
-void ClassTest<lyah::quat<std::float_t>>::runTests() {
+void ClassTest<lyah::quat<std::float_t>>::runTests(std::mt19937& engine) {
 	typedef std::float_t S;
 	typedef lyah::quat<S> Q;
-
-	std::random_device device;
-	std::mt19937 engine(device());
 
 	Generator<S> scalar(engine, -1.0f, 1.0f);
 	Generator<lyah::vec<3, S>> vector(engine, -1.0f, 1.0f);

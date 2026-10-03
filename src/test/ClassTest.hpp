@@ -61,7 +61,7 @@ class ClassTest {
 		static const char* getClassName();
 
 	public:
-		static void runTests();
+		static void runTests(std::mt19937& engine);
 
 	protected:
 		template<typename ReturnType, typename... ArgumentType>
