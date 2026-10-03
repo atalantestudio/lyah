@@ -161,6 +161,7 @@
     <ClCompile Include="src\glm_adapter\quat_double.cpp" />
     <ClCompile Include="src\test\test_quat_float.cpp" />
     <ClCompile Include="src\test\test_quat_double.cpp" />
+    <ClCompile Include="src\test\test_vec2_float.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -169,6 +170,7 @@
   <ItemGroup>
     <ClInclude Include="src\glm_adapter\adapter.hpp" />
     <ClInclude Include="src\glm_adapter\common.hpp" />
+    <ClInclude Include="src\glm_adapter\vec2.hpp" />
     <ClInclude Include="src\test\compare.hpp" />
     <ClInclude Include="src\glm_adapter\serialization.hpp" />
     <ClInclude Include="src\pch.hpp" />

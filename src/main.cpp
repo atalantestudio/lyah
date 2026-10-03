@@ -77,6 +77,7 @@ int main() {
 
 	std::cout << "\033[0;2mStarting tests...\033[0m\n\n";
 
+	ClassTest<lyah::vec<2, std::float_t>>::runTests();
 	ClassTest<lyah::quat<std::float_t>>::runTests();
 	ClassTest<lyah::quat<std::double_t>>::runTests();
 

@@ -17,11 +17,12 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtx/compatibility.hpp>
-//#include <glm/gtx/norm.hpp>
+#include <glm/gtx/norm.hpp>
 
 #include "glm_adapter/adapter.hpp"
 #include "glm_adapter/serialization.hpp"
 #include "glm_adapter/common.hpp"
+#include "glm_adapter/vec2.hpp"
 
 #include "test/Generator/Generator.hpp"
 #include "test/ClassTest.hpp"

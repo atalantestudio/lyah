@@ -37,9 +37,10 @@ class ClassTest {
 		inline static void logRun(std::size_t runIndex, std::tuple<ParameterType...> parameters, ReturnType result, ReturnType referenceResult) {
 			std::cout << "\033[0;2m";
 			std::cout << "  Run " << runIndex << '\n';
-			std::cout << "    Parameters:\n";
 
 			if constexpr (sizeof...(ParameterType) > 0) {
+				std::cout << "    Parameters:\n";
+
 				std::apply(logParameters<ParameterType...>, parameters);
 			}
 
