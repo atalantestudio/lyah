@@ -2,24 +2,24 @@
 // Distributed under the MIT License.
 
 namespace lyah {
-	LYAH_CONSTEXPR_CPP23 std::float_t abs(std::float_t x) {
-		return std::fabsf(x);
+	LYAH_CONSTEXPR std::float_t abs(std::float_t x) {
+		return x > 0.0f ? x : -x;
 	}
 
-	LYAH_CONSTEXPR_CPP23 std::double_t abs(std::double_t x) {
-		return std::fabsl(x);
+	LYAH_CONSTEXPR std::double_t abs(std::double_t x) {
+		return x > 0.0 ? x : -x;
 	}
 
-	LYAH_CONSTEXPR_CPP23 std::int32_t abs(std::int32_t x) {
-		return std::abs(x);
+	LYAH_CONSTEXPR std::int32_t abs(std::int32_t x) {
+		return x > 0 ? x : -x;
 	}
 
-	LYAH_CONSTEXPR_CPP23 std::int64_t abs(std::int64_t x) {
-		return std::abs(x);
+	LYAH_CONSTEXPR std::int64_t abs(std::int64_t x) {
+		return x > 0 ? x : -x;
 	}
 
 	template<typename T, typename>
-	LYAH_CONSTEXPR_CPP23 vec<2, T> abs(vec<2, T> x) {
+	LYAH_CONSTEXPR vec<2, T> abs(vec<2, T> x) {
 		x.x = abs(x.x);
 		x.y = abs(x.y);
 
@@ -27,7 +27,7 @@ namespace lyah {
 	}
 
 	template<typename T, typename>
-	LYAH_CONSTEXPR_CPP23 vec<3, T> abs(vec<3, T> x) {
+	LYAH_CONSTEXPR vec<3, T> abs(vec<3, T> x) {
 		x.x = abs(x.x);
 		x.y = abs(x.y);
 		x.z = abs(x.z);
@@ -36,7 +36,7 @@ namespace lyah {
 	}
 
 	template<typename T, typename>
-	LYAH_CONSTEXPR_CPP23 vec<4, T> abs(vec<4, T> x) {
+	LYAH_CONSTEXPR vec<4, T> abs(vec<4, T> x) {
 		x.x = abs(x.x);
 		x.y = abs(x.y);
 		x.z = abs(x.z);

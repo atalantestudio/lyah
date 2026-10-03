@@ -5,14 +5,14 @@
 
 namespace lyah {
 	/// Returns the absolute value of `x`.
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 std::float_t LYAH_CALL abs(std::float_t x);
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 std::double_t LYAH_CALL abs(std::double_t x);
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 std::int32_t LYAH_CALL abs(std::int32_t x);
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 std::int64_t LYAH_CALL abs(std::int64_t x);
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR std::float_t LYAH_CALL abs(std::float_t x);
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR std::double_t LYAH_CALL abs(std::double_t x);
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR std::int32_t LYAH_CALL abs(std::int32_t x);
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR std::int64_t LYAH_CALL abs(std::int64_t x);
 
 	/// Returns the absolute value of `x`.
 	template<std::size_t C, typename T, typename = std::enable_if<std::is_floating_point<T>::value || std::is_signed<T>::value>::type>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<C, T> LYAH_CALL abs(vec<C, T> x);
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL abs(vec<C, T> x);
 
 	/// Returns `x` * `y` + `z`.
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 std::float_t LYAH_CALL fma(std::float_t x, std::float_t y, std::float_t z);
