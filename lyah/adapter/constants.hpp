@@ -4,5 +4,6 @@
 #pragma once
 
 namespace lyah {
+	// TODO: epsilon/infinity/nan
 	// TODO: pi/tau
 }

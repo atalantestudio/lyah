@@ -103,7 +103,7 @@ namespace lyah {
 
 	template<typename T>
 	LYAH_CONSTEXPR T min(T x, T y) {
-		return x < y ? x : y;
+		return x >= y ? y : x;
 	}
 
 	template<typename T>
@@ -135,7 +135,7 @@ namespace lyah {
 
 	template<typename T>
 	LYAH_CONSTEXPR T max(T x, T y) {
-		return x > y ? x : y;
+		return x <= y ? y : x;
 	}
 
 	template<typename T>
