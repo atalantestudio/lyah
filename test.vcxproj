@@ -164,6 +164,7 @@
     <ClCompile Include="src\test\test_quat_double.cpp" />
     <ClCompile Include="src\test\test_vec2_float.cpp" />
     <ClCompile Include="src\test\test_double.cpp" />
+    <ClCompile Include="src\test\test_vec2_double.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
