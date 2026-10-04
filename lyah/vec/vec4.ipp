@@ -71,9 +71,4 @@ namespace lyah {
 
 		return b;
 	}
-
-	template<typename T>
-	T sum(vec<4, T> a) {
-		return a.x + a.y + a.z + a.w;
-	}
 }

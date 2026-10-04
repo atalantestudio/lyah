@@ -1,187 +1,168 @@
 // Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
-namespace lyah {
-	LYAH_CONSTEXPR std::float_t abs(std::float_t x) {
-		return x > 0.0f ? x : -x;
-	}
+LYAH_CONSTEXPR_CPP23 std::float_t lyah::fma(std::float_t a, std::float_t b, std::float_t c) {
+	return std::fmaf(a, b, c);
+}
 
-	LYAH_CONSTEXPR std::double_t abs(std::double_t x) {
-		return x > 0.0 ? x : -x;
-	}
+LYAH_CONSTEXPR_CPP23 std::double_t lyah::fma(std::double_t a, std::double_t b, std::double_t c) {
+	return std::fmal(a, b, c);
+}
 
-	LYAH_CONSTEXPR std::int32_t abs(std::int32_t x) {
-		return x > 0 ? x : -x;
-	}
+template<typename T, typename>
+LYAH_CONSTEXPR_CPP23 lyah::vec<2, T> lyah::fma(vec<2, T> x, vec<2, T> y, vec<2, T> z) {
+	x.x = fma(x.x, y.x, z.x);
+	x.y = fma(x.y, y.y, z.y);
 
-	LYAH_CONSTEXPR std::int64_t abs(std::int64_t x) {
-		return x > 0 ? x : -x;
-	}
+	return x;
+}
 
-	template<typename T, typename>
-	LYAH_CONSTEXPR vec<2, T> abs(vec<2, T> x) {
-		x.x = abs(x.x);
-		x.y = abs(x.y);
+template<typename T, typename>
+LYAH_CONSTEXPR_CPP23 lyah::vec<3, T> lyah::fma(vec<3, T> x, vec<3, T> y, vec<3, T> z) {
+	x.x = fma(x.x, y.x, z.x);
+	x.y = fma(x.y, y.y, z.y);
+	x.z = fma(x.z, y.z, z.z);
 
-		return x;
-	}
+	return x;
+}
 
-	template<typename T, typename>
-	LYAH_CONSTEXPR vec<3, T> abs(vec<3, T> x) {
-		x.x = abs(x.x);
-		x.y = abs(x.y);
-		x.z = abs(x.z);
+template<typename T, typename>
+LYAH_CONSTEXPR_CPP23 lyah::vec<4, T> lyah::fma(vec<4, T> x, vec<4, T> y, vec<4, T> z) {
+	x.x = fma(x.x, y.x, z.x);
+	x.y = fma(x.y, y.y, z.y);
+	x.z = fma(x.z, y.z, z.z);
+	x.w = fma(x.w, y.w, z.w);
 
-		return x;
-	}
+	return x;
+}
 
-	template<typename T, typename>
-	LYAH_CONSTEXPR vec<4, T> abs(vec<4, T> x) {
-		x.x = abs(x.x);
-		x.y = abs(x.y);
-		x.z = abs(x.z);
-		x.w = abs(x.w);
+template<typename T>
+LYAH_CONSTEXPR T lyah::sum(vec<2, T> x) {
+	return x.x + x.y;
+}
 
-		return x;
-	}
+template<typename T>
+LYAH_CONSTEXPR T lyah::sum(vec<3, T> x) {
+	return x.x + x.y + x.z;
+}
 
-	LYAH_CONSTEXPR_CPP23 std::float_t fma(std::float_t a, std::float_t b, std::float_t c) {
-		return std::fmaf(a, b, c);
-	}
+template<typename T>
+LYAH_CONSTEXPR T lyah::sum(vec<4, T> x) {
+	return x.x + x.y + x.z + x.w;
+}
 
-	LYAH_CONSTEXPR_CPP23 std::double_t fma(std::double_t a, std::double_t b, std::double_t c) {
-		return std::fmal(a, b, c);
-	}
+template<typename T, typename>
+LYAH_CONSTEXPR T lyah::abs(T x) {
+	return x > static_cast<T>(0) ? x : -x;
+}
 
-	LYAH_CONSTEXPR_CPP23 vec<2, std::float_t> fma(vec<2, std::float_t> a, vec<2, std::float_t> b, vec<2, std::float_t> c) {
-		a.x = fma(a.x, b.x, c.x);
-		a.y = fma(a.y, b.y, c.y);
+template<typename T, typename>
+LYAH_CONSTEXPR lyah::vec<2, T> lyah::abs(vec<2, T> x) {
+	x.x = abs(x.x);
+	x.y = abs(x.y);
 
-		return a;
-	}
+	return x;
+}
 
-	LYAH_CONSTEXPR_CPP23 vec<2, std::double_t> fma(vec<2, std::double_t> a, vec<2, std::double_t> b, vec<2, std::double_t> c) {
-		a.x = fma(a.x, b.x, c.x);
-		a.y = fma(a.y, b.y, c.y);
+template<typename T, typename>
+LYAH_CONSTEXPR lyah::vec<3, T> lyah::abs(vec<3, T> x) {
+	x.x = abs(x.x);
+	x.y = abs(x.y);
+	x.z = abs(x.z);
 
-		return a;
-	}
+	return x;
+}
 
-	LYAH_CONSTEXPR_CPP23 vec<3, std::float_t> fma(vec<3, std::float_t> a, vec<3, std::float_t> b, vec<3, std::float_t> c) {
-		a.x = fma(a.x, b.x, c.x);
-		a.y = fma(a.y, b.y, c.y);
-		a.z = fma(a.z, b.z, c.z);
+template<typename T, typename>
+LYAH_CONSTEXPR lyah::vec<4, T> lyah::abs(vec<4, T> x) {
+	x.x = abs(x.x);
+	x.y = abs(x.y);
+	x.z = abs(x.z);
+	x.w = abs(x.w);
 
-		return a;
-	}
+	return x;
+}
 
-	LYAH_CONSTEXPR_CPP23 vec<3, std::double_t> fma(vec<3, std::double_t> a, vec<3, std::double_t> b, vec<3, std::double_t> c) {
-		a.x = fma(a.x, b.x, c.x);
-		a.y = fma(a.y, b.y, c.y);
-		a.z = fma(a.z, b.z, c.z);
+template<typename T>
+LYAH_CONSTEXPR T lyah::min(T x, T y) {
+	return x >= y ? y : x;
+}
 
-		return a;
-	}
+template<typename T>
+LYAH_CONSTEXPR lyah::vec<2, T> lyah::min(vec<2, T> x, vec<2, T> y) {
+	x.x = min(x.x, y.x);
+	x.y = min(x.y, y.y);
 
-	LYAH_CONSTEXPR_CPP23 vec<4, std::float_t> fma(vec<4, std::float_t> a, vec<4, std::float_t> b, vec<4, std::float_t> c) {
-		a.x = fma(a.x, b.x, c.x);
-		a.y = fma(a.y, b.y, c.y);
-		a.z = fma(a.z, b.z, c.z);
-		a.w = fma(a.w, b.w, c.w);
+	return x;
+}
 
-		return a;
-	}
+template<typename T>
+LYAH_CONSTEXPR lyah::vec<3, T> lyah::min(vec<3, T> x, vec<3, T> y) {
+	x.x = min(x.x, y.x);
+	x.y = min(x.y, y.y);
+	x.z = min(x.z, y.z);
 
-	LYAH_CONSTEXPR_CPP23 vec<4, std::double_t> fma(vec<4, std::double_t> a, vec<4, std::double_t> b, vec<4, std::double_t> c) {
-		a.x = fma(a.x, b.x, c.x);
-		a.y = fma(a.y, b.y, c.y);
-		a.z = fma(a.z, b.z, c.z);
-		a.w = fma(a.w, b.w, c.w);
+	return x;
+}
 
-		return a;
-	}
+template<typename T>
+LYAH_CONSTEXPR lyah::vec<4, T> lyah::min(vec<4, T> x, vec<4, T> y) {
+	x.x = min(x.x, y.x);
+	x.y = min(x.y, y.y);
+	x.z = min(x.z, y.z);
+	x.w = min(x.w, y.w);
 
-	template<typename T>
-	LYAH_CONSTEXPR T min(T x, T y) {
-		return x >= y ? y : x;
-	}
+	return x;
+}
 
-	template<typename T>
-	LYAH_CONSTEXPR vec<2, T> min(vec<2, T> x, vec<2, T> y) {
-		x.x = min(x.x, y.x);
-		x.y = min(x.y, y.y);
+template<typename T>
+LYAH_CONSTEXPR T lyah::max(T x, T y) {
+	return x <= y ? y : x;
+}
 
-		return x;
-	}
+template<typename T>
+LYAH_CONSTEXPR lyah::vec<2, T> lyah::max(vec<2, T> x, vec<2, T> y) {
+	x.x = max(x.x, y.x);
+	x.y = max(x.y, y.y);
 
-	template<typename T>
-	LYAH_CONSTEXPR vec<3, T> min(vec<3, T> x, vec<3, T> y) {
-		x.x = min(x.x, y.x);
-		x.y = min(x.y, y.y);
-		x.z = min(x.z, y.z);
+	return x;
+}
 
-		return x;
-	}
+template<typename T>
+LYAH_CONSTEXPR lyah::vec<3, T> lyah::max(vec<3, T> x, vec<3, T> y) {
+	x.x = max(x.x, y.x);
+	x.y = max(x.y, y.y);
+	x.z = max(x.z, y.z);
 
-	template<typename T>
-	LYAH_CONSTEXPR vec<4, T> min(vec<4, T> x, vec<4, T> y) {
-		x.x = min(x.x, y.x);
-		x.y = min(x.y, y.y);
-		x.z = min(x.z, y.z);
-		x.w = min(x.w, y.w);
+	return x;
+}
 
-		return x;
-	}
+template<typename T>
+LYAH_CONSTEXPR lyah::vec<4, T> lyah::max(vec<4, T> x, vec<4, T> y) {
+	x.x = max(x.x, y.x);
+	x.y = max(x.y, y.y);
+	x.z = max(x.z, y.z);
+	x.w = max(x.w, y.w);
 
-	template<typename T>
-	LYAH_CONSTEXPR T max(T x, T y) {
-		return x <= y ? y : x;
-	}
+	return x;
+}
 
-	template<typename T>
-	LYAH_CONSTEXPR vec<2, T> max(vec<2, T> x, vec<2, T> y) {
-		x.x = max(x.x, y.x);
-		x.y = max(x.y, y.y);
+template<typename T>
+LYAH_CONSTEXPR T lyah::clamp(T x, T _min, T _max) {
+	return min(max(x, _min), _max);
+}
 
-		return x;
-	}
+template<typename T, typename>
+LYAH_CONSTEXPR T lyah::lerp(T a, T b, T t) {
+	return a * (static_cast<T>(1) - t) + b * t;
+}
 
-	template<typename T>
-	LYAH_CONSTEXPR vec<3, T> max(vec<3, T> x, vec<3, T> y) {
-		x.x = max(x.x, y.x);
-		x.y = max(x.y, y.y);
-		x.z = max(x.z, y.z);
+template<std::size_t C, typename T, typename>
+LYAH_CONSTEXPR lyah::vec<C, T> lyah::lerp(vec<C, T> a, vec<C, T> b, T t) {
+	return a * (static_cast<T>(1) - t) + b * t;
+}
 
-		return x;
-	}
-
-	template<typename T>
-	LYAH_CONSTEXPR vec<4, T> max(vec<4, T> x, vec<4, T> y) {
-		x.x = max(x.x, y.x);
-		x.y = max(x.y, y.y);
-		x.z = max(x.z, y.z);
-		x.w = max(x.w, y.w);
-
-		return x;
-	}
-
-	template<typename T>
-	LYAH_CONSTEXPR T clamp(T x, T _min, T _max) {
-		return min(max(x, _min), _max);
-	}
-
-	template<typename T, typename>
-	LYAH_CONSTEXPR T lerp(T a, T b, T t) {
-		return a * (static_cast<T>(1) - t) + b * t;
-	}
-
-	template<std::size_t C, typename T, typename>
-	LYAH_CONSTEXPR vec<C, T> lerp(vec<C, T> a, vec<C, T> b, T t) {
-		return a * (static_cast<T>(1) - t) + b * t;
-	}
-
-	template<std::size_t C, typename T, typename>
-	LYAH_CONSTEXPR vec<C, T> lerp(vec<C, T> a, vec<C, T> b, vec<C, T> t) {
-		return a * (vec<C, T>(static_cast<T>(1)) - t) + b * t;
-	}
+template<std::size_t C, typename T, typename>
+LYAH_CONSTEXPR lyah::vec<C, T> lyah::lerp(vec<C, T> a, vec<C, T> b, vec<C, T> t) {
+	return a * (vec<C, T>(static_cast<T>(1)) - t) + b * t;
 }
