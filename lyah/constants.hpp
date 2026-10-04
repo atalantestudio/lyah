@@ -7,31 +7,31 @@
 
 namespace lyah {
 	template<typename T>
-	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE T LYAH_CALL epsilon() {
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL epsilon() {
 		return std::numeric_limits<T>::epsilon();
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE T LYAH_CALL infinity() {
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL infinity() {
 		LYAH_STATIC_ASSERT(std::numeric_limits<T>::has_infinity);
 
 		return std::numeric_limits<T>::infinity();
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE T LYAH_CALL nan() {
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL nan() {
 		LYAH_STATIC_ASSERT(std::numeric_limits<T>::has_quiet_NaN);
 
 		return std::numeric_limits<T>::quiet_NaN();
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE T LYAH_CALL pi() {
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL pi() {
 		return static_cast<T>(3.141592653589793);
 	}
 
 	template<typename T>
-	LYAH_NODISCARD LYAH_CONSTEXPR LYAH_INLINE T LYAH_CALL tau() {
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL tau() {
 		return static_cast<T>(6.283185307179586);
 	}
 }

@@ -4,14 +4,6 @@
 #pragma once
 
 namespace lyah {
-	/// A single floating point quaternion.
-	template<>
-	struct quat<std::float_t>;
-
-	/// A double floating point quaternion.
-	template<>
-	struct quat<std::double_t>;
-
 	template<typename T>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR bool LYAH_CALL operator==(quat<T> a, quat<T> b);
 

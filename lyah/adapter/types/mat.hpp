@@ -4,30 +4,6 @@
 #pragma once
 
 namespace lyah {
-	/// A 2x2 single floating point matrix.
-	template<>
-	struct mat<2, 2, std::float_t>;
-
-	/// A 3x3 single floating point matrix.
-	template<>
-	struct mat<3, 3, std::float_t>;
-
-	/// A 4x4 single floating point matrix.
-	template<>
-	struct mat<4, 4, std::float_t>;
-
-	/// A 2x2 double floating point matrix.
-	template<>
-	struct mat<2, 2, std::double_t>;
-
-	/// A 3x3 double floating point matrix.
-	template<>
-	struct mat<3, 3, std::double_t>;
-
-	/// A 4x4 double floating point matrix.
-	template<>
-	struct mat<4, 4, std::double_t>;
-
 	template<std::size_t M, std::size_t N, typename T>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR bool LYAH_CALL operator==(mat<M, N, T> a, mat<M, N, T> b);
 

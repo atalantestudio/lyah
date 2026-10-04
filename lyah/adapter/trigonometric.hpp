@@ -21,16 +21,50 @@ namespace lyah {
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL radians(vec<C, T> degrees);
 
 	/// Returns the sine of `x`.
-	LYAH_NODISCARD LYAH_CONSTEXPR_CPP26 LYAH_INLINE std::float_t LYAH_CALL sin(std::float_t x);
-	LYAH_NODISCARD LYAH_CONSTEXPR_CPP26 LYAH_INLINE std::double_t LYAH_CALL sin(std::double_t x);
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 T LYAH_CALL sin(T x);
+
+	/// Returns the component-wise sine of `x`.
+	template<std::size_t C, typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 vec<C, T> LYAH_CALL sin(vec<C, T> x);
 
 	/// Returns the cosine of `x`.
-	LYAH_NODISCARD LYAH_CONSTEXPR_CPP26 LYAH_INLINE std::float_t LYAH_CALL cos(std::float_t x);
-	LYAH_NODISCARD LYAH_CONSTEXPR_CPP26 LYAH_INLINE std::double_t LYAH_CALL cos(std::double_t x);
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 T LYAH_CALL cos(T x);
+
+	/// Returns the component-wise cosine of `x`.
+	template<std::size_t C, typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 vec<C, T> LYAH_CALL cos(vec<C, T> x);
 
 	/// Returns the tangent of `x`.
-	LYAH_NODISCARD LYAH_CONSTEXPR_CPP26 LYAH_INLINE std::float_t LYAH_CALL tan(std::float_t x);
-	LYAH_NODISCARD LYAH_CONSTEXPR_CPP26 LYAH_INLINE std::double_t LYAH_CALL tan(std::double_t x);
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 T LYAH_CALL tan(T x);
 
-	// TODO: Add asin/acos/atan.
+	/// Returns the component-wise tangent of `x`.
+	template<std::size_t C, typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 vec<C, T> LYAH_CALL tan(vec<C, T> x);
+
+	/// Returns the arcsine of `x`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 T LYAH_CALL asin(T x);
+
+	/// Returns the component-wise arcsine of `x`.
+	template<std::size_t C, typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 vec<C, T> LYAH_CALL asin(vec<C, T> x);
+
+	/// Returns the arccosine of `x`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 T LYAH_CALL acos(T x);
+
+	/// Returns the component-wise arccosine of `x`.
+	template<std::size_t C, typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 vec<C, T> LYAH_CALL acos(vec<C, T> x);
+
+	/// Returns the arctangent of `x`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 T LYAH_CALL atan(T x);
+
+	/// Returns the component-wise arctangent of `x`.
+	template<std::size_t C, typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 vec<C, T> LYAH_CALL atan(vec<C, T> x);
 }

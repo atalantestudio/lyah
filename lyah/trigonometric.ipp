@@ -1,129 +1,112 @@
 // Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
-namespace lyah {
-	template<typename T, typename>
-	LYAH_CONSTEXPR T degrees(T radians) {
-		return radians * static_cast<T>(57.295779513082321);
-	}
+template<typename T, typename>
+LYAH_CONSTEXPR T lyah::degrees(T radians) {
+	return radians * static_cast<T>(57.295779513082321);
+}
 
-	template<std::size_t C, typename T, typename>
-	LYAH_CONSTEXPR vec<C, T> degrees(vec<C, T> radians) {
-		return radians * static_cast<T>(57.295779513082321);
-	}
+template<std::size_t C, typename T, typename>
+LYAH_CONSTEXPR lyah::vec<C, T> lyah::degrees(vec<C, T> radians) {
+	return radians * static_cast<T>(57.295779513082321);
+}
 
-	template<typename T, typename>
-	LYAH_CONSTEXPR T radians(T degrees) {
-		return degrees * static_cast<T>(0.017453292519943);
-	}
+template<typename T, typename>
+LYAH_CONSTEXPR T lyah::radians(T degrees) {
+	return degrees * static_cast<T>(0.017453292519943);
+}
 
-	template<std::size_t C, typename T, typename>
-	LYAH_CONSTEXPR vec<C, T> radians(vec<C, T> degrees) {
-		return degrees * static_cast<T>(0.017453292519943);
-	}
+template<std::size_t C, typename T, typename>
+LYAH_CONSTEXPR lyah::vec<C, T> lyah::radians(vec<C, T> degrees) {
+	return degrees * static_cast<T>(0.017453292519943);
+}
 
-	LYAH_CONSTEXPR_CPP26 std::float_t sin(std::float_t a) {
-		return std::sinf(a);
-	}
+template<>
+LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::float_t lyah::sin(std::float_t x) {
+	return std::sinf(x);
+}
 
-	LYAH_CONSTEXPR_CPP26 std::double_t sin(std::double_t a) {
-		return std::sinl(a);
-	}
+template<>
+LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::double_t lyah::sin(std::double_t x) {
+	return std::sinl(x);
+}
 
-	template<typename T>
-	LYAH_CONSTEXPR_CPP26 vec<2, T> sin(vec<2, T> a) {
-		a.x = sin(a.x);
-		a.y = sin(a.y);
+template<std::size_t C, typename T, typename>
+LYAH_CONSTEXPR_CPP26 lyah::vec<C, T> lyah::sin(vec<C, T> x) {
+	return apply<C, T>::scalarModifier(x, sin);
+}
 
-		return a;
-	}
+template<>
+LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::float_t lyah::cos(std::float_t x) {
+	return std::cosf(x);
+}
 
-	template<typename T>
-	LYAH_CONSTEXPR_CPP26 vec<3, T> sin(vec<3, T> a) {
-		a.x = sin(a.x);
-		a.y = sin(a.y);
-		a.z = sin(a.z);
+template<>
+LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::double_t lyah::cos(std::double_t x) {
+	return std::cosl(x);
+}
 
-		return a;
-	}
+template<std::size_t C, typename T, typename>
+LYAH_CONSTEXPR_CPP26 lyah::vec<C, T> lyah::cos(vec<C, T> x) {
+	return apply<C, T>::scalarModifier(x, cos);
+}
 
-	template<typename T>
-	LYAH_CONSTEXPR_CPP26 vec<4, T> sin(vec<4, T> a) {
-		a.x = sin(a.x);
-		a.y = sin(a.y);
-		a.z = sin(a.z);
-		a.w = sin(a.w);
+template<>
+LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::float_t lyah::tan(std::float_t x) {
+	return std::tanf(x);
+}
 
-		return a;
-	}
+template<>
+LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::double_t lyah::tan(std::double_t x) {
+	return std::tanl(x);
+}
 
-	LYAH_CONSTEXPR_CPP26 std::float_t cos(std::float_t a) {
-		return std::cosf(a);
-	}
+template<std::size_t C, typename T, typename>
+LYAH_CONSTEXPR_CPP26 lyah::vec<C, T> lyah::tan(vec<C, T> x) {
+	return apply<C, T>::scalarModifier(x, tan);
+}
 
-	LYAH_CONSTEXPR_CPP26 std::double_t cos(std::double_t a) {
-		return std::cosl(a);
-	}
+template<>
+LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::float_t lyah::asin(std::float_t x) {
+	return std::asinf(x);
+}
 
-	template<typename T>
-	LYAH_CONSTEXPR_CPP26 vec<2, T> cos(vec<2, T> a) {
-		a.x = cos(a.x);
-		a.y = cos(a.y);
+template<>
+LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::double_t lyah::asin(std::double_t x) {
+	return std::asinl(x);
+}
 
-		return a;
-	}
+template<std::size_t C, typename T, typename>
+LYAH_CONSTEXPR_CPP26 lyah::vec<C, T> lyah::asin(vec<C, T> x) {
+	return apply<C, T>::scalarModifier(x, asin);
+}
 
-	template<typename T>
-	LYAH_CONSTEXPR_CPP26 vec<3, T> cos(vec<3, T> a) {
-		a.x = cos(a.x);
-		a.y = cos(a.y);
-		a.z = cos(a.z);
+template<>
+LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::float_t lyah::acos(std::float_t x) {
+	return std::acosf(x);
+}
 
-		return a;
-	}
+template<>
+LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::double_t lyah::acos(std::double_t x) {
+	return std::acosl(x);
+}
 
-	template<typename T>
-	LYAH_CONSTEXPR_CPP26 vec<4, T> cos(vec<4, T> a) {
-		a.x = cos(a.x);
-		a.y = cos(a.y);
-		a.z = cos(a.z);
-		a.w = cos(a.w);
+template<std::size_t C, typename T, typename>
+LYAH_CONSTEXPR_CPP26 lyah::vec<C, T> lyah::acos(vec<C, T> x) {
+	return apply<C, T>::scalarModifier(x, acos);
+}
 
-		return a;
-	}
+template<>
+LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::float_t lyah::atan(std::float_t x) {
+	return std::atanf(x);
+}
 
-	LYAH_CONSTEXPR_CPP26 std::float_t tan(std::float_t a) {
-		return std::tanf(a);
-	}
+template<>
+LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::double_t lyah::atan(std::double_t x) {
+	return std::atanl(x);
+}
 
-	LYAH_CONSTEXPR_CPP26 std::double_t tan(std::double_t a) {
-		return std::tanl(a);
-	}
-
-	template<typename T>
-	LYAH_CONSTEXPR_CPP26 vec<2, T> tan(vec<2, T> a) {
-		a.x = tan(a.x);
-		a.y = tan(a.y);
-
-		return a;
-	}
-
-	template<typename T>
-	LYAH_CONSTEXPR_CPP26 vec<3, T> tan(vec<3, T> a) {
-		a.x = tan(a.x);
-		a.y = tan(a.y);
-		a.z = tan(a.z);
-
-		return a;
-	}
-
-	template<typename T>
-	LYAH_CONSTEXPR_CPP26 vec<4, T> tan(vec<4, T> a) {
-		a.x = tan(a.x);
-		a.y = tan(a.y);
-		a.z = tan(a.z);
-		a.w = tan(a.w);
-
-		return a;
-	}
+template<std::size_t C, typename T, typename>
+LYAH_CONSTEXPR_CPP26 lyah::vec<C, T> lyah::atan(vec<C, T> x) {
+	return apply<C, T>::scalarModifier(x, atan);
 }

@@ -1,6 +1,161 @@
 // Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<4, 4, T> lyah::mat<4, 4, T>::identity() {
+	return {
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		0, 0, 0, 1,
+	};
+}
+
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<4, 4, T> lyah::mat<4, 4, T>::translation(vec<3, T> a) {
+	return {
+		1,   0,   0,   0,
+		0,   1,   0,   0,
+		0,   0,   1,   0,
+		a.x, a.y, a.z, 1,
+	};
+}
+
+/// `axis` is assumed to be normalized.
+/// `angle` is in radians.
+template<typename T>
+LYAH_CONSTEXPR_CPP26 lyah::mat<4, 4, T> lyah::mat<4, 4, T>::rotation(vec<3, T> axis, T angle) {
+	const T cosAngle = cos(angle);
+	const T sinAngle = sin(angle);
+	const T one_cosAngle = 1 - cosAngle;
+
+	return {
+		axis.x * axis.x * one_cosAngle + cosAngle,          axis.x * axis.y * one_cosAngle + axis.z * sinAngle, axis.x * axis.z * one_cosAngle - axis.y * sinAngle, 0,
+		axis.x * axis.y * one_cosAngle - axis.z * sinAngle, axis.y * axis.y * one_cosAngle + cosAngle,          axis.y * axis.z * one_cosAngle + axis.x * sinAngle, 0,
+		axis.x * axis.z * one_cosAngle + axis.y * sinAngle, axis.y * axis.z * one_cosAngle - axis.x * sinAngle, axis.z * axis.z * one_cosAngle + cosAngle,          0,
+		0,                                                  0,                                                  0,                                                  1,
+	};
+}
+
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<4, 4, T> lyah::mat<4, 4, T>::scaling(vec<3, T> a) {
+	return {
+		a.x, 0,   0,   0,
+		0,   a.y, 0,   0,
+		0,   0,   a.z, 0,
+		0,   0,   0,   1,
+	};
+}
+
+/// Returns a left-handed matrix.
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<4, 4, T> lyah::mat<4, 4, T>::orthographic(T left, T right, T bottom, T top, T near, T far) {
+	return {
+		 2 / (right - left),  0,                   0,                -(right + left) / (right - left),
+		 0,                   2 / (top - bottom),  0,                -(top + bottom) / (top - bottom),
+		 0,                   0,                   2 / (far - near), -(far + near) / (far - near),
+		 0,                   0,                   0,                 1,
+	};
+}
+
+/// Returns a left-handed matrix.
+template<typename T>
+LYAH_CONSTEXPR_CPP26 lyah::mat<4, 4, T> lyah::mat<4, 4, T>::lookAt(vec<3, T> eye, vec<3, T> target, vec<3, T> up) {
+	const vec<3, T> f = normalized(target - eye);
+	const vec<3, T> r = normalized(cross(up, f));
+	const vec<3, T> u = cross(f, r);
+
+	return {
+		 r.x,          u.x,          f.x,          0,
+		 r.y,          u.y,          f.y,          0,
+		 r.z,          u.z,          f.z,          0,
+		-dot(r, eye), -dot(u, eye), -dot(f, eye),  1,
+	};
+}
+
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<4, 4, T>::mat() :
+	m{}
+{}
+
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<4, 4, T>::mat(T m00, T m01, T m02, T m03, T m10, T m11, T m12, T m13, T m20, T m21, T m22, T m23, T m30, T m31, T m32, T m33) :
+	m{
+		{m00, m01, m02, m03},
+		{m10, m11, m12, m13},
+		{m20, m21, m22, m23},
+		{m30, m31, m32, m33},
+	}
+{}
+
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<4, 4, T>::mat(vec<4, T> m0, vec<4, T> m1, vec<4, T> m2, vec<4, T> m3) :
+	m{
+		m0,
+		m1,
+		m2,
+		m3,
+	}
+{}
+
+template<typename T>
+template<typename U>
+LYAH_CONSTEXPR lyah::mat<4, 4, T>::mat(mat<4, 4, U> a) :
+	m{
+		vec<4, T>(a[0]),
+		vec<4, T>(a[1]),
+		vec<4, T>(a[2]),
+		vec<4, T>(a[3]),
+	}
+{}
+
+/// `a` is assumed to be normalized.
+/// See https://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToMatrix.
+template<typename T>
+LYAH_CONSTEXPR_CPP23 lyah::mat<4, 4, T>::mat(quat<T> a) {
+	a = a * static_cast<T>(1.41421356237);
+
+	const T xx = a.x * a.x;
+	//const T xy = a.x * a.y;
+	//const T xz = a.x * a.z;
+	const T xw = a.x * a.w;
+	const T yy = a.y * a.y;
+	//const T yz = a.y * a.z;
+	const T yw = a.y * a.w;
+	const T zz = a.z * a.z;
+	const T zw = a.z * a.w;
+
+	/*m[0] = {_1 - yy - zz, xy - zw,      xz + yw,      0.0};
+	m[1] = {xy + zw,      _1 - xx - zz, yz - xw,      0.0};
+	m[2] = {xz - yw,      yz + xw,      _1 - xx - yy, 0.0};
+	m[3] = {0.0,           0.0,           0.0,           1.0};*/
+
+	const vec<3, T> xyz = {a.x, a.y, a.z};
+
+	const vec<3, T> r0 = fma(xyz, vec<3, T>(a.x), { 0,  -zw,  yw});
+	const vec<3, T> r1 = fma(xyz, vec<3, T>(a.y), { zw,  0,  -xw});
+	const vec<3, T> r2 = fma(xyz, vec<3, T>(a.z), {-yw,  xw,  0 });
+
+	m[0] = {1 - yy - zz, r0.y,        r0.z,        0};
+	m[1] = {r1.x,        1 - xx - zz, r1.z,        0};
+	m[2] = {r2.x,        r2.y,        1 - xx - yy, 0};
+	m[3] = {0,           0,           0,           1};
+}
+
+template<typename T>
+LYAH_CONSTEXPR const lyah::vec<4, T>& lyah::mat<4, 4, T>::operator[](std::size_t index) const {
+	LYAH_ASSERT(index < 4);
+
+	return m[index];
+}
+
+template<typename T>
+lyah::vec<4, T>& lyah::mat<4, 4, T>::operator[](std::size_t index) {
+	LYAH_ASSERT(index < 4);
+
+	return m[index];
+}
+
 namespace lyah {
 	template<typename T>
 	LYAH_CONSTEXPR mat<4, 4, T> operator*(mat<4, 4, T> a, mat<4, 4, T> b) {
@@ -42,7 +197,7 @@ namespace lyah {
 		};
 
 		const T det = determinant(ad);
-		const T invDet = static_cast<T>(1) / det;
+		const T invDet = 1 / det;
 
 		return determinant(aa - ab * (adjugate(ad) * invDet) * ac) * det;
 	}
