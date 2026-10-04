@@ -15,8 +15,13 @@ int main() {
 	TestGroup<lyah::vec<2, std::float_t>>::runTests(engine);
 	TestGroup<lyah::vec<2, std::double_t>>::runTests(engine);
 
+	TestGroup<lyah::vec<3, std::float_t>>::runTests(engine);
+	TestGroup<lyah::vec<3, std::double_t>>::runTests(engine);
+
 	TestGroup<lyah::quat<std::float_t>>::runTests(engine);
 	TestGroup<lyah::quat<std::double_t>>::runTests(engine);
+
+	std::cout << "\n\033[0;2m" << TestCounter::passedTestCount << " passed, " << TestCounter::failedTestCount << " failed.\033[0m\n";
 
 	return 0;
 }

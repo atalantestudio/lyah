@@ -47,57 +47,14 @@ namespace glm_adapter {
 	}
 }
 
-namespace glm_adapter {
-	template<typename T>
-	T identity();
-
-	// quat<float_t>
-	lyah::quat<std::float_t> axisAngle(lyah::vec<3, std::float_t> axis, std::float_t angle);
-	bool operator==(lyah::quat<std::float_t> a, lyah::quat<std::float_t> b);
-	bool operator!=(lyah::quat<std::float_t> a, lyah::quat<std::float_t> b);
-	lyah::quat<std::float_t> operator+(lyah::quat<std::float_t> a);
-	lyah::quat<std::float_t> operator-(lyah::quat<std::float_t> a);
-	lyah::quat<std::float_t> operator+(lyah::quat<std::float_t> a, lyah::quat<std::float_t> b);
-	lyah::quat<std::float_t> operator-(lyah::quat<std::float_t> a, lyah::quat<std::float_t> b);
-	lyah::quat<std::float_t> operator*(lyah::quat<std::float_t> a, std::float_t b);
-	lyah::quat<std::float_t> operator*(std::float_t a, lyah::quat<std::float_t> b);
-	lyah::quat<std::float_t> operator*(lyah::quat<std::float_t> a, lyah::quat<std::float_t> b);
-	lyah::quat<std::float_t> operator/(lyah::quat<std::float_t> a, std::float_t b);
-	lyah::quat<std::float_t> conjugate(lyah::quat<std::float_t> a);
-	std::float_t dot(lyah::quat<std::float_t> a, lyah::quat<std::float_t> b);
-	lyah::quat<std::float_t> inverse(lyah::quat<std::float_t> a);
-	std::float_t length(lyah::quat<std::float_t> a);
-	std::float_t lengthSquared(lyah::quat<std::float_t> a);
-	std::float_t distance(lyah::quat<std::float_t> a, lyah::quat<std::float_t> b);
-	std::float_t distanceSquared(lyah::quat<std::float_t> a, lyah::quat<std::float_t> b);
-	lyah::quat<std::float_t> normalized(lyah::quat<std::float_t> a);
-
-	// quat<double_t>
-	lyah::quat<std::double_t> axisAngle(lyah::vec<3, std::double_t> axis, std::double_t angle);
-	bool operator==(lyah::quat<std::double_t> a, lyah::quat<std::double_t> b);
-	bool operator!=(lyah::quat<std::double_t> a, lyah::quat<std::double_t> b);
-	lyah::quat<std::double_t> operator+(lyah::quat<std::double_t> a);
-	lyah::quat<std::double_t> operator-(lyah::quat<std::double_t> a);
-	lyah::quat<std::double_t> operator+(lyah::quat<std::double_t> a, lyah::quat<std::double_t> b);
-	lyah::quat<std::double_t> operator-(lyah::quat<std::double_t> a, lyah::quat<std::double_t> b);
-	lyah::quat<std::double_t> operator*(lyah::quat<std::double_t> a, std::double_t b);
-	lyah::quat<std::double_t> operator*(std::double_t a, lyah::quat<std::double_t> b);
-	lyah::quat<std::double_t> operator*(lyah::quat<std::double_t> a, lyah::quat<std::double_t> b);
-	lyah::quat<std::double_t> operator/(lyah::quat<std::double_t> a, std::double_t b);
-	lyah::quat<std::double_t> conjugate(lyah::quat<std::double_t> a);
-	std::double_t dot(lyah::quat<std::double_t> a, lyah::quat<std::double_t> b);
-	lyah::quat<std::double_t> inverse(lyah::quat<std::double_t> a);
-	std::double_t length(lyah::quat<std::double_t> a);
-	std::double_t lengthSquared(lyah::quat<std::double_t> a);
-	std::double_t distance(lyah::quat<std::double_t> a, lyah::quat<std::double_t> b);
-	std::double_t distanceSquared(lyah::quat<std::double_t> a, lyah::quat<std::double_t> b);
-	lyah::quat<std::double_t> normalized(lyah::quat<std::double_t> a);
-}
-
 #include "glm_adapter/serialization.hpp"
+
+#include "glm_adapter/types/vec.hpp"
+#include "glm_adapter/types/quat.hpp"
+
 #include "glm_adapter/common.hpp"
 #include "glm_adapter/constants.hpp"
 #include "glm_adapter/exponential.hpp"
+#include "glm_adapter/geometric.hpp"
 #include "glm_adapter/rounding.hpp"
 #include "glm_adapter/trigonometric.hpp"
-#include "glm_adapter/types/vec2.hpp"

@@ -5,8 +5,13 @@
 
 #include "test/compare.hpp"
 
+struct TestCounter {
+	inline static std::size_t passedTestCount = 0;
+	inline static std::size_t failedTestCount = 0;
+};
+
 template<typename T>
-class TestGroup {
+class TestGroup : public TestCounter {
 	public:
 		inline static constexpr std::size_t RUN_COUNT = 20;
 
@@ -99,9 +104,11 @@ class TestGroup {
 
 			if (!failedRuns) {
 				logPassed();
+
+				passedTestCount += 1;
 			}
 			else {
-				__debugbreak();
+				failedTestCount += 1;
 			}
 		}
 };

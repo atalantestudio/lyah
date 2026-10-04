@@ -31,6 +31,10 @@ void TestGroup<lyah::vec<2, std::float_t>>::runTests(std::mt19937& engine) {
 	runTest<V, V, S>("Multiplication (vector-scalar)", lyah::operator*, glm_adapter::operator*, vector, scalar);
 	runTest<V, S, V>("Multiplication (scalar-vector)", lyah::operator*, glm_adapter::operator*, scalar, vector);
 	runTest<V, V, V>("Multiplication (vector-vector)", lyah::operator*, glm_adapter::operator*, vector, vector);
+
+	// TODO: Test vector-matrix multiplication.
+	//runTest<V, V, M>("Multiplication (vector-matrix)", lyah::operator*, glm_adapter::operator*, vector, matrix);
+
 	runTest<V, V, S>("Division (vector-scalar)", lyah::operator/, glm_adapter::operator/, vector, scalar);
 	runTest<V>("Division (scalar-vector)", lyah::operator/, glm_adapter::operator/, scalar, vector);
 	runTest<V>("Division (vector-vector)", lyah::operator/, glm_adapter::operator/, vector, vector);
