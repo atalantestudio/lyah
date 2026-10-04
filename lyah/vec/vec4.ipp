@@ -76,24 +76,4 @@ namespace lyah {
 	T sum(vec<4, T> a) {
 		return a.x + a.y + a.z + a.w;
 	}
-
-	template<typename T>
-	vec<4, T> pow(vec<4, T> a, vec<4, T> b) {
-		a.x = pow(a.x, b.x);
-		a.y = pow(a.y, b.y);
-		a.z = pow(a.z, b.z);
-		a.w = pow(a.w, b.w);
-
-		return a;
-	}
-
-	template<typename T>
-	vec<4, T> sqrt(vec<4, T> a) {
-		a.x = sqrt(a.x);
-		a.y = sqrt(a.y);
-		a.z = sqrt(a.z);
-		a.w = sqrt(a.w);
-
-		return a;
-	}
 }

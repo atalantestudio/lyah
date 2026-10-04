@@ -18,7 +18,7 @@ LYAH_CONSTEXPR_CPP26 std::double_t lyah::pow(std::double_t x, std::double_t expo
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR_CPP26 lyah::vec<2, T> lyah::pow(lyah::vec<2, T> x, T exponent) {
+LYAH_CONSTEXPR_CPP26 lyah::vec<2, T> lyah::pow(vec<2, T> x, T exponent) {
 	x.x = pow(x.x, exponent);
 	x.y = pow(x.y, exponent);
 
@@ -26,7 +26,7 @@ LYAH_CONSTEXPR_CPP26 lyah::vec<2, T> lyah::pow(lyah::vec<2, T> x, T exponent) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR_CPP26 lyah::vec<3, T> lyah::pow(lyah::vec<3, T> x, T exponent) {
+LYAH_CONSTEXPR_CPP26 lyah::vec<3, T> lyah::pow(vec<3, T> x, T exponent) {
 	x.x = pow(x.x, exponent);
 	x.y = pow(x.y, exponent);
 	x.z = pow(x.z, exponent);
@@ -35,7 +35,7 @@ LYAH_CONSTEXPR_CPP26 lyah::vec<3, T> lyah::pow(lyah::vec<3, T> x, T exponent) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR_CPP26 lyah::vec<4, T> lyah::pow(lyah::vec<4, T> x, T exponent) {
+LYAH_CONSTEXPR_CPP26 lyah::vec<4, T> lyah::pow(vec<4, T> x, T exponent) {
 	x.x = pow(x.x, exponent);
 	x.y = pow(x.y, exponent);
 	x.z = pow(x.z, exponent);
@@ -45,7 +45,7 @@ LYAH_CONSTEXPR_CPP26 lyah::vec<4, T> lyah::pow(lyah::vec<4, T> x, T exponent) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR_CPP26 lyah::vec<2, T> lyah::pow(lyah::vec<2, T> x, lyah::vec<2, T> exponent) {
+LYAH_CONSTEXPR_CPP26 lyah::vec<2, T> lyah::pow(vec<2, T> x, lyah::vec<2, T> exponent) {
 	x.x = pow(x.x, exponent.x);
 	x.y = pow(x.y, exponent.y);
 
@@ -53,7 +53,7 @@ LYAH_CONSTEXPR_CPP26 lyah::vec<2, T> lyah::pow(lyah::vec<2, T> x, lyah::vec<2, T
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR_CPP26 lyah::vec<3, T> lyah::pow(lyah::vec<3, T> x, lyah::vec<3, T> exponent) {
+LYAH_CONSTEXPR_CPP26 lyah::vec<3, T> lyah::pow(vec<3, T> x, lyah::vec<3, T> exponent) {
 	x.x = pow(x.x, exponent.x);
 	x.y = pow(x.y, exponent.y);
 	x.z = pow(x.z, exponent.z);
@@ -62,7 +62,7 @@ LYAH_CONSTEXPR_CPP26 lyah::vec<3, T> lyah::pow(lyah::vec<3, T> x, lyah::vec<3, T
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR_CPP26 lyah::vec<4, T> lyah::pow(lyah::vec<4, T> x, lyah::vec<4, T> exponent) {
+LYAH_CONSTEXPR_CPP26 lyah::vec<4, T> lyah::pow(vec<4, T> x, lyah::vec<4, T> exponent) {
 	x.x = pow(x.x, exponent.x);
 	x.y = pow(x.y, exponent.y);
 	x.z = pow(x.z, exponent.z);
@@ -80,7 +80,7 @@ LYAH_CONSTEXPR_CPP26 std::double_t lyah::sqrt(std::double_t x) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR_CPP26 lyah::vec<2, T> lyah::sqrt(lyah::vec<2, T> x) {
+LYAH_CONSTEXPR_CPP26 lyah::vec<2, T> lyah::sqrt(vec<2, T> x) {
 	x.x = sqrt(x.x);
 	x.y = sqrt(x.y);
 
@@ -88,7 +88,7 @@ LYAH_CONSTEXPR_CPP26 lyah::vec<2, T> lyah::sqrt(lyah::vec<2, T> x) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR_CPP26 lyah::vec<3, T> lyah::sqrt(lyah::vec<3, T> x) {
+LYAH_CONSTEXPR_CPP26 lyah::vec<3, T> lyah::sqrt(vec<3, T> x) {
 	x.x = sqrt(x.x);
 	x.y = sqrt(x.y);
 	x.z = sqrt(x.z);
@@ -97,7 +97,7 @@ LYAH_CONSTEXPR_CPP26 lyah::vec<3, T> lyah::sqrt(lyah::vec<3, T> x) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR_CPP26 lyah::vec<4, T> lyah::sqrt(lyah::vec<4, T> x) {
+LYAH_CONSTEXPR_CPP26 lyah::vec<4, T> lyah::sqrt(vec<4, T> x) {
 	x.x = sqrt(x.x);
 	x.y = sqrt(x.y);
 	x.z = sqrt(x.z);
