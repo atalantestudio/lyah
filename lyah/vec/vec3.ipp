@@ -108,20 +108,17 @@ namespace lyah {
 
 		return b;
 	}
+}
 
-	/// `b` is assumed to be normalized.
-	/// See https://blog.molecular-matters.com/2013/05/24/a-faster-quaternion-vector-multiplication.
-	template<typename T>
-	vec<3, T>& operator*=(vec<3, T>& a, quat<T> b) {
-		const vec<3, T> xyz = {b.x, b.y, b.z};
+// See https://blog.molecular-matters.com/2013/05/24/a-faster-quaternion-vector-multiplication.
+template<typename T>
+LYAH_CONSTEXPR lyah::vec<3, T> lyah::operator*(vec<3, T> a, quat<T> b) {
+	const vec<3, T> c = {b.x, b.y, b.z};
 
-		a = 2 * (dot(xyz, a) * xyz + b.w * (cross(xyz, a) + b.w * a)) - a;
+	return 2 * (dot(c, a) * c + b.w * (cross(c, a) + b.w * a)) - a;
+}
 
-		return a;
-	}
-
-	template<typename T>
-	vec<3, T> operator*(vec<3, T> a, quat<T> b) {
-		return a *= b;
-	}
+template<typename T>
+lyah::vec<3, T>& lyah::operator*=(vec<3, T>& a, quat<T> b) {
+	return a = a * b;
 }
