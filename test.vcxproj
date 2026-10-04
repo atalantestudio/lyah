@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\test\test_vec4_double_t.cpp" />
     <ClCompile Include="src\test\test_vec3_double_t.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pch.cpp">
@@ -162,6 +163,7 @@
     <ClCompile Include="src\test\test_vec2_double_t.cpp" />
     <ClCompile Include="src\test\test_vec2_float_t.cpp" />
     <ClCompile Include="src\test\test_vec3_float_t.cpp" />
+    <ClCompile Include="src\test\test_vec4_float_t.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

@@ -18,6 +18,9 @@ int main() {
 	TestGroup<lyah::vec<3, std::float_t>>::runTests(engine);
 	TestGroup<lyah::vec<3, std::double_t>>::runTests(engine);
 
+	TestGroup<lyah::vec<4, std::float_t>>::runTests(engine);
+	TestGroup<lyah::vec<4, std::double_t>>::runTests(engine);
+
 	TestGroup<lyah::quat<std::float_t>>::runTests(engine);
 	TestGroup<lyah::quat<std::double_t>>::runTests(engine);
 
