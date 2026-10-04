@@ -1,4 +1,4 @@
-// Copyright 2025 Atalante Studio.
+// Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
 #pragma once
@@ -8,12 +8,12 @@
 #include "lyah/adapter/base.hpp"
 
 #include "lyah/vec/vec.hpp"
-#include "lyah/quat/quat.hpp"
 #include "lyah/mat/mat.hpp"
+#include "lyah/quat/quat.hpp"
 
 #include "lyah/apply.ipp"
 #include "lyah/common.ipp"
-#include "lyah/constants.hpp"
+#include "lyah/constants.ipp"
 #include "lyah/exponential.ipp"
 #include "lyah/geometric.ipp"
 #include "lyah/rounding.ipp"

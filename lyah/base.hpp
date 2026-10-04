@@ -1,4 +1,4 @@
-// Copyright 2025 Atalante Studio.
+// Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
 #pragma once
@@ -51,8 +51,6 @@
 	#define LYAH_INLINE inline
 #endif
 
-#define LYAH_CALL
-
 #define LYAH_CONSTEXPR constexpr
 
 #if LYAH_STANDARD >= LYAH_STANDARD_CPP17
@@ -78,3 +76,5 @@
 #else
 	#define LYAH_CONSTEXPR_CPP26
 #endif
+
+#define LYAH_CALL
