@@ -14,29 +14,29 @@ struct BaseGenerator {
 template<typename T>
 struct Generator;
 
-template<>
-struct Generator<std::float_t> : public BaseGenerator {
-	explicit Generator(std::mt19937& engine, std::float_t min = 0.0f, std::float_t max = 1.0f) :
+template<typename T/*, typename = typename std::enable_if<std::is_scalar<T>::value && std::is_floating_point<T>::value>::type*/>
+struct Generator : public BaseGenerator {
+	explicit Generator(std::mt19937& engine, T min, T max) :
 		BaseGenerator(engine),
 		distribution(min, max)
 	{}
 
-	std::uniform_real_distribution<std::float_t> distribution;
+	std::uniform_real_distribution<T> distribution;
 };
 
-template<>
-struct Generator<std::double_t> : public BaseGenerator {
-	explicit Generator(std::mt19937& engine, std::double_t min = 0.0, std::double_t max = 1.0) :
+/*template<typename T, typename = typename std::enable_if<std::is_scalar<T>::value && !std::is_floating_point<T>::value>::type>
+struct Generator : public BaseGenerator {
+	explicit Generator(std::mt19937& engine, T min, T max) :
 		BaseGenerator(engine),
 		distribution(min, max)
 	{}
 
-	std::uniform_real_distribution<std::double_t> distribution;
-};
+	std::uniform_int_distribution<T> distribution;
+};*/
 
 template<std::size_t C, typename T>
 struct Generator<lyah::vec<C, T>> : public BaseGenerator {
-	explicit Generator(std::mt19937& engine, T min = 0, T max = 1) :
+	explicit Generator(std::mt19937& engine, T min, T max) :
 		BaseGenerator(engine),
 		distribution(min, max)
 	{}
@@ -46,7 +46,7 @@ struct Generator<lyah::vec<C, T>> : public BaseGenerator {
 
 template<typename T>
 struct Generator<lyah::quat<T>> : public BaseGenerator {
-	explicit Generator(std::mt19937& engine, T min = 0, T max = 1) :
+	explicit Generator(std::mt19937& engine, T min, T max) :
 		BaseGenerator(engine),
 		distribution(min, max)
 	{}
@@ -54,8 +54,26 @@ struct Generator<lyah::quat<T>> : public BaseGenerator {
 	std::uniform_real_distribution<T> distribution;
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//template<typename T, typename = std::enable_if<std::is_scalar<T>::value>::type>
 template<typename T>
-T next(Generator<T>& generator);
+T next(Generator<T>& generator) {
+	return generator.distribution(generator.engine);
+}
 
 template<typename T>
 lyah::vec<2, T> next(Generator<lyah::vec<2, T>>& generator) {

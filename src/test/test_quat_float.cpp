@@ -17,7 +17,7 @@ void TestGroup<lyah::quat<std::float_t>>::runTests(std::mt19937& engine) {
 
 	Generator<S> scalar(engine, -1.0f, 1.0f);
 	Generator<lyah::vec<3, S>> vector(engine, -1.0f, 1.0f);
-	Generator<Q> quaternion(engine);
+	Generator<Q> quaternion(engine, -1.0f, 1.0f);
 
 	runTest("Identity", Q::identity, glm_adapter::identity);
 	runTest("Axis-angle", Q::axisAngle, glm_adapter::axisAngle, vector, scalar);

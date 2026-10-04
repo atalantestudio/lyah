@@ -155,9 +155,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\test\Generator\double.cpp" />
-    <ClCompile Include="src\test\Generator\float.cpp" />
-    <ClCompile Include="src\test\Generator\int32.cpp" />
     <ClCompile Include="src\glm_adapter\quat_double.cpp" />
     <ClCompile Include="src\test\test_float.cpp" />
     <ClCompile Include="src\test\test_quat_float.cpp" />
@@ -178,8 +175,9 @@
     <ClInclude Include="src\test\compare.hpp" />
     <ClInclude Include="src\glm_adapter\serialization.hpp" />
     <ClInclude Include="src\pch.hpp" />
+    <ClInclude Include="src\test\generator\Generator.ipp" />
     <ClInclude Include="src\test\TestGroup.hpp" />
-    <ClInclude Include="src\test\Generator\Generator.hpp" />
+    <ClInclude Include="src\test\generator\Generator.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
