@@ -68,7 +68,7 @@ LYAH_CONSTEXPR T lyah::min(T x, T y) {
 
 template<std::size_t C, typename T>
 LYAH_CONSTEXPR lyah::vec<C, T> lyah::min(vec<C, T> x, vec<C, T> y) {
-	return apply<C, T>::scalarModifier(x, y, min);
+	return apply<C, T>::modifier(x, y, min);
 }
 
 template<typename T>
@@ -78,7 +78,7 @@ LYAH_CONSTEXPR T lyah::max(T x, T y) {
 
 template<std::size_t C, typename T>
 LYAH_CONSTEXPR lyah::vec<C, T> lyah::max(vec<C, T> x, vec<C, T> y) {
-	return apply<C, T>::scalarModifier(x, y, max);
+	return apply<C, T>::modifier(x, y, max);
 }
 
 template<typename T>
