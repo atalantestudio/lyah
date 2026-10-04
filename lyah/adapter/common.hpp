@@ -4,22 +4,6 @@
 #pragma once
 
 namespace lyah {
-	/// Returns `x` * `y` + `z`.
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 std::float_t LYAH_CALL fma(std::float_t x, std::float_t y, std::float_t z);
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 std::double_t LYAH_CALL fma(std::double_t x, std::double_t y, std::double_t z);
-
-	/// Returns `x` * `y` + `z` component-wise.
-	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<2, T> LYAH_CALL fma(vec<2, T> x, vec<2, T> y, vec<2, T> z);
-
-	/// Returns `x` * `y` + `z` component-wise.
-	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<3, T> LYAH_CALL fma(vec<3, T> x, vec<3, T> y, vec<3, T> z);
-
-	/// Returns `x` * `y` + `z` component-wise.
-	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<4, T> LYAH_CALL fma(vec<4, T> x, vec<4, T> y, vec<4, T> z);
-
 	/// Returns the component-wise sum of `x`.
 	template<typename T>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL sum(vec<2, T> x);
@@ -73,4 +57,20 @@ namespace lyah {
 	/// `t` is applied component-wise.
 	template<std::size_t C, typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL lerp(vec<C, T> a, vec<C, T> b, vec<C, T> t);
+
+	/// Returns `x` * `y` + `z`.
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 T LYAH_CALL fma(T x, T y, T z);
+
+	/// Returns `x` * `y` + `z` component-wise.
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<2, T> LYAH_CALL fma(vec<2, T> x, vec<2, T> y, vec<2, T> z);
+
+	/// Returns `x` * `y` + `z` component-wise.
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<3, T> LYAH_CALL fma(vec<3, T> x, vec<3, T> y, vec<3, T> z);
+
+	/// Returns `x` * `y` + `z` component-wise.
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<4, T> LYAH_CALL fma(vec<4, T> x, vec<4, T> y, vec<4, T> z);
 }
