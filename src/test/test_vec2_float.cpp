@@ -18,12 +18,13 @@ void ClassTest<lyah::vec<2, std::float_t>>::runTests(std::mt19937& engine) {
 	Generator<S> scalar(engine, -1.0f, 1.0f);
 	Generator<V> vector(engine, -1.0f, 1.0f);
 
+	// Comparison
 	runTest<bool, V, V>("Equality", lyah::operator==, glm_adapter::operator==, vector, vector);
 	runTest<bool, V, V>("Inequality", lyah::operator!=, glm_adapter::operator!=, vector, vector);
 
+	// Arithmetic
 	runTest<V>("Unary plus", lyah::operator+, glm_adapter::operator+, vector);
 	runTest<V>("Unary minus", lyah::operator-, glm_adapter::operator-, vector);
-
 	runTest<V, V, V>("Addition", lyah::operator+, glm_adapter::operator+, vector, vector);
 	runTest<V, V, V>("Subtraction", lyah::operator-, glm_adapter::operator-, vector, vector);
 	runTest<V, V, S>("Multiplication (vector-scalar)", lyah::operator*, glm_adapter::operator*, vector, scalar);
@@ -32,8 +33,11 @@ void ClassTest<lyah::vec<2, std::float_t>>::runTests(std::mt19937& engine) {
 	runTest<V, V, S>("Division (vector-scalar)", lyah::operator/, glm_adapter::operator/, vector, scalar);
 	runTest<V>("Division (scalar-vector)", lyah::operator/, glm_adapter::operator/, scalar, vector);
 	runTest<V>("Division (vector-vector)", lyah::operator/, glm_adapter::operator/, vector, vector);
+
+	// Common
 	runTest<V>("Fused multiply-add", lyah::fma, glm_adapter::fma, vector, vector, vector);
 
+	// Geometric
 	runTest<S>("Parallelogram area", lyah::parallelogramArea, glm_adapter::parallelogramArea, vector, vector);
 	runTest<V>("Perpendicular left", lyah::perpendicularLeft, glm_adapter::perpendicularLeft, vector);
 	runTest<V>("Perpendicular right", lyah::perpendicularRight, glm_adapter::perpendicularRight, vector);
@@ -44,6 +48,7 @@ void ClassTest<lyah::vec<2, std::float_t>>::runTests(std::mt19937& engine) {
 	runTest<S, V>("Squared distance", lyah::distanceSquared, glm_adapter::distanceSquared, vector, vector);
 	runTest<V>("Normalization", lyah::normalized, glm_adapter::normalized, vector);
 
+	// Trigonometric
 	runTest<V>("Radians to degrees", lyah::degrees, glm_adapter::degrees, vector);
 	runTest<V>("Degrees to radians", lyah::radians, glm_adapter::radians, vector);
 	runTest<V>("Sine", lyah::sin, glm_adapter::sin, vector);

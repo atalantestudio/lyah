@@ -80,7 +80,11 @@ int main() {
 
 	std::cout << "\033[0;2mStarting tests...\033[0m\n\n";
 
+	ClassTest<std::float_t>::runTests(engine);
+	ClassTest<std::double_t>::runTests(engine);
+
 	ClassTest<lyah::vec<2, std::float_t>>::runTests(engine);
+
 	ClassTest<lyah::quat<std::float_t>>::runTests(engine);
 	ClassTest<lyah::quat<std::double_t>>::runTests(engine);
 

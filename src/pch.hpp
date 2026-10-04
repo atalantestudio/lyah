@@ -23,6 +23,7 @@
 #include "glm_adapter/adapter.hpp"
 #include "glm_adapter/serialization.hpp"
 #include "glm_adapter/common.hpp"
+#include "glm_adapter/scalar.hpp"
 #include "glm_adapter/vec2.hpp"
 
 #include "test/Generator/Generator.hpp"
