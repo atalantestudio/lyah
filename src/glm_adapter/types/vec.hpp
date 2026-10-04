@@ -52,6 +52,16 @@ namespace glm_adapter {
 	}
 
 	template<std::size_t C, typename T>
+	inline lyah::vec<C, T> operator*(lyah::vec<C, T> a, lyah::mat<C, C, T> b) {
+		return glm2lyah(lyah2glm(b) * lyah2glm(a));
+	}
+
+	template<std::size_t C, typename T>
+	inline lyah::vec<C, T> operator*(lyah::vec<C, T> a, lyah::quat<T> b) {
+		return glm2lyah(lyah2glm(b) * lyah2glm(a));
+	}
+
+	template<std::size_t C, typename T>
 	inline lyah::vec<C, T> operator/(lyah::vec<C, T> a, T b) {
 		return glm2lyah(lyah2glm(a) / b);
 	}

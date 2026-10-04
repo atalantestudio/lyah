@@ -44,6 +44,16 @@ struct Generator<lyah::vec<C, T>> : public BaseGenerator {
 	std::uniform_real_distribution<T> distribution;
 };
 
+template<std::size_t M, std::size_t N, typename T>
+struct Generator<lyah::mat<M, N, T>> : public BaseGenerator {
+	explicit Generator(std::mt19937& engine, T min, T max) :
+		BaseGenerator(engine),
+		distribution(min, max)
+	{}
+
+	std::uniform_real_distribution<T> distribution;
+};
+
 template<typename T>
 struct Generator<lyah::quat<T>> : public BaseGenerator {
 	explicit Generator(std::mt19937& engine, T min, T max) :
@@ -99,6 +109,33 @@ lyah::vec<4, T> next(Generator<lyah::vec<4, T>>& generator) {
 		generator.distribution(generator.engine),
 		generator.distribution(generator.engine),
 		generator.distribution(generator.engine),
+	};
+}
+
+template<std::size_t M, typename T>
+lyah::mat<M, 2, T> next(Generator<lyah::mat<M, 2, T>>& generator) {
+	return {
+		generator.distribution(generator.engine), generator.distribution(generator.engine),
+		generator.distribution(generator.engine), generator.distribution(generator.engine),
+	};
+}
+
+template<std::size_t M, typename T>
+lyah::mat<M, 3, T> next(Generator<lyah::mat<M, 3, T>>& generator) {
+	return {
+		generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine),
+		generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine),
+		generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine),
+	};
+}
+
+template<std::size_t M, typename T>
+lyah::mat<M, 4, T> next(Generator<lyah::mat<M, 4, T>>& generator) {
+	return {
+		generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine),
+		generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine),
+		generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine),
+		generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine),
 	};
 }
 

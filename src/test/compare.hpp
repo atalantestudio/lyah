@@ -56,6 +56,39 @@ inline bool compare(lyah::vec<4, T> a, lyah::vec<4, T> b) {
 }
 
 template<typename T>
+inline bool compare(lyah::mat<2, 2, T> a, lyah::mat<2, 2, T> b) {
+	constexpr T epsilon = static_cast<T>(1e-4);
+
+	return (
+		compare(a[0], b[0]) &&
+		compare(a[1], b[1])
+	);
+}
+
+template<typename T>
+inline bool compare(lyah::mat<3, 3, T> a, lyah::mat<3, 3, T> b) {
+	constexpr T epsilon = static_cast<T>(1e-4);
+
+	return (
+		compare(a[0], b[0]) &&
+		compare(a[1], b[1]) &&
+		compare(a[2], b[2])
+	);
+}
+
+template<typename T>
+inline bool compare(lyah::mat<4, 4, T> a, lyah::mat<4, 4, T> b) {
+	constexpr T epsilon = static_cast<T>(1e-4);
+
+	return (
+		compare(a[0], b[0]) &&
+		compare(a[1], b[1]) &&
+		compare(a[2], b[2]) &&
+		compare(a[3], b[3])
+	);
+}
+
+template<typename T>
 inline bool compare(lyah::quat<T> a, lyah::quat<T> b) {
 	constexpr T epsilon = static_cast<T>(1e-4);
 

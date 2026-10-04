@@ -14,10 +14,12 @@ template<>
 void TestGroup<lyah::vec<2, std::double_t>>::runTests(std::mt19937& engine) {
 	typedef std::double_t S;
 	typedef lyah::vec<2, S> V;
+	typedef lyah::mat<2, 2, S> M;
 
 	Generator<S> scalar(engine, -1.0, 1.0);
 	Generator<V> vector(engine, -1.0, 1.0);
 	Generator<V> positiveVector(engine, 0.0, 2.0);
+	Generator<M> matrix(engine, -1.0, 1.0);
 
 	// Comparison
 	runTest<bool, V, V>("Equality", lyah::operator==, glm_adapter::operator==, vector, vector);
@@ -31,6 +33,7 @@ void TestGroup<lyah::vec<2, std::double_t>>::runTests(std::mt19937& engine) {
 	runTest<V, V, S>("Multiplication (vector-scalar)", lyah::operator*, glm_adapter::operator*, vector, scalar);
 	runTest<V, S, V>("Multiplication (scalar-vector)", lyah::operator*, glm_adapter::operator*, scalar, vector);
 	runTest<V, V, V>("Multiplication (vector-vector)", lyah::operator*, glm_adapter::operator*, vector, vector);
+	runTest<V, V, M>("Multiplication (vector-matrix)", lyah::operator*, glm_adapter::operator*, vector, matrix);
 	runTest<V, V, S>("Division (vector-scalar)", lyah::operator/, glm_adapter::operator/, vector, scalar);
 	runTest<V>("Division (scalar-vector)", lyah::operator/, glm_adapter::operator/, scalar, vector);
 	runTest<V>("Division (vector-vector)", lyah::operator/, glm_adapter::operator/, vector, vector);
