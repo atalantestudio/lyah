@@ -16,6 +16,15 @@ namespace lyah {
 	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<2, T> LYAH_CALL perpendicularRight(vec<2, T> a);
 
+	// TODO: Keep?
+	// Returns the "2D cross product" of a and b.
+	// If b is -1, the perpendicular vector to the left of a is returned.
+	// If b is 1, the perpendicular vector to the right of a is returned.
+	/*template<typename T>
+	constexpr vec<2, T> cross2d(vec<2, T> a, T b) {
+		return {a.y * b, a.x * -b};
+	}*/
+
 	/// Returns the cross product of `a` and `b`.
 	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<3, T> LYAH_CALL cross(vec<3, T> a, vec<3, T> b);

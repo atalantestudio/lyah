@@ -84,14 +84,3 @@ template<typename T>
 LYAH_CONSTEXPR_CPP26 lyah::quat<T> lyah::normalized(quat<T> a) {
 	return a / length(a);
 }
-
-namespace lyah {
-	// TODO: Keep?
-	// Returns the "2D cross product" of a and b.
-	// If b is -1, the perpendicular vector to the left of a is returned.
-	// If b is 1, the perpendicular vector to the right of a is returned.
-	template<typename T>
-	constexpr vec<2, T> cross(vec<2, T> a, T b) {
-		return {a.y * b, a.x * -b};
-	}
-}
