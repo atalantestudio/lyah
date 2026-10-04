@@ -72,7 +72,7 @@ namespace lyah {
 	vec<3, T>& operator*=(vec<3, T>& a, quat<T> b) {
 		const vec<3, T> xyz = {b.x, b.y, b.z};
 
-		a = static_cast<T>(2) * (dot(xyz, a) * xyz + b.w * (cross(xyz, a) + b.w * a)) - a;
+		a = 2 * (dot(xyz, a) * xyz + b.w * (cross(xyz, a) + b.w * a)) - a;
 
 		return a;
 	}

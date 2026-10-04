@@ -25,15 +25,18 @@ LYAH_CONSTEXPR lyah::mat<4, 4, T> lyah::mat<4, 4, T>::translation(vec<3, T> a) {
 /// `angle` is in radians.
 template<typename T>
 LYAH_CONSTEXPR_CPP26 lyah::mat<4, 4, T> lyah::mat<4, 4, T>::rotation(vec<3, T> axis, T angle) {
-	const T cosAngle = cos(angle);
-	const T sinAngle = sin(angle);
-	const T one_cosAngle = 1 - cosAngle;
+	const T x = axis.x;
+	const T y = axis.y;
+	const T z = axis.z;
+	const T c = cos(angle);
+	const T s = sin(angle);
+	const T _1_c = 1 - c;
 
 	return {
-		axis.x * axis.x * one_cosAngle + cosAngle,          axis.x * axis.y * one_cosAngle + axis.z * sinAngle, axis.x * axis.z * one_cosAngle - axis.y * sinAngle, 0,
-		axis.x * axis.y * one_cosAngle - axis.z * sinAngle, axis.y * axis.y * one_cosAngle + cosAngle,          axis.y * axis.z * one_cosAngle + axis.x * sinAngle, 0,
-		axis.x * axis.z * one_cosAngle + axis.y * sinAngle, axis.y * axis.z * one_cosAngle - axis.x * sinAngle, axis.z * axis.z * one_cosAngle + cosAngle,          0,
-		0,                                                  0,                                                  0,                                                  1,
+		x * x * _1_c + c,     x * y * _1_c + z * s, x * z * _1_c - y * s, 0,
+		x * y * _1_c - z * s, y * y * _1_c + c,     y * z * _1_c + x * s, 0,
+		x * z * _1_c + y * s, y * z * _1_c - x * s, z * z * _1_c + c,     0,
+		0,                    0,                    0,                    1,
 	};
 }
 
@@ -110,7 +113,8 @@ LYAH_CONSTEXPR lyah::mat<4, 4, T>::mat(mat<4, 4, U> a) :
 {}
 
 /// `a` is assumed to be normalized.
-/// See https://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToMatrix.
+/// See https://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToMatrix
+/// and https://gist.github.com/pezcode/150eb97dd41b67b611d0de7bae273e98.
 template<typename T>
 LYAH_CONSTEXPR_CPP23 lyah::mat<4, 4, T>::mat(quat<T> a) {
 	a = a * static_cast<T>(1.41421356237);

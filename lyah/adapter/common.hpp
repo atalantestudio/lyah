@@ -36,49 +36,25 @@ namespace lyah {
 	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value || std::is_signed<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL abs(T x);
 
-	/// Returns the absolute value of `x` component-wise.
-	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value || std::is_signed<T>::value>::type>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<2, T> LYAH_CALL abs(vec<2, T> x);
-
-	/// Returns the absolute value of `x` component-wise.
-	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value || std::is_signed<T>::value>::type>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<3, T> LYAH_CALL abs(vec<3, T> x);
-
-	/// Returns the absolute value of `x` component-wise.
-	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value || std::is_signed<T>::value>::type>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<4, T> LYAH_CALL abs(vec<4, T> x);
+	/// Returns the component-wise absolute value of `x`.
+	template<std::size_t C, typename T, typename = std::enable_if<std::is_floating_point<T>::value || std::is_signed<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL abs(vec<C, T> x);
 
 	/// Returns the minimum value between `x` and `y`.
 	template<typename T>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL min(T x, T y);
 
 	/// Returns the component-wise minimum value between `x` and `y`.
-	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<2, T> LYAH_CALL min(vec<2, T> x, vec<2, T> y);
-
-	/// Returns the component-wise minimum value between `x` and `y`.
-	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<3, T> LYAH_CALL min(vec<3, T> x, vec<3, T> y);
-
-	/// Returns the component-wise minimum value between `x` and `y`.
-	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<4, T> LYAH_CALL min(vec<4, T> x, vec<4, T> y);
+	template<std::size_t C, typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL min(vec<C, T> x, vec<C, T> y);
 
 	/// Returns the maximum value between `x` and `y`.
 	template<typename T>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL max(T x, T y);
 
 	/// Returns the component-wise maximum value between `x` and `y`.
-	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<2, T> LYAH_CALL max(vec<2, T> x, vec<2, T> y);
-
-	/// Returns the component-wise maximum value between `x` and `y`.
-	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<3, T> LYAH_CALL max(vec<3, T> x, vec<3, T> y);
-
-	/// Returns the component-wise maximum value between `x` and `y`.
-	template<typename T>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<4, T> LYAH_CALL max(vec<4, T> x, vec<4, T> y);
+	template<std::size_t C, typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL max(vec<C, T> x, vec<C, T> y);
 
 	/// Returns `x` clamped between `min` and `max`.
 	/// `max` must be >= `min`.

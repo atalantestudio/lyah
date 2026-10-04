@@ -64,7 +64,8 @@ LYAH_CONSTEXPR lyah::mat<3, 3, T>::mat(vec<3, T> m0, vec<3, T> m1, vec<3, T> m2)
 {}
 
 /// `a` is assumed to be normalized.
-/// See https://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToMatrix.
+/// See https://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToMatrix
+/// and https://gist.github.com/pezcode/150eb97dd41b67b611d0de7bae273e98.
 template<typename T>
 LYAH_CONSTEXPR lyah::mat<3, 3, T>::mat(quat<T> a) {
 	a = a * static_cast<T>(1.41421356237);
