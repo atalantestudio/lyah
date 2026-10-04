@@ -45,17 +45,21 @@ namespace lyah {
 
 	/// Returns the post-multiplication of `a` and `b`.
 	template<std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL operator*(vec<C, T> a, mat<C, C, T> B);
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL operator*(vec<C, T> a, mat<C, C, T> b);
 
-	/// Post-multiplies `a` by `b`, then returns `a`.
+	/// Sets `a` to the post-multiplication of `a` and `b`, then returns `a`.
 	template<std::size_t C, typename T>
-	LYAH_INLINE vec<C, T>& LYAH_CALL operator*=(vec<C, T>& a, mat<C, C, T> B);
+	LYAH_INLINE vec<C, T>& LYAH_CALL operator*=(vec<C, T>& a, mat<C, C, T> b);
 
-	template<std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL operator*(vec<C, T> a, quat<T> b);
+	/// Returns the product of `a` and `b`.
+	/// `b` is assumed to be normalized.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<3, T> LYAH_CALL operator*(vec<3, T> a, quat<T> b);
 
-	template<std::size_t C, typename T>
-	LYAH_INLINE vec<C, T>& LYAH_CALL operator*=(vec<C, T>& a, quat<T> b);
+	/// Sets `a` to the product of `a` and `b`, then returns `a`.
+	/// `b` is assumed to be normalized.
+	template<typename T>
+	LYAH_INLINE vec<3, T>& LYAH_CALL operator*=(vec<3, T>& a, quat<T> b);
 
 	template<std::size_t C, typename T>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL operator/(vec<C, T> a, T b);
