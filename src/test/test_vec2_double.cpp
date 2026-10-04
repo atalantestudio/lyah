@@ -15,8 +15,9 @@ void TestGroup<lyah::vec<2, std::double_t>>::runTests(std::mt19937& engine) {
 	typedef std::double_t S;
 	typedef lyah::vec<2, S> V;
 
-	Generator<S> scalar(engine, -1.0f, 1.0f);
-	Generator<V> vector(engine, -1.0f, 1.0f);
+	Generator<S> scalar(engine, -1.0, 1.0);
+	Generator<V> vector(engine, -1.0, 1.0);
+	Generator<V> positiveVector(engine, 0.0, 2.0);
 
 	// Comparison
 	runTest<bool, V, V>("Equality", lyah::operator==, glm_adapter::operator==, vector, vector);
@@ -35,7 +36,19 @@ void TestGroup<lyah::vec<2, std::double_t>>::runTests(std::mt19937& engine) {
 	runTest<V>("Division (vector-vector)", lyah::operator/, glm_adapter::operator/, vector, vector);
 
 	// Common
+	runTest<S>("Sum", lyah::sum, glm_adapter::sum, vector);
+	runTest<V>("Absolute value", lyah::abs, glm_adapter::abs, vector);
+	runTest<V>("Minimum", lyah::min, glm_adapter::min, vector, vector);
+	runTest<V>("Maximum", lyah::max, glm_adapter::max, vector, vector);
+	runTest<V>("Clamp", lyah::clamp, glm_adapter::clamp, vector, vector, vector);
+	runTest<V>("Linear interpolation (scalar interpolant)", lyah::lerp, glm_adapter::lerp, vector, vector, scalar);
+	runTest<V>("Linear interpolation (vector interpolant)", lyah::lerp, glm_adapter::lerp, vector, vector, vector);
 	runTest<V>("Fused multiply-add", lyah::fma, glm_adapter::fma, vector, vector, vector);
+
+	// Exponential
+	runTest<V>("Power (scalar exponent)", lyah::pow, glm_adapter::pow, positiveVector, scalar);
+	runTest<V>("Power (vector exponent)", lyah::pow, glm_adapter::pow, positiveVector, vector);
+	runTest<V>("Square root", lyah::pow, glm_adapter::pow, positiveVector, vector);
 
 	// Geometric
 	runTest<S>("Parallelogram area", lyah::parallelogramArea, glm_adapter::parallelogramArea, vector, vector);
@@ -47,6 +60,11 @@ void TestGroup<lyah::vec<2, std::double_t>>::runTests(std::mt19937& engine) {
 	runTest<S, V>("Distance", lyah::distance, glm_adapter::distance, vector, vector);
 	runTest<S, V>("Squared distance", lyah::distanceSquared, glm_adapter::distanceSquared, vector, vector);
 	runTest<V>("Normalization", lyah::normalized, glm_adapter::normalized, vector);
+
+	// Rounding
+	runTest<V>("Floor", lyah::floor, glm_adapter::floor, vector);
+	runTest<V>("Ceil", lyah::ceil, glm_adapter::ceil, vector);
+	runTest<V>("Round", lyah::round, glm_adapter::round, vector);
 
 	// Trigonometric
 	runTest<V>("Radians to degrees", lyah::degrees, glm_adapter::degrees, vector);

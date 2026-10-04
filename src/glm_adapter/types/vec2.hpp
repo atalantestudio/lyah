@@ -67,11 +67,6 @@ namespace glm_adapter {
 	}
 
 	template<typename T>
-	inline lyah::vec<2, T> fma(lyah::vec<2, T> x, lyah::vec<2, T> y, lyah::vec<2, T> z) {
-		return glm2lyah(glm::fma(lyah2glm(x), lyah2glm(y), lyah2glm(z)));
-	}
-
-	template<typename T>
 	inline T parallelogramArea(lyah::vec<2, T> a, lyah::vec<2, T> b) {
 		return glm::determinant(glm::mat<2, 2, T>(lyah2glm(a), lyah2glm(b)));
 	}

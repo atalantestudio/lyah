@@ -100,5 +100,8 @@ class TestGroup {
 			if (!failedRuns) {
 				logPassed();
 			}
+			else {
+				__debugbreak();
+			}
 		}
 };

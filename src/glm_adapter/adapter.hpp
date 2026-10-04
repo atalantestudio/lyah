@@ -93,3 +93,11 @@ namespace glm_adapter {
 	std::double_t distanceSquared(lyah::quat<std::double_t> a, lyah::quat<std::double_t> b);
 	lyah::quat<std::double_t> normalized(lyah::quat<std::double_t> a);
 }
+
+#include "glm_adapter/serialization.hpp"
+#include "glm_adapter/common.hpp"
+#include "glm_adapter/constants.hpp"
+#include "glm_adapter/exponential.hpp"
+#include "glm_adapter/rounding.hpp"
+#include "glm_adapter/trigonometric.hpp"
+#include "glm_adapter/types/vec2.hpp"

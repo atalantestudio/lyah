@@ -14,14 +14,14 @@ template<>
 void TestGroup<std::double_t>::runTests(std::mt19937& engine) {
 	typedef std::double_t S;
 
-	Generator<S> scalar(engine, -1.0f, 1.0f);
-	Generator<S> positiveScalar(engine, 0.0f, 2.0f);
+	Generator<S> scalar(engine, -1.0, 1.0);
+	Generator<S> positiveScalar(engine, 0.0, 2.0);
 
 	// Common
 	runTest<S>("Absolute value", lyah::abs, glm_adapter::abs, scalar);
 	runTest<S>("Minimum", lyah::min, glm_adapter::min, scalar, scalar);
 	runTest<S>("Maximum", lyah::max, glm_adapter::max, scalar, scalar);
-	runTest<S>("Clamping", lyah::clamp, glm_adapter::clamp, scalar, scalar, scalar);
+	runTest<S>("Clamp", lyah::clamp, glm_adapter::clamp, scalar, scalar, scalar);
 	runTest<S>("Linear interpolation", lyah::lerp, glm_adapter::lerp, scalar, scalar, scalar);
 	runTest<S>("Fused multiply-add", lyah::fma, glm_adapter::fma, scalar, scalar, scalar);
 

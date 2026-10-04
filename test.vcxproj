@@ -169,9 +169,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\glm_adapter\adapter.hpp" />
+    <ClInclude Include="src\glm_adapter\constants.hpp" />
+    <ClInclude Include="src\glm_adapter\exponential.hpp" />
+    <ClInclude Include="src\glm_adapter\rounding.hpp" />
+    <ClInclude Include="src\glm_adapter\trigonometric.hpp" />
     <ClInclude Include="src\glm_adapter\common.hpp" />
-    <ClInclude Include="src\glm_adapter\scalar.hpp" />
-    <ClInclude Include="src\glm_adapter\vec2.hpp" />
+    <ClInclude Include="src\glm_adapter\types\vec2.hpp" />
     <ClInclude Include="src\test\compare.hpp" />
     <ClInclude Include="src\glm_adapter\serialization.hpp" />
     <ClInclude Include="src\pch.hpp" />

@@ -54,9 +54,6 @@
     <ClInclude Include="src\pch.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\glm_adapter\common.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\test\generator\Generator.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -72,13 +69,25 @@
     <ClInclude Include="src\test\TestGroup.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\glm_adapter\vec2.hpp">
+    <ClInclude Include="src\glm_adapter\types\vec2.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\glm_adapter\scalar.hpp">
+    <ClInclude Include="src\glm_adapter\trigonometric.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\test\generator\Generator.ipp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\glm_adapter\common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\glm_adapter\constants.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\glm_adapter\exponential.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\glm_adapter\rounding.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
