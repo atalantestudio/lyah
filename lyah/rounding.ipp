@@ -1,7 +1,8 @@
 // Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
-LYAH_CONSTEXPR std::float_t lyah::floor(std::float_t x) {
+template<>
+LYAH_INLINE LYAH_CONSTEXPR std::float_t lyah::floor(std::float_t x) {
 	#if LYAH_STANDARD >= LYAH_STANDARD_CPP23
 		return std::floorf(x);
 	#else
@@ -11,7 +12,8 @@ LYAH_CONSTEXPR std::float_t lyah::floor(std::float_t x) {
 	#endif
 }
 
-LYAH_CONSTEXPR std::double_t lyah::floor(std::double_t x) {
+template<>
+LYAH_INLINE LYAH_CONSTEXPR std::double_t lyah::floor(std::double_t x) {
 	#if LYAH_STANDARD >= LYAH_STANDARD_CPP23
 		return std::floorl(x);
 	#else
@@ -21,34 +23,13 @@ LYAH_CONSTEXPR std::double_t lyah::floor(std::double_t x) {
 	#endif
 }
 
-template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<2, T> lyah::floor(vec<2, T> x) {
-	x.x = floor(x.x);
-	x.y = floor(x.y);
-
-	return x;
+template<std::size_t C, typename T, typename>
+LYAH_CONSTEXPR lyah::vec<C, T> lyah::floor(vec<C, T> x) {
+	return apply<C, T>::modifier(x, floor);
 }
 
-template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<3, T> lyah::floor(vec<3, T> x) {
-	x.x = floor(x.x);
-	x.y = floor(x.y);
-	x.z = floor(x.z);
-
-	return x;
-}
-
-template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<4, T> lyah::floor(vec<4, T> x) {
-	x.x = floor(x.x);
-	x.y = floor(x.y);
-	x.z = floor(x.z);
-	x.w = floor(x.w);
-
-	return x;
-}
-
-LYAH_CONSTEXPR std::float_t lyah::ceil(std::float_t x) {
+template<>
+LYAH_INLINE LYAH_CONSTEXPR std::float_t lyah::ceil(std::float_t x) {
 	#if LYAH_STANDARD >= LYAH_STANDARD_CPP23
 		return std::ceilf(x);
 	#else
@@ -58,7 +39,8 @@ LYAH_CONSTEXPR std::float_t lyah::ceil(std::float_t x) {
 	#endif
 }
 
-LYAH_CONSTEXPR std::double_t lyah::ceil(std::double_t x) {
+template<>
+LYAH_INLINE LYAH_CONSTEXPR std::double_t lyah::ceil(std::double_t x) {
 	#if LYAH_STANDARD >= LYAH_STANDARD_CPP23
 		return std::ceill(x);
 	#else
@@ -68,34 +50,13 @@ LYAH_CONSTEXPR std::double_t lyah::ceil(std::double_t x) {
 	#endif
 }
 
-template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<2, T> lyah::ceil(vec<2, T> x) {
-	x.x = ceil(x.x);
-	x.y = ceil(x.y);
-
-	return x;
+template<std::size_t C, typename T, typename>
+LYAH_CONSTEXPR lyah::vec<C, T> lyah::ceil(vec<C, T> x) {
+	return apply<C, T>::modifier(x, ceil);
 }
 
-template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<3, T> lyah::ceil(vec<3, T> x) {
-	x.x = ceil(x.x);
-	x.y = ceil(x.y);
-	x.z = ceil(x.z);
-
-	return x;
-}
-
-template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<4, T> lyah::ceil(vec<4, T> x) {
-	x.x = ceil(x.x);
-	x.y = ceil(x.y);
-	x.z = ceil(x.z);
-	x.w = ceil(x.w);
-
-	return x;
-}
-
-LYAH_CONSTEXPR std::float_t lyah::round(std::float_t x) {
+template<>
+LYAH_INLINE LYAH_CONSTEXPR std::float_t lyah::round(std::float_t x) {
 	#if LYAH_STANDARD >= LYAH_STANDARD_CPP23
 		return std::roundf(x);
 	#else
@@ -107,7 +68,8 @@ LYAH_CONSTEXPR std::float_t lyah::round(std::float_t x) {
 	#endif
 }
 
-LYAH_CONSTEXPR std::double_t lyah::round(std::double_t x) {
+template<>
+LYAH_INLINE LYAH_CONSTEXPR std::double_t lyah::round(std::double_t x) {
 	#if LYAH_STANDARD >= LYAH_STANDARD_CPP23
 		return std::roundl(x);
 	#else
@@ -119,29 +81,7 @@ LYAH_CONSTEXPR std::double_t lyah::round(std::double_t x) {
 	#endif
 }
 
-template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<2, T> lyah::round(vec<2, T> x) {
-	x.x = round(x.x);
-	x.y = round(x.y);
-
-	return x;
-}
-
-template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<3, T> lyah::round(vec<3, T> x) {
-	x.x = round(x.x);
-	x.y = round(x.y);
-	x.z = round(x.z);
-
-	return x;
-}
-
-template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<4, T> lyah::round(vec<4, T> x) {
-	x.x = round(x.x);
-	x.y = round(x.y);
-	x.z = round(x.z);
-	x.w = round(x.w);
-
-	return x;
+template<std::size_t C, typename T, typename>
+LYAH_CONSTEXPR lyah::vec<C, T> lyah::round(vec<C, T> x) {
+	return apply<C, T>::modifier(x, round);
 }
