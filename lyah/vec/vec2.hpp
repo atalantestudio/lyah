@@ -3,37 +3,30 @@
 
 #pragma once
 
-namespace lyah {
-	#define VEC2(T) \
-		template<> \
-		struct vec<2, T> { \
-			LYAH_INLINE LYAH_CONSTEXPR vec(); \
-			\
-			LYAH_INLINE LYAH_CONSTEXPR vec(T x, T y); \
-			\
-			LYAH_INLINE LYAH_CONSTEXPR explicit vec(T a); \
-			\
-			template<typename U> \
-			LYAH_INLINE LYAH_CONSTEXPR explicit vec(vec<2, U> a); \
-			\
-			LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL operator[](std::size_t index) const; \
-			\
-			LYAH_NODISCARD LYAH_INLINE T& LYAH_CALL operator[](std::size_t index); \
-			\
-			T x; \
-			T y; \
-		};
+template<typename T>
+struct lyah::vec<2, T> {
+	LYAH_INLINE LYAH_CONSTEXPR vec();
 
-	VEC2(std::float_t);
-	VEC2(std::double_t);
-	VEC2(std::int32_t);
-	VEC2(std::int64_t);
+	LYAH_INLINE LYAH_CONSTEXPR vec(T x, T y);
 
-	#undef VEC2
-}
+	LYAH_INLINE LYAH_CONSTEXPR explicit vec(T a);
 
-#include "lyah/vec/vec2_float.ipp"
-#include "lyah/vec/vec2_double.ipp"
-#include "lyah/vec/vec2_int32.ipp"
-#include "lyah/vec/vec2_int64.ipp"
+	template<typename U>
+	LYAH_INLINE LYAH_CONSTEXPR explicit vec(vec<2, U> a);
+
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL operator[](std::size_t index) const;
+
+	LYAH_NODISCARD LYAH_INLINE T& LYAH_CALL operator[](std::size_t index);
+
+	T x;
+	T y;
+};
+
+template struct lyah::vec<2, std::float_t>;
+template struct lyah::vec<2, std::double_t>;
+template struct lyah::vec<2, std::int32_t>;
+template struct lyah::vec<2, std::int64_t>;
+template struct lyah::vec<2, std::uint32_t>;
+template struct lyah::vec<2, std::uint64_t>;
+
 #include "lyah/vec/vec2.ipp"
