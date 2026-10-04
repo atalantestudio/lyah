@@ -61,23 +61,7 @@ namespace lyah {
 	}
 
 	template<typename T>
-	T sum(vec<2, T> a) {
+	LYAH_CONSTEXPR T sum(vec<2, T> a) {
 		return a.x + a.y;
-	}
-
-	template<typename T>
-	vec<2, T> pow(vec<2, T> a, vec<2, T> b) {
-		a.x = pow(a.x, b.x);
-		a.y = pow(a.y, b.y);
-
-		return a;
-	}
-
-	template<typename T>
-	vec<2, T> sqrt(vec<2, T> a) {
-		a.x = sqrt(a.x);
-		a.y = sqrt(a.y);
-
-		return a;
 	}
 }

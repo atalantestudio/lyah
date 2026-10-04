@@ -22,7 +22,7 @@ LYAH_CONSTEXPR std::double_t lyah::floor(std::double_t x) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<2, T> lyah::floor(lyah::vec<2, T> x) {
+LYAH_CONSTEXPR lyah::vec<2, T> lyah::floor(vec<2, T> x) {
 	x.x = floor(x.x);
 	x.y = floor(x.y);
 
@@ -30,7 +30,7 @@ LYAH_CONSTEXPR lyah::vec<2, T> lyah::floor(lyah::vec<2, T> x) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<3, T> lyah::floor(lyah::vec<3, T> x) {
+LYAH_CONSTEXPR lyah::vec<3, T> lyah::floor(vec<3, T> x) {
 	x.x = floor(x.x);
 	x.y = floor(x.y);
 	x.z = floor(x.z);
@@ -39,7 +39,7 @@ LYAH_CONSTEXPR lyah::vec<3, T> lyah::floor(lyah::vec<3, T> x) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<4, T> lyah::floor(lyah::vec<4, T> x) {
+LYAH_CONSTEXPR lyah::vec<4, T> lyah::floor(vec<4, T> x) {
 	x.x = floor(x.x);
 	x.y = floor(x.y);
 	x.z = floor(x.z);
@@ -69,7 +69,7 @@ LYAH_CONSTEXPR std::double_t lyah::ceil(std::double_t x) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<2, T> lyah::ceil(lyah::vec<2, T> x) {
+LYAH_CONSTEXPR lyah::vec<2, T> lyah::ceil(vec<2, T> x) {
 	x.x = ceil(x.x);
 	x.y = ceil(x.y);
 
@@ -77,7 +77,7 @@ LYAH_CONSTEXPR lyah::vec<2, T> lyah::ceil(lyah::vec<2, T> x) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<3, T> lyah::ceil(lyah::vec<3, T> x) {
+LYAH_CONSTEXPR lyah::vec<3, T> lyah::ceil(vec<3, T> x) {
 	x.x = ceil(x.x);
 	x.y = ceil(x.y);
 	x.z = ceil(x.z);
@@ -86,7 +86,7 @@ LYAH_CONSTEXPR lyah::vec<3, T> lyah::ceil(lyah::vec<3, T> x) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<4, T> lyah::ceil(lyah::vec<4, T> x) {
+LYAH_CONSTEXPR lyah::vec<4, T> lyah::ceil(vec<4, T> x) {
 	x.x = ceil(x.x);
 	x.y = ceil(x.y);
 	x.z = ceil(x.z);
@@ -120,7 +120,7 @@ LYAH_CONSTEXPR std::double_t lyah::round(std::double_t x) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<2, T> lyah::round(lyah::vec<2, T> x) {
+LYAH_CONSTEXPR lyah::vec<2, T> lyah::round(vec<2, T> x) {
 	x.x = round(x.x);
 	x.y = round(x.y);
 
@@ -128,7 +128,7 @@ LYAH_CONSTEXPR lyah::vec<2, T> lyah::round(lyah::vec<2, T> x) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<3, T> lyah::round(lyah::vec<3, T> x) {
+LYAH_CONSTEXPR lyah::vec<3, T> lyah::round(vec<3, T> x) {
 	x.x = round(x.x);
 	x.y = round(x.y);
 	x.z = round(x.z);
@@ -137,7 +137,7 @@ LYAH_CONSTEXPR lyah::vec<3, T> lyah::round(lyah::vec<3, T> x) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<4, T> lyah::round(lyah::vec<4, T> x) {
+LYAH_CONSTEXPR lyah::vec<4, T> lyah::round(vec<4, T> x) {
 	x.x = round(x.x);
 	x.y = round(x.y);
 	x.z = round(x.z);
