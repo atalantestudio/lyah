@@ -23,7 +23,7 @@ LYAH_CONSTEXPR T lyah::abs(T x) {
 
 template<std::size_t C, typename T, typename>
 LYAH_CONSTEXPR lyah::vec<C, T> lyah::abs(vec<C, T> x) {
-	return apply(x, abs);
+	return apply<C, T>::modifier(x, abs);
 }
 
 template<typename T>
