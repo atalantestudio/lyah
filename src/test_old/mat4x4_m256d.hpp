@@ -180,10 +180,10 @@ namespace mat4x4_m256d {
 			 4.950, -3.323,  4.178,  1.0,
 		};
 		const lyah::vec<3, std::double_t> eye = {1.0, 4.0, 6.0};
-		const lyah::vec<3, std::double_t> center = {5.0, 3.0, 2.0};
+		const lyah::vec<3, std::double_t> target = {5.0, 3.0, 2.0};
 		const lyah::vec<3, std::double_t> up = {0.0, 1.0, 0.0};
 
-		const lyah::mat<4, 4, std::double_t> result = lyah::mat<4, 4, std::double_t>::lookAt(eye, center, up);
+		const lyah::mat<4, 4, std::double_t> result = lyah::mat<4, 4, std::double_t>::lookAt(eye, target, up);
 
 		test::assert(test::eq(result, expected, 0.001));
 	}

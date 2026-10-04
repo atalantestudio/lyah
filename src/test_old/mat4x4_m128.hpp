@@ -180,10 +180,10 @@ namespace mat4x4_m128 {
 			 4.950f, -3.323f,  4.178f,  1.0f,
 		};
 		const lyah::vec<3, std::float_t> eye = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> center = {5.0f, 3.0f, 2.0f};
+		const lyah::vec<3, std::float_t> target = {5.0f, 3.0f, 2.0f};
 		const lyah::vec<3, std::float_t> up = {0.0f, 1.0f, 0.0f};
 
-		const lyah::mat<4, 4, std::float_t> result = lyah::mat<4, 4, std::float_t>::lookAt(eye, center, up);
+		const lyah::mat<4, 4, std::float_t> result = lyah::mat<4, 4, std::float_t>::lookAt(eye, target, up);
 
 		test::assert(test::eq(result, expected, 0.001f));
 	}

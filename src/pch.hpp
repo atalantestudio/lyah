@@ -18,6 +18,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/compatibility.hpp>
 #include <glm/gtx/norm.hpp>
+#include <glm/gtx/perpendicular.hpp>
 
 #include "glm_adapter/adapter.hpp"
 #include "glm_adapter/serialization.hpp"

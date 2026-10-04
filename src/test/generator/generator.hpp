@@ -36,7 +36,7 @@ struct Generator<std::double_t> : public BaseGenerator {
 
 template<std::size_t C, typename T>
 struct Generator<lyah::vec<C, T>> : public BaseGenerator {
-	explicit Generator(std::mt19937& engine, T min = static_cast<T>(0), T max = static_cast<T>(1)) :
+	explicit Generator(std::mt19937& engine, T min = 0, T max = 1) :
 		BaseGenerator(engine),
 		distribution(min, max)
 	{}
@@ -46,7 +46,7 @@ struct Generator<lyah::vec<C, T>> : public BaseGenerator {
 
 template<typename T>
 struct Generator<lyah::quat<T>> : public BaseGenerator {
-	explicit Generator(std::mt19937& engine, T min = static_cast<T>(0), T max = static_cast<T>(1)) :
+	explicit Generator(std::mt19937& engine, T min = 0, T max = 1) :
 		BaseGenerator(engine),
 		distribution(min, max)
 	{}

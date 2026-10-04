@@ -8,7 +8,7 @@
 template<typename T>
 class ClassTest {
 	public:
-		inline static constexpr std::size_t RUN_COUNT = 1;
+		inline static constexpr std::size_t RUN_COUNT = 20;
 
 	private:
 		template<typename TupleType, std::size_t ArgumentCount>
@@ -21,15 +21,15 @@ class ClassTest {
 			generateParameters<TupleType, ArgumentIndex + 1, ArgumentType...>(parameters, std::forward<Generator<ArgumentType>&>(generators)...);
 		}
 
-		inline static void logTestName(const char* className, const char* testName) {
+		static void logTestName(const char* className, const char* testName) {
 			std::cout << "\033[0;1m" << className << " - " << testName << "\033[0m ";
 		}
 
-		inline static void logFailed() {
+		static void logFailed() {
 			std::cout << "\033[101;97m FAILED \033[0m\n";
 		}
 
-		inline static void logPassed() {
+		static void logPassed() {
 			std::cout << "\033[42;30m PASSED \033[0m\n";
 		}
 
@@ -49,7 +49,7 @@ class ClassTest {
 			std::cout << "\033[0m\n";
 		}
 
-		inline static void logParameters() {}
+		static void logParameters() {}
 
 		template<typename CurrentParameterType, typename... ParameterType>
 		inline static void logParameters(CurrentParameterType parameter, ParameterType... parameters) {

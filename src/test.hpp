@@ -15,7 +15,7 @@ namespace test {
 	}
 
 	template<typename T>
-	inline bool eq(const T* a, const T* b, T precision = static_cast<T>(0)) {
+	inline bool eq(const T* a, const T* b, T precision = 0) {
 		for (std::size_t i = 0; i < 4; i += 1) {
 			if (std::abs(a[i] - b[i]) > precision) {
 				return false;
@@ -82,7 +82,7 @@ namespace test {
 	}
 
 	template<std::size_t M, std::size_t N, typename T>
-	inline bool eq(const lyah::mat<M, N, T>& a, const lyah::mat<M, N, T>& b, T precision = static_cast<T>(0)) {
+	inline bool eq(const lyah::mat<M, N, T>& a, const lyah::mat<M, N, T>& b, T precision = 0) {
 		for (std::size_t i = 0; i < M; i += 1) {
 			if (!eq(a[i], b[i], precision)) {
 				return false;
