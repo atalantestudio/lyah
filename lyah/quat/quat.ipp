@@ -150,7 +150,7 @@ lyah::quat<T>& lyah::operator*=(quat<T>& a, quat<T> b) {
 
 template<typename T>
 LYAH_CONSTEXPR lyah::quat<T> lyah::operator/(quat<T> a, T b) {
-	return a * (1 / b);
+	return a * (static_cast<T>(1) / b);
 }
 
 template<typename T>

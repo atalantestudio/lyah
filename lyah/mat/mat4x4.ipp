@@ -201,7 +201,7 @@ namespace lyah {
 		};
 
 		const T det = determinant(ad);
-		const T invDet = 1 / det;
+		const T invDet = static_cast<T>(1) / det;
 
 		return determinant(aa - ab * (adjugate(ad) * invDet) * ac) * det;
 	}

@@ -1,6 +1,49 @@
 // Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
+template<typename T>
+LYAH_CONSTEXPR lyah::vec<3, T>::vec() :
+	x(0),
+	y(0),
+	z(0)
+{}
+
+template<typename T>
+LYAH_CONSTEXPR lyah::vec<3, T>::vec(T x, T y, T z) :
+	x(x),
+	y(y),
+	z(z)
+{}
+
+template<typename T>
+LYAH_CONSTEXPR lyah::vec<3, T>::vec(T a) :
+	x(a),
+	y(a),
+	z(a)
+{}
+
+template<typename T>
+template<typename U>
+LYAH_CONSTEXPR lyah::vec<3, T>::vec(vec<3, U> a) :
+	x(static_cast<T>(a.x)),
+	y(static_cast<T>(a.y)),
+	z(static_cast<T>(a.z))
+{}
+
+template<typename T>
+LYAH_CONSTEXPR T lyah::vec<3, T>::operator[](std::size_t index) const {
+	LYAH_ASSERT(index < 3);
+
+	return static_cast<const T*>(static_cast<const void*>(this))[index];
+}
+
+template<typename T>
+T& lyah::vec<3, T>::operator[](std::size_t index) {
+	LYAH_ASSERT(index < 3);
+
+	return static_cast<T*>(static_cast<void*>(this))[index];
+}
+
 namespace lyah {
 	template<typename T>
 	LYAH_CONSTEXPR bool operator==(vec<3, T> a, vec<3, T> b) {
