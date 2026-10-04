@@ -6,7 +6,7 @@
 #include "test/compare.hpp"
 
 template<typename T>
-class ClassTest {
+class TestGroup {
 	public:
 		inline static constexpr std::size_t RUN_COUNT = 20;
 
@@ -58,7 +58,7 @@ class ClassTest {
 			logParameters(std::forward<ParameterType>(parameters)...);
 		}
 
-		static const char* getClassName();
+		static const char* getGroupName();
 
 	public:
 		static void runTests(std::mt19937& engine);
@@ -68,7 +68,7 @@ class ClassTest {
 		inline static void runTest(const char* name, ReturnType (*function)(ArgumentType...), ReturnType (*referenceAdapter)(ArgumentType...), Generator<ArgumentType>&... generators) {
 			typedef std::tuple<ArgumentType...> TupleType;
 
-			logTestName(getClassName(), name);
+			logTestName(getGroupName(), name);
 
 			TupleType parameters;
 			std::size_t runIndex = 0;

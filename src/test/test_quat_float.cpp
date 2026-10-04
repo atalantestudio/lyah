@@ -3,15 +3,15 @@
 
 #include "pch.hpp"
 
-#include "test/ClassTest.hpp"
+#include "test/TestGroup.hpp"
 
 template<>
-const char* ClassTest<lyah::quat<std::float_t>>::getClassName() {
+const char* TestGroup<lyah::quat<std::float_t>>::getGroupName() {
 	return "quat<float_t>";
 }
 
 template<>
-void ClassTest<lyah::quat<std::float_t>>::runTests(std::mt19937& engine) {
+void TestGroup<lyah::quat<std::float_t>>::runTests(std::mt19937& engine) {
 	typedef std::float_t S;
 	typedef lyah::quat<S> Q;
 

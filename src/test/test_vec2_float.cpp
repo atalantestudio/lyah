@@ -3,15 +3,15 @@
 
 #include "pch.hpp"
 
-#include "test/ClassTest.hpp"
+#include "test/TestGroup.hpp"
 
 template<>
-const char* ClassTest<lyah::vec<2, std::float_t>>::getClassName() {
+const char* TestGroup<lyah::vec<2, std::float_t>>::getGroupName() {
 	return "vec<2, float_t>";
 }
 
 template<>
-void ClassTest<lyah::vec<2, std::float_t>>::runTests(std::mt19937& engine) {
+void TestGroup<lyah::vec<2, std::float_t>>::runTests(std::mt19937& engine) {
 	typedef std::float_t S;
 	typedef lyah::vec<2, S> V;
 

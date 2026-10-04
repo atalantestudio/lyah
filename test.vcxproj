@@ -177,7 +177,7 @@
     <ClInclude Include="src\test\compare.hpp" />
     <ClInclude Include="src\glm_adapter\serialization.hpp" />
     <ClInclude Include="src\pch.hpp" />
-    <ClInclude Include="src\test\ClassTest.hpp" />
+    <ClInclude Include="src\test\TestGroup.hpp" />
     <ClInclude Include="src\test\Generator\Generator.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

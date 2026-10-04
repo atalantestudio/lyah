@@ -27,4 +27,4 @@
 #include "glm_adapter/vec2.hpp"
 
 #include "test/Generator/Generator.hpp"
-#include "test/ClassTest.hpp"
+#include "test/TestGroup.hpp"

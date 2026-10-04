@@ -3,15 +3,15 @@
 
 #include "pch.hpp"
 
-#include "test/ClassTest.hpp"
+#include "test/TestGroup.hpp"
 
 template<>
-const char* ClassTest<std::float_t>::getClassName() {
+const char* TestGroup<std::float_t>::getGroupName() {
 	return "float_t";
 }
 
 template<>
-void ClassTest<std::float_t>::runTests(std::mt19937& engine) {
+void TestGroup<std::float_t>::runTests(std::mt19937& engine) {
 	typedef std::float_t S;
 
 	Generator<S> scalar(engine, -1.0f, 1.0f);

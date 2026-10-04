@@ -3,15 +3,15 @@
 
 #include "pch.hpp"
 
-#include "test/ClassTest.hpp"
+#include "test/TestGroup.hpp"
 
 template<>
-const char* ClassTest<std::double_t>::getClassName() {
+const char* TestGroup<std::double_t>::getGroupName() {
 	return "double_t";
 }
 
 template<>
-void ClassTest<std::double_t>::runTests(std::mt19937& engine) {
+void TestGroup<std::double_t>::runTests(std::mt19937& engine) {
 	typedef std::double_t S;
 
 	Generator<S> scalar(engine, -1.0f, 1.0f);
