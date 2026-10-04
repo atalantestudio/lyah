@@ -1,6 +1,113 @@
 // Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<3, 3, T> lyah::mat<3, 3, T>::identity() {
+	return {
+		1, 0, 0,
+		0, 1, 0,
+		0, 0, 1,
+	};
+}
+
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<3, 3, T> lyah::mat<3, 3, T>::translation(vec<2, T> a) {
+	return {
+		1,   0,   0,
+		0,   1,   0,
+		a.x, a.y, 1,
+	};
+}
+
+template<typename T>
+LYAH_CONSTEXPR_CPP26 lyah::mat<3, 3, T> lyah::mat<3, 3, T>::rotation(T a) {
+	const T c = cos(a);
+	const T s = sin(a);
+
+	return {
+		 c, -s,  0,
+		 s,  c,  0,
+		 0,  0,  1,
+	};
+}
+
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<3, 3, T> lyah::mat<3, 3, T>::scaling(vec<2, T> a) {
+	return {
+		a.x, 0,   0,
+		0,   a.y, 0,
+		0,   0,   1,
+	};
+}
+
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<3, 3, T>::mat() :
+	m{}
+{}
+
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<3, 3, T>::mat(T m00, T m01, T m02, T m10, T m11, T m12, T m20, T m21, T m22) :
+	m{
+		{m00, m01, m02},
+		{m10, m11, m12},
+		{m20, m21, m22},
+	}
+{}
+
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<3, 3, T>::mat(vec<3, T> m0, vec<3, T> m1, vec<3, T> m2) :
+	m{
+		m0,
+		m1,
+		m2,
+	}
+{}
+
+/// `a` is assumed to be normalized.
+/// See https://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToMatrix.
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<3, 3, T>::mat(quat<T> a) {
+	a = a * static_cast<T>(1.41421356237);
+
+	const T xx = a.x * a.x;
+	const T xy = a.x * a.y;
+	const T xz = a.x * a.z;
+	const T xw = a.x * a.w;
+	const T yy = a.y * a.y;
+	const T yz = a.y * a.z;
+	const T yw = a.y * a.w;
+	const T zz = a.z * a.z;
+	const T zw = a.z * a.w;
+
+	m[0] = {1 - yy - zz, xy - zw,     xz + yw    };
+	m[1] = {xy + zw,     1 - xx - zz, yz - xw    };
+	m[2] = {xz - yw,     yz + xw,     1 - xx - yy};
+}
+
+template<typename T>
+template<typename U>
+LYAH_CONSTEXPR lyah::mat<3, 3, T>::mat(mat<3, 3, U> a) :
+	m{
+		vec<3, T>(a[0]),
+		vec<3, T>(a[1]),
+		vec<3, T>(a[2]),
+	}
+{}
+
+template<typename T>
+LYAH_CONSTEXPR const lyah::vec<3, T>& lyah::mat<3, 3, T>::operator[](std::size_t index) const {
+	LYAH_ASSERT(index < 3);
+
+	return m[index];
+}
+
+template<typename T>
+lyah::vec<3, T>& lyah::mat<3, 3, T>::operator[](std::size_t index) {
+	LYAH_ASSERT(index < 3);
+
+	return m[index];
+}
+
 namespace lyah {
 	template<typename T>
 	LYAH_CONSTEXPR mat<3, 3, T> operator*(mat<3, 3, T> a, mat<3, 3, T> b) {

@@ -7,16 +7,16 @@
 
 #include "lyah/adapter/base.hpp"
 
-#include "constants.hpp"
+#include "lyah/vec/vec.hpp"
+#include "lyah/quat/quat.hpp"
+#include "lyah/mat/mat.hpp"
 
-#include "vec/vec.hpp"
-#include "quat/quat.hpp"
-#include "mat/mat.hpp"
+#include "lyah/apply.ipp"
+#include "lyah/common.ipp"
+#include "lyah/constants.hpp"
+#include "lyah/exponential.ipp"
+#include "lyah/geometric.ipp"
+#include "lyah/rounding.ipp"
+#include "lyah/trigonometric.ipp"
 
-#include "aliases.hpp"
-
-#include "common.ipp"
-#include "exponential.ipp"
-#include "geometric.ipp"
-#include "rounding.ipp"
-#include "trigonometric.ipp"
+#include "lyah/aliases.hpp"
