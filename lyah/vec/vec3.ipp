@@ -81,9 +81,4 @@ namespace lyah {
 	vec<3, T> operator*(vec<3, T> a, quat<T> b) {
 		return a *= b;
 	}
-
-	template<typename T>
-	T sum(vec<3, T> a) {
-		return a.x + a.y + a.z;
-	}
 }

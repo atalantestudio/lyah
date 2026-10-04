@@ -4,41 +4,81 @@
 #pragma once
 
 namespace lyah {
-	/// Returns the absolute value of `x`.
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR std::float_t LYAH_CALL abs(std::float_t x);
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR std::double_t LYAH_CALL abs(std::double_t x);
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR std::int32_t LYAH_CALL abs(std::int32_t x);
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR std::int64_t LYAH_CALL abs(std::int64_t x);
-
-	/// Returns the absolute value of `x`.
-	template<std::size_t C, typename T, typename = std::enable_if<std::is_floating_point<T>::value || std::is_signed<T>::value>::type>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL abs(vec<C, T> x);
-
 	/// Returns `x` * `y` + `z`.
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 std::float_t LYAH_CALL fma(std::float_t x, std::float_t y, std::float_t z);
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 std::double_t LYAH_CALL fma(std::double_t x, std::double_t y, std::double_t z);
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<2, std::float_t> LYAH_CALL fma(vec<2, std::float_t> x, vec<2, std::float_t> y, vec<2, std::float_t> z);
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<2, std::double_t> LYAH_CALL fma(vec<2, std::double_t> x, vec<2, std::double_t> y, vec<2, std::double_t> z);
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<3, std::float_t> LYAH_CALL fma(vec<3, std::float_t> x, vec<3, std::float_t> y, vec<3, std::float_t> z);
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<3, std::double_t> LYAH_CALL fma(vec<3, std::double_t> x, vec<3, std::double_t> y, vec<3, std::double_t> z);
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<4, std::float_t> LYAH_CALL fma(vec<4, std::float_t> x, vec<4, std::float_t> y, vec<4, std::float_t> z);
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<4, std::double_t> LYAH_CALL fma(vec<4, std::double_t> x, vec<4, std::double_t> y, vec<4, std::double_t> z);
+
+	/// Returns `x` * `y` + `z` component-wise.
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<2, T> LYAH_CALL fma(vec<2, T> x, vec<2, T> y, vec<2, T> z);
+
+	/// Returns `x` * `y` + `z` component-wise.
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<3, T> LYAH_CALL fma(vec<3, T> x, vec<3, T> y, vec<3, T> z);
+
+	/// Returns `x` * `y` + `z` component-wise.
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP23 vec<4, T> LYAH_CALL fma(vec<4, T> x, vec<4, T> y, vec<4, T> z);
+
+	/// Returns the component-wise sum of `x`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL sum(vec<2, T> x);
+
+	/// Returns the component-wise sum of `x`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL sum(vec<3, T> x);
+
+	/// Returns the component-wise sum of `x`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL sum(vec<4, T> x);
+
+	/// Returns the absolute value of `x`.
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value || std::is_signed<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL abs(T x);
+
+	/// Returns the absolute value of `x` component-wise.
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value || std::is_signed<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<2, T> LYAH_CALL abs(vec<2, T> x);
+
+	/// Returns the absolute value of `x` component-wise.
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value || std::is_signed<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<3, T> LYAH_CALL abs(vec<3, T> x);
+
+	/// Returns the absolute value of `x` component-wise.
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value || std::is_signed<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<4, T> LYAH_CALL abs(vec<4, T> x);
 
 	/// Returns the minimum value between `x` and `y`.
 	template<typename T>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL min(T x, T y);
 
 	/// Returns the component-wise minimum value between `x` and `y`.
-	template<std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL min(vec<C, T> x, vec<C, T> y);
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<2, T> LYAH_CALL min(vec<2, T> x, vec<2, T> y);
+
+	/// Returns the component-wise minimum value between `x` and `y`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<3, T> LYAH_CALL min(vec<3, T> x, vec<3, T> y);
+
+	/// Returns the component-wise minimum value between `x` and `y`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<4, T> LYAH_CALL min(vec<4, T> x, vec<4, T> y);
 
 	/// Returns the maximum value between `x` and `y`.
 	template<typename T>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL max(T x, T y);
 
 	/// Returns the component-wise maximum value between `x` and `y`.
-	template<std::size_t C, typename T>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL max(vec<C, T> x, vec<C, T> y);
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<2, T> LYAH_CALL max(vec<2, T> x, vec<2, T> y);
+
+	/// Returns the component-wise maximum value between `x` and `y`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<3, T> LYAH_CALL max(vec<3, T> x, vec<3, T> y);
+
+	/// Returns the component-wise maximum value between `x` and `y`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<4, T> LYAH_CALL max(vec<4, T> x, vec<4, T> y);
 
 	/// Returns `x` clamped between `min` and `max`.
 	/// `max` must be >= `min`.

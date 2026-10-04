@@ -59,9 +59,4 @@ namespace lyah {
 
 		return b;
 	}
-
-	template<typename T>
-	LYAH_CONSTEXPR T sum(vec<2, T> a) {
-		return a.x + a.y;
-	}
 }
