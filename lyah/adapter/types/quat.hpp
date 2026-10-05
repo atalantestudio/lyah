@@ -4,65 +4,71 @@
 #pragma once
 
 namespace lyah {
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL identity();
+
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 quat<T> LYAH_CALL axisAngle(vec<3, T> axis, T angle);
+
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR bool LYAH_CALL operator==(quat<T> a, quat<T> b);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR bool LYAH_CALL operator!=(quat<T> a, quat<T> b);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL operator+(quat<T> a);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL operator-(quat<T> a);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL operator+(quat<T> a, quat<T> b);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_INLINE quat<T>& LYAH_CALL operator+=(quat<T>& a, quat<T> b);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL operator-(quat<T> a, quat<T> b);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_INLINE quat<T>& LYAH_CALL operator-=(quat<T>& a, quat<T> b);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL operator*(quat<T> a, T b);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL operator*(T a, quat<T> b);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_INLINE quat<T>& LYAH_CALL operator*=(quat<T>& a, T b);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL operator*(quat<T> a, quat<T> b);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_INLINE quat<T>& LYAH_CALL operator*=(quat<T>& a, quat<T> b);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL operator/(quat<T> a, T b);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL operator/(T a, quat<T> b);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_INLINE quat<T>& LYAH_CALL operator/=(quat<T>& a, T b);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL operator/(quat<T> a, quat<T> b);
 
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_INLINE quat<T>& LYAH_CALL operator/=(quat<T>& a, quat<T> b);
 
 	/// Returns the conjugate of `a`.
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL conjugate(quat<T> a);
 
 	/// Returns the inverse of `a`.
-	template<typename T>
+	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL inverse(quat<T> a);
 }

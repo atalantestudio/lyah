@@ -7,20 +7,14 @@
 
 template<typename T>
 struct lyah::mat<3, 3, T> {
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static mat<3, 3, T> LYAH_CALL identity();
-
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static mat<3, 3, T> LYAH_CALL translation(vec<2, T> a);
-
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 static mat<3, 3, T> LYAH_CALL rotation(T a);
-
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static mat<3, 3, T> LYAH_CALL scaling(vec<2, T> a);
-
 	LYAH_INLINE LYAH_CONSTEXPR mat();
 
 	LYAH_INLINE LYAH_CONSTEXPR mat(T m00, T m01, T m02, T m10, T m11, T m12, T m20, T m21, T m22);
 
 	LYAH_INLINE LYAH_CONSTEXPR mat(vec<3, T> m0, vec<3, T> m1, vec<3, T> m2);
 
+	/// Constructs a 4x4 matrix from `a`.
+	/// `a` is assumed to be normalized.
 	LYAH_INLINE LYAH_CONSTEXPR mat(quat<T> a);
 
 	template<typename U>

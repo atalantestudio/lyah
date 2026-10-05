@@ -7,10 +7,6 @@
 
 template<typename T>
 struct lyah::mat<2, 2, T> {
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static mat<2, 2, T> LYAH_CALL identity();
-
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 static mat<2, 2, T> LYAH_CALL rotation(T a);
-
 	LYAH_INLINE LYAH_CONSTEXPR mat();
 
 	LYAH_INLINE LYAH_CONSTEXPR mat(T m00, T m01, T m10, T m11);
