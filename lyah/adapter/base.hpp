@@ -17,12 +17,10 @@ namespace lyah {
 	struct quat;
 }
 
-#include "lyah/adapter/types/apply.hpp"
 #include "lyah/adapter/types/vec.hpp"
 #include "lyah/adapter/types/quat.hpp"
 #include "lyah/adapter/types/mat.hpp"
 
-#include "lyah/adapter/apply.hpp"
 #include "lyah/adapter/common.hpp"
 #include "lyah/adapter/constants.hpp"
 #include "lyah/adapter/exponential.hpp"
