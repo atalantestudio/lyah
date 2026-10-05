@@ -31,6 +31,11 @@ LYAH_CONSTEXPR_CPP23 lyah::vec<C, T> lyah::ceil(vec<C, T> x) {
 	return apply<C, T>::modifier(x, ceil);
 }
 
+template<typename T, typename>
+LYAH_CONSTEXPR T ceil(T x, T y) {
+	return (x + y - 1) & ~(y - 1);
+}
+
 template<>
 LYAH_INLINE LYAH_CONSTEXPR_CPP23 std::float_t lyah::round(std::float_t x) {
 	return std::roundf(x);
