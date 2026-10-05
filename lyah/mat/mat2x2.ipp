@@ -46,7 +46,7 @@ lyah::vec<2, T>& lyah::mat<2, 2, T>::operator[](std::size_t index) {
 }
 
 namespace lyah {
-	template<typename T, typename>
+	template<typename T>
 	LYAH_CONSTEXPR mat<2, 2, T> operator*(mat<2, 2, T> a, mat<2, 2, T> b) {
 		return {
 			a[0][0] * b[0][0] + a[0][1] * b[1][0], a[0][0] * b[0][1] + a[0][1] * b[1][1],
@@ -54,12 +54,12 @@ namespace lyah {
 		};
 	}
 
-	template<typename T, typename>
+	template<typename T>
 	LYAH_CONSTEXPR T determinant(mat<2, 2, T> a) {
 		return a[0][0] * a[1][1] - a[0][1] * a[1][0];
 	}
 
-	template<typename T, typename>
+	template<typename T>
 	LYAH_CONSTEXPR mat<2, 2, T> adjugate(mat<2, 2, T> a) {
 		return {
 			 a[1][1], -a[0][1],
@@ -67,7 +67,7 @@ namespace lyah {
 		};
 	}
 
-	template<typename T, typename>
+	template<typename T>
 	LYAH_CONSTEXPR mat<2, 2, T> transpose(mat<2, 2, T> a) {
 		T t;
 

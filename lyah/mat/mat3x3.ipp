@@ -70,7 +70,7 @@ lyah::vec<3, T>& lyah::mat<3, 3, T>::operator[](std::size_t index) {
 }
 
 namespace lyah {
-	template<typename T, typename>
+	template<typename T>
 	LYAH_CONSTEXPR mat<3, 3, T> operator*(mat<3, 3, T> a, mat<3, 3, T> b) {
 		// TODO: Benchmark.
 		/*const vec<3, T> a0 = a[0];
@@ -127,12 +127,12 @@ namespace lyah {
 		return a;
 	}
 
-	template<typename T, typename>
+	template<typename T>
 	LYAH_CONSTEXPR T determinant(mat<3, 3, T> a) {
 		return dot(a[0], cross(a[1], a[2]));
 	}
 
-	template<typename T, typename>
+	template<typename T>
 	LYAH_CONSTEXPR mat<3, 3, T> adjugate(mat<3, 3, T> a) {
 		return {
 			  a[1][1] * a[2][2] - a[2][1] * a[1][2],  -(a[0][1] * a[2][2] - a[2][1] * a[0][2]),   a[0][1] * a[1][2] - a[1][1] * a[0][2],
@@ -141,7 +141,7 @@ namespace lyah {
 		};
 	}
 
-	template<typename T, typename>
+	template<typename T>
 	LYAH_CONSTEXPR mat<3, 3, T> transpose(mat<3, 3, T> a) {
 		T t;
 
