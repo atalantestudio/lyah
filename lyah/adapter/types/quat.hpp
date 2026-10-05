@@ -5,9 +5,6 @@
 
 namespace lyah {
 	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL identity();
-
-	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 quat<T> LYAH_CALL axisAngle(vec<3, T> axis, T angle);
 
 	template<typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>

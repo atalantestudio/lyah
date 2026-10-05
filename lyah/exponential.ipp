@@ -23,12 +23,12 @@ LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::double_t lyah::pow(std::double_t x, std::d
 
 template<std::size_t C, typename T, typename>
 LYAH_CONSTEXPR_CPP26 lyah::vec<C, T> lyah::pow(vec<C, T> x, T y) {
-	return apply<C, T>::modifier(x, y, pow);
+	return apply<vec<C, T>>::modifier(x, y, pow);
 }
 
 template<std::size_t C, typename T, typename>
 LYAH_CONSTEXPR_CPP26 lyah::vec<C, T> lyah::pow(vec<C, T> x, lyah::vec<C, T> y) {
-	return apply<C, T>::modifier(x, y, pow);
+	return apply<vec<C, T>>::modifier(x, y, pow);
 }
 
 template<>
@@ -43,5 +43,5 @@ LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::double_t lyah::sqrt(std::double_t x) {
 
 template<std::size_t C, typename T, typename>
 LYAH_CONSTEXPR_CPP26 lyah::vec<C, T> lyah::sqrt(vec<C, T> x) {
-	return apply<C, T>::modifier(x, sqrt);
+	return apply<vec<C, T>>::modifier(x, sqrt);
 }

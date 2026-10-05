@@ -33,7 +33,7 @@ LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::double_t lyah::sin(std::double_t x) {
 
 template<std::size_t C, typename T, typename>
 LYAH_CONSTEXPR_CPP26 lyah::vec<C, T> lyah::sin(vec<C, T> x) {
-	return apply<C, T>::modifier(x, sin);
+	return apply<vec<C, T>>::modifier(x, sin);
 }
 
 template<>
@@ -48,7 +48,7 @@ LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::double_t lyah::cos(std::double_t x) {
 
 template<std::size_t C, typename T, typename>
 LYAH_CONSTEXPR_CPP26 lyah::vec<C, T> lyah::cos(vec<C, T> x) {
-	return apply<C, T>::modifier(x, cos);
+	return apply<vec<C, T>>::modifier(x, cos);
 }
 
 template<>
@@ -63,7 +63,7 @@ LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::double_t lyah::tan(std::double_t x) {
 
 template<std::size_t C, typename T, typename>
 LYAH_CONSTEXPR_CPP26 lyah::vec<C, T> lyah::tan(vec<C, T> x) {
-	return apply<C, T>::modifier(x, tan);
+	return apply<vec<C, T>>::modifier(x, tan);
 }
 
 template<>
@@ -78,7 +78,7 @@ LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::double_t lyah::asin(std::double_t x) {
 
 template<std::size_t C, typename T, typename>
 LYAH_CONSTEXPR_CPP26 lyah::vec<C, T> lyah::asin(vec<C, T> x) {
-	return apply<C, T>::modifier(x, asin);
+	return apply<vec<C, T>>::modifier(x, asin);
 }
 
 template<>
@@ -93,7 +93,7 @@ LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::double_t lyah::acos(std::double_t x) {
 
 template<std::size_t C, typename T, typename>
 LYAH_CONSTEXPR_CPP26 lyah::vec<C, T> lyah::acos(vec<C, T> x) {
-	return apply<C, T>::modifier(x, acos);
+	return apply<vec<C, T>>::modifier(x, acos);
 }
 
 template<>
@@ -108,5 +108,5 @@ LYAH_INLINE LYAH_CONSTEXPR_CPP26 std::double_t lyah::atan(std::double_t x) {
 
 template<std::size_t C, typename T, typename>
 LYAH_CONSTEXPR_CPP26 lyah::vec<C, T> lyah::atan(vec<C, T> x) {
-	return apply<C, T>::modifier(x, atan);
+	return apply<vec<C, T>>::modifier(x, atan);
 }

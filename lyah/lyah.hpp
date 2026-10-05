@@ -16,6 +16,7 @@
 #include "lyah/constants.ipp"
 #include "lyah/exponential.ipp"
 #include "lyah/geometric.ipp"
+#include "lyah/identity.ipp"
 #include "lyah/projection.ipp"
 #include "lyah/rounding.ipp"
 #include "lyah/transformation.ipp"

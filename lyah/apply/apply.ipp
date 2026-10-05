@@ -2,7 +2,7 @@
 // Distributed under the MIT License.
 
 template<typename T>
-lyah::vec<2, T> lyah::apply<2, T>::modifier(vec<2, T> x, T (*modifier)(T)) {
+lyah::vec<2, T> lyah::apply<lyah::vec<2, T>>::modifier(vec<2, T> x, T (*modifier)(T)) {
 	x.x = modifier(x.x);
 	x.y = modifier(x.y);
 
@@ -10,7 +10,7 @@ lyah::vec<2, T> lyah::apply<2, T>::modifier(vec<2, T> x, T (*modifier)(T)) {
 }
 
 template<typename T>
-lyah::vec<2, T> lyah::apply<2, T>::modifier(vec<2, T> x, T y, T (*modifier)(T, T)) {
+lyah::vec<2, T> lyah::apply<lyah::vec<2, T>>::modifier(vec<2, T> x, T y, T (*modifier)(T, T)) {
 	x.x = modifier(x.x, y);
 	x.y = modifier(x.y, y);
 
@@ -18,7 +18,7 @@ lyah::vec<2, T> lyah::apply<2, T>::modifier(vec<2, T> x, T y, T (*modifier)(T, T
 }
 
 template<typename T>
-lyah::vec<2, T> lyah::apply<2, T>::modifier(vec<2, T> x, vec<2, T> y, T (*modifier)(T, T)) {
+lyah::vec<2, T> lyah::apply<lyah::vec<2, T>>::modifier(vec<2, T> x, vec<2, T> y, T (*modifier)(T, T)) {
 	x.x = modifier(x.x, y.x);
 	x.y = modifier(x.y, y.y);
 
@@ -26,7 +26,7 @@ lyah::vec<2, T> lyah::apply<2, T>::modifier(vec<2, T> x, vec<2, T> y, T (*modifi
 }
 
 template<typename T>
-lyah::vec<3, T> lyah::apply<3, T>::modifier(vec<3, T> x, T (*modifier)(T)) {
+lyah::vec<3, T> lyah::apply<lyah::vec<3, T>>::modifier(vec<3, T> x, T (*modifier)(T)) {
 	x.x = modifier(x.x);
 	x.y = modifier(x.y);
 	x.z = modifier(x.z);
@@ -35,7 +35,7 @@ lyah::vec<3, T> lyah::apply<3, T>::modifier(vec<3, T> x, T (*modifier)(T)) {
 }
 
 template<typename T>
-lyah::vec<3, T> lyah::apply<3, T>::modifier(vec<3, T> x, T y, T (*modifier)(T, T)) {
+lyah::vec<3, T> lyah::apply<lyah::vec<3, T>>::modifier(vec<3, T> x, T y, T (*modifier)(T, T)) {
 	x.x = modifier(x.x, y);
 	x.y = modifier(x.y, y);
 	x.z = modifier(x.z, y);
@@ -44,7 +44,7 @@ lyah::vec<3, T> lyah::apply<3, T>::modifier(vec<3, T> x, T y, T (*modifier)(T, T
 }
 
 template<typename T>
-lyah::vec<3, T> lyah::apply<3, T>::modifier(vec<3, T> x, vec<3, T> y, T (*modifier)(T, T)) {
+lyah::vec<3, T> lyah::apply<lyah::vec<3, T>>::modifier(vec<3, T> x, vec<3, T> y, T (*modifier)(T, T)) {
 	x.x = modifier(x.x, y.x);
 	x.y = modifier(x.y, y.y);
 	x.z = modifier(x.z, y.z);
@@ -53,7 +53,7 @@ lyah::vec<3, T> lyah::apply<3, T>::modifier(vec<3, T> x, vec<3, T> y, T (*modifi
 }
 
 template<typename T>
-lyah::vec<4, T> lyah::apply<4, T>::modifier(vec<4, T> x, T (*modifier)(T)) {
+lyah::vec<4, T> lyah::apply<lyah::vec<4, T>>::modifier(vec<4, T> x, T (*modifier)(T)) {
 	x.x = modifier(x.x);
 	x.y = modifier(x.y);
 	x.z = modifier(x.z);
@@ -63,7 +63,7 @@ lyah::vec<4, T> lyah::apply<4, T>::modifier(vec<4, T> x, T (*modifier)(T)) {
 }
 
 template<typename T>
-lyah::vec<4, T> lyah::apply<4, T>::modifier(vec<4, T> x, T y, T (*modifier)(T, T)) {
+lyah::vec<4, T> lyah::apply<lyah::vec<4, T>>::modifier(vec<4, T> x, T y, T (*modifier)(T, T)) {
 	x.x = modifier(x.x, y);
 	x.y = modifier(x.y, y);
 	x.z = modifier(x.z, y);
@@ -73,11 +73,43 @@ lyah::vec<4, T> lyah::apply<4, T>::modifier(vec<4, T> x, T y, T (*modifier)(T, T
 }
 
 template<typename T>
-lyah::vec<4, T> lyah::apply<4, T>::modifier(vec<4, T> x, vec<4, T> y, T (*modifier)(T, T)) {
+lyah::vec<4, T> lyah::apply<lyah::vec<4, T>>::modifier(vec<4, T> x, vec<4, T> y, T (*modifier)(T, T)) {
 	x.x = modifier(x.x, y.x);
 	x.y = modifier(x.y, y.y);
 	x.z = modifier(x.z, y.z);
 	x.w = modifier(x.w, y.w);
 
 	return x;
+}
+
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<2, 2, T> lyah::apply<lyah::mat<2, 2, T>>::identity() {
+	return {
+		1, 0,
+		0, 1,
+	};
+}
+
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<3, 3, T> lyah::apply<lyah::mat<3, 3, T>>::identity() {
+	return {
+		1, 0, 0,
+		0, 1, 0,
+		0, 0, 1,
+	};
+}
+
+template<typename T>
+LYAH_CONSTEXPR lyah::mat<4, 4, T> lyah::apply<lyah::mat<4, 4, T>>::identity() {
+	return {
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		0, 0, 0, 1,
+	};
+}
+
+template<typename T>
+LYAH_CONSTEXPR lyah::quat<T> lyah::apply<lyah::quat<T>>::identity() {
+	return {1, 0, 0, 0};
 }
