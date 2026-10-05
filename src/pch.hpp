@@ -17,6 +17,7 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtx/compatibility.hpp>
+#include <glm/gtx/matrix_operation.hpp>
 #include <glm/gtx/norm.hpp>
 #include <glm/gtx/perpendicular.hpp>
 

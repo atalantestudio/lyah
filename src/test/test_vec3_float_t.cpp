@@ -11,7 +11,7 @@ const char* TestGroup<lyah::vec<3, std::float_t>>::getGroupName() {
 }
 
 template<>
-void TestGroup<lyah::vec<3, std::float_t>>::runTests(std::mt19937& engine) {
+void TestGroup<lyah::vec<3, std::float_t>>::runTestsInternal(std::mt19937& engine) {
 	typedef std::float_t S;
 	typedef lyah::vec<3, S> V;
 	typedef lyah::mat<3, 3, S> M;
@@ -37,7 +37,7 @@ void TestGroup<lyah::vec<3, std::float_t>>::runTests(std::mt19937& engine) {
 	runTest<V, V, V>("Multiplication (vector-vector)", lyah::operator*, glm_adapter::operator*, vector, vector);
 	runTest<V, V, M>("Multiplication (vector-matrix)", lyah::operator*, glm_adapter::operator*, vector, matrix);
 
-	// TODO: Add normalized generators.
+	// TODO: Add normalized quat generator.
 	//runTest<V, V, Q>("Multiplication (vector-quaternion)", lyah::operator*, glm_adapter::operator*, vector, quaternion);
 
 	runTest<V, V, S>("Division (vector-scalar)", lyah::operator/, glm_adapter::operator/, vector, scalar);

@@ -11,7 +11,7 @@ const char* TestGroup<std::double_t>::getGroupName() {
 }
 
 template<>
-void TestGroup<std::double_t>::runTests(std::mt19937& engine) {
+void TestGroup<std::double_t>::runTestsInternal(std::mt19937& engine) {
 	typedef std::double_t S;
 
 	Generator<S> scalar(engine, -1.0, 1.0);

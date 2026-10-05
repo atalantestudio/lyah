@@ -11,16 +11,19 @@ const char* TestGroup<lyah::quat<std::float_t>>::getGroupName() {
 }
 
 template<>
-void TestGroup<lyah::quat<std::float_t>>::runTests(std::mt19937& engine) {
+void TestGroup<lyah::quat<std::float_t>>::runTestsInternal(std::mt19937& engine) {
 	typedef std::float_t S;
+	typedef lyah::vec<3, S> V;
 	typedef lyah::quat<S> Q;
 
 	Generator<S> scalar(engine, -1.0f, 1.0f);
-	Generator<lyah::vec<3, S>> vector(engine, -1.0f, 1.0f);
+	Generator<V> vector(engine, -1.0f, 1.0f);
 	Generator<Q> quaternion(engine, -1.0f, 1.0f);
 
-	runTest("Identity", Q::identity, glm_adapter::identity);
-	runTest("Axis-angle", Q::axisAngle, glm_adapter::axisAngle, vector, scalar);
+	runTest<Q>("Identity", lyah::identity, glm_adapter::identity);
+
+	// TODO: Add normalized vec3 generator.
+	runTest<Q>("Axis-angle", lyah::axisAngle, glm_adapter::axisAngle, vector, scalar);
 
 	// Comparison
 	runTest<bool, Q, Q>("Equality", lyah::operator==, glm_adapter::operator==, quaternion, quaternion);
@@ -36,10 +39,12 @@ void TestGroup<lyah::quat<std::float_t>>::runTests(std::mt19937& engine) {
 	runTest<Q, Q, Q>("Multiplication (quaternion-quaternion)", lyah::operator*, glm_adapter::operator*, quaternion, quaternion);
 	runTest<Q>("Division (quaternion-scalar)", lyah::operator/, glm_adapter::operator/, quaternion, scalar);
 
-	// Geometric
+	// Quaternion
 	runTest<Q>("Conjugate", lyah::conjugate, glm_adapter::conjugate, quaternion);
-	runTest<S>("Dot product", lyah::dot, glm_adapter::dot, quaternion, quaternion);
 	runTest<Q>("Inverse", lyah::inverse, glm_adapter::inverse, quaternion);
+
+	// Geometric
+	runTest<S>("Dot product", lyah::dot, glm_adapter::dot, quaternion, quaternion);
 	runTest<S>("Length", lyah::length, glm_adapter::length, quaternion);
 	runTest<S>("Squared length", lyah::lengthSquared, glm_adapter::lengthSquared, quaternion);
 	runTest<S>("Distance", lyah::distance, glm_adapter::distance, quaternion, quaternion);

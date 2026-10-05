@@ -49,9 +49,8 @@ class TestGroup : public TestCounter {
 				std::apply(logParameters<ParameterType...>, parameters);
 			}
 
-			std::cout << "    Result: " << result << '\n';
-			std::cout << "    Reference: " << referenceResult;
-			std::cout << "\033[0m\n";
+			std::cout << "    Result:\n      " << result << '\n';
+			std::cout << "    Reference:\n      " << referenceResult << "\033[0m\n";
 		}
 
 		static void logParameters() {}
@@ -66,9 +65,15 @@ class TestGroup : public TestCounter {
 		static const char* getGroupName();
 
 	public:
-		static void runTests(std::mt19937& engine);
+		inline static void runTests(std::mt19937& engine) {
+			runTestsInternal(engine);
+
+			std::cout << '\n';
+		}
 
 	protected:
+		static void runTestsInternal(std::mt19937& engine);
+
 		template<typename ReturnType, typename... ArgumentType>
 		inline static void runTest(const char* name, ReturnType (*function)(ArgumentType...), ReturnType (*referenceAdapter)(ArgumentType...), Generator<ArgumentType>&... generators) {
 			typedef std::tuple<ArgumentType...> TupleType;

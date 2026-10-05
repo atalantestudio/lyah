@@ -104,6 +104,7 @@ namespace glm_adapter {
 #include "glm_adapter/serialization.hpp"
 
 #include "glm_adapter/types/vec.hpp"
+#include "glm_adapter/types/mat.hpp"
 #include "glm_adapter/types/quat.hpp"
 
 #include "glm_adapter/common.hpp"

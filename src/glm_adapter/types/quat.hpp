@@ -8,7 +8,7 @@
 namespace glm_adapter {
 	template<typename T>
 	inline lyah::quat<T> identity() {
-		return glm2lyah(glm::qua<T>());
+		return glm2lyah(glm::identity<glm::qua<T>>());
 	}
 
 	template<typename T>

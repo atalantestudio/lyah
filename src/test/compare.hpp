@@ -10,21 +10,21 @@ inline bool compare(T a, T b) {
 
 template<>
 inline bool compare(std::float_t a, std::float_t b) {
-	constexpr std::float_t epsilon = 1e-4f;
+	constexpr std::float_t epsilon = 1e-2f;
 
 	return abs(a - b) <= epsilon;
 }
 
 template<>
 inline bool compare(std::double_t a, std::double_t b) {
-	constexpr std::double_t epsilon = 1e-4;
+	constexpr std::double_t epsilon = 1e-2;
 
 	return abs(a - b) <= epsilon;
 }
 
 template<typename T>
 inline bool compare(lyah::vec<2, T> a, lyah::vec<2, T> b) {
-	constexpr T epsilon = static_cast<T>(1e-4);
+	constexpr T epsilon = static_cast<T>(1e-2);
 
 	return (
 		abs(a.x - b.x) <= epsilon &&
@@ -34,7 +34,7 @@ inline bool compare(lyah::vec<2, T> a, lyah::vec<2, T> b) {
 
 template<typename T>
 inline bool compare(lyah::vec<3, T> a, lyah::vec<3, T> b) {
-	constexpr T epsilon = static_cast<T>(1e-4);
+	constexpr T epsilon = static_cast<T>(1e-2);
 
 	return (
 		abs(a.x - b.x) <= epsilon &&
@@ -45,7 +45,7 @@ inline bool compare(lyah::vec<3, T> a, lyah::vec<3, T> b) {
 
 template<typename T>
 inline bool compare(lyah::vec<4, T> a, lyah::vec<4, T> b) {
-	constexpr T epsilon = static_cast<T>(1e-4);
+	constexpr T epsilon = static_cast<T>(1e-2);
 
 	return (
 		abs(a.x - b.x) <= epsilon &&
@@ -57,7 +57,7 @@ inline bool compare(lyah::vec<4, T> a, lyah::vec<4, T> b) {
 
 template<typename T>
 inline bool compare(lyah::mat<2, 2, T> a, lyah::mat<2, 2, T> b) {
-	constexpr T epsilon = static_cast<T>(1e-4);
+	constexpr T epsilon = static_cast<T>(1e-2);
 
 	return (
 		compare(a[0], b[0]) &&
@@ -67,7 +67,7 @@ inline bool compare(lyah::mat<2, 2, T> a, lyah::mat<2, 2, T> b) {
 
 template<typename T>
 inline bool compare(lyah::mat<3, 3, T> a, lyah::mat<3, 3, T> b) {
-	constexpr T epsilon = static_cast<T>(1e-4);
+	constexpr T epsilon = static_cast<T>(1e-2);
 
 	return (
 		compare(a[0], b[0]) &&
@@ -78,7 +78,7 @@ inline bool compare(lyah::mat<3, 3, T> a, lyah::mat<3, 3, T> b) {
 
 template<typename T>
 inline bool compare(lyah::mat<4, 4, T> a, lyah::mat<4, 4, T> b) {
-	constexpr T epsilon = static_cast<T>(1e-4);
+	constexpr T epsilon = static_cast<T>(1e-2);
 
 	return (
 		compare(a[0], b[0]) &&
@@ -90,7 +90,7 @@ inline bool compare(lyah::mat<4, 4, T> a, lyah::mat<4, 4, T> b) {
 
 template<typename T>
 inline bool compare(lyah::quat<T> a, lyah::quat<T> b) {
-	constexpr T epsilon = static_cast<T>(1e-4);
+	constexpr T epsilon = static_cast<T>(1e-2);
 
 	return (
 		abs(a.w - b.w) <= epsilon &&

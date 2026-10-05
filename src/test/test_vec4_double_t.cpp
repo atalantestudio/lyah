@@ -11,7 +11,7 @@ const char* TestGroup<lyah::vec<4, std::double_t>>::getGroupName() {
 }
 
 template<>
-void TestGroup<lyah::vec<4, std::double_t>>::runTests(std::mt19937& engine) {
+void TestGroup<lyah::vec<4, std::double_t>>::runTestsInternal(std::mt19937& engine) {
 	typedef std::double_t S;
 	typedef lyah::vec<4, S> V;
 	typedef lyah::mat<4, 4, S> M;
