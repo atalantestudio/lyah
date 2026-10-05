@@ -13,7 +13,7 @@ LYAH_INLINE LYAH_CONSTEXPR_CPP23 std::double_t lyah::floor(std::double_t x) {
 
 template<std::size_t C, typename T, typename>
 LYAH_CONSTEXPR_CPP23 lyah::vec<C, T> lyah::floor(vec<C, T> x) {
-	return apply<C, T>::modifier(x, floor);
+	return apply<vec<C, T>>::modifier(x, floor);
 }
 
 template<>
@@ -28,7 +28,7 @@ LYAH_INLINE LYAH_CONSTEXPR_CPP23 std::double_t lyah::ceil(std::double_t x) {
 
 template<std::size_t C, typename T, typename>
 LYAH_CONSTEXPR_CPP23 lyah::vec<C, T> lyah::ceil(vec<C, T> x) {
-	return apply<C, T>::modifier(x, ceil);
+	return apply<vec<C, T>>::modifier(x, ceil);
 }
 
 template<typename T, typename>
@@ -48,5 +48,5 @@ LYAH_INLINE LYAH_CONSTEXPR_CPP23 std::double_t lyah::round(std::double_t x) {
 
 template<std::size_t C, typename T, typename>
 LYAH_CONSTEXPR_CPP23 lyah::vec<C, T> lyah::round(vec<C, T> x) {
-	return apply<C, T>::modifier(x, round);
+	return apply<vec<C, T>>::modifier(x, round);
 }

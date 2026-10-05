@@ -23,7 +23,7 @@ LYAH_CONSTEXPR T lyah::abs(T x) {
 
 template<std::size_t C, typename T, typename>
 LYAH_CONSTEXPR lyah::vec<C, T> lyah::abs(vec<C, T> x) {
-	return apply<C, T>::modifier(x, abs);
+	return apply<vec<C, T>>::modifier(x, abs);
 }
 
 template<typename T>
@@ -33,7 +33,7 @@ LYAH_CONSTEXPR T lyah::min(T x, T y) {
 
 template<std::size_t C, typename T>
 LYAH_CONSTEXPR lyah::vec<C, T> lyah::min(vec<C, T> x, vec<C, T> y) {
-	return apply<C, T>::modifier(x, y, min);
+	return apply<vec<C, T>>::modifier(x, y, min);
 }
 
 template<typename T>
@@ -43,7 +43,7 @@ LYAH_CONSTEXPR T lyah::max(T x, T y) {
 
 template<std::size_t C, typename T>
 LYAH_CONSTEXPR lyah::vec<C, T> lyah::max(vec<C, T> x, vec<C, T> y) {
-	return apply<C, T>::modifier(x, y, max);
+	return apply<vec<C, T>>::modifier(x, y, max);
 }
 
 template<typename T>

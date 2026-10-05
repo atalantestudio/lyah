@@ -1,17 +1,6 @@
 // Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
-namespace lyah {
-	template<typename T, typename>
-	LYAH_CONSTEXPR lyah::mat<3, 3, T> identity() {
-		return {
-			1, 0, 0,
-			0, 1, 0,
-			0, 0, 1,
-		};
-	}
-}
-
 template<typename T>
 LYAH_CONSTEXPR lyah::mat<3, 3, T>::mat() :
 	m{}

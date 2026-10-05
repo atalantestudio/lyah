@@ -5,9 +5,6 @@
 
 namespace lyah {
 	template<std::size_t M, std::size_t N, typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR mat<M, N, T> LYAH_CALL identity();
-
-	template<std::size_t M, std::size_t N, typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR bool LYAH_CALL operator==(mat<M, N, T> a, mat<M, N, T> b);
 
 	template<std::size_t M, std::size_t N, typename T, typename = std::enable_if<std::is_floating_point<T>::value>::type>
