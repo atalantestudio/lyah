@@ -7,10 +7,6 @@
 
 template<typename T>
 struct lyah::quat {
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static quat<T> LYAH_CALL identity();
-
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 static quat<T> LYAH_CALL axisAngle(vec<3, T> axis, T angle);
-
 	LYAH_INLINE LYAH_CONSTEXPR quat();
 
 	LYAH_INLINE LYAH_CONSTEXPR quat(T w, T x, T y, T z);

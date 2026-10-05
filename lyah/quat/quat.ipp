@@ -1,13 +1,13 @@
 // Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
-template<typename T>
-LYAH_CONSTEXPR lyah::quat<T> lyah::quat<T>::identity() {
+template<typename T, typename>
+LYAH_CONSTEXPR lyah::quat<T> lyah::identity() {
 	return {1, 0, 0, 0};
 }
 
-template<typename T>
-LYAH_CONSTEXPR_CPP26 lyah::quat<T> lyah::quat<T>::axisAngle(vec<3, T> axis, T angle) {
+template<typename T, typename>
+LYAH_CONSTEXPR_CPP26 lyah::quat<T> lyah::axisAngle(vec<3, T> axis, T angle) {
 	angle *= static_cast<T>(0.5);
 	axis *= sin<T>(angle);
 
@@ -53,22 +53,22 @@ T& lyah::quat<T>::operator[](std::size_t index) {
 	return static_cast<T*>(static_cast<void*>(this))[index];
 }
 
-template<typename T>
+template<typename T, typename>
 LYAH_CONSTEXPR bool lyah::operator==(quat<T> a, quat<T> b) {
 	return a.w == b.w && a.x == b.x && a.y == b.y && a.z == b.z;
 }
 
-template<typename T>
+template<typename T, typename>
 LYAH_CONSTEXPR bool lyah::operator!=(quat<T> a, quat<T> b) {
 	return a.w != b.w || a.x != b.x || a.y != b.y || a.z != b.z;
 }
 
-template<typename T>
+template<typename T, typename>
 LYAH_CONSTEXPR lyah::quat<T> lyah::operator+(quat<T> a) {
 	return a;
 }
 
-template<typename T>
+template<typename T, typename>
 LYAH_CONSTEXPR lyah::quat<T> lyah::operator-(quat<T> a) {
 	a.w = -a.w;
 	a.x = -a.x;
@@ -78,7 +78,7 @@ LYAH_CONSTEXPR lyah::quat<T> lyah::operator-(quat<T> a) {
 	return a;
 }
 
-template<typename T>
+template<typename T, typename>
 LYAH_CONSTEXPR lyah::quat<T> lyah::operator+(quat<T> a, quat<T> b) {
 	a.w += b.w;
 	a.x += b.x;
@@ -88,12 +88,12 @@ LYAH_CONSTEXPR lyah::quat<T> lyah::operator+(quat<T> a, quat<T> b) {
 	return a;
 }
 
-template<typename T>
+template<typename T, typename>
 lyah::quat<T>& lyah::operator+=(quat<T>& a, quat<T> b) {
 	return a = a + b;
 }
 
-template<typename T>
+template<typename T, typename>
 LYAH_CONSTEXPR lyah::quat<T> lyah::operator-(quat<T> a, quat<T> b) {
 	a.w -= b.w;
 	a.x -= b.x;
@@ -103,12 +103,12 @@ LYAH_CONSTEXPR lyah::quat<T> lyah::operator-(quat<T> a, quat<T> b) {
 	return a;
 }
 
-template<typename T>
+template<typename T, typename>
 lyah::quat<T>& lyah::operator-=(quat<T>& a, quat<T> b) {
 	return a = a - b;
 }
 
-template<typename T>
+template<typename T, typename>
 LYAH_CONSTEXPR lyah::quat<T> lyah::operator*(quat<T> a, T b) {
 	a.w *= b;
 	a.x *= b;
@@ -118,7 +118,7 @@ LYAH_CONSTEXPR lyah::quat<T> lyah::operator*(quat<T> a, T b) {
 	return a;
 }
 
-template<typename T>
+template<typename T, typename>
 LYAH_CONSTEXPR lyah::quat<T> lyah::operator*(T a, quat<T> b) {
 	b.w *= a;
 	b.x *= a;
@@ -128,12 +128,12 @@ LYAH_CONSTEXPR lyah::quat<T> lyah::operator*(T a, quat<T> b) {
 	return b;
 }
 
-template<typename T>
+template<typename T, typename>
 lyah::quat<T>& lyah::operator*=(quat<T>& a, T b) {
 	return a = a * b;
 }
 
-template<typename T>
+template<typename T, typename>
 LYAH_CONSTEXPR lyah::quat<T> lyah::operator*(quat<T> a, quat<T> b) {
 	return {
 		a.w * b.w - (a.x * b.x + a.y * b.y) - a.z * b.z,
@@ -143,37 +143,37 @@ LYAH_CONSTEXPR lyah::quat<T> lyah::operator*(quat<T> a, quat<T> b) {
 	};
 }
 
-template<typename T>
+template<typename T, typename>
 lyah::quat<T>& lyah::operator*=(quat<T>& a, quat<T> b) {
 	return a = a * b;
 }
 
-template<typename T>
+template<typename T, typename>
 LYAH_CONSTEXPR lyah::quat<T> lyah::operator/(quat<T> a, T b) {
 	return a * (static_cast<T>(1) / b);
 }
 
-template<typename T>
+template<typename T, typename>
 LYAH_CONSTEXPR lyah::quat<T> lyah::operator/(T a, quat<T> b) {
 	return a * inverse(b);
 }
 
-template<typename T>
+template<typename T, typename>
 lyah::quat<T>& lyah::operator/=(quat<T>& a, T b) {
 	return a = a / b;
 }
 
-template<typename T>
+template<typename T, typename>
 LYAH_CONSTEXPR lyah::quat<T> lyah::operator/(quat<T> a, quat<T> b) {
 	return a * inverse(b);
 }
 
-template<typename T>
+template<typename T, typename>
 lyah::quat<T>& lyah::operator/=(quat<T>& a, quat<T> b) {
 	return a = a / b;
 }
 
-template<typename T>
+template<typename T, typename>
 LYAH_CONSTEXPR lyah::quat<T> lyah::conjugate(quat<T> a) {
 	a.x = -a.x;
 	a.y = -a.y;
@@ -182,7 +182,7 @@ LYAH_CONSTEXPR lyah::quat<T> lyah::conjugate(quat<T> a) {
 	return a;
 }
 
-template<typename T>
+template<typename T, typename>
 LYAH_CONSTEXPR lyah::quat<T> lyah::inverse(quat<T> a) {
 	return conjugate(a) / dot(a, a);
 }

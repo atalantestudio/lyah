@@ -1,79 +1,16 @@
 // Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
-template<typename T>
-LYAH_CONSTEXPR lyah::mat<4, 4, T> lyah::mat<4, 4, T>::identity() {
-	return {
-		1, 0, 0, 0,
-		0, 1, 0, 0,
-		0, 0, 1, 0,
-		0, 0, 0, 1,
-	};
-}
-
-template<typename T>
-LYAH_CONSTEXPR lyah::mat<4, 4, T> lyah::mat<4, 4, T>::translation(vec<3, T> a) {
-	return {
-		1,   0,   0,   0,
-		0,   1,   0,   0,
-		0,   0,   1,   0,
-		a.x, a.y, a.z, 1,
-	};
-}
-
-/// `axis` is assumed to be normalized.
-/// `angle` is in radians.
-template<typename T>
-LYAH_CONSTEXPR_CPP26 lyah::mat<4, 4, T> lyah::mat<4, 4, T>::rotation(vec<3, T> axis, T angle) {
-	const T x = axis.x;
-	const T y = axis.y;
-	const T z = axis.z;
-	const T c = cos(angle);
-	const T s = sin(angle);
-	const T _1_c = 1 - c;
-
-	return {
-		x * x * _1_c + c,     x * y * _1_c + z * s, x * z * _1_c - y * s, 0,
-		x * y * _1_c - z * s, y * y * _1_c + c,     y * z * _1_c + x * s, 0,
-		x * z * _1_c + y * s, y * z * _1_c - x * s, z * z * _1_c + c,     0,
-		0,                    0,                    0,                    1,
-	};
-}
-
-template<typename T>
-LYAH_CONSTEXPR lyah::mat<4, 4, T> lyah::mat<4, 4, T>::scaling(vec<3, T> a) {
-	return {
-		a.x, 0,   0,   0,
-		0,   a.y, 0,   0,
-		0,   0,   a.z, 0,
-		0,   0,   0,   1,
-	};
-}
-
-/// Returns a left-handed matrix.
-template<typename T>
-LYAH_CONSTEXPR lyah::mat<4, 4, T> lyah::mat<4, 4, T>::orthographic(T left, T right, T bottom, T top, T near, T far) {
-	return {
-		 2 / (right - left),  0,                   0,                -(right + left) / (right - left),
-		 0,                   2 / (top - bottom),  0,                -(top + bottom) / (top - bottom),
-		 0,                   0,                   2 / (far - near), -(far + near) / (far - near),
-		 0,                   0,                   0,                 1,
-	};
-}
-
-/// Returns a left-handed matrix.
-template<typename T>
-LYAH_CONSTEXPR_CPP26 lyah::mat<4, 4, T> lyah::mat<4, 4, T>::lookAt(vec<3, T> eye, vec<3, T> target, vec<3, T> up) {
-	const vec<3, T> f = normalized(target - eye);
-	const vec<3, T> r = normalized(cross(up, f));
-	const vec<3, T> u = cross(f, r);
-
-	return {
-		 r.x,          u.x,          f.x,          0,
-		 r.y,          u.y,          f.y,          0,
-		 r.z,          u.z,          f.z,          0,
-		-dot(r, eye), -dot(u, eye), -dot(f, eye),  1,
-	};
+namespace lyah {
+	template<typename T, typename>
+	LYAH_CONSTEXPR lyah::mat<4, 4, T> identity() {
+		return {
+			1, 0, 0, 0,
+			0, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 0, 0, 1,
+		};
+	}
 }
 
 template<typename T>
@@ -112,9 +49,8 @@ LYAH_CONSTEXPR lyah::mat<4, 4, T>::mat(mat<4, 4, U> a) :
 	}
 {}
 
-/// `a` is assumed to be normalized.
-/// See https://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToMatrix
-/// and https://gist.github.com/pezcode/150eb97dd41b67b611d0de7bae273e98.
+// See https://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToMatrix
+// and https://gist.github.com/pezcode/150eb97dd41b67b611d0de7bae273e98.
 template<typename T>
 LYAH_CONSTEXPR_CPP23 lyah::mat<4, 4, T>::mat(quat<T> a) {
 	a = a * static_cast<T>(1.41421356237);
@@ -161,7 +97,7 @@ lyah::vec<4, T>& lyah::mat<4, 4, T>::operator[](std::size_t index) {
 }
 
 namespace lyah {
-	template<typename T>
+	template<typename T, typename>
 	LYAH_CONSTEXPR mat<4, 4, T> operator*(mat<4, 4, T> a, mat<4, 4, T> b) {
 		const vec<4, T> a0 = a[0];
 		const vec<4, T> a1 = a[1];
@@ -180,8 +116,8 @@ namespace lyah {
 		return a;
 	}
 
-	/// See https://stackoverflow.com/a/30006505/17136841.
-	template<typename T>
+	// See https://stackoverflow.com/a/30006505/17136841.
+	template<typename T, typename>
 	LYAH_CONSTEXPR T determinant(mat<4, 4, T> a) {
 		const mat<2, 2, T> aa = {
 			a[0][0], a[0][1],
@@ -206,7 +142,7 @@ namespace lyah {
 		return determinant(aa - ab * (adjugate(ad) * invDet) * ac) * det;
 	}
 
-	template<typename T>
+	template<typename T, typename>
 	LYAH_CONSTEXPR mat<4, 4, T> adjugate(mat<4, 4, T> a) {
 		const T a00 = a[0][0];
 		const T a01 = a[0][1];
@@ -252,7 +188,7 @@ namespace lyah {
 		};
 	}
 
-	template<typename T>
+	template<typename T, typename>
 	LYAH_CONSTEXPR mat<4, 4, T> transpose(mat<4, 4, T> a) {
 		T t;
 
