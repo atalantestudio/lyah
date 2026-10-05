@@ -7,11 +7,11 @@
 
 #include "lyah/adapter/base.hpp"
 
+#include "lyah/apply/apply.hpp"
 #include "lyah/vec/vec.hpp"
 #include "lyah/mat/mat.hpp"
 #include "lyah/quat/quat.hpp"
 
-#include "lyah/apply.ipp"
 #include "lyah/common.ipp"
 #include "lyah/constants.ipp"
 #include "lyah/exponential.ipp"
