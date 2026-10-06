@@ -6,13 +6,13 @@
 #include "test/TestGroup.hpp"
 
 template<>
-const char* TestGroup<std::int32_t>::getGroupName() {
-	return "int32_t";
+const char* TestGroup<std::int64_t>::getGroupName() {
+	return "int64_t";
 }
 
 template<>
-void TestGroup<std::int32_t>::runTestsInternal(std::mt19937& engine) {
-	typedef std::int32_t S;
+void TestGroup<std::int64_t>::runTestsInternal(std::mt19937& engine) {
+	typedef std::int64_t S;
 
 	Generator<S> scalar(engine, -64, 64);
 	Generator<S> positiveScalar(engine, 0, 128);

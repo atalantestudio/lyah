@@ -14,8 +14,10 @@ template<>
 void TestGroup<std::double_t>::runTestsInternal(std::mt19937& engine) {
 	typedef std::double_t S;
 
-	Generator<S> scalar(engine, -1.0, 1.0);
-	Generator<S> positiveScalar(engine, 0.0, 2.0);
+	Generator<S> scalar(engine, -64.0, 64.0);
+	Generator<S> exponentScalar(engine, 0.0, 8.0);
+	Generator<S> ndcScalar(engine, -1.0, 1.0);
+	Generator<S> positiveScalar(engine, 0.0, 128.0);
 
 	// Common
 	runTest<S>("Absolute value", lyah::abs, glm_adapter::abs, scalar);
@@ -32,7 +34,7 @@ void TestGroup<std::double_t>::runTestsInternal(std::mt19937& engine) {
 
 	// Exponential
 	runTest<S>("Base 2 logarithm", lyah::log2, glm_adapter::log2, positiveScalar);
-	runTest<S>("Power", lyah::pow, glm_adapter::pow, positiveScalar, scalar);
+	runTest<S>("Power", lyah::pow, glm_adapter::pow, positiveScalar, exponentScalar);
 	runTest<S>("Square root", lyah::sqrt, glm_adapter::sqrt, positiveScalar);
 
 	// Rounding
@@ -46,7 +48,7 @@ void TestGroup<std::double_t>::runTestsInternal(std::mt19937& engine) {
 	runTest<S>("Sine", lyah::sin, glm_adapter::sin, scalar);
 	runTest<S>("Cosine", lyah::cos, glm_adapter::cos, scalar);
 	runTest<S>("Tangent", lyah::tan, glm_adapter::tan, scalar);
-	runTest<S>("Arcsine", lyah::asin, glm_adapter::asin, scalar);
-	runTest<S>("Arccosine", lyah::acos, glm_adapter::acos, scalar);
-	runTest<S>("Arctangent", lyah::atan, glm_adapter::atan, scalar);
+	runTest<S>("Arcsine", lyah::asin, glm_adapter::asin, ndcScalar);
+	runTest<S>("Arccosine", lyah::acos, glm_adapter::acos, ndcScalar);
+	runTest<S>("Arctangent", lyah::atan, glm_adapter::atan, ndcScalar);
 }
