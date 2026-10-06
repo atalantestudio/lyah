@@ -13,7 +13,7 @@ namespace lyah {
 	template<std::size_t C, typename T>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL operator+(vec<C, T> a);
 
-	template<std::size_t C, typename T>
+	template<std::size_t C, typename T, typename = std::enable_if<!std::is_unsigned<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL operator-(vec<C, T> a);
 
 	template<std::size_t C, typename T>
