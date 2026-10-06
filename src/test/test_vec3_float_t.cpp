@@ -21,26 +21,23 @@ void TestGroup<lyah::vec<3, std::float_t>>::runTestsInternal(std::mt19937& engin
 	Generator<V> vector(engine, -1.0f, 1.0f);
 	Generator<V> positiveVector(engine, 0.0f, 2.0f);
 	Generator<M> matrix(engine, -1.0f, 1.0f);
-	Generator<Q> quaternion(engine, -1.0f, 1.0f);
+	NormalizedGenerator<Q> normalizedQuaternion(engine, -64.0f, 64.0f);
 
 	// Comparison
-	runTest<bool, V, V>("Equality", lyah::operator==, glm_adapter::operator==, vector, vector);
-	runTest<bool, V, V>("Inequality", lyah::operator!=, glm_adapter::operator!=, vector, vector);
+	runTest<bool>("Equality", lyah::operator==, glm_adapter::operator==, vector, vector);
+	runTest<bool>("Inequality", lyah::operator!=, glm_adapter::operator!=, vector, vector);
 
 	// Arithmetic
 	runTest<V>("Unary plus", lyah::operator+, glm_adapter::operator+, vector);
 	runTest<V>("Unary minus", lyah::operator-, glm_adapter::operator-, vector);
-	runTest<V, V, V>("Addition", lyah::operator+, glm_adapter::operator+, vector, vector);
-	runTest<V, V, V>("Subtraction", lyah::operator-, glm_adapter::operator-, vector, vector);
-	runTest<V, V, S>("Multiplication (vector-scalar)", lyah::operator*, glm_adapter::operator*, vector, scalar);
-	runTest<V, S, V>("Multiplication (scalar-vector)", lyah::operator*, glm_adapter::operator*, scalar, vector);
-	runTest<V, V, V>("Multiplication (vector-vector)", lyah::operator*, glm_adapter::operator*, vector, vector);
-	runTest<V, V, M>("Multiplication (vector-matrix)", lyah::operator*, glm_adapter::operator*, vector, matrix);
-
-	// TODO: Add normalized quat generator.
-	//runTest<V, V, Q>("Multiplication (vector-quaternion)", lyah::operator*, glm_adapter::operator*, vector, quaternion);
-
-	runTest<V, V, S>("Division (vector-scalar)", lyah::operator/, glm_adapter::operator/, vector, scalar);
+	runTest<V>("Addition", lyah::operator+, glm_adapter::operator+, vector, vector);
+	runTest<V>("Subtraction", lyah::operator-, glm_adapter::operator-, vector, vector);
+	runTest<V>("Multiplication (vector-scalar)", lyah::operator*, glm_adapter::operator*, vector, scalar);
+	runTest<V>("Multiplication (scalar-vector)", lyah::operator*, glm_adapter::operator*, scalar, vector);
+	runTest<V>("Multiplication (vector-vector)", lyah::operator*, glm_adapter::operator*, vector, vector);
+	runTest<V>("Multiplication (vector-matrix)", lyah::operator*, glm_adapter::operator*, vector, matrix);
+	runTest<V>("Multiplication (vector-quaternion)", lyah::operator*, glm_adapter::operator*, vector, normalizedQuaternion);
+	runTest<V>("Division (vector-scalar)", lyah::operator/, glm_adapter::operator/, vector, scalar);
 	runTest<V>("Division (scalar-vector)", lyah::operator/, glm_adapter::operator/, scalar, vector);
 	runTest<V>("Division (vector-vector)", lyah::operator/, glm_adapter::operator/, vector, vector);
 
@@ -61,11 +58,11 @@ void TestGroup<lyah::vec<3, std::float_t>>::runTestsInternal(std::mt19937& engin
 
 	// Geometric
 	runTest<V>("Cross product", lyah::cross, glm_adapter::cross, vector, vector);
-	runTest<S, V>("Dot product", lyah::dot, glm_adapter::dot, vector, vector);
-	runTest<S, V>("Length", lyah::length, glm_adapter::length, vector);
-	runTest<S, V>("Squared length", lyah::lengthSquared, glm_adapter::lengthSquared, vector);
-	runTest<S, V>("Distance", lyah::distance, glm_adapter::distance, vector, vector);
-	runTest<S, V>("Squared distance", lyah::distanceSquared, glm_adapter::distanceSquared, vector, vector);
+	runTest<S>("Dot product", lyah::dot, glm_adapter::dot, vector, vector);
+	runTest<S>("Length", lyah::length, glm_adapter::length, vector);
+	runTest<S>("Squared length", lyah::lengthSquared, glm_adapter::lengthSquared, vector);
+	runTest<S>("Distance", lyah::distance, glm_adapter::distance, vector, vector);
+	runTest<S>("Squared distance", lyah::distanceSquared, glm_adapter::distanceSquared, vector, vector);
 	runTest<V>("Normalization", lyah::normalized, glm_adapter::normalized, vector);
 
 	// Rounding

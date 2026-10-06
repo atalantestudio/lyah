@@ -189,6 +189,7 @@
     <ClInclude Include="src\glm_adapter\serialization.hpp" />
     <ClInclude Include="src\pch.hpp" />
     <ClInclude Include="src\test\compare.hpp" />
+    <ClInclude Include="src\test\Generator\Distribution.hpp" />
     <ClInclude Include="src\test\generator\Generator.hpp" />
     <ClInclude Include="src\test\TestGroup.hpp" />
   </ItemGroup>

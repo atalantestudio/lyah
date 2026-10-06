@@ -3,117 +3,86 @@
 
 #pragma once
 
-struct BaseGenerator {
-	explicit BaseGenerator(std::mt19937& engine) :
-		engine(engine)
-	{}
+#include "test/Generator/Distribution.hpp"
 
-	std::mt19937& engine;
-};
-
-template<typename T>
+template<typename T, bool Normalized>
 struct Generator;
 
-template<typename T/*, typename = typename std::enable_if<std::is_scalar<T>::value && std::is_floating_point<T>::value>::type*/>
-struct Generator : public BaseGenerator {
-	explicit Generator(std::mt19937& engine, T min, T max) :
-		BaseGenerator(engine),
-		distribution(min, max)
-	{}
-
-	std::uniform_real_distribution<T> distribution;
+template<typename T, bool Normalized = false>
+struct Generator : public Distribution<T> {
+	using Distribution<T>::Distribution;
 };
 
-/*template<typename T, typename = typename std::enable_if<std::is_scalar<T>::value && !std::is_floating_point<T>::value>::type>
-struct Generator : public BaseGenerator {
-	explicit Generator(std::mt19937& engine, T min, T max) :
-		BaseGenerator(engine),
-		distribution(min, max)
-	{}
-
-	std::uniform_int_distribution<T> distribution;
-};*/
-
-template<std::size_t C, typename T>
-struct Generator<lyah::vec<C, T>> : public BaseGenerator {
-	explicit Generator(std::mt19937& engine, T min, T max) :
-		BaseGenerator(engine),
-		distribution(min, max)
-	{}
-
-	std::uniform_real_distribution<T> distribution;
+template<std::size_t C, typename T, bool Normalized>
+struct Generator<lyah::vec<C, T>, Normalized> : public Distribution<T> {
+	using Distribution<T>::Distribution;
 };
 
-template<std::size_t M, std::size_t N, typename T>
-struct Generator<lyah::mat<M, N, T>> : public BaseGenerator {
-	explicit Generator(std::mt19937& engine, T min, T max) :
-		BaseGenerator(engine),
-		distribution(min, max)
-	{}
+template<std::size_t M, std::size_t N, typename T, bool Normalized>
+struct Generator<lyah::mat<M, N, T>, Normalized> : public Distribution<T> {
+	using Distribution<T>::Distribution;
+};
 
-	std::uniform_real_distribution<T> distribution;
+template<typename T, bool Normalized>
+struct Generator<lyah::quat<T>, Normalized> : public Distribution<T> {
+	using Distribution<T>::Distribution;
 };
 
 template<typename T>
-struct Generator<lyah::quat<T>> : public BaseGenerator {
-	explicit Generator(std::mt19937& engine, T min, T max) :
-		BaseGenerator(engine),
-		distribution(min, max)
-	{}
+using NormalizedGenerator = Generator<T, true>;
 
-	std::uniform_real_distribution<T> distribution;
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//template<typename T, typename = std::enable_if<std::is_scalar<T>::value>::type>
-template<typename T>
-T next(Generator<T>& generator) {
+template<typename T, bool Normalized>
+T next(Generator<T, Normalized>& generator) {
 	return generator.distribution(generator.engine);
 }
 
-template<typename T>
-lyah::vec<2, T> next(Generator<lyah::vec<2, T>>& generator) {
-	return {
+template<typename T, bool Normalized>
+lyah::vec<2, T> next(Generator<lyah::vec<2, T>, Normalized>& generator) {
+	lyah::vec<2, T> a = {
 		generator.distribution(generator.engine),
 		generator.distribution(generator.engine),
 	};
+
+	if constexpr (Normalized) {
+		a = lyah::normalized(a);
+	}
+
+	return a;
 }
 
-template<typename T>
-lyah::vec<3, T> next(Generator<lyah::vec<3, T>>& generator) {
-	return {
+template<typename T, bool Normalized>
+lyah::vec<3, T> next(Generator<lyah::vec<3, T>, Normalized>& generator) {
+	lyah::vec<3, T> a = {
 		generator.distribution(generator.engine),
 		generator.distribution(generator.engine),
 		generator.distribution(generator.engine),
 	};
+
+	if constexpr (Normalized) {
+		a = lyah::normalized(a);
+	}
+
+	return a;
 }
 
-template<typename T>
-lyah::vec<4, T> next(Generator<lyah::vec<4, T>>& generator) {
-	return {
+template<typename T, bool Normalized>
+lyah::vec<4, T> next(Generator<lyah::vec<4, T>, Normalized>& generator) {
+	lyah::vec<4, T> a = {
 		generator.distribution(generator.engine),
 		generator.distribution(generator.engine),
 		generator.distribution(generator.engine),
 		generator.distribution(generator.engine),
 	};
+
+	if constexpr (Normalized) {
+		a = lyah::normalized(a);
+	}
+
+	return a;
 }
 
 template<std::size_t M, typename T>
-lyah::mat<M, 2, T> next(Generator<lyah::mat<M, 2, T>>& generator) {
+lyah::mat<M, 2, T> next(Generator<lyah::mat<M, 2, T>, false>& generator) {
 	return {
 		generator.distribution(generator.engine), generator.distribution(generator.engine),
 		generator.distribution(generator.engine), generator.distribution(generator.engine),
@@ -121,7 +90,7 @@ lyah::mat<M, 2, T> next(Generator<lyah::mat<M, 2, T>>& generator) {
 }
 
 template<std::size_t M, typename T>
-lyah::mat<M, 3, T> next(Generator<lyah::mat<M, 3, T>>& generator) {
+lyah::mat<M, 3, T> next(Generator<lyah::mat<M, 3, T>, false>& generator) {
 	return {
 		generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine),
 		generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine),
@@ -130,7 +99,7 @@ lyah::mat<M, 3, T> next(Generator<lyah::mat<M, 3, T>>& generator) {
 }
 
 template<std::size_t M, typename T>
-lyah::mat<M, 4, T> next(Generator<lyah::mat<M, 4, T>>& generator) {
+lyah::mat<M, 4, T> next(Generator<lyah::mat<M, 4, T>, false>& generator) {
 	return {
 		generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine),
 		generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine), generator.distribution(generator.engine),
@@ -139,12 +108,18 @@ lyah::mat<M, 4, T> next(Generator<lyah::mat<M, 4, T>>& generator) {
 	};
 }
 
-template<typename T>
-lyah::quat<T> next(Generator<lyah::quat<T>>& generator) {
-	return {
+template<typename T, bool Normalized>
+lyah::quat<T> next(Generator<lyah::quat<T>, Normalized>& generator) {
+	lyah::quat<T> a = {
 		generator.distribution(generator.engine),
 		generator.distribution(generator.engine),
 		generator.distribution(generator.engine),
 		generator.distribution(generator.engine),
 	};
+
+	if constexpr (Normalized) {
+		a = lyah::normalized(a);
+	}
+
+	return a;
 }

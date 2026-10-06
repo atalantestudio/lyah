@@ -120,5 +120,8 @@
     <ClInclude Include="src\glm_adapter\types\mat.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\test\Generator\Distribution.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
