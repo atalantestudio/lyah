@@ -7,7 +7,7 @@
 
 template<>
 const char* TestGroup<lyah::mat<4, 4, std::float_t>>::getGroupName() {
-	return "mat<4, 4, float_t>";
+	return "mat4x4<float_t>";
 }
 
 template<>

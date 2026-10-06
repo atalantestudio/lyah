@@ -69,17 +69,6 @@ namespace mat2x2_m128d {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testIdentity() {
-		const lyah::mat<2, 2, std::double_t> expected = {
-			1.0, 0.0,
-			0.0, 1.0,
-		};
-
-		const lyah::mat<2, 2, std::double_t> result = lyah::mat<2, 2, std::double_t>::identity();
-
-		test::assert(test::eq(result, expected));
-	}
-
 	void testRotation() {
 		const lyah::mat<2, 2, std::double_t> expected = {
 			0.070, -0.997,
@@ -90,55 +79,6 @@ namespace mat2x2_m128d {
 		const lyah::mat<2, 2, std::double_t> result = lyah::mat<2, 2, std::double_t>::rotation(angle);
 
 		test::assert(test::eq(result, expected, 0.001));
-	}
-
-	void testEquality() {
-		const bool expected[2] = {true, false};
-		const lyah::mat<2, 2, std::double_t> a = {
-			1.0, 4.0,
-			5.0, 3.0,
-		};
-		const lyah::mat<2, 2, std::double_t> b = {
-			1.0, 4.0,
-			5.0, 0.0,
-		};
-
-		const bool result[2] = {a == a, a == b};
-
-		test::assert(test::eq(result[0], expected[0]));
-		test::assert(test::eq(result[1], expected[1]));
-	}
-
-	void testInequality() {
-		const bool expected[2] = {false, true};
-		const lyah::mat<2, 2, std::double_t> a = {
-			1.0, 4.0,
-			5.0, 3.0,
-		};
-		const lyah::mat<2, 2, std::double_t> b = {
-			1.0, 4.0,
-			5.0, 0.0,
-		};
-
-		const bool result[2] = {a != a, a != b};
-
-		test::assert(test::eq(result[0], expected[0]));
-		test::assert(test::eq(result[1], expected[1]));
-	}
-
-	void testUnaryPlus() {
-		const lyah::mat<2, 2, std::double_t> expected = {
-			1.0, 4.0,
-			5.0, 3.0,
-		};
-		const lyah::mat<2, 2, std::double_t> a = {
-			1.0, 4.0,
-			5.0, 3.0,
-		};
-
-		const lyah::mat<2, 2, std::double_t> result = +a;
-
-		test::assert(test::eq(result, expected));
 	}
 
 	void testUnaryMinus() {
@@ -152,25 +92,6 @@ namespace mat2x2_m128d {
 		};
 
 		const lyah::mat<2, 2, std::double_t> result = -a;
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testAddition() {
-		const lyah::mat<2, 2, std::double_t> expected = {
-			-2.0, 6.5,
-			 9.0, 12.0,
-		};
-		const lyah::mat<2, 2, std::double_t> a = {
-			1.0, 4.0,
-			5.0, 3.0,
-		};
-		const lyah::mat<2, 2, std::double_t> b = {
-			-3.0, 2.5,
-			 4.0, 9.0,
-		};
-
-		const lyah::mat<2, 2, std::double_t> result = a + b;
 
 		test::assert(test::eq(result, expected));
 	}
@@ -194,25 +115,6 @@ namespace mat2x2_m128d {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testSubtraction() {
-		const lyah::mat<2, 2, std::double_t> expected = {
-			 4.0,  1.5,
-			 1.0, -6.0,
-		};
-		const lyah::mat<2, 2, std::double_t> a = {
-			1.0, 4.0,
-			5.0, 3.0,
-		};
-		const lyah::mat<2, 2, std::double_t> b = {
-			-3.0, 2.5,
-			 4.0, 9.0,
-		};
-
-		const lyah::mat<2, 2, std::double_t> result = a - b;
-
-		test::assert(test::eq(result, expected));
-	}
-
 	void testSubtractionAssignment() {
 		const lyah::mat<2, 2, std::double_t> expected = {
 			 4.0,  1.5,
@@ -232,38 +134,6 @@ namespace mat2x2_m128d {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testMatrixScalarMultiplication() {
-		const lyah::mat<2, 2, std::double_t> expected = {
-			3.0,  12.0,
-			15.0, 9.0,
-		};
-		const lyah::mat<2, 2, std::double_t> a = {
-			1.0, 4.0,
-			5.0, 3.0,
-		};
-		const std::double_t b = 3.0;
-
-		const lyah::mat<2, 2, std::double_t> result = a * b;
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testScalarMatrixMultiplication() {
-		const lyah::mat<2, 2, std::double_t> expected = {
-			3.0,  12.0,
-			15.0, 9.0,
-		};
-		const lyah::mat<2, 2, std::double_t> a = {
-			1.0, 4.0,
-			5.0, 3.0,
-		};
-		const std::double_t b = 3.0;
-
-		const lyah::mat<2, 2, std::double_t> result = b * a;
-
-		test::assert(test::eq(result, expected));
-	}
-
 	void testMatrixScalarMultiplicationAssignment() {
 		const lyah::mat<2, 2, std::double_t> expected = {
 			3.0,  12.0,
@@ -276,25 +146,6 @@ namespace mat2x2_m128d {
 		};
 
 		result *= a;
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testMatrixMatrixMultiplication() {
-		const lyah::mat<2, 2, std::double_t> expected = {
-			 13.0, 38.5,
-			-3.0,  39.5,
-		};
-		const lyah::mat<2, 2, std::double_t> a = {
-			1.0, 4.0,
-			5.0, 3.0,
-		};
-		const lyah::mat<2, 2, std::double_t> b = {
-			-3.0, 2.5,
-			 4.0, 9.0,
-		};
-
-		const lyah::mat<2, 2, std::double_t> result = a * b;
 
 		test::assert(test::eq(result, expected));
 	}
@@ -318,22 +169,6 @@ namespace mat2x2_m128d {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testMatrixScalarDivision() {
-		const lyah::mat<2, 2, std::double_t> expected = {
-			0.333, 1.333,
-			1.666, 1.0,
-		};
-		const lyah::mat<2, 2, std::double_t> a = {
-			1.0, 4.0,
-			5.0, 3.0,
-		};
-		const std::double_t b = 3.0;
-
-		const lyah::mat<2, 2, std::double_t> result = a / b;
-
-		test::assert(test::eq(result, expected, 0.001));
-	}
-
 	void testMatrixScalarDivisionAssignment() {
 		const lyah::mat<2, 2, std::double_t> expected = {
 			0.333, 1.333,
@@ -350,50 +185,6 @@ namespace mat2x2_m128d {
 		test::assert(test::eq(result, expected, 0.001));
 	}
 
-	void testDeterminant() {
-		const std::double_t expected = -17.0;
-		const lyah::mat<2, 2, std::double_t> a = {
-			1.0, 4.0,
-			5.0, 3.0,
-		};
-
-		const std::double_t result = lyah::determinant(a);
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testInverse() {
-		const lyah::mat<2, 2, std::double_t> expected = {
-			-0.176,  0.235,
-			 0.294, -0.059,
-		};
-		const lyah::mat<2, 2, std::double_t> a = {
-			1.0, 4.0,
-			5.0, 3.0,
-		};
-
-		const lyah::mat<2, 2, std::double_t> result = inverse(a);
-
-		test::assert(test::eq(result, expected, 0.001));
-	}
-
-	void testTranspose() {
-		const lyah::mat<2, 2, std::double_t> expected = {
-			1.0, 5.0,
-			4.0, 3.0,
-		};
-		const lyah::mat<2, 2, std::double_t> a = {
-			1.0, 4.0,
-			5.0, 3.0,
-		};
-
-		lyah::mat<2, 2, std::double_t> result = transpose(a);
-		result[0] = lyah::vec<2, std::double_t>(result[0][0], result[0][1]);
-		result[1] = lyah::vec<2, std::double_t>(result[1][0], result[1][1]);
-
-		test::assert(test::eq(result, expected, 0.001));
-	}
-
 	void runAll() {
 		test::printTestCategory("lyah::mat<2, 2, std::double_t> - 2x2 single floating-point matrix");
 
@@ -402,32 +193,12 @@ namespace mat2x2_m128d {
 		test::runTest(&testRowConstructor, "Row constructor");
 		test::runTest(&testConvertingConstructor, "Converting constructor");
 
-		test::runTest(&testIdentity, "Identity");
 		test::runTest(&testRotation, "Rotation");
 
-		test::runTest(&testEquality, "Equality (==)");
-		test::runTest(&testInequality, "Inequality (!=)");
-
-		test::runTest(&testUnaryPlus, "Unary plus (+)");
-		test::runTest(&testUnaryMinus, "Unary minus (-)");
-
-		test::runTest(&testAddition, "Addition (+)");
 		test::runTest(&testAdditionAssignment, "Addition assignment (+=)");
-
-		test::runTest(&testSubtraction, "Subtraction (-)");
 		test::runTest(&testSubtractionAssignment, "Subtraction assignment (-)");
-
-		test::runTest(&testMatrixScalarMultiplication, "Matrix-scalar multiplication (*)");
-		test::runTest(&testScalarMatrixMultiplication, "Scalar-matrix multiplication (*)");
 		test::runTest(&testMatrixScalarMultiplicationAssignment, "Matrix-scalar multiplication assignment (*=)");
-		test::runTest(&testMatrixMatrixMultiplication, "Matrix-matrix multiplication (*)");
 		test::runTest(&testMatrixMatrixMultiplicationAssignment, "Matrix-matrix multiplication assignment (*=)");
-
-		test::runTest(&testMatrixScalarDivision, "Matrix-scalar division (/)");
 		test::runTest(&testMatrixScalarDivisionAssignment, "Matrix-scalar division assignment (/=)");
-
-		test::runTest(&testDeterminant, "Determinant");
-		test::runTest(&testInverse, "Inverse");
-		test::runTest(&testTranspose, "Transpose");
 	}
 }
