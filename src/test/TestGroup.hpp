@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "test/compare.hpp"
+#include "test/Comparator.hpp"
 
 struct TestCounter {
 	inline static std::size_t passedTestCount = 0;
@@ -90,7 +90,9 @@ class TestGroup : public TestCounter {
 				const ReturnType result = std::apply(function, parameters);
 				const ReturnType referenceResult = std::apply(referenceAdapter, parameters);
 
-				if (compare(result, referenceResult)) {
+				Comparator<ReturnType> c;
+
+				if (c.compare(result, referenceResult)) {
 					runIndex += 1;
 
 					continue;

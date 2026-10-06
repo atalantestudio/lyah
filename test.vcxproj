@@ -147,6 +147,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\test\test_vec2_uint64_t.cpp" />
+    <ClCompile Include="src\test\test_vec2_uint32_t.cpp" />
     <ClCompile Include="src\test\test_vec2_int64_t.cpp" />
     <ClCompile Include="src\test\test_vec2_int32_t.cpp" />
     <ClCompile Include="src\test\test_uint64_t.cpp" />
@@ -194,7 +196,7 @@
     <ClInclude Include="src\glm_adapter\types\vec.hpp" />
     <ClInclude Include="src\glm_adapter\serialization.hpp" />
     <ClInclude Include="src\pch.hpp" />
-    <ClInclude Include="src\test\compare.hpp" />
+    <ClInclude Include="src\test\Comparator.hpp" />
     <ClInclude Include="src\test\Generator\Distribution.hpp" />
     <ClInclude Include="src\test\generator\Generator.hpp" />
     <ClInclude Include="src\test\TestGroup.hpp" />
