@@ -17,7 +17,10 @@ void TestGroup<lyah::vec<2, std::float_t>>::runTestsInternal(std::mt19937& engin
 	typedef lyah::mat<2, 2, S> M;
 
 	Generator<S> scalar(engine, -64.0f, 64.0f);
+	Generator<S> exponentScalar(engine, 0.0f, 8.0f);
 	Generator<V> vector(engine, -64.0f, 64.0f);
+	Generator<V> exponentVector(engine, 0.0f, 8.0f);
+	Generator<V> ndcVector(engine, -1.0f, 1.0f);
 	Generator<V> positiveVector(engine, 0.0f, 128.0f);
 	Generator<M> matrix(engine, -64.0f, 64.0f);
 
@@ -49,9 +52,9 @@ void TestGroup<lyah::vec<2, std::float_t>>::runTestsInternal(std::mt19937& engin
 	runTest<V>("Fused multiply-add", lyah::fma, glm_adapter::fma, vector, vector, vector);
 
 	// Exponential
-	runTest<V>("Power (scalar exponent)", lyah::pow, glm_adapter::pow, positiveVector, scalar);
-	runTest<V>("Power (vector exponent)", lyah::pow, glm_adapter::pow, positiveVector, vector);
-	runTest<V>("Square root", lyah::pow, glm_adapter::pow, positiveVector, vector);
+	runTest<V>("Power (scalar exponent)", lyah::pow, glm_adapter::pow, positiveVector, exponentScalar);
+	runTest<V>("Power (vector exponent)", lyah::pow, glm_adapter::pow, positiveVector, exponentVector);
+	runTest<V>("Square root", lyah::sqrt, glm_adapter::sqrt, positiveVector);
 
 	// Geometric
 	runTest<S>("Parallelogram area", lyah::parallelogramArea, glm_adapter::parallelogramArea, vector, vector);
@@ -75,7 +78,7 @@ void TestGroup<lyah::vec<2, std::float_t>>::runTestsInternal(std::mt19937& engin
 	runTest<V>("Sine", lyah::sin, glm_adapter::sin, vector);
 	runTest<V>("Cosine", lyah::cos, glm_adapter::cos, vector);
 	runTest<V>("Tangent", lyah::tan, glm_adapter::tan, vector);
-	runTest<V>("Arcsine", lyah::asin, glm_adapter::asin, vector);
-	runTest<V>("Arccosine", lyah::acos, glm_adapter::acos, vector);
-	runTest<V>("Arctangent", lyah::atan, glm_adapter::atan, vector);
+	runTest<V>("Arcsine", lyah::asin, glm_adapter::asin, ndcVector);
+	runTest<V>("Arccosine", lyah::acos, glm_adapter::acos, ndcVector);
+	runTest<V>("Arctangent", lyah::atan, glm_adapter::atan, ndcVector);
 }
