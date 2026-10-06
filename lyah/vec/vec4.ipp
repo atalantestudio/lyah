@@ -80,6 +80,16 @@ namespace lyah {
 	}
 
 	template<typename T>
+	LYAH_CONSTEXPR vec<4, T> operator-(vec<4, T> a, vec<4, T> b) {
+		a.x -= b.x;
+		a.y -= b.y;
+		a.z -= b.z;
+		a.w -= b.w;
+
+		return a;
+	}
+
+	template<typename T>
 	LYAH_CONSTEXPR vec<4, T> operator*(vec<4, T> a, T b) {
 		a.x *= b;
 		a.y *= b;

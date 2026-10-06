@@ -74,6 +74,15 @@ namespace lyah {
 	}
 
 	template<typename T>
+	LYAH_CONSTEXPR vec<3, T> operator-(vec<3, T> a, vec<3, T> b) {
+		a.x -= b.x;
+		a.y -= b.y;
+		a.z -= b.z;
+
+		return a;
+	}
+
+	template<typename T>
 	LYAH_CONSTEXPR vec<3, T> operator*(vec<3, T> a, T b) {
 		a.x *= b;
 		a.y *= b;

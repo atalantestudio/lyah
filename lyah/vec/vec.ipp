@@ -12,11 +12,6 @@ lyah::vec<C, T>& lyah::operator+=(vec<C, T>& a, vec<C, T> b) {
 }
 
 template<std::size_t C, typename T>
-LYAH_CONSTEXPR lyah::vec<C, T> lyah::operator-(vec<C, T> a, vec<C, T> b) {
-	return a + -b;
-}
-
-template<std::size_t C, typename T>
 lyah::vec<C, T>& lyah::operator-=(vec<C, T>& a, vec<C, T> b) {
 	return a = a - b;
 }
