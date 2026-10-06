@@ -14,7 +14,6 @@ template<>
 void TestGroup<lyah::vec<2, std::uint32_t>>::runTestsInternal(std::mt19937& engine) {
 	typedef std::uint32_t S;
 	typedef lyah::vec<2, S> V;
-	typedef lyah::mat<2, 2, S> M;
 
 	Generator<S> scalar(engine, 0, 128);
 	Generator<S> nonZeroScalar(engine, 1, 128);

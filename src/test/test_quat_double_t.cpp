@@ -16,9 +16,9 @@ void TestGroup<lyah::quat<std::double_t>>::runTestsInternal(std::mt19937& engine
 	typedef lyah::vec<3, S> V;
 	typedef lyah::quat<S> Q;
 
-	Generator<S> scalar(engine, -1.0, 1.0);
-	Generator<V> vector(engine, -1.0, 1.0);
-	Generator<Q> quaternion(engine, -1.0, 1.0);
+	Generator<S> scalar(engine, -64.0, 64.0);
+	Generator<V> vector(engine, -64.0, 64.0);
+	Generator<Q> quaternion(engine, -64.0, 64.0);
 
 	runTest<Q>("Identity", lyah::identity, glm_adapter::identity);
 

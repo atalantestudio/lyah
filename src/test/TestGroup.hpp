@@ -90,9 +90,7 @@ class TestGroup : public TestCounter {
 				const ReturnType result = std::apply(function, parameters);
 				const ReturnType referenceResult = std::apply(referenceAdapter, parameters);
 
-				Comparator<ReturnType> c;
-
-				if (c.compare(result, referenceResult)) {
+				if (Comparator<ReturnType>::compare(result, referenceResult)) {
 					runIndex += 1;
 
 					continue;

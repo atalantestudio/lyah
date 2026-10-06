@@ -15,8 +15,8 @@ void TestGroup<lyah::mat<3, 3, std::float_t>>::runTestsInternal(std::mt19937& en
 	typedef std::float_t S;
 	typedef lyah::mat<3, 3, S> M;
 
-	Generator<S> scalar(engine, -1.0f, 1.0f);
-	Generator<M> matrix(engine, -1.0f, 1.0f);
+	Generator<S> scalar(engine, -64.0f, 64.0f);
+	Generator<M> matrix(engine, -64.0f, 64.0f);
 
 	runTest<M>("Identity", lyah::identity, glm_adapter::identity);
 

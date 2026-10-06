@@ -6,14 +6,14 @@
 #include "test/TestGroup.hpp"
 
 template<>
-const char* TestGroup<lyah::vec<2, std::uint64_t>>::getGroupName() {
-	return "vec<2, uint64_t>";
+const char* TestGroup<lyah::vec<4, std::uint64_t>>::getGroupName() {
+	return "vec<4, uint64_t>";
 }
 
 template<>
-void TestGroup<lyah::vec<2, std::uint64_t>>::runTestsInternal(std::mt19937& engine) {
+void TestGroup<lyah::vec<4, std::uint64_t>>::runTestsInternal(std::mt19937& engine) {
 	typedef std::uint64_t S;
-	typedef lyah::vec<2, S> V;
+	typedef lyah::vec<4, S> V;
 
 	Generator<S> scalar(engine, 0, 128);
 	Generator<S> nonZeroScalar(engine, 1, 128);

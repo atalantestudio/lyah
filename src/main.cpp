@@ -25,9 +25,17 @@ int main() {
 
 	TestGroup<lyah::vec<3, std::float_t>>::runTests(engine);
 	TestGroup<lyah::vec<3, std::double_t>>::runTests(engine);
+	TestGroup<lyah::vec<3, std::int32_t>>::runTests(engine);
+	TestGroup<lyah::vec<3, std::int64_t>>::runTests(engine);
+	TestGroup<lyah::vec<3, std::uint32_t>>::runTests(engine);
+	TestGroup<lyah::vec<3, std::uint64_t>>::runTests(engine);
 
 	TestGroup<lyah::vec<4, std::float_t>>::runTests(engine);
 	TestGroup<lyah::vec<4, std::double_t>>::runTests(engine);
+	TestGroup<lyah::vec<4, std::int32_t>>::runTests(engine);
+	TestGroup<lyah::vec<4, std::int64_t>>::runTests(engine);
+	TestGroup<lyah::vec<4, std::uint32_t>>::runTests(engine);
+	TestGroup<lyah::vec<4, std::uint64_t>>::runTests(engine);
 
 	TestGroup<lyah::mat<2, 2, std::float_t>>::runTests(engine);
 	TestGroup<lyah::mat<2, 2, std::double_t>>::runTests(engine);

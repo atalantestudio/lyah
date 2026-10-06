@@ -14,13 +14,12 @@ template<>
 void TestGroup<lyah::vec<2, std::int32_t>>::runTestsInternal(std::mt19937& engine) {
 	typedef std::int32_t S;
 	typedef lyah::vec<2, S> V;
-	typedef lyah::mat<2, 2, S> M;
 
 	Generator<S> scalar(engine, -64, 64);
-	Generator<S> nonZeroPositiveScalar(engine, 1, 128);
+	Generator<S> positiveNonZeroScalar(engine, 1, 128);
 	Generator<V> vector(engine, -64, 64);
 	Generator<V> positiveVector(engine, 0, 128);
-	Generator<V> nonZeroPositiveVector(engine, 1, 128);
+	Generator<V> positiveNonZeroVector(engine, 1, 128);
 
 	// Comparison
 	runTest<bool>("Equality", lyah::operator==, glm_adapter::operator==, vector, vector);
@@ -34,9 +33,9 @@ void TestGroup<lyah::vec<2, std::int32_t>>::runTestsInternal(std::mt19937& engin
 	runTest<V>("Multiplication (vector-scalar)", lyah::operator*, glm_adapter::operator*, vector, scalar);
 	runTest<V>("Multiplication (scalar-vector)", lyah::operator*, glm_adapter::operator*, scalar, vector);
 	runTest<V>("Multiplication (vector-vector)", lyah::operator*, glm_adapter::operator*, vector, vector);
-	runTest<V>("Division (vector-scalar)", lyah::operator/, glm_adapter::operator/, vector, nonZeroPositiveScalar);
-	runTest<V>("Division (scalar-vector)", lyah::operator/, glm_adapter::operator/, scalar, nonZeroPositiveVector);
-	runTest<V>("Division (vector-vector)", lyah::operator/, glm_adapter::operator/, vector, nonZeroPositiveVector);
+	runTest<V>("Division (vector-scalar)", lyah::operator/, glm_adapter::operator/, vector, positiveNonZeroScalar);
+	runTest<V>("Division (scalar-vector)", lyah::operator/, glm_adapter::operator/, scalar, positiveNonZeroVector);
+	runTest<V>("Division (vector-vector)", lyah::operator/, glm_adapter::operator/, vector, positiveNonZeroVector);
 
 	// Common
 	runTest<S>("Sum", lyah::sum, glm_adapter::sum, vector);
