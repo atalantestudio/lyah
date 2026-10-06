@@ -92,10 +92,26 @@ namespace lyah {
 	}
 
 	template<typename T>
+	LYAH_CONSTEXPR vec<2, T> operator/(vec<2, T> a, T b) {
+		a.x /= b;
+		a.y /= b;
+
+		return a;
+	}
+
+	template<typename T>
 	LYAH_CONSTEXPR vec<2, T> operator/(T a, vec<2, T> b) {
 		b.x = a / b.x;
 		b.y = a / b.y;
 
 		return b;
+	}
+
+	template<typename T>
+	LYAH_CONSTEXPR vec<2, T> operator/(vec<2, T> a, vec<2, T> b) {
+		a.x /= b.x;
+		a.y /= b.y;
+
+		return a;
 	}
 }
