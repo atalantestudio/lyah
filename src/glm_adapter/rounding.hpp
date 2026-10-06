@@ -26,6 +26,11 @@ namespace glm_adapter {
 		return glm2lyah(glm::ceil(lyah2glm(x)));
 	}
 
+	template<typename T, typename = std::enable_if<std::is_unsigned<T>::value>::type>
+	inline T ceil(T x, T y) {
+		return glm::ceilMultiple(x, y);
+	}
+
 	template<typename T>
 	inline T round(T x) {
 		return glm::round(x);

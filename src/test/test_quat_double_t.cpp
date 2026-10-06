@@ -26,17 +26,17 @@ void TestGroup<lyah::quat<std::double_t>>::runTestsInternal(std::mt19937& engine
 	runTest<Q>("Axis-angle", lyah::axisAngle, glm_adapter::axisAngle, vector, scalar);
 
 	// Comparison
-	runTest<bool, Q, Q>("Equality", lyah::operator==, glm_adapter::operator==, quaternion, quaternion);
-	runTest<bool, Q, Q>("Inequality", lyah::operator!=, glm_adapter::operator!=, quaternion, quaternion);
+	runTest<bool>("Equality", lyah::operator==, glm_adapter::operator==, quaternion, quaternion);
+	runTest<bool>("Inequality", lyah::operator!=, glm_adapter::operator!=, quaternion, quaternion);
 
 	// Arithmetic
 	runTest<Q>("Unary plus", lyah::operator+, glm_adapter::operator+, quaternion);
 	runTest<Q>("Unary minus", lyah::operator-, glm_adapter::operator-, quaternion);
-	runTest<Q, Q, Q>("Addition", lyah::operator+, glm_adapter::operator+, quaternion, quaternion);
-	runTest<Q, Q, Q>("Subtraction", lyah::operator-, glm_adapter::operator-, quaternion, quaternion);
-	runTest<Q, Q, S>("Multiplication (quaternion-scalar)", lyah::operator*, glm_adapter::operator*, quaternion, scalar);
-	runTest<Q, S, Q>("Multiplication (scalar-quaternion)", lyah::operator*, glm_adapter::operator*, scalar, quaternion);
-	runTest<Q, Q, Q>("Multiplication (quaternion-quaternion)", lyah::operator*, glm_adapter::operator*, quaternion, quaternion);
+	runTest<Q>("Addition", lyah::operator+, glm_adapter::operator+, quaternion, quaternion);
+	runTest<Q>("Subtraction", lyah::operator-, glm_adapter::operator-, quaternion, quaternion);
+	runTest<Q>("Multiplication (quaternion-scalar)", lyah::operator*, glm_adapter::operator*, quaternion, scalar);
+	runTest<Q>("Multiplication (scalar-quaternion)", lyah::operator*, glm_adapter::operator*, scalar, quaternion);
+	runTest<Q>("Multiplication (quaternion-quaternion)", lyah::operator*, glm_adapter::operator*, quaternion, quaternion);
 	runTest<Q>("Division (quaternion-scalar)", lyah::operator/, glm_adapter::operator/, quaternion, scalar);
 
 	// Quaternion

@@ -8,7 +8,15 @@
 namespace glm_adapter {
 	template<std::size_t C, typename T>
 	inline T sum(lyah::vec<C, T> x) {
-		return glm::dot(lyah2glm(x), glm::vec<C, T>(1));
+		const glm::vec<C, T> x2 = lyah2glm(x);
+
+		T sum = 0;
+
+		for (std::uint32_t i = 0; i < C; i += 1) {
+			sum += x2[i];
+		}
+
+		return sum;
 	}
 
 	template<typename T>

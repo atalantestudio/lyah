@@ -16,6 +16,7 @@
 #define GLM_FORCE_QUAT_DATA_WXYZ
 
 #include <glm/glm.hpp>
+#include <glm/gtc/round.hpp>
 #include <glm/gtx/compatibility.hpp>
 #include <glm/gtx/matrix_operation.hpp>
 #include <glm/gtx/norm.hpp>

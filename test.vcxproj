@@ -147,6 +147,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\test\test_vec2_int64_t.cpp" />
+    <ClCompile Include="src\test\test_vec2_int32_t.cpp" />
+    <ClCompile Include="src\test\test_uint64_t.cpp" />
+    <ClCompile Include="src\test\test_uint32_t.cpp" />
     <ClCompile Include="src\test\test_int64_t.cpp" />
     <ClCompile Include="src\test\test_int32_t.cpp" />
     <ClCompile Include="src\test\test_mat4x4_double_t.cpp" />

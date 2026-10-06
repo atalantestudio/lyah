@@ -13,9 +13,13 @@ int main() {
 	TestGroup<std::double_t>::runTests(engine);
 	TestGroup<std::int32_t>::runTests(engine);
 	TestGroup<std::int64_t>::runTests(engine);
+	TestGroup<std::uint32_t>::runTests(engine);
+	TestGroup<std::uint64_t>::runTests(engine);
 
 	TestGroup<lyah::vec<2, std::float_t>>::runTests(engine);
 	TestGroup<lyah::vec<2, std::double_t>>::runTests(engine);
+	TestGroup<lyah::vec<2, std::int32_t>>::runTests(engine);
+	TestGroup<lyah::vec<2, std::int64_t>>::runTests(engine);
 
 	TestGroup<lyah::vec<3, std::float_t>>::runTests(engine);
 	TestGroup<lyah::vec<3, std::double_t>>::runTests(engine);

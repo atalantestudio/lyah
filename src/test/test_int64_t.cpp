@@ -15,7 +15,6 @@ void TestGroup<std::int64_t>::runTestsInternal(std::mt19937& engine) {
 	typedef std::int64_t S;
 
 	Generator<S> scalar(engine, -64, 64);
-	Generator<S> positiveScalar(engine, 0, 128);
 
 	// Common
 	runTest<S>("Absolute value", lyah::abs, glm_adapter::abs, scalar);
