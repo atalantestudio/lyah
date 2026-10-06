@@ -32,7 +32,7 @@ LYAH_CONSTEXPR_CPP23 lyah::vec<C, T> lyah::ceil(vec<C, T> x) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR T ceil(T x, T y) {
+LYAH_CONSTEXPR T lyah::ceil(T x, T y) {
 	return (x + y - 1) & ~(y - 1);
 }
 
