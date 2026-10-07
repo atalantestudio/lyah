@@ -15,7 +15,7 @@ struct lyah::mat<3, 3, T> {
 
 	/// Constructs a 4x4 matrix from `a`.
 	/// `a` is assumed to be normalized.
-	LYAH_INLINE LYAH_CONSTEXPR mat(quat<T> a);
+	LYAH_INLINE mat(quat<T> a);
 
 	template<typename U>
 	LYAH_INLINE LYAH_CONSTEXPR explicit mat(mat<3, 3, U> a);
