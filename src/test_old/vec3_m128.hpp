@@ -42,72 +42,12 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testEquality() {
-		const bool expected[2] = {true, false};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> b = {1.0f, 0.0f, 6.0f};
-
-		const bool result[2] = {a == a, a == b};
-
-		test::assert(test::eq(result[0], expected[0]));
-		test::assert(test::eq(result[1], expected[1]));
-	}
-
-	void testInequality() {
-		const bool expected[2] = {false, true};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> b = {1.0f, 0.0f, 6.0f};
-
-		const bool result[2] = {a != a, a != b};
-
-		test::assert(test::eq(result[0], expected[0]));
-		test::assert(test::eq(result[1], expected[1]));
-	}
-
-	void testUnaryPlus() {
-		const lyah::vec<3, std::float_t> expected = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-
-		const lyah::vec<3, std::float_t> result = +a;
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testUnaryMinus() {
-		const lyah::vec<3, std::float_t> expected = {-1.0f, -4.0f, -6.0f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-
-		const lyah::vec<3, std::float_t> result = -a;
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testAddition() {
-		const lyah::vec<3, std::float_t> expected = {6.0f, 7.0f, 8.0f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> b = {5.0f, 3.0f, 2.0f};
-
-		const lyah::vec<3, std::float_t> result = a + b;
-
-		test::assert(test::eq(result, expected));
-	}
-
 	void testAdditionAssignment() {
 		const lyah::vec<3, std::float_t> expected = {6.0f, 7.0f, 8.0f};
 		const lyah::vec<3, std::float_t> a = {5.0f, 3.0f, 2.0f};
 		lyah::vec<3, std::float_t> result = {1.0f, 4.0f, 6.0f};
 
 		result += a;
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testSubtraction() {
-		const lyah::vec<3, std::float_t> expected = {-4.0f, 1.0f, 4.0f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> b = {5.0f, 3.0f, 2.0f};
-
-		const lyah::vec<3, std::float_t> result = a - b;
 
 		test::assert(test::eq(result, expected));
 	}
@@ -122,26 +62,6 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testVectorScalarMultiplication() {
-		const lyah::vec<3, std::float_t> expected = {3.0f, 12.0f, 18.0f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-		const std::float_t b = 3.0f;
-
-		const lyah::vec<3, std::float_t> result = a * b;
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testScalarVectorMultiplication() {
-		const lyah::vec<3, std::float_t> expected = {3.0f, 12.0f, 18.0f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-		const std::float_t b = 3.0f;
-
-		const lyah::vec<3, std::float_t> result = b * a;
-
-		test::assert(test::eq(result, expected));
-	}
-
 	void testVectorScalarMultiplicationAssignment() {
 		const lyah::vec<3, std::float_t> expected = {3.0f, 12.0f, 18.0f};
 		const std::float_t a = 3.0f;
@@ -152,36 +72,12 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testVectorVectorMultiplication() {
-		const lyah::vec<3, std::float_t> expected = {5.0f, 12.0f, 12.0f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> b = {5.0f, 3.0f, 2.0f};
-
-		const lyah::vec<3, std::float_t> result = a * b;
-
-		test::assert(test::eq(result, expected));
-	}
-
 	void testVectorVectorMultiplicationAssignment() {
 		const lyah::vec<3, std::float_t> expected = {5.0f, 12.0f, 12.0f};
 		const lyah::vec<3, std::float_t> a = {5.0f, 3.0f, 2.0f};
 		lyah::vec<3, std::float_t> result = {1.0f, 4.0f, 6.0f};
 
 		result *= a;
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testVectorMatrixMultiplication() {
-		const lyah::vec<3, std::float_t> expected = {21.0f, -32.0f, 17.0f};
-		const lyah::mat<3, 3, std::float_t> A = {
-			1.0f,  4.0f,  6.0f,
-			5.0f,  3.0f,  2.0f,
-			0.0f, -8.0f,  0.5f,
-		};
-		const lyah::vec<3, std::float_t> x = {1.0f, 4.0f, 6.0f};
-
-		lyah::vec<3, std::float_t> result = x * A;
 
 		test::assert(test::eq(result, expected));
 	}
@@ -200,42 +96,12 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected));
 	}
 
-	void testVectorQuaternionMultiplication() {
-		const lyah::vec<3, std::float_t> expected = {0.707f, 0.0f, -0.707f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 0.0f, 0.0f};
-		const lyah::quat<std::float_t> b = lyah::quat<std::float_t>::axisAngle({0.0f, 1.0f, 0.0f}, lyah::radians(45.0f));
-
-		const lyah::vec<3, std::float_t> result = a * b;
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
 	void testVectorQuaternionMultiplicationAssignment() {
 		const lyah::vec<3, std::float_t> expected = {0.707f, 0.0f, -0.707f};
 		const lyah::quat<std::float_t> a = lyah::quat<std::float_t>::axisAngle({0.0f, 1.0f, 0.0f}, lyah::radians(45.0f));
 		lyah::vec<3, std::float_t> result = {1.0f, 0.0f, 0.0f};
 
 		result *= a;
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	void testVectorScalarDivision() {
-		const lyah::vec<3, std::float_t> expected = {0.333f, 1.333f, 2.0f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-		const std::float_t b = 3.0f;
-
-		const lyah::vec<3, std::float_t> result = a / b;
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	void testScalarVectorDivision() {
-		const lyah::vec<3, std::float_t> expected = {lyah::infinity<std::float_t>(), 0.75f, 0.5f};
-		const lyah::vec<3, std::float_t> a = {0.0f, 4.0f, 6.0f};
-		const std::float_t b = 3.0f;
-
-		const lyah::vec<3, std::float_t> result = b / a;
 
 		test::assert(test::eq(result, expected, 0.001f));
 	}
@@ -250,16 +116,6 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
-	void testVectorVectorDivision() {
-		const lyah::vec<3, std::float_t> expected = {lyah::infinity<std::float_t>(), 1.333f, 3.0f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> b = {0.0f, 3.0f, 2.0f};
-
-		const lyah::vec<3, std::float_t> result = a / b;
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
 	void testVectorVectorDivisionAssignment() {
 		const lyah::vec<3, std::float_t> expected = {lyah::infinity<std::float_t>(), 1.333f, 3.0f};
 		const lyah::vec<3, std::float_t> a = {0.0f, 3.0f, 2.0f};
@@ -270,53 +126,6 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected, 0.001f));
 	}
 
-	void testFma() {
-		const lyah::vec<3, std::float_t> expected = {5.0f, 4.0f, 12.5f};
-		const lyah::vec<3, std::float_t> a = {1.0f,  4.0f,  6.0f};
-		const lyah::vec<3, std::float_t> b = {5.0f,  3.0f,  2.0f};
-		const lyah::vec<3, std::float_t> c = {0.0f, -8.0f,  0.5f};
-
-		const lyah::vec<3, std::float_t> result = lyah::fma(a, b, c);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	/* void testFloor() {
-		const lyah::vec<3, std::float_t> expected = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> a = {1.999f, 4.0f, 6.111f};
-
-		const lyah::vec<3, std::float_t> result = lyah::floor(a);
-
-		test::assert(test::eq(result, expected));
-	} */
-
-	/* void testCeil() {
-		const lyah::vec<3, std::float_t> expected = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> a = {0.999f, 4.0f, 5.111f};
-
-		const lyah::vec<3, std::float_t> result = lyah::ceil(a);
-
-		test::assert(test::eq(result, expected));
-	} */
-
-	/* void testRound() {
-		const lyah::vec<3, std::float_t> expected = {1.0f, 4.0f, 7.0f};
-		const lyah::vec<3, std::float_t> a = {1.3279f, 4.007f, 6.897f};
-
-		const lyah::vec<3, std::float_t> result = lyah::round(a);
-
-		test::assert(test::eq(result, expected));
-	} */
-
-	/* void testAbs() {
-		const lyah::vec<3, std::float_t> expected = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> a = {1.0f, -4.0f, 6.0f};
-
-		const lyah::vec<3, std::float_t> result = lyah::abs(a);
-
-		test::assert(test::eq(result, expected));
-	} */
-
 	/* void testSign() {
 		const lyah::vec<3, std::float_t> expected = {1.0f, -1.0f, 1.0f};
 		const lyah::vec<3, std::float_t> a = {1.0f, -4.0f, 6.0f};
@@ -326,199 +135,6 @@ namespace vec3_m128 {
 		test::assert(test::eq(result, expected));
 	} */
 
-	void testVerticalMin() {
-		const lyah::vec<3, std::float_t> expected = {1.0f, 3.0f, 2.0f};
-		const lyah::vec<3, std::float_t> a = {5.0f, 3.0f, 2.0f};
-		const lyah::vec<3, std::float_t> b = {1.0f, 4.0f, 6.0f};
-
-		const lyah::vec<3, std::float_t> result = lyah::min(a, b);
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testVerticalMax() {
-		const lyah::vec<3, std::float_t> expected = {5.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> a = {5.0f, 3.0f, 2.0f};
-		const lyah::vec<3, std::float_t> b = {1.0f, 4.0f, 6.0f};
-
-		const lyah::vec<3, std::float_t> result = lyah::max(a, b);
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testVerticalClamp() {
-		const lyah::vec<3, std::float_t> expected = {1.0f, 3.0f, 2.0f};
-		const lyah::vec<3, std::float_t> a = {5.0f, 3.0f, 2.0f};
-		const lyah::vec<3, std::float_t> min = {0.0f, 3.0f, 2.0f};
-		const lyah::vec<3, std::float_t> max = {1.0f, 4.0f, 6.0f};
-
-		const lyah::vec<3, std::float_t> result = lyah::clamp(a, min, max);
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testLerpScalarInterpolator() {
-		const lyah::vec<3, std::float_t> expected = {2.2f, 3.7f, 4.8f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> b = {5.0f, 3.0f, 2.0f};
-		const std::float_t t = 0.3f;
-
-		const lyah::vec<3, std::float_t> result = lyah::lerp(a, b, t);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	void testLerpVectorInterpolator() {
-		const lyah::vec<3, std::float_t> expected = {2.2f, 3.7f, 4.8f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> b = {5.0f, 3.0f, 2.0f};
-		const lyah::vec<3, std::float_t> t(0.3f);
-
-		const lyah::vec<3, std::float_t> result = lyah::lerp(a, b, t);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	void testSum() {
-		const std::float_t expected = 11.0f;
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-
-		const std::float_t result = lyah::sum(a);
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testPow() {
-		const lyah::vec<3, std::float_t> expected = {1.0f, 64.0f, 36.0f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> b = {5.0f, 3.0f, 2.0f};
-
-		const lyah::vec<3, std::float_t> result = lyah::pow(a, b);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	void testSqrt() {
-		const lyah::vec<3, std::float_t> expected = {1.0f, 2.0f, 2.449f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-
-		const lyah::vec<3, std::float_t> result = lyah::sqrt(a);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	void testCrossProduct() {
-		const lyah::vec<3, std::float_t> expected = {-10.0f, 28.0f, -17.0f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> b = {5.0f, 3.0f, 2.0f};
-
-		const lyah::vec<3, std::float_t> result = lyah::cross(a, b);
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testDotProduct() {
-		const std::float_t expected = 29.0f;
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> b = {5.0f, 3.0f, 2.0f};
-
-		const std::float_t result = lyah::dot(a, b);
-
-		test::assert(test::eq(result, expected));
-	}
-
-	void testLength() {
-		const std::float_t expected = 7.280f;
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-
-		const std::float_t result = lyah::length(a);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	void testLengthSquared() {
-		const std::float_t expected = 53.0f;
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-
-		const std::float_t result = lyah::lengthSquared(a);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	void testDistance() {
-		const std::float_t expected = 5.745f;
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> b = {5.0f, 3.0f, 2.0f};
-
-		const std::float_t result = lyah::distance(a, b);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	void testDistanceSquared() {
-		const std::float_t expected = 33.0f;
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-		const lyah::vec<3, std::float_t> b = {5.0f, 3.0f, 2.0f};
-
-		const std::float_t result = lyah::distanceSquared(a, b);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	void testNormalization() {
-		const lyah::vec<3, std::float_t> expected = {0.137f, 0.550f, 0.824f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 4.0f, 6.0f};
-
-		const lyah::vec<3, std::float_t> result = lyah::normalized(a);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	void testDegrees() {
-		const lyah::vec<3, std::float_t> expected = {180.0f, -45.0f, 0.0f};
-		const lyah::vec<3, std::float_t> a = {lyah::pi<std::float_t>(), -lyah::pi<std::float_t>() * 0.25f, 0.0f};
-
-		const lyah::vec<3, std::float_t> result = lyah::degrees(a);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	void testRadians() {
-		const lyah::vec<3, std::float_t> expected = {lyah::pi<std::float_t>(), -lyah::pi<std::float_t>() * 0.25f, 0.0f};
-		const lyah::vec<3, std::float_t> a = {180.0f, -45.0f, 0.0f};
-
-		const lyah::vec<3, std::float_t> result = lyah::radians(a);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	void testSin() {
-		const lyah::vec<3, std::float_t> expected = {0.841f, 0.479f, 0.894f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 0.5f, 90.0f};
-
-		const lyah::vec<3, std::float_t> result = lyah::sin(a);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	void testCos() {
-		const lyah::vec<3, std::float_t> expected = {0.540f, 0.878f, -0.448f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 0.5f, 90.0f};
-
-		const lyah::vec<3, std::float_t> result = lyah::cos(a);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
-	void testTan() {
-		const lyah::vec<3, std::float_t> expected = {1.557f, 0.546f, -1.995f};
-		const lyah::vec<3, std::float_t> a = {1.0f, 0.5f, 90.0f};
-
-		const lyah::vec<3, std::float_t> result = lyah::tan(a);
-
-		test::assert(test::eq(result, expected, 0.001f));
-	}
-
 	void runAll() {
 		test::printTestCategory("lyah::vec<3, std::float_t> - 3-component single floating-point vector");
 
@@ -527,63 +143,15 @@ namespace vec3_m128 {
 		test::runTest(&testComponentBroadcastConstructor, "Component broadcast constructor");
 		test::runTest(&testConvertingConstructor, "Converting constructor");
 
-		test::runTest(&testEquality, "Equality (==)");
-		test::runTest(&testInequality, "Inequality (!=)");
-
-		test::runTest(&testUnaryPlus, "Unary plus (+)");
-		test::runTest(&testUnaryMinus, "Unary minus (-)");
-
-		test::runTest(&testAddition, "Addition (+)");
 		test::runTest(&testAdditionAssignment, "Addition assignment (+=)");
-
-		test::runTest(&testSubtraction, "Subtraction (-)");
 		test::runTest(&testSubtractionAssignment, "Subtraction assignment (-=)");
-
-		test::runTest(&testVectorScalarMultiplication, "Vector-scalar multiplication (*)");
-		test::runTest(&testScalarVectorMultiplication, "Scalar-vector multiplication (*)");
 		test::runTest(&testVectorScalarMultiplicationAssignment, "Vector-scalar multiplication assignment (*=)");
-		test::runTest(&testVectorVectorMultiplication, "Vector-vector multiplication (*)");
 		test::runTest(&testVectorVectorMultiplicationAssignment, "Vector-vector multiplication assignment (*=)");
-		test::runTest(&testVectorMatrixMultiplication, "Vector-matrix multiplication (*)");
 		test::runTest(&testVectorMatrixMultiplicationAssignment, "Vector-matrix multiplication assignment (*=)");
-		test::runTest(&testVectorQuaternionMultiplication, "Vector-quaternion multiplication (*)");
 		test::runTest(&testVectorQuaternionMultiplicationAssignment, "Vector-quaternion multiplication assignment (*=)");
-
-		test::runTest(&testVectorScalarDivision, "Vector-scalar division (/)");
-		test::runTest(&testScalarVectorDivision, "Scalar-vector division (/)");
 		test::runTest(&testVectorScalarDivisionAssignment, "Vector-scalar division assignment (/=)");
-		test::runTest(&testVectorVectorDivision, "Vector-vector division (/)");
 		test::runTest(&testVectorVectorDivisionAssignment, "Vector-vector division assignment (/=)");
 
-		test::runTest(&testFma, "Fused multiply-add");
-
-		/* test::runTest(&testFloor, "Floor");
-		test::runTest(&testCeil, "Ceil");
-		test::runTest(&testRound, "Round");
-		test::runTest(&testAbs, "Abs");
-		test::runTest(&testSign, "Sign"); */
-		test::runTest(&testVerticalMin, "Vertical min");
-		test::runTest(&testVerticalMax, "Vertical max");
-		test::runTest(&testVerticalClamp, "Vertical clamp");
-		test::runTest(&testLerpScalarInterpolator, "Linear interpolation (scalar interpolator)");
-		test::runTest(&testLerpVectorInterpolator, "Linear interpolation (vector interpolator)");
-		test::runTest(&testSum, "Sum");
-
-		test::runTest(&testPow, "Power");
-		test::runTest(&testSqrt, "Square root");
-
-		test::runTest(&testCrossProduct, "Cross product");
-		test::runTest(&testDotProduct, "Dot product");
-		test::runTest(&testLength, "Length");
-		test::runTest(&testLengthSquared, "Squared length");
-		test::runTest(&testDistance, "Distance");
-		test::runTest(&testDistanceSquared, "Squared distance");
-		test::runTest(&testNormalization, "Normalization");
-
-		test::runTest(&testDegrees, "Degrees");
-		test::runTest(&testRadians, "Radians");
-		test::runTest(&testSin, "Sin");
-		test::runTest(&testCos, "Cos");
-		test::runTest(&testTan, "Tan");
+		//test::runTest(&testSign, "Sign");
 	}
 }
