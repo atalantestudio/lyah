@@ -22,7 +22,6 @@
 #include <glm/gtx/norm.hpp>
 #include <glm/gtx/perpendicular.hpp>
 
-#include "glm_adapter/adapter.hpp"
-
-#include "test/Generator/Generator.hpp"
-#include "test/TestGroup.hpp"
+#include "Adapter/adapter.hpp"
+#include "Generator/Generator.hpp"
+#include "TestGroup.hpp"
