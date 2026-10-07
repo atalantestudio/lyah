@@ -40,7 +40,7 @@ T next(Generator<T, Flags>& generator) {
 	T a = generator.distribution(generator.engine);
 
 	if constexpr (Flags & GeneratorFlags::POWER_OF_2) {
-		a = std::exp2(a);
+		a = static_cast<T>(std::exp2(a));
 	}
 
 	return a;

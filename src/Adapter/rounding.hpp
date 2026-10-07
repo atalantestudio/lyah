@@ -24,7 +24,7 @@ namespace glm_adapter {
 		return glm2lyah(glm::ceil(lyah2glm(x)));
 	}
 
-	template<typename T, typename = std::enable_if<std::is_unsigned<T>::value>::type>
+	template<typename T, typename = typename std::enable_if<std::is_unsigned<T>::value>::type>
 	inline T ceilPowerOf2(T x, T y) {
 		return glm::ceilMultiple(x, y);
 	}
