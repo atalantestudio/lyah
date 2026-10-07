@@ -39,8 +39,9 @@ LYAH_CONSTEXPR lyah::mat<4, 4, T>::mat(mat<4, 4, U> a) :
 
 // See https://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToMatrix
 // and https://gist.github.com/pezcode/150eb97dd41b67b611d0de7bae273e98.
+// TODO(ci/gcc/constexpr-ctor-body): GCC doesn't allow constexpr constructors to have a body.
 template<typename T>
-LYAH_CONSTEXPR_CPP23 lyah::mat<4, 4, T>::mat(quat<T> a) {
+lyah::mat<4, 4, T>::mat(quat<T> a) {
 	a = a * static_cast<T>(1.41421356237);
 
 	const T xx = a.x * a.x;
