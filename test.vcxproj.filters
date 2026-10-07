@@ -171,5 +171,8 @@
     <ClInclude Include="src\Generator\Distribution.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Generator\GeneratorFlags.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -19,11 +19,11 @@ class TestGroup : public TestCounter {
 		template<typename TupleType, std::size_t ArgumentCount>
 		inline static void generateParameters(TupleType& parameters) {}
 
-		template<typename TupleType, std::size_t ArgumentIndex, typename CurrentArgumentType, typename... ArgumentType, bool CurrentNormalized, bool... Normalized>
-		inline static void generateParameters(TupleType& parameters, Generator<CurrentArgumentType, CurrentNormalized>& generator, Generator<ArgumentType, Normalized>&... generators) {
+		template<typename TupleType, std::size_t ArgumentIndex, typename CurrentArgumentType, typename... ArgumentType, GeneratorFlags CurrentFlags, GeneratorFlags... Flags>
+		inline static void generateParameters(TupleType& parameters, Generator<CurrentArgumentType, CurrentFlags>& generator, Generator<ArgumentType, Flags>&... generators) {
 			std::get<ArgumentIndex>(parameters) = next(generator);
 
-			generateParameters<TupleType, ArgumentIndex + 1, ArgumentType...>(parameters, std::forward<Generator<ArgumentType, Normalized>&>(generators)...);
+			generateParameters<TupleType, ArgumentIndex + 1, ArgumentType...>(parameters, std::forward<Generator<ArgumentType, Flags>&>(generators)...);
 		}
 
 		static void logTestName(const char* className, const char* testName) {
@@ -74,8 +74,8 @@ class TestGroup : public TestCounter {
 	protected:
 		static void runTestsInternal(std::mt19937& engine);
 
-		template<typename ReturnType, typename... ArgumentType, bool... Normalized>
-		inline static void runTest(const char* name, ReturnType (*function)(ArgumentType...), ReturnType (*referenceAdapter)(ArgumentType...), Generator<ArgumentType, Normalized>&... generators) {
+		template<typename ReturnType, typename... ArgumentType, GeneratorFlags... Flags>
+		inline static void runTest(const char* name, ReturnType (*function)(ArgumentType...), ReturnType (*referenceAdapter)(ArgumentType...), Generator<ArgumentType, Flags>&... generators) {
 			typedef std::tuple<ArgumentType...> TupleType;
 
 			logTestName(getGroupName(), name);
@@ -85,7 +85,7 @@ class TestGroup : public TestCounter {
 			bool failedRuns = false;
 
 			while (runIndex < RUN_COUNT) {
-				generateParameters<TupleType, 0>(parameters, std::forward<Generator<ArgumentType, Normalized>&>(generators)...);
+				generateParameters<TupleType, 0>(parameters, std::forward<Generator<ArgumentType, Flags>&>(generators)...);
 
 				const ReturnType result = std::apply(function, parameters);
 				const ReturnType referenceResult = std::apply(referenceAdapter, parameters);

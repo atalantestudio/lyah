@@ -203,6 +203,7 @@
     <ClInclude Include="src\Adapter\types\quat.hpp" />
     <ClInclude Include="src\Adapter\types\vec.hpp" />
     <ClInclude Include="src\Adapter\serialization.hpp" />
+    <ClInclude Include="src\Generator\GeneratorFlags.hpp" />
     <ClInclude Include="src\pch.hpp" />
     <ClInclude Include="src\Comparator.hpp" />
     <ClInclude Include="src\Generator\Distribution.hpp" />
