@@ -19,7 +19,7 @@
 #include "lyah/identity.ipp"
 #include "lyah/projection.ipp"
 #include "lyah/rounding.ipp"
-#include "lyah/transformation.ipp"
 #include "lyah/trigonometric.ipp"
+#include "lyah/transformation.ipp"
 
 #include "lyah/aliases.hpp"

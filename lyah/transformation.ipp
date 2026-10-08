@@ -1,10 +1,48 @@
 // Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
-template<typename T, typename>
-LYAH_CONSTEXPR_CPP26 lyah::mat<2, 2, T> lyah::rotation(T a) {
-	const T c = cos(a);
-	const T s = sin(a);
+template<>
+LYAH_CONSTEXPR lyah::mat<3, 3, std::float_t> lyah::translation(vec<2, std::float_t> t) {
+	return {
+		1,   0,   0,
+		0,   1,   0,
+		t.x, t.y, 1,
+	};
+}
+
+template<>
+LYAH_CONSTEXPR lyah::mat<3, 3, std::double_t> lyah::translation(vec<2, std::double_t> t) {
+	return {
+		1,   0,   0,
+		0,   1,   0,
+		t.x, t.y, 1,
+	};
+}
+
+template<>
+LYAH_CONSTEXPR lyah::mat<4, 4, std::float_t> lyah::translation(vec<3, std::float_t> t) {
+	return {
+		1,   0,   0,   0,
+		0,   1,   0,   0,
+		0,   0,   1,   0,
+		t.x, t.y, t.z, 1,
+	};
+}
+
+template<>
+LYAH_CONSTEXPR lyah::mat<4, 4, std::double_t> lyah::translation(vec<3, std::double_t> t) {
+	return {
+		1,   0,   0,   0,
+		0,   1,   0,   0,
+		0,   0,   1,   0,
+		t.x, t.y, t.z, 1,
+	};
+}
+
+template<>
+LYAH_CONSTEXPR_CPP26 lyah::mat<2, 2, std::float_t> lyah::rotationAngle(std::float_t a) {
+	const std::float_t c = cos(a);
+	const std::float_t s = sin(a);
 
 	return {
 		 c, -s,
@@ -12,19 +50,33 @@ LYAH_CONSTEXPR_CPP26 lyah::mat<2, 2, T> lyah::rotation(T a) {
 	};
 }
 
-template<typename T, typename>
-LYAH_CONSTEXPR lyah::mat<3, 3, T> lyah::translation(vec<2, T> a) {
+template<>
+LYAH_CONSTEXPR_CPP26 lyah::mat<2, 2, std::double_t> lyah::rotationAngle(std::double_t a) {
+	const std::double_t c = cos(a);
+	const std::double_t s = sin(a);
+
 	return {
-		1,   0,   0,
-		0,   1,   0,
-		a.x, a.y, 1,
+		 c, -s,
+		 s,  c,
 	};
 }
 
-template<typename T, typename>
-LYAH_CONSTEXPR_CPP26 lyah::mat<3, 3, T> lyah::rotation(T a) {
-	const T c = cos(a);
-	const T s = sin(a);
+template<>
+LYAH_CONSTEXPR_CPP26 lyah::mat<3, 3, std::float_t> lyah::rotationAngle(std::float_t a) {
+	const std::float_t c = cos(a);
+	const std::float_t s = sin(a);
+
+	return {
+		 c, -s,  0,
+		 s,  c,  0,
+		 0,  0,  1,
+	};
+}
+
+template<>
+LYAH_CONSTEXPR_CPP26 lyah::mat<3, 3, std::double_t> lyah::rotationAngle(std::double_t a) {
+	const std::double_t c = cos(a);
+	const std::double_t s = sin(a);
 
 	return {
 		 c, -s,  0,
@@ -34,26 +86,7 @@ LYAH_CONSTEXPR_CPP26 lyah::mat<3, 3, T> lyah::rotation(T a) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR lyah::mat<3, 3, T> lyah::scaling(vec<2, T> a) {
-	return {
-		a.x, 0,   0,
-		0,   a.y, 0,
-		0,   0,   1,
-	};
-}
-
-template<typename T, typename>
-LYAH_CONSTEXPR lyah::mat<4, 4, T> lyah::translation(vec<3, T> a) {
-	return {
-		1,   0,   0,   0,
-		0,   1,   0,   0,
-		0,   0,   1,   0,
-		a.x, a.y, a.z, 1,
-	};
-}
-
-template<typename T, typename>
-LYAH_CONSTEXPR_CPP26 lyah::mat<4, 4, T> lyah::rotation(vec<3, T> axis, T angle) {
+LYAH_CONSTEXPR_CPP26 lyah::mat<4, 4, T> lyah::rotationAxisAngle(vec<3, T> axis, T angle) {
 	const T x = axis.x;
 	const T y = axis.y;
 	const T z = axis.z;
@@ -69,12 +102,40 @@ LYAH_CONSTEXPR_CPP26 lyah::mat<4, 4, T> lyah::rotation(vec<3, T> axis, T angle) 
 	};
 }
 
-template<typename T, typename>
-LYAH_CONSTEXPR lyah::mat<4, 4, T> lyah::scaling(vec<3, T> a) {
+template<>
+LYAH_CONSTEXPR lyah::mat<3, 3, std::float_t> lyah::scaling(vec<2, std::float_t> s) {
 	return {
-		a.x, 0,   0,   0,
-		0,   a.y, 0,   0,
-		0,   0,   a.z, 0,
+		s.x, 0,   0,
+		0,   s.y, 0,
+		0,   0,   1,
+	};
+}
+
+template<>
+LYAH_CONSTEXPR lyah::mat<3, 3, std::double_t> lyah::scaling(vec<2, std::double_t> s) {
+	return {
+		s.x, 0,   0,
+		0,   s.y, 0,
+		0,   0,   1,
+	};
+}
+
+template<>
+LYAH_CONSTEXPR lyah::mat<4, 4, std::float_t> lyah::scaling(vec<3, std::float_t> s) {
+	return {
+		s.x, 0,   0,   0,
+		0,   s.y, 0,   0,
+		0,   0,   s.z, 0,
+		0,   0,   0,   1,
+	};
+}
+
+template<>
+LYAH_CONSTEXPR lyah::mat<4, 4, std::double_t> lyah::scaling(vec<3, std::double_t> s) {
+	return {
+		s.x, 0,   0,   0,
+		0,   s.y, 0,   0,
+		0,   0,   s.z, 0,
 		0,   0,   0,   1,
 	};
 }
