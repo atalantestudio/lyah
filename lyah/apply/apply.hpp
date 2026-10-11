@@ -30,23 +30,12 @@ struct lyah::apply<lyah::vec<4, T>> {
 };
 
 template<typename T>
-struct lyah::apply<lyah::mat<2, 2, T>> {
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static mat<2, 2, T> LYAH_CALL identity();
-};
-
-template<typename T>
-struct lyah::apply<lyah::mat<3, 3, T>> {
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static mat<3, 3, T> LYAH_CALL identity();
-};
-
-template<typename T>
-struct lyah::apply<lyah::mat<4, 4, T>> {
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static mat<4, 4, T> LYAH_CALL identity();
-};
-
-template<typename T>
 struct lyah::apply<lyah::quat<T>> {
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static quat<T> LYAH_CALL identity();
 };
+
+#include "lyah/apply/mat2x2.hpp"
+#include "lyah/apply/mat3x3.hpp"
+#include "lyah/apply/mat4x4.hpp"
 
 #include "lyah/apply/apply.ipp"

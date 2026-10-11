@@ -83,33 +83,6 @@ lyah::vec<4, T> lyah::apply<lyah::vec<4, T>>::modifier(vec<4, T> x, vec<4, T> y,
 }
 
 template<typename T>
-LYAH_CONSTEXPR lyah::mat<2, 2, T> lyah::apply<lyah::mat<2, 2, T>>::identity() {
-	return {
-		1, 0,
-		0, 1,
-	};
-}
-
-template<typename T>
-LYAH_CONSTEXPR lyah::mat<3, 3, T> lyah::apply<lyah::mat<3, 3, T>>::identity() {
-	return {
-		1, 0, 0,
-		0, 1, 0,
-		0, 0, 1,
-	};
-}
-
-template<typename T>
-LYAH_CONSTEXPR lyah::mat<4, 4, T> lyah::apply<lyah::mat<4, 4, T>>::identity() {
-	return {
-		1, 0, 0, 0,
-		0, 1, 0, 0,
-		0, 0, 1, 0,
-		0, 0, 0, 1,
-	};
-}
-
-template<typename T>
 LYAH_CONSTEXPR lyah::quat<T> lyah::apply<lyah::quat<T>>::identity() {
 	return {1, 0, 0, 0};
 }

@@ -4,6 +4,10 @@
 #pragma once
 
 namespace lyah {
+	/// Returns an identity matrix or quaternion.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL identity();
+
 	/// Returns the component-wise sum of `x`.
 	template<typename T>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL sum(vec<2, T> x);
