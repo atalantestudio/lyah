@@ -9,6 +9,8 @@ struct lyah::apply<lyah::mat<4, 4, T>> {
 
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static mat<4, 4, T> LYAH_CALL translation(vec<3, T> translation);
 
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 static mat<4, 4, T> LYAH_CALL rotationAxisAngle(vec<3, T> axis, T angle);
+
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static mat<4, 4, T> LYAH_CALL scaling(vec<3, T> scale);
 
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static mat<4, 4, T> LYAH_CALL uniformScaling(T scale);

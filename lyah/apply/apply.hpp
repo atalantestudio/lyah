@@ -29,13 +29,9 @@ struct lyah::apply<lyah::vec<4, T>> {
 	LYAH_NODISCARD LYAH_INLINE static vec<4, T> LYAH_CALL modifier(vec<4, T> x, vec<4, T> y, T (*modifier)(T, T));
 };
 
-template<typename T>
-struct lyah::apply<lyah::quat<T>> {
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR static quat<T> LYAH_CALL identity();
-};
-
 #include "lyah/apply/mat2x2.hpp"
 #include "lyah/apply/mat3x3.hpp"
 #include "lyah/apply/mat4x4.hpp"
+#include "lyah/apply/quat.hpp"
 
 #include "lyah/apply/apply.ipp"

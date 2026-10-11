@@ -12,16 +12,11 @@ namespace lyah {
 	template<std::size_t M, typename T, typename = typename std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 mat<M, M, T> LYAH_CALL rotationAngle(T angle);
 
-	/// Returns a 4x4 transformation matrix rotated by `angle` towards `axis`.
+	/// Returns a 4x4 transformation matrix or a quaternion, rotated by `angle` towards `axis`.
 	/// `axis` must be normalized.
 	/// `angle` must be in radians.
-	template<typename T, typename = typename std::enable_if<std::is_floating_point<T>::value>::type>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 mat<4, 4, T> LYAH_CALL rotationAxisAngle(vec<3, T> axis, T angle);
-
-	/// Returns a quaternion rotated by `angle` towards `axis`.
-	/// `angle` must be in radians.
-	template<typename T, typename = typename std::enable_if<std::is_floating_point<T>::value>::type>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 quat<T> LYAH_CALL rotationAxisAngle(vec<3, T> axis, T angle);
+	template<typename U, typename T, typename = typename std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 U LYAH_CALL rotationAxisAngle(vec<3, T> axis, T angle);
 
 	/// Returns a transformation matrix scaled by `scale`.
 	template<std::size_t M, typename T, typename = typename std::enable_if<std::is_floating_point<T>::value>::type>

@@ -81,8 +81,3 @@ lyah::vec<4, T> lyah::apply<lyah::vec<4, T>>::modifier(vec<4, T> x, vec<4, T> y,
 
 	return x;
 }
-
-template<typename T>
-LYAH_CONSTEXPR lyah::quat<T> lyah::apply<lyah::quat<T>>::identity() {
-	return {1, 0, 0, 0};
-}
