@@ -1,14 +1,6 @@
 // Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
-template<typename T, typename>
-LYAH_CONSTEXPR_CPP26 lyah::quat<T> lyah::axisAngle(vec<3, T> axis, T angle) {
-	angle *= static_cast<T>(0.5);
-	axis *= sin<T>(angle);
-
-	return {cos(angle), axis.x, axis.y, axis.z};
-}
-
 template<typename T>
 LYAH_CONSTEXPR lyah::quat<T>::quat() :
 	w(0),

@@ -2,6 +2,11 @@
 // Distributed under the MIT License.
 
 template<typename T>
+LYAH_CONSTEXPR T lyah::identity() {
+	return apply<T>::identity();
+}
+
+template<typename T>
 LYAH_CONSTEXPR T lyah::sum(vec<2, T> x) {
 	return x.x + x.y;
 }

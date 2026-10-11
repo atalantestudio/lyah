@@ -25,7 +25,6 @@ namespace lyah {
 #include "lyah/adapter/constants.hpp"
 #include "lyah/adapter/exponential.hpp"
 #include "lyah/adapter/geometric.hpp"
-#include "lyah/adapter/identity.hpp"
 #include "lyah/adapter/projection.hpp"
 #include "lyah/adapter/rounding.hpp"
 #include "lyah/adapter/transformation.hpp"
