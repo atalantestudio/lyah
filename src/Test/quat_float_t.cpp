@@ -20,11 +20,6 @@ void TestGroup<lyah::quat<std::float_t>>::runTestsInternal(std::mt19937& engine)
 	Generator<V> vector(engine, -64.0f, 64.0f);
 	Generator<Q> quaternion(engine, -64.0f, 64.0f);
 
-	runTest<Q>("Identity", lyah::identity, glm_adapter::identity);
-
-	// TODO: Add normalized vec3 generator.
-	runTest<Q>("Axis-angle", lyah::axisAngle, glm_adapter::axisAngle, vector, scalar);
-
 	// Comparison
 	runTest<bool>("Equality", lyah::operator==, glm_adapter::operator==, quaternion, quaternion);
 	runTest<bool>("Inequality", lyah::operator!=, glm_adapter::operator!=, quaternion, quaternion);
@@ -40,8 +35,12 @@ void TestGroup<lyah::quat<std::float_t>>::runTestsInternal(std::mt19937& engine)
 	runTest<Q>("Division (quaternion-scalar)", lyah::operator/, glm_adapter::operator/, quaternion, scalar);
 
 	// Quaternion
+	runTest<Q>("Axis/angle rotation", lyah::rotationAxisAngle, glm_adapter::rotationAxisAngle, vector, scalar);
 	runTest<Q>("Conjugate", lyah::conjugate, glm_adapter::conjugate, quaternion);
 	runTest<Q>("Inverse", lyah::inverse, glm_adapter::inverse, quaternion);
+
+	// Common
+	runTest<Q>("Identity", lyah::identity, glm_adapter::identity);
 
 	// Geometric
 	runTest<S>("Dot product", lyah::dot, glm_adapter::dot, quaternion, quaternion);

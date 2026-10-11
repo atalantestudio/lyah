@@ -10,7 +10,7 @@ namespace glm_adapter {
 	}
 
 	template<typename T>
-	inline lyah::quat<T> axisAngle(lyah::vec<3, T> axis, T angle) {
+	inline lyah::quat<T> rotationAxisAngle(lyah::vec<3, T> axis, T angle) {
 		return glm2lyah(glm::angleAxis(angle, lyah2glm(axis)));
 	}
 

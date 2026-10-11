@@ -14,11 +14,11 @@ template<>
 void TestGroup<lyah::mat<3, 3, std::double_t>>::runTestsInternal(std::mt19937& engine) {
 	typedef std::double_t S;
 	typedef lyah::mat<3, 3, S> M;
+	typedef lyah::vec<2, S> V2;
 
 	Generator<S> scalar(engine, -64.0, 64.0);
 	Generator<M> matrix(engine, -64.0, 64.0);
-
-	runTest<M>("Identity", lyah::identity, glm_adapter::identity);
+	Generator<V2> vector2(engine, -64.0, 64.0);
 
 	// Comparison
 	runTest<bool>("Equality", lyah::operator==, glm_adapter::operator==, matrix, matrix);
@@ -40,6 +40,14 @@ void TestGroup<lyah::mat<3, 3, std::double_t>>::runTestsInternal(std::mt19937& e
 	runTest<M>("Inverse", lyah::inverse, glm_adapter::inverse, matrix);
 	runTest<M>("Transpose", lyah::transpose, glm_adapter::transpose, matrix);
 
+	// Common
+	runTest<M>("Identity", lyah::identity, glm_adapter::identity);
+
 	// TODO: Projection tests.
-	// TODO: Transformation tests.
+
+	// Transformation
+	runTest<M>("Translation", lyah::translation, glm_adapter::translation, vector2);
+	runTest<M>("Angle rotation", lyah::rotationAngle, glm_adapter::rotationAngle, scalar);
+	runTest<M>("Scaling", lyah::scaling, glm_adapter::scaling, vector2);
+	runTest<M>("Uniform scaling", lyah::uniformScaling, glm_adapter::uniformScaling, scalar);
 }

@@ -14,11 +14,12 @@ template<>
 void TestGroup<lyah::mat<4, 4, std::double_t>>::runTestsInternal(std::mt19937& engine) {
 	typedef std::double_t S;
 	typedef lyah::mat<4, 4, S> M;
+	typedef lyah::vec<3, S> V3;
 
 	Generator<S> scalar(engine, -64.0, 64.0);
 	Generator<M> matrix(engine, -64.0, 64.0);
-
-	runTest<M>("Identity", lyah::identity, glm_adapter::identity);
+	Generator<V3> vector3(engine, -64.0, 64.0);
+	NormalizedGenerator<V3> normalizedVector3(engine, -64.0, 64.0);
 
 	// Comparison
 	runTest<bool>("Equality", lyah::operator==, glm_adapter::operator==, matrix, matrix);
@@ -40,6 +41,17 @@ void TestGroup<lyah::mat<4, 4, std::double_t>>::runTestsInternal(std::mt19937& e
 	runTest<M>("Inverse", lyah::inverse, glm_adapter::inverse, matrix);
 	runTest<M>("Transpose", lyah::transpose, glm_adapter::transpose, matrix);
 
+	// Common
+	runTest<M>("Identity", lyah::identity, glm_adapter::identity);
+
 	// TODO: Projection tests.
-	// TODO: Transformation tests.
+
+	// Transformation
+	runTest<M>("Translation", lyah::translation, glm_adapter::translation, vector3);
+	runTest<M>("Axis/angle rotation", lyah::rotationAxisAngle, glm_adapter::rotationAxisAngle, normalizedVector3, scalar);
+	runTest<M>("Scaling", lyah::scaling, glm_adapter::scaling, vector3);
+	runTest<M>("Uniform scaling", lyah::uniformScaling, glm_adapter::uniformScaling, scalar);
+
+	// TODO: Fix look-at test.
+	runTest<M>("Look-at", lyah::lookAt, glm_adapter::lookAt, normalizedVector3, normalizedVector3, normalizedVector3);
 }

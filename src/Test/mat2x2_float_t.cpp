@@ -18,8 +18,6 @@ void TestGroup<lyah::mat<2, 2, std::float_t>>::runTestsInternal(std::mt19937& en
 	Generator<S> scalar(engine, -64.0f, 64.0f);
 	Generator<M> matrix(engine, -64.0f, 64.0f);
 
-	runTest<M>("Identity", lyah::identity, glm_adapter::identity);
-
 	// Comparison
 	runTest<bool>("Equality", lyah::operator==, glm_adapter::operator==, matrix, matrix);
 	runTest<bool>("Inequality", lyah::operator!=, glm_adapter::operator!=, matrix, matrix);
@@ -40,6 +38,11 @@ void TestGroup<lyah::mat<2, 2, std::float_t>>::runTestsInternal(std::mt19937& en
 	runTest<M>("Inverse", lyah::inverse, glm_adapter::inverse, matrix);
 	runTest<M>("Transpose", lyah::transpose, glm_adapter::transpose, matrix);
 
+	// Common
+	runTest<M>("Identity", lyah::identity, glm_adapter::identity);
+
 	// TODO: Projection tests.
-	// TODO: Transformation tests.
+
+	// Transformation
+	runTest<M>("Angle rotation", lyah::rotationAngle, glm_adapter::rotationAngle, scalar);
 }
