@@ -1,14 +1,14 @@
 // Copyright 2026 Atalante Studio.
 // Distributed under the MIT License.
 
-template<std::size_t M, typename T, typename>
-LYAH_CONSTEXPR lyah::mat<M, M, T> lyah::translation(vec<M - 1, T> translation) {
-	return apply<mat<M, M, T>>::translation(translation);
+template<typename U, std::size_t C, typename T, typename>
+LYAH_CONSTEXPR U lyah::translation(vec<C, T> translation) {
+	return apply<U>::translation(translation);
 }
 
-template<std::size_t M, typename T, typename>
-LYAH_CONSTEXPR_CPP26 lyah::mat<M, M, T> lyah::rotationAngle(T angle) {
-	return apply<mat<M, M, T>>::rotationAngle(angle);
+template<typename U, typename T, typename>
+LYAH_CONSTEXPR_CPP26 U lyah::rotationAngle(T angle) {
+	return apply<U>::rotationAngle(angle);
 }
 
 template<typename U, typename T, typename>
@@ -16,14 +16,14 @@ LYAH_CONSTEXPR_CPP26 U lyah::rotationAxisAngle(vec<3, T> axis, T angle) {
 	return apply<U>::rotationAxisAngle(axis, angle);
 }
 
-template<std::size_t M, typename T, typename>
-LYAH_CONSTEXPR lyah::mat<M, M, T> lyah::scaling(vec<M - 1, T> scale) {
-	return apply<mat<M, M, T>>::scaling(scale);
+template<typename U, std::size_t C, typename T, typename>
+LYAH_CONSTEXPR U lyah::scaling(vec<C, T> scale) {
+	return apply<U>::scaling(scale);
 }
 
-template<std::size_t M, typename T, typename>
-LYAH_CONSTEXPR lyah::mat<M, M, T> lyah::uniformScaling(T scale) {
-	return apply<mat<M, M, T>>::uniformScaling(scale);
+template<typename U, typename T, typename>
+LYAH_CONSTEXPR U lyah::uniformScaling(T scale) {
+	return apply<U>::uniformScaling(scale);
 }
 
 template<typename T, typename>
