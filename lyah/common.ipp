@@ -56,6 +56,11 @@ LYAH_CONSTEXPR T lyah::clamp(T x, T _min, T _max) {
 	return min(max(x, _min), _max);
 }
 
+template<std::size_t C, typename T>
+LYAH_CONSTEXPR lyah::vec<C, T> lyah::clamp(vec<C, T> x, T _min, T _max) {
+	return apply<vec<C, T>>::modifier(apply<vec<C, T>>::modifier(x, _min, max), _max, min);
+}
+
 template<typename T, typename>
 LYAH_CONSTEXPR T lyah::lerp(T a, T b, T t) {
 	return a * (1 - t) + b * t;
