@@ -75,4 +75,28 @@ namespace lyah {
 	/// Returns the inverse of `a`.
 	template<typename T, typename = typename std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR quat<T> LYAH_CALL inverse(quat<T> a);
+
+	/// Returns the dot product of `a` and `b`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL dot(quat<T> a, quat<T> b);
+
+	/// Returns the length of `a`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 T LYAH_CALL length(quat<T> a);
+
+	/// Returns the squared length of `a`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL lengthSquared(quat<T> a);
+
+	/// Returns the distance between `a` and `b`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 T LYAH_CALL distance(quat<T> a, quat<T> b);
+
+	/// Returns the squared distance between `a` and `b`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL distanceSquared(quat<T> a, quat<T> b);
+
+	/// Returns the normalization of `a`.
+	template<typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR_CPP26 quat<T> LYAH_CALL normalized(quat<T> a);
 }

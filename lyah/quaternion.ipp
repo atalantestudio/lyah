@@ -147,3 +147,33 @@ template<typename T, typename>
 LYAH_CONSTEXPR lyah::quat<T> lyah::inverse(quat<T> a) {
 	return conjugate(a) / dot(a, a);
 }
+
+template<typename T>
+LYAH_CONSTEXPR T lyah::dot(quat<T> a, quat<T> b) {
+	return a.w * b.w + a.x * b.x + a.y * b.y + a.z * b.z;
+}
+
+template<typename T>
+LYAH_CONSTEXPR_CPP26 T lyah::length(quat<T> a) {
+	return sqrt(lengthSquared(a));
+}
+
+template<typename T>
+LYAH_CONSTEXPR T lyah::lengthSquared(quat<T> a) {
+	return dot(a, a);
+}
+
+template<typename T>
+LYAH_CONSTEXPR_CPP26 T lyah::distance(quat<T> a, quat<T> b) {
+	return length(b - a);
+}
+
+template<typename T>
+LYAH_CONSTEXPR T lyah::distanceSquared(quat<T> a, quat<T> b) {
+	return lengthSquared(b - a);
+}
+
+template<typename T>
+LYAH_CONSTEXPR_CPP26 lyah::quat<T> lyah::normalized(quat<T> a) {
+	return a / length(a);
+}

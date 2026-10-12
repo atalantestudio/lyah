@@ -16,11 +16,6 @@ namespace lyah {
 		/// Constructs a 4x4 matrix from individual row vectors.
 		LYAH_INLINE LYAH_CONSTEXPR mat(vec<4, T> m0, vec<4, T> m1, vec<4, T> m2, vec<4, T> m3);
 
-		// TODO(ci/gcc/constexpr-ctor-body): GCC doesn't allow constexpr constructors to have a body.
-		/// Constructs a 4x4 transformation matrix with the rotation part converted from `q`.
-		/// `q` is assumed to be normalized.
-		LYAH_INLINE mat(quat<T> q);
-
 		/// Constructs a 4x4 matrix converted from `A`.
 		template<typename U>
 		LYAH_INLINE LYAH_CONSTEXPR explicit mat(mat<4, 4, U> A);
