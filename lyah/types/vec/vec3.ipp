@@ -16,18 +16,18 @@ LYAH_CONSTEXPR lyah::vec<3, T>::vec(T x, T y, T z) :
 {}
 
 template<typename T>
-LYAH_CONSTEXPR lyah::vec<3, T>::vec(T a) :
-	x(a),
-	y(a),
-	z(a)
+LYAH_CONSTEXPR lyah::vec<3, T>::vec(T x) :
+	x(x),
+	y(x),
+	z(x)
 {}
 
 template<typename T>
 template<typename U>
-LYAH_CONSTEXPR lyah::vec<3, T>::vec(vec<3, U> a) :
-	x(static_cast<T>(a.x)),
-	y(static_cast<T>(a.y)),
-	z(static_cast<T>(a.z))
+LYAH_CONSTEXPR lyah::vec<3, T>::vec(vec<3, U> x) :
+	x(static_cast<T>(x.x)),
+	y(static_cast<T>(x.y)),
+	z(static_cast<T>(x.z))
 {}
 
 template<typename T>

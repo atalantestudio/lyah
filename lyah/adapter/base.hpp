@@ -17,12 +17,3 @@
 #include "lyah/adapter/vector.hpp"
 #include "lyah/adapter/matrix.hpp"
 #include "lyah/adapter/quaternion.hpp"
-
-#include "lyah/adapter/common.hpp"
-#include "lyah/adapter/constants.hpp"
-#include "lyah/adapter/exponential.hpp"
-#include "lyah/adapter/geometric.hpp"
-#include "lyah/adapter/projection.hpp"
-#include "lyah/adapter/rounding.hpp"
-#include "lyah/adapter/transformation.hpp"
-#include "lyah/adapter/trigonometric.hpp"

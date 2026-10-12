@@ -6,6 +6,9 @@
 #include "lyah/base.hpp"
 
 #include "lyah/adapter/base.hpp"
+#include "lyah/adapter/trigonometric.hpp"
+
+#include "lyah/aliases.hpp"
 
 #include "lyah/apply/apply.hpp"
 
@@ -25,14 +28,4 @@
 #include "lyah/types/quat/quat.ipp"
 
 #include "lyah/quaternion.ipp"
-
-#include "lyah/common.ipp"
-#include "lyah/constants.ipp"
-#include "lyah/exponential.ipp"
-#include "lyah/geometric.ipp"
-#include "lyah/projection.ipp"
-#include "lyah/rounding.ipp"
 #include "lyah/trigonometric.ipp"
-#include "lyah/transformation.ipp"
-
-#include "lyah/aliases.hpp"
