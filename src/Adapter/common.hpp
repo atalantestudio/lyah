@@ -57,6 +57,11 @@ namespace glm_adapter {
 		return glm2lyah(glm::clamp(lyah2glm(x), lyah2glm(min), lyah2glm(max)));
 	}
 
+	template<std::size_t C, typename T>
+	inline lyah::vec<C, T> clamp(lyah::vec<C, T> x, T min, T max) {
+		return glm2lyah(glm::clamp(lyah2glm(x), min, max));
+	}
+
 	template<typename T>
 	inline T lerp(T a, T b, T t) {
 		return glm::mix(a, b, t);

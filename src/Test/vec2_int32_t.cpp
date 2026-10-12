@@ -43,4 +43,5 @@ void TestGroup<lyah::vec<2, std::int32_t>>::runTestsInternal(std::mt19937& engin
 	runTest<V>("Minimum", lyah::min, glm_adapter::min, vector, vector);
 	runTest<V>("Maximum", lyah::max, glm_adapter::max, vector, vector);
 	runTest<V>("Clamp", lyah::clamp, glm_adapter::clamp, vector, vector, vector);
+	runTest<V>("Clamp (scalar bounds)", lyah::clamp, glm_adapter::clamp, vector, scalar, scalar);
 }

@@ -10,6 +10,12 @@
 #include <sstream>
 
 #include <lyah/lyah.hpp>
+#include <lyah/common.hpp>
+#include <lyah/constants.hpp>
+#include <lyah/exponential.hpp>
+#include <lyah/geometric.hpp>
+#include <lyah/rounding.hpp>
+#include <lyah/transformation.hpp>
 
 #define GLM_FORCE_CTOR_INIT
 #define GLM_ENABLE_EXPERIMENTAL
