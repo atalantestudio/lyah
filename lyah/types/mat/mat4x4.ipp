@@ -26,50 +26,50 @@ LYAH_CONSTEXPR lyah::mat<4, 4, T>::mat(vec<4, T> m0, vec<4, T> m1, vec<4, T> m2,
 	}
 {}
 
-template<typename T>
-template<typename U>
-LYAH_CONSTEXPR lyah::mat<4, 4, T>::mat(mat<4, 4, U> a) :
-	m{
-		vec<4, T>(a[0]),
-		vec<4, T>(a[1]),
-		vec<4, T>(a[2]),
-		vec<4, T>(a[3]),
-	}
-{}
-
 // See https://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToMatrix
 // and https://gist.github.com/pezcode/150eb97dd41b67b611d0de7bae273e98.
 // TODO(ci/gcc/constexpr-ctor-body): GCC doesn't allow constexpr constructors to have a body.
 template<typename T>
-lyah::mat<4, 4, T>::mat(quat<T> a) {
-	a = a * static_cast<T>(1.41421356237);
+lyah::mat<4, 4, T>::mat(quat<T> q) {
+	q = q * static_cast<T>(1.41421356237);
 
-	const T xx = a.x * a.x;
-	//const T xy = a.x * a.y;
-	//const T xz = a.x * a.z;
-	const T xw = a.x * a.w;
-	const T yy = a.y * a.y;
-	//const T yz = a.y * a.z;
-	const T yw = a.y * a.w;
-	const T zz = a.z * a.z;
-	const T zw = a.z * a.w;
+	const T xx = q.x * q.x;
+	//const T xy = q.x * q.y;
+	//const T xz = q.x * q.z;
+	const T xw = q.x * q.w;
+	const T yy = q.y * q.y;
+	//const T yz = q.y * q.z;
+	const T yw = q.y * q.w;
+	const T zz = q.z * q.z;
+	const T zw = q.z * q.w;
 
 	/*m[0] = {_1 - yy - zz, xy - zw,      xz + yw,      0.0};
 	m[1] = {xy + zw,      _1 - xx - zz, yz - xw,      0.0};
 	m[2] = {xz - yw,      yz + xw,      _1 - xx - yy, 0.0};
 	m[3] = {0.0,           0.0,           0.0,           1.0};*/
 
-	const vec<3, T> xyz = {a.x, a.y, a.z};
+	const vec<3, T> xyz = {q.x, q.y, q.z};
 
-	const vec<3, T> r0 = fma(xyz, vec<3, T>(a.x), { 0,  -zw,  yw});
-	const vec<3, T> r1 = fma(xyz, vec<3, T>(a.y), { zw,  0,  -xw});
-	const vec<3, T> r2 = fma(xyz, vec<3, T>(a.z), {-yw,  xw,  0 });
+	const vec<3, T> r0 = fma(xyz, vec<3, T>(q.x), { 0,  -zw,  yw});
+	const vec<3, T> r1 = fma(xyz, vec<3, T>(q.y), { zw,  0,  -xw});
+	const vec<3, T> r2 = fma(xyz, vec<3, T>(q.z), {-yw,  xw,  0 });
 
 	m[0] = {1 - yy - zz, r0.y,        r0.z,        0};
 	m[1] = {r1.x,        1 - xx - zz, r1.z,        0};
 	m[2] = {r2.x,        r2.y,        1 - xx - yy, 0};
 	m[3] = {0,           0,           0,           1};
 }
+
+template<typename T>
+template<typename U>
+LYAH_CONSTEXPR lyah::mat<4, 4, T>::mat(mat<4, 4, U> A) :
+	m{
+		vec<4, T>(A[0]),
+		vec<4, T>(A[1]),
+		vec<4, T>(A[2]),
+		vec<4, T>(A[3]),
+	}
+{}
 
 template<typename T>
 LYAH_CONSTEXPR const lyah::vec<4, T>& lyah::mat<4, 4, T>::operator[](std::size_t index) const {

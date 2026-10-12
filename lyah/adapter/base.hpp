@@ -3,23 +3,20 @@
 
 #pragma once
 
-namespace lyah {
-	/// A C-dimensional vector of type T.
-	template<std::size_t C, typename T>
-	struct vec;
+#include "lyah/adapter/types/vec/vec.hpp"
+#include "lyah/adapter/types/mat/mat.hpp"
+#include "lyah/adapter/types/quat/quat.hpp"
 
-	/// A MxN row-major matrix of type T.
-	template<std::size_t M, std::size_t N, typename T>
-	struct mat;
+#include "lyah/adapter/types/vec/vec2.hpp"
+#include "lyah/adapter/types/vec/vec3.hpp"
+#include "lyah/adapter/types/vec/vec4.hpp"
+#include "lyah/adapter/types/mat/mat2x2.hpp"
+#include "lyah/adapter/types/mat/mat3x3.hpp"
+#include "lyah/adapter/types/mat/mat4x4.hpp"
 
-	/// A quaternion of type T.
-	template<typename T>
-	struct quat;
-}
-
-#include "lyah/adapter/types/vec.hpp"
-#include "lyah/adapter/types/mat.hpp"
-#include "lyah/adapter/types/quat.hpp"
+#include "lyah/adapter/vector.hpp"
+#include "lyah/adapter/matrix.hpp"
+#include "lyah/adapter/quaternion.hpp"
 
 #include "lyah/adapter/common.hpp"
 #include "lyah/adapter/constants.hpp"
