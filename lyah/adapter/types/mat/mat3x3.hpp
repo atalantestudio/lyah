@@ -16,11 +16,6 @@ namespace lyah {
 		/// Constructs a 3x3 matrix from individual row vectors.
 		LYAH_INLINE LYAH_CONSTEXPR mat(vec<3, T> m0, vec<3, T> m1, vec<3, T> m2);
 
-		// TODO(ci/gcc/constexpr-ctor-body): GCC doesn't allow constexpr constructors to have a body.
-		/// Constructs a 3x3 rotation matrix converted from `q`.
-		/// `q` is assumed to be normalized.
-		LYAH_INLINE mat(quat<T> q);
-
 		/// Constructs a 3x3 matrix converted from `A`.
 		template<typename U>
 		LYAH_INLINE LYAH_CONSTEXPR explicit mat(mat<3, 3, U> A);

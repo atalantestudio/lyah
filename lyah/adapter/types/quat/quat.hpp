@@ -17,6 +17,14 @@ namespace lyah {
 		template<typename U>
 		LYAH_INLINE LYAH_CONSTEXPR explicit quat(quat<U> q);
 
+		/// Converts the quaternion to a 3x3 rotation matrix.
+		/// The quaternion is assumed to be normalized.
+		LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR LYAH_CALL operator mat<3, 3, T>() const;
+
+		/// Converts the quaternion to a 4x4 transformation matrix.
+		/// The quaternion is assumed to be normalized.
+		LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR LYAH_CALL operator mat<4, 4, T>() const;
+
 		/// Returns the component at the provided index.
 		/// `index` must be in [0, 4[.
 		LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL operator[](std::size_t index) const;
