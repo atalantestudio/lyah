@@ -32,6 +32,5 @@ struct lyah::apply<lyah::vec<4, T>> {
 #include "lyah/apply/mat2x2.hpp"
 #include "lyah/apply/mat3x3.hpp"
 #include "lyah/apply/mat4x4.hpp"
-#include "lyah/apply/quat.hpp"
 
 #include "lyah/apply/apply.ipp"
