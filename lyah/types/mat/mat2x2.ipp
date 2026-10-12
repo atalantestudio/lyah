@@ -24,10 +24,10 @@ LYAH_CONSTEXPR lyah::mat<2, 2, T>::mat(vec<2, T> m0, vec<2, T> m1) :
 
 template<typename T>
 template<typename U>
-LYAH_CONSTEXPR lyah::mat<2, 2, T>::mat(mat<2, 2, U> a) :
+LYAH_CONSTEXPR lyah::mat<2, 2, T>::mat(mat<2, 2, U> A) :
 	m{
-		vec<2, T>(a[0]),
-		vec<2, T>(a[1]),
+		vec<2, T>(A[0]),
+		vec<2, T>(A[1]),
 	}
 {}
 
