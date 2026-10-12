@@ -49,6 +49,11 @@ namespace lyah {
 	template<typename T>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL clamp(T x, T min, T max);
 
+	/// Returns `x` clamped between `min` and `max`.
+	/// `max` must be >= `min`.
+	template<std::size_t C, typename T>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR vec<C, T> LYAH_CALL clamp(vec<C, T> x, T min, T max);
+
 	/// Returns the linear interpolation of `t` between `a` and `b`.
 	template<typename T, typename = typename std::enable_if<std::is_floating_point<T>::value>::type>
 	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR T LYAH_CALL lerp(T a, T b, T t);
