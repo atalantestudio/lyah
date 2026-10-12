@@ -14,16 +14,16 @@ LYAH_CONSTEXPR lyah::vec<2, T>::vec(T x, T y) :
 {}
 
 template<typename T>
-LYAH_CONSTEXPR lyah::vec<2, T>::vec(T a) :
-	x(a),
-	y(a)
+LYAH_CONSTEXPR lyah::vec<2, T>::vec(T x) :
+	x(x),
+	y(x)
 {}
 
 template<typename T>
 template<typename U>
-LYAH_CONSTEXPR lyah::vec<2, T>::vec(vec<2, U> a) :
-	x(static_cast<T>(a.x)),
-	y(static_cast<T>(a.y))
+LYAH_CONSTEXPR lyah::vec<2, T>::vec(vec<2, U> x) :
+	x(static_cast<T>(x.x)),
+	y(static_cast<T>(x.y))
 {}
 
 template<typename T>
