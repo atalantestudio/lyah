@@ -110,19 +110,6 @@ namespace lyah {
 	}
 }
 
-// See https://blog.molecular-matters.com/2013/05/24/a-faster-quaternion-vector-multiplication.
-template<typename T, typename>
-LYAH_CONSTEXPR lyah::vec<3, T> lyah::operator*(vec<3, T> a, quat<T> b) {
-	const vec<3, T> c = {b.x, b.y, b.z};
-
-	return static_cast<T>(2) * (dot(c, a) * c + b.w * (cross(c, a) + b.w * a)) - a;
-}
-
-template<typename T, typename>
-lyah::vec<3, T>& lyah::operator*=(vec<3, T>& a, quat<T> b) {
-	return a = a * b;
-}
-
 namespace lyah {
 	template<typename T>
 	LYAH_CONSTEXPR vec<3, T> operator/(vec<3, T> a, T b) {
