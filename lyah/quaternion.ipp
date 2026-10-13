@@ -115,22 +115,7 @@ LYAH_CONSTEXPR lyah::quat<T> lyah::operator/(quat<T> a, T b) {
 }
 
 template<typename T, typename>
-LYAH_CONSTEXPR lyah::quat<T> lyah::operator/(T a, quat<T> b) {
-	return a * inverse(b);
-}
-
-template<typename T, typename>
 lyah::quat<T>& lyah::operator/=(quat<T>& a, T b) {
-	return a = a / b;
-}
-
-template<typename T, typename>
-LYAH_CONSTEXPR lyah::quat<T> lyah::operator/(quat<T> a, quat<T> b) {
-	return a * inverse(b);
-}
-
-template<typename T, typename>
-lyah::quat<T>& lyah::operator/=(quat<T>& a, quat<T> b) {
 	return a = a / b;
 }
 
