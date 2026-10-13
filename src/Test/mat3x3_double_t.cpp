@@ -15,6 +15,7 @@ void TestGroup<lyah::mat<3, 3, std::double_t>>::runTestsInternal(std::mt19937& e
 	typedef std::double_t S;
 	typedef lyah::mat<3, 3, S> M;
 	typedef lyah::vec<2, S> V2;
+	typedef lyah::quat<S> Q;
 
 	Generator<S> scalar(engine, -64.0, 64.0);
 	Generator<M> matrix(engine, -64.0, 64.0);
@@ -39,6 +40,8 @@ void TestGroup<lyah::mat<3, 3, std::double_t>>::runTestsInternal(std::mt19937& e
 	runTest<M>("Adjugate", lyah::adjugate, glm_adapter::adjugate, matrix);
 	runTest<M>("Inverse", lyah::inverse, glm_adapter::inverse, matrix);
 	runTest<M>("Transpose", lyah::transpose, glm_adapter::transpose, matrix);
+
+	// TODO: Test quaternion to matrix.
 
 	// Common
 	runTest<M>("Identity", lyah::identity, glm_adapter::identity);

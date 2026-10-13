@@ -3,13 +3,11 @@
 
 #pragma once
 
-#include <chrono>
-#include <iomanip>
 #include <iostream>
 #include <random>
-#include <sstream>
 
 #include <lyah/lyah.hpp>
+#include <lyah/quaternion.hpp>
 #include <lyah/common.hpp>
 #include <lyah/constants.hpp>
 #include <lyah/exponential.hpp>

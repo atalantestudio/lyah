@@ -41,6 +41,8 @@ void TestGroup<lyah::mat<4, 4, std::float_t>>::runTestsInternal(std::mt19937& en
 	runTest<M>("Inverse", lyah::inverse, glm_adapter::inverse, matrix);
 	runTest<M>("Transpose", lyah::transpose, glm_adapter::transpose, matrix);
 
+	// TODO: Test quaternion to matrix.
+
 	// Common
 	runTest<M>("Identity", lyah::identity, glm_adapter::identity);
 

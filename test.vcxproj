@@ -147,30 +147,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Test\vec4_uint64_t.cpp" />
-    <ClCompile Include="src\Test\vec4_uint32_t.cpp" />
-    <ClCompile Include="src\Test\vec3_uint64_t.cpp" />
-    <ClCompile Include="src\Test\vec3_uint32_t.cpp" />
-    <ClCompile Include="src\Test\vec4_int64_t.cpp" />
-    <ClCompile Include="src\Test\vec4_int32_t.cpp" />
-    <ClCompile Include="src\Test\vec3_int64_t.cpp" />
-    <ClCompile Include="src\Test\vec3_int32_t.cpp" />
-    <ClCompile Include="src\Test\vec2_uint64_t.cpp" />
-    <ClCompile Include="src\Test\vec2_uint32_t.cpp" />
-    <ClCompile Include="src\Test\vec2_int64_t.cpp" />
-    <ClCompile Include="src\Test\vec2_int32_t.cpp" />
-    <ClCompile Include="src\Test\uint64_t.cpp" />
-    <ClCompile Include="src\Test\uint32_t.cpp" />
-    <ClCompile Include="src\Test\int64_t.cpp" />
-    <ClCompile Include="src\Test\int32_t.cpp" />
-    <ClCompile Include="src\Test\mat4x4_double_t.cpp" />
-    <ClCompile Include="src\Test\mat3x3_double_t.cpp" />
-    <ClCompile Include="src\Test\mat4x4_float_t.cpp" />
-    <ClCompile Include="src\Test\mat3x3_float_t.cpp" />
-    <ClCompile Include="src\Test\mat2x2_double_t.cpp" />
-    <ClCompile Include="src\Test\mat2x2_float_t.cpp" />
-    <ClCompile Include="src\Test\vec4_double_t.cpp" />
-    <ClCompile Include="src\Test\vec3_double_t.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -180,12 +156,36 @@
     </ClCompile>
     <ClCompile Include="src\Test\double_t.cpp" />
     <ClCompile Include="src\Test\float_t.cpp" />
+    <ClCompile Include="src\Test\int32_t.cpp" />
+    <ClCompile Include="src\Test\int64_t.cpp" />
+    <ClCompile Include="src\Test\mat2x2_double_t.cpp" />
+    <ClCompile Include="src\Test\mat2x2_float_t.cpp" />
+    <ClCompile Include="src\Test\mat3x3_double_t.cpp" />
+    <ClCompile Include="src\Test\mat3x3_float_t.cpp" />
+    <ClCompile Include="src\Test\mat4x4_double_t.cpp" />
+    <ClCompile Include="src\Test\mat4x4_float_t.cpp" />
     <ClCompile Include="src\Test\quat_double_t.cpp" />
     <ClCompile Include="src\Test\quat_float_t.cpp" />
+    <ClCompile Include="src\Test\uint32_t.cpp" />
+    <ClCompile Include="src\Test\uint64_t.cpp" />
     <ClCompile Include="src\Test\vec2_double_t.cpp" />
     <ClCompile Include="src\Test\vec2_float_t.cpp" />
+    <ClCompile Include="src\Test\vec2_int32_t.cpp" />
+    <ClCompile Include="src\Test\vec2_int64_t.cpp" />
+    <ClCompile Include="src\Test\vec2_uint32_t.cpp" />
+    <ClCompile Include="src\Test\vec2_uint64_t.cpp" />
+    <ClCompile Include="src\Test\vec3_double_t.cpp" />
     <ClCompile Include="src\Test\vec3_float_t.cpp" />
+    <ClCompile Include="src\Test\vec3_int32_t.cpp" />
+    <ClCompile Include="src\Test\vec3_int64_t.cpp" />
+    <ClCompile Include="src\Test\vec3_uint32_t.cpp" />
+    <ClCompile Include="src\Test\vec3_uint64_t.cpp" />
+    <ClCompile Include="src\Test\vec4_double_t.cpp" />
     <ClCompile Include="src\Test\vec4_float_t.cpp" />
+    <ClCompile Include="src\Test\vec4_int32_t.cpp" />
+    <ClCompile Include="src\Test\vec4_int64_t.cpp" />
+    <ClCompile Include="src\Test\vec4_uint32_t.cpp" />
+    <ClCompile Include="src\Test\vec4_uint64_t.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -193,21 +193,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Adapter\adapter.hpp" />
+    <ClInclude Include="src\Adapter\common.hpp" />
     <ClInclude Include="src\Adapter\constants.hpp" />
     <ClInclude Include="src\Adapter\exponential.hpp" />
     <ClInclude Include="src\Adapter\geometric.hpp" />
-    <ClInclude Include="src\Adapter\types\mat.hpp" />
     <ClInclude Include="src\Adapter\rounding.hpp" />
+    <ClInclude Include="src\Adapter\serialization.hpp" />
     <ClInclude Include="src\Adapter\trigonometric.hpp" />
-    <ClInclude Include="src\Adapter\common.hpp" />
+    <ClInclude Include="src\Adapter\types\mat.hpp" />
     <ClInclude Include="src\Adapter\types\quat.hpp" />
     <ClInclude Include="src\Adapter\types\vec.hpp" />
-    <ClInclude Include="src\Adapter\serialization.hpp" />
-    <ClInclude Include="src\Generator\GeneratorFlags.hpp" />
-    <ClInclude Include="src\pch.hpp" />
     <ClInclude Include="src\Comparator.hpp" />
     <ClInclude Include="src\Generator\Distribution.hpp" />
     <ClInclude Include="src\Generator\Generator.hpp" />
+    <ClInclude Include="src\Generator\GeneratorFlags.hpp" />
+    <ClInclude Include="src\pch.hpp" />
     <ClInclude Include="src\TestGroup.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
