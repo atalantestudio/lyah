@@ -23,7 +23,7 @@ LYAH_CONSTEXPR T lyah::sum(vec<4, T> x) {
 
 template<typename T, typename>
 LYAH_CONSTEXPR T lyah::abs(T x) {
-	return x > 0 ? x : -x;
+	return x < 0 ? -x : x;
 }
 
 template<std::size_t C, typename T, typename>
