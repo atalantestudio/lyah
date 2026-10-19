@@ -53,7 +53,7 @@ LYAH_CONSTEXPR_CPP26 lyah::mat<4, 4, T> lyah::perspectiveReversedZ(T fov, T r, T
 	return {
 		 h / r, 0,  0,  0,
 		 0,     h,  0,  0,
-		 0,     0,  1,  1,
-		 0,     0, -n,  0,
+		 0,     0,  0,  1,
+		 0,     0,  n,  0,
 	};
 }
