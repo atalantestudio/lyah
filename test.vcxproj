@@ -197,6 +197,7 @@
     <ClInclude Include="src\Adapter\constants.hpp" />
     <ClInclude Include="src\Adapter\exponential.hpp" />
     <ClInclude Include="src\Adapter\geometric.hpp" />
+    <ClInclude Include="src\Adapter\projection.hpp" />
     <ClInclude Include="src\Adapter\rounding.hpp" />
     <ClInclude Include="src\Adapter\serialization.hpp" />
     <ClInclude Include="src\Adapter\trigonometric.hpp" />

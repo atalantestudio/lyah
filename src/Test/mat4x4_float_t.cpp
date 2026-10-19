@@ -17,6 +17,8 @@ void TestGroup<lyah::mat<4, 4, std::float_t>>::runTestsInternal(std::mt19937& en
 	typedef lyah::vec<3, S> V3;
 
 	Generator<S> scalar(engine, -64.0f, 64.0f);
+	Generator<S> aspectRatioScalar(engine, 0.0f, 1.0f);
+	Generator<S> positiveScalar(engine, 0.0f, 128.0f);
 	Generator<M> matrix(engine, -64.0f, 64.0f);
 	Generator<V3> vector3(engine, -64.0f, 64.0f);
 	NormalizedGenerator<V3> normalizedVector3(engine, -64.0f, 64.0f);
@@ -46,7 +48,10 @@ void TestGroup<lyah::mat<4, 4, std::float_t>>::runTestsInternal(std::mt19937& en
 	// Common
 	runTest<M>("Identity", lyah::identity, glm_adapter::identity);
 
-	// TODO: Projection tests.
+	// Projection
+	runTest<M>("Orthographic", lyah::orthographic, glm_adapter::orthographic, scalar, scalar, scalar, scalar, scalar, scalar);
+	runTest<M>("Perspective", lyah::perspective, glm_adapter::perspective, positiveScalar, aspectRatioScalar, positiveScalar, positiveScalar);
+	runTest<M>("Perspective (Reversed-Z)", lyah::perspectiveReversedZ, glm_adapter::perspectiveReversedZ, positiveScalar, aspectRatioScalar, positiveScalar);
 
 	// Transformation
 	runTest<M>("Translation", lyah::translation, glm_adapter::translation, vector3);

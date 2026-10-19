@@ -12,11 +12,13 @@
 #include <lyah/constants.hpp>
 #include <lyah/exponential.hpp>
 #include <lyah/geometric.hpp>
+#include <lyah/projection.hpp>
 #include <lyah/rounding.hpp>
 #include <lyah/transformation.hpp>
 
-#define GLM_FORCE_CTOR_INIT
 #define GLM_ENABLE_EXPERIMENTAL
+#define GLM_FORCE_CTOR_INIT
+#define GLM_FORCE_LEFT_HANDED
 #define GLM_FORCE_QUAT_DATA_WXYZ
 
 #include <glm/glm.hpp>

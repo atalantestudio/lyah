@@ -109,5 +109,6 @@ namespace glm_adapter {
 #include "Adapter/constants.hpp"
 #include "Adapter/exponential.hpp"
 #include "Adapter/geometric.hpp"
+#include "Adapter/projection.hpp"
 #include "Adapter/rounding.hpp"
 #include "Adapter/trigonometric.hpp"

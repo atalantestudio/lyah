@@ -174,5 +174,8 @@
     <ClInclude Include="src\Adapter\trigonometric.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Adapter\projection.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

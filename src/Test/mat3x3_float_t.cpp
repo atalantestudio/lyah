@@ -19,6 +19,7 @@ void TestGroup<lyah::mat<3, 3, std::float_t>>::runTestsInternal(std::mt19937& en
 	Generator<S> scalar(engine, -64.0f, 64.0f);
 	Generator<M> matrix(engine, -64.0f, 64.0f);
 	Generator<V2> vector2(engine, -64.0f, 64.0f);
+	Generator<V2> positiveVector2(engine, 0.0f, 128.0f);
 
 	// Comparison
 	runTest<bool>("Equality", lyah::operator==, glm_adapter::operator==, matrix, matrix);
@@ -45,7 +46,9 @@ void TestGroup<lyah::mat<3, 3, std::float_t>>::runTestsInternal(std::mt19937& en
 	// Common
 	runTest<M>("Identity", lyah::identity, glm_adapter::identity);
 
-	// TODO: Projection tests.
+	// Projection
+	runTest<M>("Orthographic", lyah::orthographic, glm_adapter::orthographic, vector2, positiveVector2);
+	runTest<M>("Orthographic (screen)", lyah::orthographicScreen, glm_adapter::orthographicScreen, positiveVector2);
 
 	// Transformation
 	runTest<M>("Translation", lyah::translation, glm_adapter::translation, vector2);
