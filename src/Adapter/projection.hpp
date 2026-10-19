@@ -34,6 +34,18 @@ namespace glm_adapter {
 
 	template<typename T>
 	inline lyah::mat<4, 4, T> perspectiveReversedZ(T fieldOfView, T aspectRatio, T nearPlane) {
-		return glm2lyah(glm::infinitePerspectiveLH_ZO(fieldOfView, aspectRatio, nearPlane));
+		// glm::infinitePerspectiveLH_ZO does not reverse depth.
+		const T f = 1 / glm::tan(fieldOfView / 2);
+		const T r = aspectRatio;
+		const T n = nearPlane;
+
+		glm::mat<4, 4, T> a = glm::zero<glm::mat<4, 4, T>>();
+		a[0][0] = f / r;
+		a[1][1] = f;
+		a[2][2] = 0;
+		a[2][3] = 1;
+		a[3][2] = n;
+
+		return glm2lyah(a);
 	}
 }
