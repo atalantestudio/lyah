@@ -4,9 +4,14 @@
 #pragma once
 
 namespace lyah {
-	/// Returns a 3x3 orthographic projection matrix with top-left origin.
+	/// Returns a 3x3 orthographic projection matrix with Y pointing upwards.
+	/// `origin` adds an offset to the center of the viewport.
 	template<typename T, typename = typename std::enable_if<std::is_floating_point<T>::value>::type>
-	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR mat<3, 3, T> LYAH_CALL orthographicTopLeft(vec<2, T> viewport);
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR mat<3, 3, T> LYAH_CALL orthographic(vec<2, T> origin, vec<2, T> viewport);
+
+	/// Returns a 3x3 orthographic projection matrix with the origin at the top-left corner of the viewport and Y pointing downwards.
+	template<typename T, typename = typename std::enable_if<std::is_floating_point<T>::value>::type>
+	LYAH_NODISCARD LYAH_INLINE LYAH_CONSTEXPR mat<3, 3, T> LYAH_CALL orthographicScreen(vec<2, T> viewport);
 
 	/// Returns a 4x4 orthographic projection matrix.
 	template<typename T, typename = typename std::enable_if<std::is_floating_point<T>::value>::type>
@@ -18,12 +23,14 @@ namespace lyah {
 		/// Vertical field of view in radians.
 		T fieldOfView,
 
+		/// Must be positive.
 		T aspectRatio,
-		T nearPlane,
-		T farPlane,
 
-		/// Coordinate system sign. 1 for left-handed and -1 for right-handed.
-		T C
+		/// Must be positive.
+		T nearPlane,
+
+		/// Must be larger than the near plane.
+		T farPlane
 	);
 
 	/// Returns a 4x4 Reversed-Z perspective projection matrix (flips the depth and defines an infinite far plane).
@@ -33,10 +40,10 @@ namespace lyah {
 		/// Vertical field of view in radians.
 		T fieldOfView,
 
+		/// Must be positive.
 		T aspectRatio,
-		T nearPlane,
 
-		/// Coordinate system sign. 1 for left-handed and -1 for right-handed.
-		T C
+		/// Must be positive.
+		T nearPlane
 	);
 }
