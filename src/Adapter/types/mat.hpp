@@ -101,7 +101,7 @@ namespace glm_adapter {
 
 	template<std::size_t M, typename T>
 	inline T determinant(lyah::mat<M, M, T> a) {
-		return glm::determinant(lyah2glm(a));
+		return glm::determinant(glm::transpose(lyah2glm(a)));
 	}
 
 	template<std::size_t M, typename T>

@@ -15,8 +15,8 @@ void TestGroup<lyah::mat<2, 2, std::double_t>>::runTestsInternal(std::mt19937& e
 	typedef std::double_t S;
 	typedef lyah::mat<2, 2, S> M;
 
-	Generator<S> scalar(engine, -64.0, 64.0);
-	Generator<M> matrix(engine, -64.0, 64.0);
+	Generator<S> scalar(engine, -8.0, 8.0);
+	Generator<M> matrix(engine, -8.0, 8.0);
 
 	// Comparison
 	runTest<bool>("Equality", lyah::operator==, glm_adapter::operator==, matrix, matrix);

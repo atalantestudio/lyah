@@ -10,13 +10,13 @@ struct Comparator {
 	}
 
 	static bool compare(std::float_t x, std::float_t y) {
-		constexpr std::float_t epsilon = 0.01f;
+		constexpr std::float_t epsilon = 0.0001f;
 
 		return std::abs(y - x) <= epsilon;
 	}
 
 	static bool compare(std::double_t x, std::double_t y) {
-		constexpr std::double_t epsilon = 0.01;
+		constexpr std::double_t epsilon = 0.0001;
 
 		return std::abs(y - x) <= epsilon;
 	}

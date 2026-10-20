@@ -17,10 +17,10 @@ void TestGroup<lyah::mat<3, 3, std::double_t>>::runTestsInternal(std::mt19937& e
 	typedef lyah::vec<2, S> V2;
 	typedef lyah::quat<S> Q;
 
-	Generator<S> scalar(engine, -64.0, 64.0);
-	Generator<M> matrix(engine, -64.0, 64.0);
-	Generator<V2> vector2(engine, -64.0, 64.0);
-	Generator<V2> positiveVector2(engine, 0.0, 128.0);
+	Generator<S> scalar(engine, -4.0, 4.0);
+	Generator<M> matrix(engine, -4.0, 4.0);
+	Generator<V2> vector2(engine, -4.0, 4.0);
+	Generator<V2> positiveVector2(engine, 0.0, 8.0);
 
 	// Comparison
 	runTest<bool>("Equality", lyah::operator==, glm_adapter::operator==, matrix, matrix);

@@ -16,13 +16,12 @@ void TestGroup<lyah::mat<4, 4, std::double_t>>::runTestsInternal(std::mt19937& e
 	typedef lyah::mat<4, 4, S> M;
 	typedef lyah::vec<3, S> V3;
 
-	Generator<S> scalar(engine, -64.0, 64.0);
-	Generator<S> aspectRatioScalar(engine, 0.0, 1.0);
-	Generator<S> positiveScalar(engine, 0.0, 128.0);
-	Generator<M> matrix(engine, -64.0, 64.0);
-	Generator<V3> vector3(engine, -64.0, 64.0);
-	NormalizedGenerator<V3> normalizedVector3(engine, -64.0, 64.0);
-	NormalizedGenerator<V3> positiveVector3(engine, 0.0, 128.0);
+	Generator<S> scalar(engine, -2.0, 2.0);
+	Generator<S> normalizedScalar(engine, 0.0, 1.0);
+	Generator<S> positiveScalar(engine, 0.0, 8.0);
+	Generator<M> matrix(engine, -2.0, 2.0);
+	Generator<V3> vector3(engine, -2.0, 2.0);
+	NormalizedGenerator<V3> normalizedVector3(engine, -2.0, 2.0);
 
 	// Comparison
 	runTest<bool>("Equality", lyah::operator==, glm_adapter::operator==, matrix, matrix);
@@ -51,8 +50,8 @@ void TestGroup<lyah::mat<4, 4, std::double_t>>::runTestsInternal(std::mt19937& e
 
 	// Projection
 	runTest<M>("Orthographic", lyah::orthographic, glm_adapter::orthographic, scalar, scalar, scalar, scalar, scalar, scalar);
-	runTest<M>("Perspective", lyah::perspective, glm_adapter::perspective, positiveScalar, aspectRatioScalar, positiveScalar, positiveScalar);
-	runTest<M>("Perspective (Reversed-Z)", lyah::perspectiveReversedZ, glm_adapter::perspectiveReversedZ, positiveScalar, aspectRatioScalar, positiveScalar);
+	runTest<M>("Perspective", lyah::perspective, glm_adapter::perspective, positiveScalar, normalizedScalar, positiveScalar, positiveScalar);
+	runTest<M>("Perspective (Reversed-Z)", lyah::perspectiveReversedZ, glm_adapter::perspectiveReversedZ, positiveScalar, normalizedScalar, positiveScalar);
 
 	// Transformation
 	runTest<M>("Translation", lyah::translation, glm_adapter::translation, vector3);

@@ -16,9 +16,9 @@ void TestGroup<lyah::quat<std::double_t>>::runTestsInternal(std::mt19937& engine
 	typedef lyah::vec<3, S> V;
 	typedef lyah::quat<S> Q;
 
-	Generator<S> scalar(engine, -64.0, 64.0);
-	Generator<V> vector(engine, -64.0, 64.0);
-	Generator<Q> quaternion(engine, -64.0, 64.0);
+	Generator<S> scalar(engine, -8.0, 8.0);
+	Generator<V> vector(engine, -8.0, 8.0);
+	Generator<Q> quaternion(engine, -8.0, 8.0);
 
 	// Comparison
 	runTest<bool>("Equality", lyah::operator==, glm_adapter::operator==, quaternion, quaternion);

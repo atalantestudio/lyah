@@ -17,14 +17,14 @@ void TestGroup<lyah::vec<3, std::float_t>>::runTestsInternal(std::mt19937& engin
 	typedef lyah::mat<3, 3, S> M;
 	typedef lyah::quat<S> Q;
 
-	Generator<S> scalar(engine, -64.0f, 64.0f);
+	Generator<S> scalar(engine, -8.0f, 8.0f);
 	Generator<S> exponentScalar(engine, 0.0f, 8.0f);
-	Generator<V> vector(engine, -64.0f, 64.0f);
+	Generator<V> vector(engine, -8.0f, 8.0f);
 	Generator<V> exponentVector(engine, 0.0f, 8.0f);
 	Generator<V> ndcVector(engine, -1.0f, 1.0f);
-	Generator<V> positiveVector(engine, 0.0f, 128.0f);
-	Generator<M> matrix(engine, -64.0f, 64.0f);
-	NormalizedGenerator<Q> normalizedQuaternion(engine, -64.0f, 64.0f);
+	Generator<V> positiveVector(engine, 0.0f, 16.0f);
+	Generator<M> matrix(engine, -8.0f, 8.0f);
+	NormalizedGenerator<Q> normalizedQuaternion(engine, -8.0f, 8.0f);
 
 	// Comparison
 	runTest<bool>("Equality", lyah::operator==, glm_adapter::operator==, vector, vector);
