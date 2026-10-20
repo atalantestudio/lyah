@@ -111,6 +111,7 @@ namespace lyah {
 		return dot(a[0], cross(a[1], a[2]));
 	}
 
+	// See https://www.dr-lex.be/random/matrix-inv.html.
 	template<typename T>
 	LYAH_CONSTEXPR mat<3, 3, T> adjugate(mat<3, 3, T> a) {
 		return {

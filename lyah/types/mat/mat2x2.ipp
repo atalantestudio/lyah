@@ -59,6 +59,7 @@ namespace lyah {
 		return a[0][0] * a[1][1] - a[0][1] * a[1][0];
 	}
 
+	// See https://www.dr-lex.be/random/matrix-inv.html.
 	template<typename T>
 	LYAH_CONSTEXPR mat<2, 2, T> adjugate(mat<2, 2, T> a) {
 		return {

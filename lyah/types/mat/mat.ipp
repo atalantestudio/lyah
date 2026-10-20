@@ -46,7 +46,6 @@ lyah::mat<M, N, T>& lyah::operator/=(mat<M, N, T>& a, T b) {
 	return a = a / b;
 }
 
-/// See https://www.dr-lex.be/random/matrix-inv.html.
 template<std::size_t M, typename T, typename>
 LYAH_CONSTEXPR lyah::mat<M, M, T> lyah::inverse(mat<M, M, T> a) {
 	const T d = determinant(a);

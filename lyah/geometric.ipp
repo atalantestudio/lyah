@@ -19,9 +19,9 @@ LYAH_CONSTEXPR lyah::vec<2, T> lyah::perpendicularRight(vec<2, T> a) {
 template<typename T, typename>
 LYAH_CONSTEXPR lyah::vec<3, T> lyah::cross(vec<3, T> a, vec<3, T> b) {
 	return {
-		a.y * b.z + -a.z * b.y,
-		a.z * b.x + -a.x * b.z,
-		a.x * b.y + -a.y * b.x,
+		a.y * b.z - a.z * b.y,
+		a.z * b.x - a.x * b.z,
+		a.x * b.y - a.y * b.x,
 	};
 }
 
